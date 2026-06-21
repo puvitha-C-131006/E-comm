@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaCart | Smart Shopping. Better Experience.</title>
+    <meta name="description" content="NovaCart - Premium E-Commerce platform for Electronics, Fashion, Footwear, and more.">
+    <meta property="og:title" content="NovaCart | Smart Shopping. Better Experience.">
+    <meta property="og:description" content="Shop the latest trends in Electronics, Fashion, and Home Appliances with fast delivery and secure payments.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Specific Home Page Styles */
+        .hero {
+            position: relative;
+            height: 85vh;
+            min-height: 600px;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            margin-top: 80px; /* Offset for fixed navbar */
+        }
+        .hero-content {
+            flex: 1;
+            padding-right: 2rem;
+            z-index: 2;
+        }
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        .hero-title span {
+            color: var(--color-primary);
+        }
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+        .hero-image-container {
+            flex: 1;
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+        .hero-image {
+            max-width: 120%;
+            transform: translateX(10%);
+        }
+        .hero-shape {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background-color: var(--color-primary);
+            border-radius: 50%;
+            right: -200px;
+            top: -100px;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        .category-card {
+            background-color: var(--color-card-bg);
+            border-radius: var(--radius-md);
+            padding: 2rem 1rem;
+            text-align: center;
+            border: 1px solid var(--color-border);
+            transition: all var(--transition-normal);
+            cursor: pointer;
+        }
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-md);
+        }
+        .category-icon {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        .category-name {
+            font-weight: 600;
+            color: var(--color-text-primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .feature-card {
+            text-align: center;
+            padding: 2.5rem;
+            background-color: var(--color-card-bg);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+        }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter {
+            background-color: var(--color-primary);
+            border-radius: var(--radius-lg);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: var(--color-white);
+            margin: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .newsletter h2 {
+            color: var(--color-white);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        .newsletter p {
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+            opacity: 0.9;
+        }
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-full) 0 0 var(--radius-full);
+            border: none;
+            outline: none;
+        }
+        .newsletter-btn {
+            padding: 1rem 2rem;
+            border-radius: 0 var(--radius-full) var(--radius-full) 0;
+            background-color: var(--color-secondary);
+            color: var(--color-white);
+            font-weight: 600;
+        }
+        .newsletter-btn:hover {
+            background-color: #1e293b;
+        }
+
+        @media (max-width: 912px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 4rem 0;
+                height: auto;
+            }
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 3rem;
+            }
+            .hero-title {
+                font-size: 3rem;
+            }
+            .hero-subtitle {
+                margin: 0 auto 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-shopping-bag"></i> Nova<span>Cart</span>
+            </a>
+            
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search for products, brands...">
+            </div>
+
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="products.html?category=electronics">Categories</a></li>
+                    <li><a href="products.html?deals=true">Deals</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button id="theme-toggle" class="action-icon" title="Toggle Dark Mode" onclick="toggleTheme()">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="login.html" class="btn btn-primary auth-link" style="display:none;">Login</a>
+                    
+                    <a href="profile.html" class="action-icon profile-link" title="Profile" style="display:none;">
+                        <i class="far fa-user"></i>
+                        <span class="user-name" style="font-size: 0.9rem; margin-left: 0.5rem; font-family: 'Poppins', sans-serif;"></span>
+                    </a>
+                    
+                    
+                    <div class="notification-dropdown">
+                        <a href="#" class="action-icon" title="Notifications">
+                            <i class="far fa-bell"></i>
+                            <span class="badge" style="display: block;">3</span>
+                        </a>
+                        <div class="notification-panel">
+                            <div class="notification-header">
+                                Notifications <span style="font-size:0.8rem;color:var(--color-primary);cursor:pointer;">Mark all as read</span>
+                            </div>
+                            <div class="notifications-list">
+<div class="notification-item unread">
+                                <div class="notif-icon notif-sale"><i class="fas fa-bolt"></i></div>
+                                <div class="notif-content">
+                                    <h4>Flash Sale Started</h4>
+                                    <p>Up to 50% off on electronics for the next 5 hours!</p>
+                                </div>
+                            </div>
+                            <div class="notification-item unread">
+                                <div class="notif-icon notif-coupon"><i class="fas fa-ticket-alt"></i></div>
+                                <div class="notif-content">
+                                    <h4>Coupon Available</h4>
+                                    <p>Use code SAVE500 for a flat ₹500 discount.</p>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notif-icon notif-order"><i class="fas fa-box-open"></i></div>
+                                <div class="notif-content">
+                                    <h4>Order Delivered</h4>
+                                    <p>Your order #ORD-092123 has been delivered.</p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <a href="wishlist.html" class="action-icon" title="Wishlist">
+                        <i class="far fa-heart"></i>
+                        <span class="badge wishlist-badge" style="display: none;">0</span>
+                    </a>
+                    
+                    <a href="cart.html" class="action-icon" title="Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge cart-badge" style="display: none;">0</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-shape"></div>
+        <div class="container" style="display: flex; align-items: center; height: 100%; position: relative; z-index: 1;">
+            <div class="hero-content animate-slide-up">
+                <h1 class="hero-title">Smart Shopping.<br><span>Better Experience.</span></h1>
+                <p class="hero-subtitle">Discover premium quality products across electronics, fashion, and home decor. Fast delivery and secure payments guaranteed.</p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-start;">
+                    <a href="products.html" class="btn btn-primary btn-lg">Shop Now <i class="fas fa-arrow-right"></i></a>
+                    <a href="#categories" class="btn btn-outline btn-lg">Explore Categories</a>
+                </div>
+            </div>
+            <div class="hero-image-container animate-fade-in" style="animation-delay: 0.3s;">
+                <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1000&q=80" alt="Premium Shopping" class="hero-image" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Flash Sale -->
+    <section class="section" style="background: linear-gradient(135deg, var(--color-danger) 0%, #dc2626 100%); color: white; padding: 3rem 0; margin-top: 2rem;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
+            <div>
+                <h2 style="font-size: 2.5rem; margin-bottom: 0.5rem;"><i class="fas fa-bolt" style="color: #fbbf24;"></i> Flash Sale</h2>
+                <p style="font-size: 1.1rem; opacity: 0.9;">Up to 50% off on premium electronics. Limited time offer!</p>
+            </div>
+            <div style="display: flex; gap: 1rem; text-align: center;">
+                <div style="background: rgba(255,255,255,0.2); border-radius: var(--radius-md); padding: 1rem; min-width: 80px;">
+                    <div id="fs-hours" style="font-size: 2rem; font-weight: 700;">00</div>
+                    <div style="font-size: 0.85rem; text-transform: uppercase;">Hours</div>
+                </div>
+                <div style="font-size: 2rem; font-weight: 700; align-self: center;">:</div>
+                <div style="background: rgba(255,255,255,0.2); border-radius: var(--radius-md); padding: 1rem; min-width: 80px;">
+                    <div id="fs-minutes" style="font-size: 2rem; font-weight: 700;">00</div>
+                    <div style="font-size: 0.85rem; text-transform: uppercase;">Mins</div>
+                </div>
+                <div style="font-size: 2rem; font-weight: 700; align-self: center;">:</div>
+                <div style="background: rgba(255,255,255,0.2); border-radius: var(--radius-md); padding: 1rem; min-width: 80px;">
+                    <div id="fs-seconds" style="font-size: 2rem; font-weight: 700;">00</div>
+                    <div style="font-size: 0.85rem; text-transform: uppercase;">Secs</div>
+                </div>
+            </div>
+            <div>
+                <a href="products.html?deals=true" class="btn btn-primary" style="background: white; color: var(--color-danger); border: none;">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section id="categories" class="section">
+        <div class="container">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="category-grid" id="categoryGrid">
+                <!-- Categories will be injected here via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Products -->
+    <section class="section" style="background-color: #fff;">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem;">
+                <h2 class="section-title" style="margin-bottom: 0;">Trending Now</h2>
+                <a href="products.html" style="color: var(--color-primary); font-weight: 500;">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="product-grid" id="trendingProducts">
+                <!-- Products injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Why Choose NovaCart</h2>
+            <div class="features-grid">
+                <div class="feature-card animate-slide-up" style="animation-delay: 0.1s;">
+                    <div class="feature-icon"><i class="fas fa-shipping-fast"></i></div>
+                    <h3 class="feature-title">Fast Delivery</h3>
+                    <p class="color-text-secondary">Free and fast shipping on all orders over $50 across the country.</p>
+                </div>
+                <div class="feature-card animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="feature-icon"><i class="fas fa-undo-alt"></i></div>
+                    <h3 class="feature-title">Easy Returns</h3>
+                    <p class="color-text-secondary">30-day easy return policy for all your purchases with no questions asked.</p>
+                </div>
+                <div class="feature-card animate-slide-up" style="animation-delay: 0.3s;">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="feature-title">Secure Payments</h3>
+                    <p class="color-text-secondary">We use 256-bit encryption to ensure your payment details are always secure.</p>
+                </div>
+                <div class="feature-card animate-slide-up" style="animation-delay: 0.4s;">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <h3 class="feature-title">24/7 Support</h3>
+                    <p class="color-text-secondary">Our dedicated customer support team is available round the clock to help you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="newsletter">
+                <h2>Join Our Newsletter</h2>
+                <p>Subscribe to get updates on new arrivals, special offers, and exclusive discounts.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Subscribed successfully!'); this.reset();">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="color: #fff; margin-bottom: 1.5rem; display: inline-flex;">
+                        <i class="fas fa-shopping-bag"></i> Nova<span>Cart</span>
+                    </a>
+                    <p class="footer-desc">Premium E-Commerce platform providing the best shopping experience with high-quality products and customer service.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                        <li><a href="wishlist.html">Wishlist</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="products.html?category=Electronics">Electronics</a></li>
+                        <li><a href="products.html?category=Fashion">Fashion</a></li>
+                        <li><a href="products.html?category=Footwear">Footwear</a></li>
+                        <li><a href="products.html?category=Gaming">Gaming</a></li>
+                        <li><a href="products.html?category=Home Appliances">Home Appliances</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Commerce St, NY 10001</li>
+                        <li><i class="fas fa-phone-alt" style="margin-right: 10px;"></i> +1 (800) 123-4567</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> support@novacart.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NovaCart. All Rights Reserved. Designed for Excellence.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/cart.js"></script>
+    
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+    <script src="assets/js/firebase-config.js"></script>
+    <script src="assets/js/auth.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCategories();
+            renderTrendingProducts();
+        });
+
+        function renderCategories() {
+            const categories = [
+                { name: 'Electronics', icon: 'fa-laptop' },
+                { name: 'Fashion', icon: 'fa-tshirt' },
+                { name: 'Footwear', icon: 'fa-shoe-prints' },
+                { name: 'Accessories', icon: 'fa-glasses' },
+                { name: 'Gaming', icon: 'fa-gamepad' },
+                { name: 'Beauty', icon: 'fa-spa' },
+                { name: 'Furniture', icon: 'fa-chair' },
+                { name: 'Home Appliances', icon: 'fa-blender' }
+            ];
+
+            const grid = document.getElementById('categoryGrid');
+            grid.innerHTML = categories.map(cat => `
+                <div class="category-card" onclick="window.location.href='products.html?category=${encodeURIComponent(cat.name)}'">
+                    <i class="fas ${cat.icon} category-icon"></i>
+                    <div class="category-name">${cat.name}</div>
+                </div>
+            `).join('');
+        }
+
+        function renderTrendingProducts() {
+            const grid = document.getElementById('trendingProducts');
+            
+            // Show skeleton loaders first
+            grid.innerHTML = `
+                <div class="skeleton-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="skeleton skeleton-text short" style="margin-top:auto;"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text price"></div>
+                </div>
+
+                <div class="skeleton-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="skeleton skeleton-text short" style="margin-top:auto;"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text price"></div>
+                </div>
+
+                <div class="skeleton-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="skeleton skeleton-text short" style="margin-top:auto;"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text price"></div>
+                </div>
+
+                <div class="skeleton-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="skeleton skeleton-text short" style="margin-top:auto;"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text price"></div>
+                </div>
+
+                <div class="skeleton-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="skeleton skeleton-text short" style="margin-top:auto;"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text price"></div>
+                </div>
+
+                <div class="skeleton-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="skeleton skeleton-text short" style="margin-top:auto;"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text price"></div>
+                </div>
+
+                <div class="skeleton-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="skeleton skeleton-text short" style="margin-top:auto;"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text price"></div>
+                </div>
+
+                <div class="skeleton-card">
+                    <div class="skeleton skeleton-img"></div>
+                    <div class="skeleton skeleton-text short" style="margin-top:auto;"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text price"></div>
+                </div>
+`;
+            
+            setTimeout(() => {
+                // Pick 8 random products
+                const shuffled = [...products].sort(() => 0.5 - Math.random());
+                const selected = shuffled.slice(0, 8);
+            
+            grid.innerHTML = selected.map(product => {
+                const discountedPrice = calculateDiscount(product.price, product.discount);
+                const hasDiscount = product.discount > 0;
+                const inWishlist = isInWishlist(product.id);
+                
+                return `
+                <div class="product-card">
+                    <div class="product-badges">
+                        ${hasDiscount ? `<span class="product-badge badge-discount">SALE ${product.discount}%</span>` : ''}
+         ${product.rating >= 4.8 ? `<span class="product-badge badge-new">BEST SELLER</span>` : (Math.random() > 0.7 ? `<span class="product-badge badge-new">${['NEW ARRIVAL', 'FEATURED'][Math.floor(Math.random()*2)]}</span>` : '')}
+         ${product.stock < 15 ? `<span class="product-badge badge-discount">LIMITED STOCK</span>` : ''}
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="btn-icon btn-wishlist" data-id="${product.id}" onclick="toggleWishlist(${product.id})" title="Wishlist">
+                            <i class="${inWishlist ? 'fas' : 'far'} fa-heart" style="${inWishlist ? 'color: var(--color-danger);' : ''}"></i>
+                        </button>
+                        <button class="btn-icon" onclick="openQuickView(${product.id})" title="Quick View">
+                            <i class="far fa-eye"></i>
+                        </button>
+                        <button class="btn-icon" onclick="shareProduct(${product.id})" title="Share">
+                            <i class="fas fa-share-alt"></i>
+                        </button>
+                    </div>
+
+                    <div class="product-image-container" style="cursor:pointer;" onclick="window.location.href='product-details.html?id=${product.id}'">
+                        <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy" onerror="this.onerror=null; this.src='assets/images/product-default.png';">
+                    </div>
+
+                    <div class="product-info">
+                        <div class="product-category">${product.category} &bull; ${product.brand}</div>
+                        <h3 class="product-title" style="cursor:pointer;" onclick="window.location.href='product-details.html?id=${product.id}'">${product.name}</h3>
+                        
+                        <div class="product-rating">
+                            <div class="stars">
+                                ${Array(5).fill('').map((_, i) => `<i class="fas fa-star" style="opacity: ${i < Math.floor(product.rating) ? 1 : 0.3}"></i>`).join('')}
+                            </div>
+                            <span>(${product.reviewCount})</span>
+                        </div>
+
+                        <div class="product-price">
+                            <span class="current-price">${formatPrice(discountedPrice)}</span>
+                            ${hasDiscount ? `<span class="old-price">${formatPrice(product.price)}</span>` : ''}
+                        </div>
+
+                        <button class="btn btn-primary" style="width: 100%;" onclick="addToCart(${product.id})">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+                `;
+            }).join('');
+            }, 600);
+            
+            // Render Recently Viewed if exists
+            renderRecentlyViewedIndex();
+        }
+
+        function renderRecentlyViewedIndex() {
+            const recentlyViewed = JSON.parse(localStorage.getItem('novacart_recently_viewed')) || [];
+            if (recentlyViewed.length === 0) return;
+
+            let sectionHtml = `
+            <section class="section" style="background-color: var(--color-card-bg);">
+                <div class="container">
+                    <h2 class="section-title">Recently Viewed</h2>
+                    <div class="product-grid">`;
+            
+            recentlyViewed.slice(0, 4).forEach(id => {
+                const product = products.find(p => p.id === id);
+                if(product) {
+                    const discountedPrice = calculateDiscount(product.price, product.discount);
+                    const hasDiscount = product.discount > 0;
+                    
+                    sectionHtml += `
+                    <div class="product-card">
+                        <div class="product-image-container" style="cursor:pointer; height: 200px;" onclick="window.location.href='product-details.html?id=${product.id}'">
+                            <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy" onerror="this.onerror=null; this.src='assets/images/product-default.png';">
+                        </div>
+                        <div class="product-info" style="padding: 1rem;">
+                            <h3 class="product-title" style="font-size: 1rem; cursor:pointer;" onclick="window.location.href='product-details.html?id=${product.id}'">${product.name}</h3>
+                            <div class="product-price" style="font-size: 1.1rem; margin-bottom: 0;">
+                                <span class="current-price">${formatPrice(discountedPrice)}</span>
+                            </div>
+                        </div>
+                    </div>`;
+                }
+            });
+
+            sectionHtml += `</div></div></section>`;
+            document.getElementById('trendingProducts').parentElement.parentElement.insertAdjacentHTML('beforebegin', sectionHtml);
+        }
+
+        // Flash Sale Timer
+        function initFlashSaleTimer() {
+            // Set timer to 5 hours from now initially, or keep counting down based on localStorage
+            let targetTime = localStorage.getItem('novacart_flash_sale_end');
+            if (!targetTime || new Date().getTime() > parseInt(targetTime)) {
+                targetTime = new Date().getTime() + (5 * 60 * 60 * 1000) + (14 * 60 * 1000) + (30 * 1000); // 5h 14m 30s
+                localStorage.setItem('novacart_flash_sale_end', targetTime);
+            } else {
+                targetTime = parseInt(targetTime);
+            }
+
+            const updateTimer = () => {
+                const now = new Date().getTime();
+                const distance = targetTime - now;
+
+                if (distance < 0) {
+                    const el = document.getElementById('fs-hours');
+                    if(el) {
+                        el.innerText = '00';
+                        document.getElementById('fs-minutes').innerText = '00';
+                        document.getElementById('fs-seconds').innerText = '00';
+                    }
+                    return;
+                }
+
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                const elHours = document.getElementById('fs-hours');
+                if(elHours) {
+                    elHours.innerText = hours.toString().padStart(2, '0');
+                    document.getElementById('fs-minutes').innerText = minutes.toString().padStart(2, '0');
+                    document.getElementById('fs-seconds').innerText = seconds.toString().padStart(2, '0');
+                }
+            };
+
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+    </script>
+    <button id="backToTop" class="btn-icon" title="Back to Top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="position: fixed; bottom: 2rem; right: 2rem; z-index: 99; display: none; background: var(--color-primary); color: white; box-shadow: var(--shadow-lg);">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</body>
+</html>

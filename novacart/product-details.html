@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | NovaCart</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .product-details-container {
+            margin-top: 100px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        /* Gallery Styles */
+        .product-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .main-image-container {
+            width: 100%;
+            height: 500px;
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: crosshair;
+            position: relative;
+        }
+
+        .main-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .thumbnail-gallery {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border: 2px solid transparent;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            object-fit: cover;
+            transition: all var(--transition-fast);
+        }
+
+        .thumbnail.active {
+            border-color: var(--color-primary);
+        }
+
+        /* Info Styles */
+        .product-info-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .breadcrumb {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--color-primary);
+        }
+
+        .pd-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pd-brand {
+            color: var(--color-primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .pd-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pd-price-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .pd-current-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .pd-old-price {
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            text-decoration: line-through;
+        }
+
+        .pd-discount-badge {
+            background-color: var(--color-danger);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .pd-description {
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .stock-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: rgba(34, 197, 94, 0.1);
+            color: var(--color-success);
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .qty-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--color-border);
+            background-color: var(--color-card-bg);
+            border-radius: var(--radius-sm);
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .qty-btn:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        .qty-input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .action-buttons .btn {
+            flex: 1;
+        }
+
+        .social-share {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--color-text-secondary);
+        }
+
+        .social-share a {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+        }
+
+        .social-share a:hover {
+            background-color: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        /* Tabs Styles */
+        .tabs-container {
+            margin-top: 5rem;
+        }
+
+        .tabs-nav {
+            display: flex;
+            gap: 2rem;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            padding: 1rem 0;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .tab-btn.active {
+            color: var(--color-primary);
+            border-bottom-color: var(--color-primary);
+        }
+
+        .tab-content {
+            display: none;
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @media (max-width: 912px) {
+            .product-details-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .main-image-container {
+                height: 400px;
+            }
+            .pd-title {
+                font-size: 2rem;
+            }
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-shopping-bag"></i> Nova<span>Cart</span>
+            </a>
+            
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search for products, brands..." onkeypress="if(event.key==='Enter') window.location.href='products.html?search='+this.value">
+            </div>
+
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html" class="active">Shop</a></li>
+                    <li><a href="products.html?deals=true">Deals</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button id="theme-toggle" class="action-icon" title="Toggle Dark Mode" onclick="toggleTheme()">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="login.html" class="btn btn-primary auth-link" style="display:none;">Login</a>
+                    
+                    <a href="profile.html" class="action-icon profile-link" title="Profile" style="display:none;">
+                        <i class="far fa-user"></i>
+                        <span class="user-name" style="font-size: 0.9rem; margin-left: 0.5rem;"></span>
+                    </a>
+                    
+                    
+                    <div class="notification-dropdown">
+                        <a href="#" class="action-icon" title="Notifications">
+                            <i class="far fa-bell"></i>
+                            <span class="badge" style="display: block;">3</span>
+                        </a>
+                        <div class="notification-panel">
+                            <div class="notification-header">
+                                Notifications <span style="font-size:0.8rem;color:var(--color-primary);cursor:pointer;">Mark all as read</span>
+                            </div>
+                            <div class="notifications-list">
+<div class="notification-item unread">
+                                <div class="notif-icon notif-sale"><i class="fas fa-bolt"></i></div>
+                                <div class="notif-content">
+                                    <h4>Flash Sale Started</h4>
+                                    <p>Up to 50% off on electronics for the next 5 hours!</p>
+                                </div>
+                            </div>
+                            <div class="notification-item unread">
+                                <div class="notif-icon notif-coupon"><i class="fas fa-ticket-alt"></i></div>
+                                <div class="notif-content">
+                                    <h4>Coupon Available</h4>
+                                    <p>Use code SAVE500 for a flat ₹500 discount.</p>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notif-icon notif-order"><i class="fas fa-box-open"></i></div>
+                                <div class="notif-content">
+                                    <h4>Order Delivered</h4>
+                                    <p>Your order #ORD-092123 has been delivered.</p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <a href="wishlist.html" class="action-icon" title="Wishlist">
+                        <i class="far fa-heart"></i>
+                        <span class="badge wishlist-badge" style="display: none;">0</span>
+                    </a>
+                    
+                    <a href="cart.html" class="action-icon" title="Cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge cart-badge" style="display: none;">0</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container section" id="mainContent">
+        <!-- Injected via JS -->
+    </div>
+
+    <!-- Related Products -->
+    <section class="section" style="background-color: var(--color-card-bg);">
+        <div class="container">
+            <h2 class="section-title">Related Products</h2>
+            <div class="product-grid" id="relatedProductsGrid">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo" style="color: #fff; margin-bottom: 1.5rem; display: inline-flex;">
+                        <i class="fas fa-shopping-bag"></i> Nova<span>Cart</span>
+                    </a>
+                    <p class="footer-desc">Premium E-Commerce platform providing the best shopping experience.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li>support@novacart.com</li>
+                        <li>+1 (800) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 NovaCart. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/cart.js"></script>
+    
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+    <script src="assets/js/firebase-config.js"></script>
+    <script src="assets/js/auth.js"></script>
+    
+    <script>
+        let currentProduct = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id'));
+            
+            if (!productId || isNaN(productId)) {
+                window.location.href = 'products.html';
+                return;
+            }
+
+            currentProduct = products.find(p => p.id === productId);
+
+            if (!currentProduct) {
+                document.getElementById('mainContent').innerHTML = `
+                    <div style="text-align:center; padding: 5rem 0;">
+                        <h2>Product not found</h2>
+                        <a href="products.html" class="btn btn-primary" style="margin-top: 2rem;">Back to Shop</a>
+                    </div>
+                `;
+                return;
+            }
+
+            document.title = `${currentProduct.name} | NovaCart`;
+            
+            // Recently Viewed Tracking
+            let recentlyViewed = JSON.parse(localStorage.getItem('novacart_recently_viewed')) || [];
+            recentlyViewed = recentlyViewed.filter(id => id !== currentProduct.id);
+            recentlyViewed.unshift(currentProduct.id);
+            if (recentlyViewed.length > 8) recentlyViewed.pop();
+            localStorage.setItem('novacart_recently_viewed', JSON.stringify(recentlyViewed));
+
+            renderProductDetails();
+            renderRelatedProducts();
+            renderRecentlyViewed();
+            initZoomEffect();
+        });
+
+        function renderProductDetails() {
+            const discountedPrice = calculateDiscount(currentProduct.price, currentProduct.discount);
+            const hasDiscount = currentProduct.discount > 0;
+            const inWishlist = isInWishlist(currentProduct.id);
+            
+            // Generate some mock thumbnails based on the main image
+            const thumbnails = [
+                currentProduct.image,
+                currentProduct.image.replace('w=800', 'w=801'),
+                currentProduct.image.replace('w=800', 'w=802'),
+                currentProduct.image.replace('w=800', 'w=803')
+            ];
+
+            const html = `
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a> &gt; 
+                    <a href="products.html">Shop</a> &gt; 
+                    <a href="products.html?category=${currentProduct.category}">${currentProduct.category}</a> &gt; 
+                    <span>${currentProduct.name}</span>
+                </div>
+
+                <div class="product-details-container animate-slide-up">
+                    
+                    <div class="product-gallery">
+                        <div class="main-image-container" id="imageContainer">
+                            <img src="${currentProduct.image}" alt="${currentProduct.name}" class="main-image" id="mainImage" loading="lazy" onerror="this.onerror=null; this.src='assets/images/product-default.png';">
+                        </div>
+                        <div class="thumbnail-gallery">
+                            ${thumbnails.map((src, idx) => `
+                                <img src="${src}" class="thumbnail ${idx === 0 ? 'active' : ''}" onclick="changeMainImage(this.src, this)" loading="lazy" onerror="this.onerror=null; this.src='assets/images/product-default.png';">
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="product-info-section">
+                        <div class="pd-brand">${currentProduct.brand}</div>
+                        <h1 class="pd-title">${currentProduct.name}</h1>
+                        
+                        <div class="pd-rating">
+                            <div class="stars" style="color: #fbbf24;">
+                                ${Array(5).fill('').map((_, i) => `<i class="fas fa-star" style="opacity: ${i < Math.floor(currentProduct.rating) ? 1 : 0.3}"></i>`).join('')}
+                            </div>
+                            <span style="color: var(--color-text-secondary);">(${currentProduct.rating} / 5 based on ${currentProduct.reviewCount} reviews)</span>
+                        </div>
+
+                        <div class="pd-price-container">
+                            <span class="pd-current-price">${formatPrice(discountedPrice)}</span>
+                            ${hasDiscount ? `
+                                <span class="pd-old-price">${formatPrice(currentProduct.price)}</span>
+                                <span class="pd-discount-badge">${currentProduct.discount}% OFF</span>
+                            ` : ''}
+                        </div>
+
+                        <p class="pd-description">${currentProduct.description}</p>
+
+                        <div class="stock-status">
+                            <i class="fas fa-check-circle"></i> In Stock (${currentProduct.stock} items available)
+                        </div>
+
+                        <div class="quantity-selector">
+                            <span style="font-weight: 500;">Quantity:</span>
+                            <button class="qty-btn" onclick="updateQty(-1)">-</button>
+                            <input type="number" id="qtyInput" class="qty-input" value="1" min="1" max="${currentProduct.stock}" readonly>
+                            <button class="qty-btn" onclick="updateQty(1)">+</button>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" onclick="handleAddCart()">
+                                <i class="fas fa-cart-plus"></i> Add to Cart
+                            </button>
+                            <button class="btn btn-secondary" onclick="handleBuyNow()">
+                                <i class="fas fa-bolt"></i> Buy Now
+                            </button>
+                            <button class="btn btn-outline" onclick="toggleWishlist(${currentProduct.id}); setTimeout(() => window.location.reload(), 500)">
+                                <i class="${inWishlist ? 'fas' : 'far'} fa-heart" style="${inWishlist ? 'color: var(--color-danger)' : ''}"></i>
+                            </button>
+                        </div>
+
+                        <!-- Delivery Estimator -->
+                        <div class="delivery-estimator" style="margin-bottom: 2rem; padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg);">
+                            <h4 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-truck" style="color: var(--color-primary);"></i> Delivery Estimator</h4>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <input type="text" id="pincodeInput" placeholder="Enter Pincode (e.g., 600001)" style="flex: 1; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm);">
+                                <button class="btn btn-primary" onclick="checkDelivery()" style="white-space: nowrap;">Check</button>
+                            </div>
+                            <div id="deliveryOutput" style="margin-top: 1rem; font-weight: 500; font-size: 0.95rem; color: var(--color-success); display: none;"></div>
+                        </div>
+
+                        <div class="social-share">
+                            <span style="font-weight: 500;">Share:</span>
+                            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tabs-container">
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" onclick="switchTab('desc', this)">Description</button>
+                        <button class="tab-btn" onclick="switchTab('spec', this)">Specifications</button>
+                        <button class="tab-btn" onclick="switchTab('rev', this)">Reviews (${currentProduct.reviewCount})</button>
+                    </div>
+                    
+                    <div id="tab-desc" class="tab-content active">
+                        <h3>Product Description</h3>
+                        <p style="margin-top: 1rem;">Experience the best with ${currentProduct.name} by ${currentProduct.brand}. ${currentProduct.description}</p>
+                        <p style="margin-top: 1rem;">Designed with precision and built using premium materials, this product ensures durability and high performance. Perfect for your daily needs.</p>
+                        <ul style="margin-top: 1rem; padding-left: 1.5rem; list-style-type: disc;">
+                            <li>Premium quality materials</li>
+                            <li>Durable and long-lasting</li>
+                            <li>100% authentic ${currentProduct.brand} product</li>
+                            <li>Covered by manufacturer warranty</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="tab-spec" class="tab-content">
+                        <h3>Technical Specifications</h3>
+                        <table style="width: 100%; max-width: 600px; margin-top: 1rem; border-collapse: collapse;">
+                            <tr style="border-bottom: 1px solid var(--color-border);">
+                                <td style="padding: 1rem 0; font-weight: 600; width: 30%;">Brand</td>
+                                <td style="padding: 1rem 0;">${currentProduct.brand}</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--color-border);">
+                                <td style="padding: 1rem 0; font-weight: 600;">Category</td>
+                                <td style="padding: 1rem 0;">${currentProduct.category}</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--color-border);">
+                                <td style="padding: 1rem 0; font-weight: 600;">RAM</td>
+                                <td style="padding: 1rem 0;">${currentProduct.category === 'smartphones' ? '8GB LPDDR5' : (currentProduct.category === 'laptops' ? '16GB DDR5' : 'N/A')}</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--color-border);">
+                                <td style="padding: 1rem 0; font-weight: 600;">Storage</td>
+                                <td style="padding: 1rem 0;">${currentProduct.category === 'smartphones' ? '256GB UFS 4.0' : (currentProduct.category === 'laptops' ? '512GB NVMe SSD' : 'N/A')}</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--color-border);">
+                                <td style="padding: 1rem 0; font-weight: 600;">Display</td>
+                                <td style="padding: 1rem 0;">${currentProduct.category === 'smartphones' ? '6.5-inch AMOLED, 120Hz' : (currentProduct.category === 'laptops' ? '14-inch OLED, 2.8K' : 'Standard Display')}</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--color-border);">
+                                <td style="padding: 1rem 0; font-weight: 600;">Battery</td>
+                                <td style="padding: 1rem 0;">${currentProduct.category === 'smartphones' ? '5000mAh, 65W Fast Charge' : (currentProduct.category === 'laptops' ? '70Wh, up to 15 hours' : 'Built-in rechargeable')}</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--color-border);">
+                                <td style="padding: 1rem 0; font-weight: 600;">Camera</td>
+                                <td style="padding: 1rem 0;">${currentProduct.category === 'smartphones' ? '50MP Main + 12MP Ultra-wide' : '1080p FHD Webcam'}</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--color-border);">
+                                <td style="padding: 1rem 0; font-weight: 600;">Material</td>
+                                <td style="padding: 1rem 0;">Premium Aluminum & Glass construction</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--color-border);">
+                                <td style="padding: 1rem 0; font-weight: 600;">Dimensions</td>
+                                <td style="padding: 1rem 0;">Standard retail packaging dimensions</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div id="tab-rev" class="tab-content">
+                        <h3>Customer Reviews</h3>
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1rem; margin-bottom: 2rem; padding: 1.5rem; background-color: var(--color-card-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md);">
+                            <div style="font-size: 3rem; font-weight: 700; color: var(--color-primary);">${currentProduct.rating}</div>
+                            <div>
+                                <div class="stars" style="color: #fbbf24; font-size: 1.25rem;">
+                                    ${Array(5).fill('').map((_, i) => `<i class="fas fa-star" style="opacity: ${i < Math.floor(currentProduct.rating) ? 1 : 0.3}"></i>`).join('')}
+                                </div>
+                                <div>Based on ${currentProduct.reviewCount} reviews</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <div style="padding: 1.5rem; background: var(--color-bg); border-radius: var(--radius-md);">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                    <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">AK</div>
+                                    <div>
+                                        <div style="font-weight: 600; color: var(--color-text-primary);">Aarav Kumar</div>
+                                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">2 days ago</div>
+                                    </div>
+                                    <div class="stars" style="margin-left: auto; color: #fbbf24;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                </div>
+                                <p style="color: var(--color-text-secondary); line-height: 1.6;">Absolutely fantastic product. The quality is top-notch and delivery was incredibly fast. Highly recommended to everyone looking for premium quality.</p>
+                            </div>
+
+                            <div style="padding: 1.5rem; background: var(--color-bg); border-radius: var(--radius-md);">
+                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                                    <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-accent); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">PS</div>
+                                    <div>
+                                        <div style="font-weight: 600; color: var(--color-text-primary);">Priya Sharma</div>
+                                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">1 week ago</div>
+                                    </div>
+                                    <div class="stars" style="margin-left: auto; color: #fbbf24;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                                </div>
+                                <p style="color: var(--color-text-secondary); line-height: 1.6;">Good product, exactly as described. The packaging was secure. Will definitely buy from NovaCart again.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('mainContent').innerHTML = html;
+        }
+
+        function changeMainImage(src, element) {
+            document.getElementById('mainImage').src = src;
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function updateQty(change) {
+            const input = document.getElementById('qtyInput');
+            let val = parseInt(input.value) + change;
+            if (val < 1) val = 1;
+            if (val > currentProduct.stock) {
+                showToast(`Only ${currentProduct.stock} items left in stock`, 'error');
+                val = currentProduct.stock;
+            }
+            input.value = val;
+        }
+
+        function handleAddCart() {
+            const qty = parseInt(document.getElementById('qtyInput').value);
+            addToCart(currentProduct.id, qty);
+        }
+
+        function handleBuyNow() {
+            handleAddCart();
+            setTimeout(() => {
+                window.location.href = 'checkout.html';
+            }, 500);
+        }
+
+        function switchTab(tabId, element) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById('tab-' + tabId).classList.add('active');
+            element.classList.add('active');
+        }
+
+        function checkDelivery() {
+            const pincode = document.getElementById('pincodeInput').value.trim();
+            const output = document.getElementById('deliveryOutput');
+            
+            if (pincode.length < 5) {
+                output.style.display = 'block';
+                output.style.color = 'var(--color-danger)';
+                output.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please enter a valid pincode.';
+                return;
+            }
+
+            output.style.display = 'block';
+            output.style.color = 'var(--color-text-secondary)';
+            output.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Estimating delivery...';
+
+            setTimeout(() => {
+                const date = new Date();
+                date.setDate(date.getDate() + 3 + Math.floor(Math.random() * 3)); // 3-5 days delivery
+                const options = { weekday: 'long', day: 'numeric', month: 'long' };
+                const formattedDate = date.toLocaleDateString('en-US', options);
+
+                output.style.color = 'var(--color-success)';
+                output.innerHTML = `<i class="fas fa-check-circle"></i> Delivery by <strong>${formattedDate}</strong>`;
+            }, 800);
+        }
+
+        function initZoomEffect() {
+            const container = document.getElementById('imageContainer');
+            const img = document.getElementById('mainImage');
+            
+            if(!container || !img) return;
+
+            container.addEventListener('mousemove', (e) => {
+                const rect = container.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const xPercent = x / rect.width * 100;
+                const yPercent = y / rect.height * 100;
+                
+                img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+                img.style.transform = 'scale(2)';
+            });
+
+            container.addEventListener('mouseleave', () => {
+                img.style.transformOrigin = 'center';
+                img.style.transform = 'scale(1)';
+            });
+        }
+
+        function renderRelatedProducts() {
+            const grid = document.getElementById('relatedProductsGrid');
+            const related = products
+                .filter(p => p.category === currentProduct.category && p.id !== currentProduct.id)
+                .slice(0, 4);
+
+            if (related.length === 0) {
+                document.getElementById('relatedProductsGrid').parentElement.style.display = 'none';
+                return;
+            }
+
+            grid.innerHTML = related.map(product => {
+                const discountedPrice = calculateDiscount(product.price, product.discount);
+                const hasDiscount = product.discount > 0;
+                const inWishlist = isInWishlist(product.id);
+                
+                return `
+                <div class="product-card">
+                    <div class="product-badges">
+                        ${hasDiscount ? `<span class="product-badge badge-discount">-${product.discount}%</span>` : ''}
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="btn-icon btn-wishlist" onclick="toggleWishlist(${product.id})" title="Wishlist">
+                            <i class="${inWishlist ? 'fas' : 'far'} fa-heart" style="${inWishlist ? 'color: var(--color-danger);' : ''}"></i>
+                        </button>
+                    </div>
+
+                    <div class="product-image-container" style="cursor:pointer;" onclick="window.location.href='product-details.html?id=${product.id}'">
+                        <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy" onerror="this.onerror=null; this.src='assets/images/product-default.png';">
+                    </div>
+
+                    <div class="product-info">
+                        <div class="product-category">${product.brand}</div>
+                        <h3 class="product-title" style="cursor:pointer;" onclick="window.location.href='product-details.html?id=${product.id}'">${product.name}</h3>
+                        <div class="product-price">
+                            <span class="current-price">${formatPrice(discountedPrice)}</span>
+                            ${hasDiscount ? `<span class="old-price">${formatPrice(product.price)}</span>` : ''}
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function renderRecentlyViewed() {
+            const recentlyViewed = JSON.parse(localStorage.getItem('novacart_recently_viewed')) || [];
+            const ids = recentlyViewed.filter(id => id !== currentProduct.id).slice(0, 4);
+            if (ids.length === 0) return;
+
+            let sectionHtml = `
+            <section class="section">
+                <div class="container">
+                    <h2 class="section-title">Recently Viewed</h2>
+                    <div class="product-grid">`;
+            
+            ids.forEach(id => {
+                const product = products.find(p => p.id === id);
+                if(product) {
+                    const discountedPrice = calculateDiscount(product.price, product.discount);
+                    const hasDiscount = product.discount > 0;
+                    
+                    sectionHtml += `
+                    <div class="product-card" style="transform: scale(0.95);">
+                        <div class="product-image-container" style="cursor:pointer; height: 200px;" onclick="window.location.href='product-details.html?id=${product.id}'">
+                            <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy" onerror="this.onerror=null; this.src='assets/images/product-default.png';">
+                        </div>
+                        <div class="product-info" style="padding: 1rem;">
+                            <h3 class="product-title" style="font-size: 1rem; cursor:pointer;" onclick="window.location.href='product-details.html?id=${product.id}'">${product.name}</h3>
+                            <div class="product-price" style="font-size: 1.1rem; margin-bottom: 0;">
+                                <span class="current-price">${formatPrice(discountedPrice)}</span>
+                            </div>
+                        </div>
+                    </div>`;
+                }
+            });
+
+            sectionHtml += `</div></div></section>`;
+            document.getElementById('relatedProductsGrid').parentElement.parentElement.insertAdjacentHTML('afterend', sectionHtml);
+        }
+    </script>
+    <button id="backToTop" class="btn-icon" title="Back to Top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="position: fixed; bottom: 2rem; right: 2rem; z-index: 99; display: none; background: var(--color-primary); color: white; box-shadow: var(--shadow-lg);">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</body>
+</html>

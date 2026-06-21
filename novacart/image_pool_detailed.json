@@ -1,0 +1,3590 @@
+[
+  {
+    "url": "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp",
+    "title": "Essence Mascara Lash Princess",
+    "category": "beauty",
+    "brand": "Essence"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/beauty/eyeshadow-palette-with-mirror/1.webp",
+    "title": "Eyeshadow Palette with Mirror",
+    "category": "beauty",
+    "brand": "Glamour Beauty"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/beauty/powder-canister/1.webp",
+    "title": "Powder Canister",
+    "category": "beauty",
+    "brand": "Velvet Touch"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/beauty/red-lipstick/1.webp",
+    "title": "Red Lipstick",
+    "category": "beauty",
+    "brand": "Chic Cosmetics"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/beauty/red-nail-polish/1.webp",
+    "title": "Red Nail Polish",
+    "category": "beauty",
+    "brand": "Nail Couture"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/fragrances/calvin-klein-ck-one/1.webp",
+    "title": "Calvin Klein CK One",
+    "category": "fragrances",
+    "brand": "Calvin Klein"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/fragrances/calvin-klein-ck-one/2.webp",
+    "title": "Calvin Klein CK One",
+    "category": "fragrances",
+    "brand": "Calvin Klein"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/fragrances/calvin-klein-ck-one/3.webp",
+    "title": "Calvin Klein CK One",
+    "category": "fragrances",
+    "brand": "Calvin Klein"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/fragrances/chanel-coco-noir-eau-de/1.webp",
+    "title": "Chanel Coco Noir Eau De",
+    "category": "fragrances",
+    "brand": "Chanel"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/fragrances/chanel-coco-noir-eau-de/2.webp",
+    "title": "Chanel Coco Noir Eau De",
+    "category": "fragrances",
+    "brand": "Chanel"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/fragrances/chanel-coco-noir-eau-de/3.webp",
+    "title": "Chanel Coco Noir Eau De",
+    "category": "fragrances",
+    "brand": "Chanel"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/fragrances/dior-j'adore/1.webp",
+    "title": "Dior J'adore",
+    "category": "fragrances",
+    "brand": "Dior"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/fragrances/dior-j'adore/2.webp",
+    "title": "Dior J'adore",
+    "category": "fragrances",
+    "brand": "Dior"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/fragrances/dior-j'adore/3.webp",
+    "title": "Dior J'adore",
+    "category": "fragrances",
+    "brand": "Dior"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/fragrances/dolce-shine-eau-de/1.webp",
+    "title": "Dolce Shine Eau de",
+    "category": "fragrances",
+    "brand": "Dolce & Gabbana"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/fragrances/dolce-shine-eau-de/2.webp",
+    "title": "Dolce Shine Eau de",
+    "category": "fragrances",
+    "brand": "Dolce & Gabbana"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/fragrances/dolce-shine-eau-de/3.webp",
+    "title": "Dolce Shine Eau de",
+    "category": "fragrances",
+    "brand": "Dolce & Gabbana"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/fragrances/gucci-bloom-eau-de/1.webp",
+    "title": "Gucci Bloom Eau de",
+    "category": "fragrances",
+    "brand": "Gucci"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/fragrances/gucci-bloom-eau-de/2.webp",
+    "title": "Gucci Bloom Eau de",
+    "category": "fragrances",
+    "brand": "Gucci"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/fragrances/gucci-bloom-eau-de/3.webp",
+    "title": "Gucci Bloom Eau de",
+    "category": "fragrances",
+    "brand": "Gucci"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/1.webp",
+    "title": "Annibale Colombo Bed",
+    "category": "furniture",
+    "brand": "Annibale Colombo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/2.webp",
+    "title": "Annibale Colombo Bed",
+    "category": "furniture",
+    "brand": "Annibale Colombo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/3.webp",
+    "title": "Annibale Colombo Bed",
+    "category": "furniture",
+    "brand": "Annibale Colombo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/1.webp",
+    "title": "Annibale Colombo Sofa",
+    "category": "furniture",
+    "brand": "Annibale Colombo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/2.webp",
+    "title": "Annibale Colombo Sofa",
+    "category": "furniture",
+    "brand": "Annibale Colombo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/3.webp",
+    "title": "Annibale Colombo Sofa",
+    "category": "furniture",
+    "brand": "Annibale Colombo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/furniture/bedside-table-african-cherry/1.webp",
+    "title": "Bedside Table African Cherry",
+    "category": "furniture",
+    "brand": "Furniture Co."
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/furniture/bedside-table-african-cherry/2.webp",
+    "title": "Bedside Table African Cherry",
+    "category": "furniture",
+    "brand": "Furniture Co."
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/furniture/bedside-table-african-cherry/3.webp",
+    "title": "Bedside Table African Cherry",
+    "category": "furniture",
+    "brand": "Furniture Co."
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/furniture/knoll-saarinen-executive-conference-chair/1.webp",
+    "title": "Knoll Saarinen Executive Conference Chair",
+    "category": "furniture",
+    "brand": "Knoll"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/furniture/knoll-saarinen-executive-conference-chair/2.webp",
+    "title": "Knoll Saarinen Executive Conference Chair",
+    "category": "furniture",
+    "brand": "Knoll"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/furniture/knoll-saarinen-executive-conference-chair/3.webp",
+    "title": "Knoll Saarinen Executive Conference Chair",
+    "category": "furniture",
+    "brand": "Knoll"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/furniture/wooden-bathroom-sink-with-mirror/1.webp",
+    "title": "Wooden Bathroom Sink With Mirror",
+    "category": "furniture",
+    "brand": "Bath Trends"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/furniture/wooden-bathroom-sink-with-mirror/2.webp",
+    "title": "Wooden Bathroom Sink With Mirror",
+    "category": "furniture",
+    "brand": "Bath Trends"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/furniture/wooden-bathroom-sink-with-mirror/3.webp",
+    "title": "Wooden Bathroom Sink With Mirror",
+    "category": "furniture",
+    "brand": "Bath Trends"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/apple/1.webp",
+    "title": "Apple",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/beef-steak/1.webp",
+    "title": "Beef Steak",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/cat-food/1.webp",
+    "title": "Cat Food",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/chicken-meat/1.webp",
+    "title": "Chicken Meat",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/chicken-meat/2.webp",
+    "title": "Chicken Meat",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/cooking-oil/1.webp",
+    "title": "Cooking Oil",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/cucumber/1.webp",
+    "title": "Cucumber",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/dog-food/1.webp",
+    "title": "Dog Food",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/eggs/1.webp",
+    "title": "Eggs",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/fish-steak/1.webp",
+    "title": "Fish Steak",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/green-bell-pepper/1.webp",
+    "title": "Green Bell Pepper",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/green-chili-pepper/1.webp",
+    "title": "Green Chili Pepper",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/honey-jar/1.webp",
+    "title": "Honey Jar",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/ice-cream/1.webp",
+    "title": "Ice Cream",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/ice-cream/2.webp",
+    "title": "Ice Cream",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/ice-cream/3.webp",
+    "title": "Ice Cream",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/ice-cream/4.webp",
+    "title": "Ice Cream",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/juice/1.webp",
+    "title": "Juice",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/kiwi/1.webp",
+    "title": "Kiwi",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/lemon/1.webp",
+    "title": "Lemon",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/milk/1.webp",
+    "title": "Milk",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/mulberry/1.webp",
+    "title": "Mulberry",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/nescafe-coffee/1.webp",
+    "title": "Nescafe Coffee",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/potatoes/1.webp",
+    "title": "Potatoes",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/protein-powder/1.webp",
+    "title": "Protein Powder",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/red-onions/1.webp",
+    "title": "Red Onions",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/rice/1.webp",
+    "title": "Rice",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/soft-drinks/1.webp",
+    "title": "Soft Drinks",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/strawberry/1.webp",
+    "title": "Strawberry",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/tissue-paper-box/1.webp",
+    "title": "Tissue Paper Box",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/tissue-paper-box/2.webp",
+    "title": "Tissue Paper Box",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/groceries/water/1.webp",
+    "title": "Water",
+    "category": "groceries"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/home-decoration/decoration-swing/1.webp",
+    "title": "Decoration Swing",
+    "category": "home-decoration"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/home-decoration/decoration-swing/2.webp",
+    "title": "Decoration Swing",
+    "category": "home-decoration"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/home-decoration/decoration-swing/3.webp",
+    "title": "Decoration Swing",
+    "category": "home-decoration"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/home-decoration/family-tree-photo-frame/1.webp",
+    "title": "Family Tree Photo Frame",
+    "category": "home-decoration"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/home-decoration/house-showpiece-plant/1.webp",
+    "title": "House Showpiece Plant",
+    "category": "home-decoration"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/home-decoration/house-showpiece-plant/2.webp",
+    "title": "House Showpiece Plant",
+    "category": "home-decoration"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/home-decoration/house-showpiece-plant/3.webp",
+    "title": "House Showpiece Plant",
+    "category": "home-decoration"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/home-decoration/plant-pot/1.webp",
+    "title": "Plant Pot",
+    "category": "home-decoration"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/home-decoration/plant-pot/2.webp",
+    "title": "Plant Pot",
+    "category": "home-decoration"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/home-decoration/plant-pot/3.webp",
+    "title": "Plant Pot",
+    "category": "home-decoration"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/home-decoration/plant-pot/4.webp",
+    "title": "Plant Pot",
+    "category": "home-decoration"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/home-decoration/table-lamp/1.webp",
+    "title": "Table Lamp",
+    "category": "home-decoration"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/bamboo-spatula/1.webp",
+    "title": "Bamboo Spatula",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/black-aluminium-cup/1.webp",
+    "title": "Black Aluminium Cup",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/black-aluminium-cup/2.webp",
+    "title": "Black Aluminium Cup",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/black-whisk/1.webp",
+    "title": "Black Whisk",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/boxed-blender/1.webp",
+    "title": "Boxed Blender",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/boxed-blender/2.webp",
+    "title": "Boxed Blender",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/boxed-blender/3.webp",
+    "title": "Boxed Blender",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/boxed-blender/4.webp",
+    "title": "Boxed Blender",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/carbon-steel-wok/1.webp",
+    "title": "Carbon Steel Wok",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/chopping-board/1.webp",
+    "title": "Chopping Board",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/citrus-squeezer-yellow/1.webp",
+    "title": "Citrus Squeezer Yellow",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/egg-slicer/1.webp",
+    "title": "Egg Slicer",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/electric-stove/1.webp",
+    "title": "Electric Stove",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/electric-stove/2.webp",
+    "title": "Electric Stove",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/electric-stove/3.webp",
+    "title": "Electric Stove",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/electric-stove/4.webp",
+    "title": "Electric Stove",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/fine-mesh-strainer/1.webp",
+    "title": "Fine Mesh Strainer",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/fork/1.webp",
+    "title": "Fork",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/glass/1.webp",
+    "title": "Glass",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/grater-black/1.webp",
+    "title": "Grater Black",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/hand-blender/1.webp",
+    "title": "Hand Blender",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/ice-cube-tray/1.webp",
+    "title": "Ice Cube Tray",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/kitchen-sieve/1.webp",
+    "title": "Kitchen Sieve",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/knife/1.webp",
+    "title": "Knife",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/lunch-box/1.webp",
+    "title": "Lunch Box",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/microwave-oven/1.webp",
+    "title": "Microwave Oven",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/microwave-oven/2.webp",
+    "title": "Microwave Oven",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/microwave-oven/3.webp",
+    "title": "Microwave Oven",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/microwave-oven/4.webp",
+    "title": "Microwave Oven",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/mug-tree-stand/1.webp",
+    "title": "Mug Tree Stand",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/mug-tree-stand/2.webp",
+    "title": "Mug Tree Stand",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/pan/1.webp",
+    "title": "Pan",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/plate/1.webp",
+    "title": "Plate",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/red-tongs/1.webp",
+    "title": "Red Tongs",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/silver-pot-with-glass-cap/1.webp",
+    "title": "Silver Pot With Glass Cap",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/slotted-turner/1.webp",
+    "title": "Slotted Turner",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/spice-rack/1.webp",
+    "title": "Spice Rack",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/spoon/1.webp",
+    "title": "Spoon",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/tray/1.webp",
+    "title": "Tray",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/wooden-rolling-pin/1.webp",
+    "title": "Wooden Rolling Pin",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/kitchen-accessories/yellow-peeler/1.webp",
+    "title": "Yellow Peeler",
+    "category": "kitchen-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/laptops/apple-macbook-pro-14-inch-space-grey/1.webp",
+    "title": "Apple MacBook Pro 14 Inch Space Grey",
+    "category": "laptops",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/laptops/apple-macbook-pro-14-inch-space-grey/2.webp",
+    "title": "Apple MacBook Pro 14 Inch Space Grey",
+    "category": "laptops",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/laptops/apple-macbook-pro-14-inch-space-grey/3.webp",
+    "title": "Apple MacBook Pro 14 Inch Space Grey",
+    "category": "laptops",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/laptops/asus-zenbook-pro-dual-screen-laptop/1.webp",
+    "title": "Asus Zenbook Pro Dual Screen Laptop",
+    "category": "laptops",
+    "brand": "Asus"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/laptops/asus-zenbook-pro-dual-screen-laptop/2.webp",
+    "title": "Asus Zenbook Pro Dual Screen Laptop",
+    "category": "laptops",
+    "brand": "Asus"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/laptops/asus-zenbook-pro-dual-screen-laptop/3.webp",
+    "title": "Asus Zenbook Pro Dual Screen Laptop",
+    "category": "laptops",
+    "brand": "Asus"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/laptops/huawei-matebook-x-pro/1.webp",
+    "title": "Huawei Matebook X Pro",
+    "category": "laptops",
+    "brand": "Huawei"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/laptops/huawei-matebook-x-pro/2.webp",
+    "title": "Huawei Matebook X Pro",
+    "category": "laptops",
+    "brand": "Huawei"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/laptops/huawei-matebook-x-pro/3.webp",
+    "title": "Huawei Matebook X Pro",
+    "category": "laptops",
+    "brand": "Huawei"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/laptops/lenovo-yoga-920/1.webp",
+    "title": "Lenovo Yoga 920",
+    "category": "laptops",
+    "brand": "Lenovo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/laptops/lenovo-yoga-920/2.webp",
+    "title": "Lenovo Yoga 920",
+    "category": "laptops",
+    "brand": "Lenovo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/laptops/lenovo-yoga-920/3.webp",
+    "title": "Lenovo Yoga 920",
+    "category": "laptops",
+    "brand": "Lenovo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/laptops/new-dell-xps-13-9300-laptop/1.webp",
+    "title": "New DELL XPS 13 9300 Laptop",
+    "category": "laptops",
+    "brand": "Dell"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/laptops/new-dell-xps-13-9300-laptop/2.webp",
+    "title": "New DELL XPS 13 9300 Laptop",
+    "category": "laptops",
+    "brand": "Dell"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/laptops/new-dell-xps-13-9300-laptop/3.webp",
+    "title": "New DELL XPS 13 9300 Laptop",
+    "category": "laptops",
+    "brand": "Dell"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/1.webp",
+    "title": "Blue & Black Check Shirt",
+    "category": "mens-shirts",
+    "brand": "Fashion Trends"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/2.webp",
+    "title": "Blue & Black Check Shirt",
+    "category": "mens-shirts",
+    "brand": "Fashion Trends"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/3.webp",
+    "title": "Blue & Black Check Shirt",
+    "category": "mens-shirts",
+    "brand": "Fashion Trends"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/4.webp",
+    "title": "Blue & Black Check Shirt",
+    "category": "mens-shirts",
+    "brand": "Fashion Trends"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/1.webp",
+    "title": "Gigabyte Aorus Men Tshirt",
+    "category": "mens-shirts",
+    "brand": "Gigabyte"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/2.webp",
+    "title": "Gigabyte Aorus Men Tshirt",
+    "category": "mens-shirts",
+    "brand": "Gigabyte"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/3.webp",
+    "title": "Gigabyte Aorus Men Tshirt",
+    "category": "mens-shirts",
+    "brand": "Gigabyte"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/4.webp",
+    "title": "Gigabyte Aorus Men Tshirt",
+    "category": "mens-shirts",
+    "brand": "Gigabyte"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/1.webp",
+    "title": "Man Plaid Shirt",
+    "category": "mens-shirts",
+    "brand": "Classic Wear"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/2.webp",
+    "title": "Man Plaid Shirt",
+    "category": "mens-shirts",
+    "brand": "Classic Wear"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/3.webp",
+    "title": "Man Plaid Shirt",
+    "category": "mens-shirts",
+    "brand": "Classic Wear"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/4.webp",
+    "title": "Man Plaid Shirt",
+    "category": "mens-shirts",
+    "brand": "Classic Wear"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/man-short-sleeve-shirt/1.webp",
+    "title": "Man Short Sleeve Shirt",
+    "category": "mens-shirts",
+    "brand": "Casual Comfort"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/man-short-sleeve-shirt/2.webp",
+    "title": "Man Short Sleeve Shirt",
+    "category": "mens-shirts",
+    "brand": "Casual Comfort"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/man-short-sleeve-shirt/3.webp",
+    "title": "Man Short Sleeve Shirt",
+    "category": "mens-shirts",
+    "brand": "Casual Comfort"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/man-short-sleeve-shirt/4.webp",
+    "title": "Man Short Sleeve Shirt",
+    "category": "mens-shirts",
+    "brand": "Casual Comfort"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/men-check-shirt/1.webp",
+    "title": "Men Check Shirt",
+    "category": "mens-shirts",
+    "brand": "Urban Chic"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/men-check-shirt/2.webp",
+    "title": "Men Check Shirt",
+    "category": "mens-shirts",
+    "brand": "Urban Chic"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/men-check-shirt/3.webp",
+    "title": "Men Check Shirt",
+    "category": "mens-shirts",
+    "brand": "Urban Chic"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shirts/men-check-shirt/4.webp",
+    "title": "Men Check Shirt",
+    "category": "mens-shirts",
+    "brand": "Urban Chic"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/1.webp",
+    "title": "Nike Air Jordan 1 Red And Black",
+    "category": "mens-shoes",
+    "brand": "Nike"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/2.webp",
+    "title": "Nike Air Jordan 1 Red And Black",
+    "category": "mens-shoes",
+    "brand": "Nike"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/3.webp",
+    "title": "Nike Air Jordan 1 Red And Black",
+    "category": "mens-shoes",
+    "brand": "Nike"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/4.webp",
+    "title": "Nike Air Jordan 1 Red And Black",
+    "category": "mens-shoes",
+    "brand": "Nike"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-baseball-cleats/1.webp",
+    "title": "Nike Baseball Cleats",
+    "category": "mens-shoes",
+    "brand": "Nike"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-baseball-cleats/2.webp",
+    "title": "Nike Baseball Cleats",
+    "category": "mens-shoes",
+    "brand": "Nike"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-baseball-cleats/3.webp",
+    "title": "Nike Baseball Cleats",
+    "category": "mens-shoes",
+    "brand": "Nike"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-baseball-cleats/4.webp",
+    "title": "Nike Baseball Cleats",
+    "category": "mens-shoes",
+    "brand": "Nike"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/puma-future-rider-trainers/1.webp",
+    "title": "Puma Future Rider Trainers",
+    "category": "mens-shoes",
+    "brand": "Puma"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/puma-future-rider-trainers/2.webp",
+    "title": "Puma Future Rider Trainers",
+    "category": "mens-shoes",
+    "brand": "Puma"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/puma-future-rider-trainers/3.webp",
+    "title": "Puma Future Rider Trainers",
+    "category": "mens-shoes",
+    "brand": "Puma"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/puma-future-rider-trainers/4.webp",
+    "title": "Puma Future Rider Trainers",
+    "category": "mens-shoes",
+    "brand": "Puma"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-&-red/1.webp",
+    "title": "Sports Sneakers Off White & Red",
+    "category": "mens-shoes",
+    "brand": "Off White"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-&-red/2.webp",
+    "title": "Sports Sneakers Off White & Red",
+    "category": "mens-shoes",
+    "brand": "Off White"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-&-red/3.webp",
+    "title": "Sports Sneakers Off White & Red",
+    "category": "mens-shoes",
+    "brand": "Off White"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-&-red/4.webp",
+    "title": "Sports Sneakers Off White & Red",
+    "category": "mens-shoes",
+    "brand": "Off White"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/1.webp",
+    "title": "Sports Sneakers Off White Red",
+    "category": "mens-shoes",
+    "brand": "Off White"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/2.webp",
+    "title": "Sports Sneakers Off White Red",
+    "category": "mens-shoes",
+    "brand": "Off White"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/3.webp",
+    "title": "Sports Sneakers Off White Red",
+    "category": "mens-shoes",
+    "brand": "Off White"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/4.webp",
+    "title": "Sports Sneakers Off White Red",
+    "category": "mens-shoes",
+    "brand": "Off White"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/brown-leather-belt-watch/1.webp",
+    "title": "Brown Leather Belt Watch",
+    "category": "mens-watches",
+    "brand": "Fashion Timepieces"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/brown-leather-belt-watch/2.webp",
+    "title": "Brown Leather Belt Watch",
+    "category": "mens-watches",
+    "brand": "Fashion Timepieces"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/brown-leather-belt-watch/3.webp",
+    "title": "Brown Leather Belt Watch",
+    "category": "mens-watches",
+    "brand": "Fashion Timepieces"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/longines-master-collection/1.webp",
+    "title": "Longines Master Collection",
+    "category": "mens-watches",
+    "brand": "Longines"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/longines-master-collection/2.webp",
+    "title": "Longines Master Collection",
+    "category": "mens-watches",
+    "brand": "Longines"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/longines-master-collection/3.webp",
+    "title": "Longines Master Collection",
+    "category": "mens-watches",
+    "brand": "Longines"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-date-black-dial/1.webp",
+    "title": "Rolex Cellini Date Black Dial",
+    "category": "mens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-date-black-dial/2.webp",
+    "title": "Rolex Cellini Date Black Dial",
+    "category": "mens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-date-black-dial/3.webp",
+    "title": "Rolex Cellini Date Black Dial",
+    "category": "mens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-moonphase/1.webp",
+    "title": "Rolex Cellini Moonphase",
+    "category": "mens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-moonphase/2.webp",
+    "title": "Rolex Cellini Moonphase",
+    "category": "mens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-cellini-moonphase/3.webp",
+    "title": "Rolex Cellini Moonphase",
+    "category": "mens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-datejust/1.webp",
+    "title": "Rolex Datejust",
+    "category": "mens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-datejust/2.webp",
+    "title": "Rolex Datejust",
+    "category": "mens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-datejust/3.webp",
+    "title": "Rolex Datejust",
+    "category": "mens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-submariner-watch/1.webp",
+    "title": "Rolex Submariner Watch",
+    "category": "mens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-submariner-watch/2.webp",
+    "title": "Rolex Submariner Watch",
+    "category": "mens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mens-watches/rolex-submariner-watch/3.webp",
+    "title": "Rolex Submariner Watch",
+    "category": "mens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/amazon-echo-plus/1.webp",
+    "title": "Amazon Echo Plus",
+    "category": "mobile-accessories",
+    "brand": "Amazon"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/amazon-echo-plus/2.webp",
+    "title": "Amazon Echo Plus",
+    "category": "mobile-accessories",
+    "brand": "Amazon"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods/1.webp",
+    "title": "Apple Airpods",
+    "category": "mobile-accessories",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods/2.webp",
+    "title": "Apple Airpods",
+    "category": "mobile-accessories",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods/3.webp",
+    "title": "Apple Airpods",
+    "category": "mobile-accessories",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods-max-silver/1.webp",
+    "title": "Apple AirPods Max Silver",
+    "category": "mobile-accessories",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpower-wireless-charger/1.webp",
+    "title": "Apple Airpower Wireless Charger",
+    "category": "mobile-accessories",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-homepod-mini-cosmic-grey/1.webp",
+    "title": "Apple HomePod Mini Cosmic Grey",
+    "category": "mobile-accessories",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-iphone-charger/1.webp",
+    "title": "Apple iPhone Charger",
+    "category": "mobile-accessories",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-iphone-charger/2.webp",
+    "title": "Apple iPhone Charger",
+    "category": "mobile-accessories",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-magsafe-battery-pack/1.webp",
+    "title": "Apple MagSafe Battery Pack",
+    "category": "mobile-accessories",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-magsafe-battery-pack/2.webp",
+    "title": "Apple MagSafe Battery Pack",
+    "category": "mobile-accessories",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-watch-series-4-gold/1.webp",
+    "title": "Apple Watch Series 4 Gold",
+    "category": "mobile-accessories",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-watch-series-4-gold/2.webp",
+    "title": "Apple Watch Series 4 Gold",
+    "category": "mobile-accessories",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-watch-series-4-gold/3.webp",
+    "title": "Apple Watch Series 4 Gold",
+    "category": "mobile-accessories",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/beats-flex-wireless-earphones/1.webp",
+    "title": "Beats Flex Wireless Earphones",
+    "category": "mobile-accessories",
+    "brand": "Beats"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/iphone-12-silicone-case-with-magsafe-plum/1.webp",
+    "title": "iPhone 12 Silicone Case with MagSafe Plum",
+    "category": "mobile-accessories",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/iphone-12-silicone-case-with-magsafe-plum/2.webp",
+    "title": "iPhone 12 Silicone Case with MagSafe Plum",
+    "category": "mobile-accessories",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/iphone-12-silicone-case-with-magsafe-plum/3.webp",
+    "title": "iPhone 12 Silicone Case with MagSafe Plum",
+    "category": "mobile-accessories",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/iphone-12-silicone-case-with-magsafe-plum/4.webp",
+    "title": "iPhone 12 Silicone Case with MagSafe Plum",
+    "category": "mobile-accessories",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/monopod/1.webp",
+    "title": "Monopod",
+    "category": "mobile-accessories",
+    "brand": "TechGear"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/monopod/2.webp",
+    "title": "Monopod",
+    "category": "mobile-accessories",
+    "brand": "TechGear"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/selfie-lamp-with-iphone/1.webp",
+    "title": "Selfie Lamp with iPhone",
+    "category": "mobile-accessories",
+    "brand": "GadgetMaster"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/selfie-stick-monopod/1.webp",
+    "title": "Selfie Stick Monopod",
+    "category": "mobile-accessories",
+    "brand": "SnapTech"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/mobile-accessories/tv-studio-camera-pedestal/1.webp",
+    "title": "TV Studio Camera Pedestal",
+    "category": "mobile-accessories",
+    "brand": "ProVision"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/generic-motorcycle/1.webp",
+    "title": "Generic Motorcycle",
+    "category": "motorcycle",
+    "brand": "Generic Motors"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/generic-motorcycle/2.webp",
+    "title": "Generic Motorcycle",
+    "category": "motorcycle",
+    "brand": "Generic Motors"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/generic-motorcycle/3.webp",
+    "title": "Generic Motorcycle",
+    "category": "motorcycle",
+    "brand": "Generic Motors"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/generic-motorcycle/4.webp",
+    "title": "Generic Motorcycle",
+    "category": "motorcycle",
+    "brand": "Generic Motors"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/kawasaki-z800/1.webp",
+    "title": "Kawasaki Z800",
+    "category": "motorcycle",
+    "brand": "Kawasaki"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/kawasaki-z800/2.webp",
+    "title": "Kawasaki Z800",
+    "category": "motorcycle",
+    "brand": "Kawasaki"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/kawasaki-z800/3.webp",
+    "title": "Kawasaki Z800",
+    "category": "motorcycle",
+    "brand": "Kawasaki"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/kawasaki-z800/4.webp",
+    "title": "Kawasaki Z800",
+    "category": "motorcycle",
+    "brand": "Kawasaki"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/motogp-ci.h1/1.webp",
+    "title": "MotoGP CI.H1",
+    "category": "motorcycle",
+    "brand": "MotoGP"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/motogp-ci.h1/2.webp",
+    "title": "MotoGP CI.H1",
+    "category": "motorcycle",
+    "brand": "MotoGP"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/motogp-ci.h1/3.webp",
+    "title": "MotoGP CI.H1",
+    "category": "motorcycle",
+    "brand": "MotoGP"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/motogp-ci.h1/4.webp",
+    "title": "MotoGP CI.H1",
+    "category": "motorcycle",
+    "brand": "MotoGP"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/scooter-motorcycle/1.webp",
+    "title": "Scooter Motorcycle",
+    "category": "motorcycle",
+    "brand": "ScootMaster"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/scooter-motorcycle/2.webp",
+    "title": "Scooter Motorcycle",
+    "category": "motorcycle",
+    "brand": "ScootMaster"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/scooter-motorcycle/3.webp",
+    "title": "Scooter Motorcycle",
+    "category": "motorcycle",
+    "brand": "ScootMaster"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/scooter-motorcycle/4.webp",
+    "title": "Scooter Motorcycle",
+    "category": "motorcycle",
+    "brand": "ScootMaster"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/sportbike-motorcycle/1.webp",
+    "title": "Sportbike Motorcycle",
+    "category": "motorcycle",
+    "brand": "SpeedMaster"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/sportbike-motorcycle/2.webp",
+    "title": "Sportbike Motorcycle",
+    "category": "motorcycle",
+    "brand": "SpeedMaster"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/sportbike-motorcycle/3.webp",
+    "title": "Sportbike Motorcycle",
+    "category": "motorcycle",
+    "brand": "SpeedMaster"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/motorcycle/sportbike-motorcycle/4.webp",
+    "title": "Sportbike Motorcycle",
+    "category": "motorcycle",
+    "brand": "SpeedMaster"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/skin-care/attitude-super-leaves-hand-soap/1.webp",
+    "title": "Attitude Super Leaves Hand Soap",
+    "category": "skin-care",
+    "brand": "Attitude"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/skin-care/attitude-super-leaves-hand-soap/2.webp",
+    "title": "Attitude Super Leaves Hand Soap",
+    "category": "skin-care",
+    "brand": "Attitude"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/skin-care/attitude-super-leaves-hand-soap/3.webp",
+    "title": "Attitude Super Leaves Hand Soap",
+    "category": "skin-care",
+    "brand": "Attitude"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/skin-care/olay-ultra-moisture-shea-butter-body-wash/1.webp",
+    "title": "Olay Ultra Moisture Shea Butter Body Wash",
+    "category": "skin-care",
+    "brand": "Olay"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/skin-care/olay-ultra-moisture-shea-butter-body-wash/2.webp",
+    "title": "Olay Ultra Moisture Shea Butter Body Wash",
+    "category": "skin-care",
+    "brand": "Olay"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/skin-care/olay-ultra-moisture-shea-butter-body-wash/3.webp",
+    "title": "Olay Ultra Moisture Shea Butter Body Wash",
+    "category": "skin-care",
+    "brand": "Olay"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/skin-care/vaseline-men-body-and-face-lotion/1.webp",
+    "title": "Vaseline Men Body and Face Lotion",
+    "category": "skin-care",
+    "brand": "Vaseline"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/skin-care/vaseline-men-body-and-face-lotion/2.webp",
+    "title": "Vaseline Men Body and Face Lotion",
+    "category": "skin-care",
+    "brand": "Vaseline"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/skin-care/vaseline-men-body-and-face-lotion/3.webp",
+    "title": "Vaseline Men Body and Face Lotion",
+    "category": "skin-care",
+    "brand": "Vaseline"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/iphone-5s/1.webp",
+    "title": "iPhone 5s",
+    "category": "smartphones",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/iphone-5s/2.webp",
+    "title": "iPhone 5s",
+    "category": "smartphones",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/iphone-5s/3.webp",
+    "title": "iPhone 5s",
+    "category": "smartphones",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/iphone-6/1.webp",
+    "title": "iPhone 6",
+    "category": "smartphones",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/iphone-6/2.webp",
+    "title": "iPhone 6",
+    "category": "smartphones",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/iphone-6/3.webp",
+    "title": "iPhone 6",
+    "category": "smartphones",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/iphone-13-pro/1.webp",
+    "title": "iPhone 13 Pro",
+    "category": "smartphones",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/iphone-13-pro/2.webp",
+    "title": "iPhone 13 Pro",
+    "category": "smartphones",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/iphone-13-pro/3.webp",
+    "title": "iPhone 13 Pro",
+    "category": "smartphones",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/iphone-x/1.webp",
+    "title": "iPhone X",
+    "category": "smartphones",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/iphone-x/2.webp",
+    "title": "iPhone X",
+    "category": "smartphones",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/iphone-x/3.webp",
+    "title": "iPhone X",
+    "category": "smartphones",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/oppo-a57/1.webp",
+    "title": "Oppo A57",
+    "category": "smartphones",
+    "brand": "Oppo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/oppo-a57/2.webp",
+    "title": "Oppo A57",
+    "category": "smartphones",
+    "brand": "Oppo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/oppo-a57/3.webp",
+    "title": "Oppo A57",
+    "category": "smartphones",
+    "brand": "Oppo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/oppo-f19-pro-plus/1.webp",
+    "title": "Oppo F19 Pro Plus",
+    "category": "smartphones",
+    "brand": "Oppo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/oppo-f19-pro-plus/2.webp",
+    "title": "Oppo F19 Pro Plus",
+    "category": "smartphones",
+    "brand": "Oppo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/oppo-f19-pro-plus/3.webp",
+    "title": "Oppo F19 Pro Plus",
+    "category": "smartphones",
+    "brand": "Oppo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/oppo-k1/1.webp",
+    "title": "Oppo K1",
+    "category": "smartphones",
+    "brand": "Oppo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/oppo-k1/2.webp",
+    "title": "Oppo K1",
+    "category": "smartphones",
+    "brand": "Oppo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/oppo-k1/3.webp",
+    "title": "Oppo K1",
+    "category": "smartphones",
+    "brand": "Oppo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/oppo-k1/4.webp",
+    "title": "Oppo K1",
+    "category": "smartphones",
+    "brand": "Oppo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/realme-c35/1.webp",
+    "title": "Realme C35",
+    "category": "smartphones",
+    "brand": "Realme"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/realme-c35/2.webp",
+    "title": "Realme C35",
+    "category": "smartphones",
+    "brand": "Realme"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/realme-c35/3.webp",
+    "title": "Realme C35",
+    "category": "smartphones",
+    "brand": "Realme"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/realme-x/1.webp",
+    "title": "Realme X",
+    "category": "smartphones",
+    "brand": "Realme"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/realme-x/2.webp",
+    "title": "Realme X",
+    "category": "smartphones",
+    "brand": "Realme"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/realme-x/3.webp",
+    "title": "Realme X",
+    "category": "smartphones",
+    "brand": "Realme"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/realme-xt/1.webp",
+    "title": "Realme XT",
+    "category": "smartphones",
+    "brand": "Realme"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/realme-xt/2.webp",
+    "title": "Realme XT",
+    "category": "smartphones",
+    "brand": "Realme"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/realme-xt/3.webp",
+    "title": "Realme XT",
+    "category": "smartphones",
+    "brand": "Realme"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/samsung-galaxy-s7/1.webp",
+    "title": "Samsung Galaxy S7",
+    "category": "smartphones",
+    "brand": "Samsung"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/samsung-galaxy-s7/2.webp",
+    "title": "Samsung Galaxy S7",
+    "category": "smartphones",
+    "brand": "Samsung"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/samsung-galaxy-s7/3.webp",
+    "title": "Samsung Galaxy S7",
+    "category": "smartphones",
+    "brand": "Samsung"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/samsung-galaxy-s8/1.webp",
+    "title": "Samsung Galaxy S8",
+    "category": "smartphones",
+    "brand": "Samsung"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/samsung-galaxy-s8/2.webp",
+    "title": "Samsung Galaxy S8",
+    "category": "smartphones",
+    "brand": "Samsung"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/samsung-galaxy-s8/3.webp",
+    "title": "Samsung Galaxy S8",
+    "category": "smartphones",
+    "brand": "Samsung"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/samsung-galaxy-s10/1.webp",
+    "title": "Samsung Galaxy S10",
+    "category": "smartphones",
+    "brand": "Samsung"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/samsung-galaxy-s10/2.webp",
+    "title": "Samsung Galaxy S10",
+    "category": "smartphones",
+    "brand": "Samsung"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/samsung-galaxy-s10/3.webp",
+    "title": "Samsung Galaxy S10",
+    "category": "smartphones",
+    "brand": "Samsung"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/vivo-s1/1.webp",
+    "title": "Vivo S1",
+    "category": "smartphones",
+    "brand": "Vivo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/vivo-s1/2.webp",
+    "title": "Vivo S1",
+    "category": "smartphones",
+    "brand": "Vivo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/vivo-s1/3.webp",
+    "title": "Vivo S1",
+    "category": "smartphones",
+    "brand": "Vivo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/vivo-v9/1.webp",
+    "title": "Vivo V9",
+    "category": "smartphones",
+    "brand": "Vivo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/vivo-v9/2.webp",
+    "title": "Vivo V9",
+    "category": "smartphones",
+    "brand": "Vivo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/vivo-v9/3.webp",
+    "title": "Vivo V9",
+    "category": "smartphones",
+    "brand": "Vivo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/vivo-x21/1.webp",
+    "title": "Vivo X21",
+    "category": "smartphones",
+    "brand": "Vivo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/vivo-x21/2.webp",
+    "title": "Vivo X21",
+    "category": "smartphones",
+    "brand": "Vivo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/smartphones/vivo-x21/3.webp",
+    "title": "Vivo X21",
+    "category": "smartphones",
+    "brand": "Vivo"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/american-football/1.webp",
+    "title": "American Football",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/baseball-ball/1.webp",
+    "title": "Baseball Ball",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/baseball-glove/1.webp",
+    "title": "Baseball Glove",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/baseball-glove/2.webp",
+    "title": "Baseball Glove",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/baseball-glove/3.webp",
+    "title": "Baseball Glove",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/basketball/1.webp",
+    "title": "Basketball",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/basketball-rim/1.webp",
+    "title": "Basketball Rim",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/cricket-ball/1.webp",
+    "title": "Cricket Ball",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/cricket-bat/1.webp",
+    "title": "Cricket Bat",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/cricket-helmet/1.webp",
+    "title": "Cricket Helmet",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/cricket-helmet/2.webp",
+    "title": "Cricket Helmet",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/cricket-helmet/3.webp",
+    "title": "Cricket Helmet",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/cricket-helmet/4.webp",
+    "title": "Cricket Helmet",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/cricket-wicket/1.webp",
+    "title": "Cricket Wicket",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/feather-shuttlecock/1.webp",
+    "title": "Feather Shuttlecock",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/football/1.webp",
+    "title": "Football",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/golf-ball/1.webp",
+    "title": "Golf Ball",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/iron-golf/1.webp",
+    "title": "Iron Golf",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/metal-baseball-bat/1.webp",
+    "title": "Metal Baseball Bat",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/tennis-ball/1.webp",
+    "title": "Tennis Ball",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/tennis-racket/1.webp",
+    "title": "Tennis Racket",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sports-accessories/volleyball/1.webp",
+    "title": "Volleyball",
+    "category": "sports-accessories"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sunglasses/black-sun-glasses/1.webp",
+    "title": "Black Sun Glasses",
+    "category": "sunglasses",
+    "brand": "Fashion Shades"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sunglasses/black-sun-glasses/2.webp",
+    "title": "Black Sun Glasses",
+    "category": "sunglasses",
+    "brand": "Fashion Shades"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sunglasses/black-sun-glasses/3.webp",
+    "title": "Black Sun Glasses",
+    "category": "sunglasses",
+    "brand": "Fashion Shades"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sunglasses/classic-sun-glasses/1.webp",
+    "title": "Classic Sun Glasses",
+    "category": "sunglasses",
+    "brand": "Fashion Shades"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sunglasses/classic-sun-glasses/2.webp",
+    "title": "Classic Sun Glasses",
+    "category": "sunglasses",
+    "brand": "Fashion Shades"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sunglasses/classic-sun-glasses/3.webp",
+    "title": "Classic Sun Glasses",
+    "category": "sunglasses",
+    "brand": "Fashion Shades"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sunglasses/green-and-black-glasses/1.webp",
+    "title": "Green and Black Glasses",
+    "category": "sunglasses",
+    "brand": "Fashion Shades"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sunglasses/green-and-black-glasses/2.webp",
+    "title": "Green and Black Glasses",
+    "category": "sunglasses",
+    "brand": "Fashion Shades"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sunglasses/green-and-black-glasses/3.webp",
+    "title": "Green and Black Glasses",
+    "category": "sunglasses",
+    "brand": "Fashion Shades"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sunglasses/party-glasses/1.webp",
+    "title": "Party Glasses",
+    "category": "sunglasses",
+    "brand": "Fashion Fun"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sunglasses/party-glasses/2.webp",
+    "title": "Party Glasses",
+    "category": "sunglasses",
+    "brand": "Fashion Fun"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sunglasses/party-glasses/3.webp",
+    "title": "Party Glasses",
+    "category": "sunglasses",
+    "brand": "Fashion Fun"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sunglasses/sunglasses/1.webp",
+    "title": "Sunglasses",
+    "category": "sunglasses",
+    "brand": "Fashion Shades"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sunglasses/sunglasses/2.webp",
+    "title": "Sunglasses",
+    "category": "sunglasses",
+    "brand": "Fashion Shades"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/sunglasses/sunglasses/3.webp",
+    "title": "Sunglasses",
+    "category": "sunglasses",
+    "brand": "Fashion Shades"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tablets/ipad-mini-2021-starlight/1.webp",
+    "title": "iPad Mini 2021 Starlight",
+    "category": "tablets",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tablets/ipad-mini-2021-starlight/2.webp",
+    "title": "iPad Mini 2021 Starlight",
+    "category": "tablets",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tablets/ipad-mini-2021-starlight/3.webp",
+    "title": "iPad Mini 2021 Starlight",
+    "category": "tablets",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tablets/ipad-mini-2021-starlight/4.webp",
+    "title": "iPad Mini 2021 Starlight",
+    "category": "tablets",
+    "brand": "Apple"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-s8-plus-grey/1.webp",
+    "title": "Samsung Galaxy Tab S8 Plus Grey",
+    "category": "tablets",
+    "brand": "Samsung"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-s8-plus-grey/2.webp",
+    "title": "Samsung Galaxy Tab S8 Plus Grey",
+    "category": "tablets",
+    "brand": "Samsung"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-s8-plus-grey/3.webp",
+    "title": "Samsung Galaxy Tab S8 Plus Grey",
+    "category": "tablets",
+    "brand": "Samsung"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-s8-plus-grey/4.webp",
+    "title": "Samsung Galaxy Tab S8 Plus Grey",
+    "category": "tablets",
+    "brand": "Samsung"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-white/1.webp",
+    "title": "Samsung Galaxy Tab White",
+    "category": "tablets",
+    "brand": "Samsung"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-white/2.webp",
+    "title": "Samsung Galaxy Tab White",
+    "category": "tablets",
+    "brand": "Samsung"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-white/3.webp",
+    "title": "Samsung Galaxy Tab White",
+    "category": "tablets",
+    "brand": "Samsung"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-white/4.webp",
+    "title": "Samsung Galaxy Tab White",
+    "category": "tablets",
+    "brand": "Samsung"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/blue-frock/1.webp",
+    "title": "Blue Frock",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/blue-frock/2.webp",
+    "title": "Blue Frock",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/blue-frock/3.webp",
+    "title": "Blue Frock",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/blue-frock/4.webp",
+    "title": "Blue Frock",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/girl-summer-dress/1.webp",
+    "title": "Girl Summer Dress",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/girl-summer-dress/2.webp",
+    "title": "Girl Summer Dress",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/girl-summer-dress/3.webp",
+    "title": "Girl Summer Dress",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/girl-summer-dress/4.webp",
+    "title": "Girl Summer Dress",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/gray-dress/1.webp",
+    "title": "Gray Dress",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/gray-dress/2.webp",
+    "title": "Gray Dress",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/gray-dress/3.webp",
+    "title": "Gray Dress",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/gray-dress/4.webp",
+    "title": "Gray Dress",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/short-frock/1.webp",
+    "title": "Short Frock",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/short-frock/2.webp",
+    "title": "Short Frock",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/short-frock/3.webp",
+    "title": "Short Frock",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/short-frock/4.webp",
+    "title": "Short Frock",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/tartan-dress/1.webp",
+    "title": "Tartan Dress",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/tartan-dress/2.webp",
+    "title": "Tartan Dress",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/tartan-dress/3.webp",
+    "title": "Tartan Dress",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/tops/tartan-dress/4.webp",
+    "title": "Tartan Dress",
+    "category": "tops"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/300-touring/1.webp",
+    "title": "300 Touring",
+    "category": "vehicle",
+    "brand": "Chrysler"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/300-touring/2.webp",
+    "title": "300 Touring",
+    "category": "vehicle",
+    "brand": "Chrysler"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/300-touring/3.webp",
+    "title": "300 Touring",
+    "category": "vehicle",
+    "brand": "Chrysler"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/300-touring/4.webp",
+    "title": "300 Touring",
+    "category": "vehicle",
+    "brand": "Chrysler"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/300-touring/5.webp",
+    "title": "300 Touring",
+    "category": "vehicle",
+    "brand": "Chrysler"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/300-touring/6.webp",
+    "title": "300 Touring",
+    "category": "vehicle",
+    "brand": "Chrysler"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/1.webp",
+    "title": "Charger SXT RWD",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/2.webp",
+    "title": "Charger SXT RWD",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/3.webp",
+    "title": "Charger SXT RWD",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/4.webp",
+    "title": "Charger SXT RWD",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/5.webp",
+    "title": "Charger SXT RWD",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/charger-sxt-rwd/6.webp",
+    "title": "Charger SXT RWD",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/1.webp",
+    "title": "Dodge Hornet GT Plus",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/2.webp",
+    "title": "Dodge Hornet GT Plus",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/3.webp",
+    "title": "Dodge Hornet GT Plus",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/4.webp",
+    "title": "Dodge Hornet GT Plus",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/5.webp",
+    "title": "Dodge Hornet GT Plus",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/dodge-hornet-gt-plus/6.webp",
+    "title": "Dodge Hornet GT Plus",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/1.webp",
+    "title": "Durango SXT RWD",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/2.webp",
+    "title": "Durango SXT RWD",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/3.webp",
+    "title": "Durango SXT RWD",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/4.webp",
+    "title": "Durango SXT RWD",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/5.webp",
+    "title": "Durango SXT RWD",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/durango-sxt-rwd/6.webp",
+    "title": "Durango SXT RWD",
+    "category": "vehicle",
+    "brand": "Dodge"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/pacifica-touring/1.webp",
+    "title": "Pacifica Touring",
+    "category": "vehicle",
+    "brand": "Chrysler"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/pacifica-touring/2.webp",
+    "title": "Pacifica Touring",
+    "category": "vehicle",
+    "brand": "Chrysler"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/pacifica-touring/3.webp",
+    "title": "Pacifica Touring",
+    "category": "vehicle",
+    "brand": "Chrysler"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/pacifica-touring/4.webp",
+    "title": "Pacifica Touring",
+    "category": "vehicle",
+    "brand": "Chrysler"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/pacifica-touring/5.webp",
+    "title": "Pacifica Touring",
+    "category": "vehicle",
+    "brand": "Chrysler"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/vehicle/pacifica-touring/6.webp",
+    "title": "Pacifica Touring",
+    "category": "vehicle",
+    "brand": "Chrysler"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-bags/blue-women's-handbag/1.webp",
+    "title": "Blue Women's Handbag",
+    "category": "womens-bags",
+    "brand": "Fashionista"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-bags/blue-women's-handbag/2.webp",
+    "title": "Blue Women's Handbag",
+    "category": "womens-bags",
+    "brand": "Fashionista"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-bags/blue-women's-handbag/3.webp",
+    "title": "Blue Women's Handbag",
+    "category": "womens-bags",
+    "brand": "Fashionista"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-bags/heshe-women's-leather-bag/1.webp",
+    "title": "Heshe Women's Leather Bag",
+    "category": "womens-bags",
+    "brand": "Heshe"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-bags/heshe-women's-leather-bag/2.webp",
+    "title": "Heshe Women's Leather Bag",
+    "category": "womens-bags",
+    "brand": "Heshe"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-bags/heshe-women's-leather-bag/3.webp",
+    "title": "Heshe Women's Leather Bag",
+    "category": "womens-bags",
+    "brand": "Heshe"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-bags/prada-women-bag/1.webp",
+    "title": "Prada Women Bag",
+    "category": "womens-bags",
+    "brand": "Prada"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-bags/prada-women-bag/2.webp",
+    "title": "Prada Women Bag",
+    "category": "womens-bags",
+    "brand": "Prada"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-bags/prada-women-bag/3.webp",
+    "title": "Prada Women Bag",
+    "category": "womens-bags",
+    "brand": "Prada"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-bags/white-faux-leather-backpack/1.webp",
+    "title": "White Faux Leather Backpack",
+    "category": "womens-bags",
+    "brand": "Urban Chic"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-bags/white-faux-leather-backpack/2.webp",
+    "title": "White Faux Leather Backpack",
+    "category": "womens-bags",
+    "brand": "Urban Chic"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-bags/white-faux-leather-backpack/3.webp",
+    "title": "White Faux Leather Backpack",
+    "category": "womens-bags",
+    "brand": "Urban Chic"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-bags/women-handbag-black/1.webp",
+    "title": "Women Handbag Black",
+    "category": "womens-bags",
+    "brand": "Elegance Collection"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-bags/women-handbag-black/2.webp",
+    "title": "Women Handbag Black",
+    "category": "womens-bags",
+    "brand": "Elegance Collection"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-bags/women-handbag-black/3.webp",
+    "title": "Women Handbag Black",
+    "category": "womens-bags",
+    "brand": "Elegance Collection"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/black-women's-gown/1.webp",
+    "title": "Black Women's Gown",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/black-women's-gown/2.webp",
+    "title": "Black Women's Gown",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/black-women's-gown/3.webp",
+    "title": "Black Women's Gown",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/black-women's-gown/4.webp",
+    "title": "Black Women's Gown",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/corset-leather-with-skirt/1.webp",
+    "title": "Corset Leather With Skirt",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/corset-leather-with-skirt/2.webp",
+    "title": "Corset Leather With Skirt",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/corset-leather-with-skirt/3.webp",
+    "title": "Corset Leather With Skirt",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/corset-leather-with-skirt/4.webp",
+    "title": "Corset Leather With Skirt",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/corset-with-black-skirt/1.webp",
+    "title": "Corset With Black Skirt",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/corset-with-black-skirt/2.webp",
+    "title": "Corset With Black Skirt",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/corset-with-black-skirt/3.webp",
+    "title": "Corset With Black Skirt",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/corset-with-black-skirt/4.webp",
+    "title": "Corset With Black Skirt",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/dress-pea/1.webp",
+    "title": "Dress Pea",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/dress-pea/2.webp",
+    "title": "Dress Pea",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/dress-pea/3.webp",
+    "title": "Dress Pea",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/dress-pea/4.webp",
+    "title": "Dress Pea",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/marni-red-&-black-suit/1.webp",
+    "title": "Marni Red & Black Suit",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/marni-red-&-black-suit/2.webp",
+    "title": "Marni Red & Black Suit",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/marni-red-&-black-suit/3.webp",
+    "title": "Marni Red & Black Suit",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-dresses/marni-red-&-black-suit/4.webp",
+    "title": "Marni Red & Black Suit",
+    "category": "womens-dresses"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-jewellery/green-crystal-earring/1.webp",
+    "title": "Green Crystal Earring",
+    "category": "womens-jewellery"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-jewellery/green-crystal-earring/2.webp",
+    "title": "Green Crystal Earring",
+    "category": "womens-jewellery"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-jewellery/green-crystal-earring/3.webp",
+    "title": "Green Crystal Earring",
+    "category": "womens-jewellery"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-jewellery/green-oval-earring/1.webp",
+    "title": "Green Oval Earring",
+    "category": "womens-jewellery"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-jewellery/green-oval-earring/2.webp",
+    "title": "Green Oval Earring",
+    "category": "womens-jewellery"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-jewellery/green-oval-earring/3.webp",
+    "title": "Green Oval Earring",
+    "category": "womens-jewellery"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-jewellery/tropical-earring/1.webp",
+    "title": "Tropical Earring",
+    "category": "womens-jewellery"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-jewellery/tropical-earring/2.webp",
+    "title": "Tropical Earring",
+    "category": "womens-jewellery"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-jewellery/tropical-earring/3.webp",
+    "title": "Tropical Earring",
+    "category": "womens-jewellery"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/black-&-brown-slipper/1.webp",
+    "title": "Black & Brown Slipper",
+    "category": "womens-shoes",
+    "brand": "Comfort Trends"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/black-&-brown-slipper/2.webp",
+    "title": "Black & Brown Slipper",
+    "category": "womens-shoes",
+    "brand": "Comfort Trends"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/black-&-brown-slipper/3.webp",
+    "title": "Black & Brown Slipper",
+    "category": "womens-shoes",
+    "brand": "Comfort Trends"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/black-&-brown-slipper/4.webp",
+    "title": "Black & Brown Slipper",
+    "category": "womens-shoes",
+    "brand": "Comfort Trends"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/calvin-klein-heel-shoes/1.webp",
+    "title": "Calvin Klein Heel Shoes",
+    "category": "womens-shoes",
+    "brand": "Calvin Klein"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/calvin-klein-heel-shoes/2.webp",
+    "title": "Calvin Klein Heel Shoes",
+    "category": "womens-shoes",
+    "brand": "Calvin Klein"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/calvin-klein-heel-shoes/3.webp",
+    "title": "Calvin Klein Heel Shoes",
+    "category": "womens-shoes",
+    "brand": "Calvin Klein"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/calvin-klein-heel-shoes/4.webp",
+    "title": "Calvin Klein Heel Shoes",
+    "category": "womens-shoes",
+    "brand": "Calvin Klein"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/golden-shoes-woman/1.webp",
+    "title": "Golden Shoes Woman",
+    "category": "womens-shoes",
+    "brand": "Fashion Diva"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/golden-shoes-woman/2.webp",
+    "title": "Golden Shoes Woman",
+    "category": "womens-shoes",
+    "brand": "Fashion Diva"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/golden-shoes-woman/3.webp",
+    "title": "Golden Shoes Woman",
+    "category": "womens-shoes",
+    "brand": "Fashion Diva"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/golden-shoes-woman/4.webp",
+    "title": "Golden Shoes Woman",
+    "category": "womens-shoes",
+    "brand": "Fashion Diva"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/pampi-shoes/1.webp",
+    "title": "Pampi Shoes",
+    "category": "womens-shoes",
+    "brand": "Pampi"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/pampi-shoes/2.webp",
+    "title": "Pampi Shoes",
+    "category": "womens-shoes",
+    "brand": "Pampi"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/pampi-shoes/3.webp",
+    "title": "Pampi Shoes",
+    "category": "womens-shoes",
+    "brand": "Pampi"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/pampi-shoes/4.webp",
+    "title": "Pampi Shoes",
+    "category": "womens-shoes",
+    "brand": "Pampi"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/red-shoes/1.webp",
+    "title": "Red Shoes",
+    "category": "womens-shoes",
+    "brand": "Fashion Express"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/red-shoes/2.webp",
+    "title": "Red Shoes",
+    "category": "womens-shoes",
+    "brand": "Fashion Express"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/red-shoes/3.webp",
+    "title": "Red Shoes",
+    "category": "womens-shoes",
+    "brand": "Fashion Express"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-shoes/red-shoes/4.webp",
+    "title": "Red Shoes",
+    "category": "womens-shoes",
+    "brand": "Fashion Express"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-watches/iwc-ingenieur-automatic-steel/1.webp",
+    "title": "IWC Ingenieur Automatic Steel",
+    "category": "womens-watches",
+    "brand": "IWC"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-watches/iwc-ingenieur-automatic-steel/2.webp",
+    "title": "IWC Ingenieur Automatic Steel",
+    "category": "womens-watches",
+    "brand": "IWC"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-watches/iwc-ingenieur-automatic-steel/3.webp",
+    "title": "IWC Ingenieur Automatic Steel",
+    "category": "womens-watches",
+    "brand": "IWC"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-watches/rolex-cellini-moonphase/1.webp",
+    "title": "Rolex Cellini Moonphase",
+    "category": "womens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-watches/rolex-cellini-moonphase/2.webp",
+    "title": "Rolex Cellini Moonphase",
+    "category": "womens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-watches/rolex-cellini-moonphase/3.webp",
+    "title": "Rolex Cellini Moonphase",
+    "category": "womens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-watches/rolex-datejust-women/1.webp",
+    "title": "Rolex Datejust Women",
+    "category": "womens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-watches/rolex-datejust-women/2.webp",
+    "title": "Rolex Datejust Women",
+    "category": "womens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-watches/rolex-datejust-women/3.webp",
+    "title": "Rolex Datejust Women",
+    "category": "womens-watches",
+    "brand": "Rolex"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-watches/watch-gold-for-women/1.webp",
+    "title": "Watch Gold for Women",
+    "category": "womens-watches",
+    "brand": "Fashion Gold"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-watches/watch-gold-for-women/2.webp",
+    "title": "Watch Gold for Women",
+    "category": "womens-watches",
+    "brand": "Fashion Gold"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-watches/watch-gold-for-women/3.webp",
+    "title": "Watch Gold for Women",
+    "category": "womens-watches",
+    "brand": "Fashion Gold"
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-watches/women's-wrist-watch/1.webp",
+    "title": "Women's Wrist Watch",
+    "category": "womens-watches",
+    "brand": "Fashion Co."
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-watches/women's-wrist-watch/2.webp",
+    "title": "Women's Wrist Watch",
+    "category": "womens-watches",
+    "brand": "Fashion Co."
+  },
+  {
+    "url": "https://cdn.dummyjson.com/product-images/womens-watches/women's-wrist-watch/3.webp",
+    "title": "Women's Wrist Watch",
+    "category": "womens-watches",
+    "brand": "Fashion Co."
+  },
+  {
+    "url": "https://i.imgur.com/wXuQ7bm.jpeg",
+    "title": "Classic Blue Baseball Cap",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/BZrIEmb.jpeg",
+    "title": "Classic Blue Baseball Cap",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/KcT6BE0.jpeg",
+    "title": "Classic Blue Baseball Cap",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/cBuLvBi.jpeg",
+    "title": "Classic Red Baseball Cap",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/N1GkCIR.jpeg",
+    "title": "Classic Red Baseball Cap",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/kKc9A5p.jpeg",
+    "title": "Classic Red Baseball Cap",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/KeqG6r4.jpeg",
+    "title": "Classic Black Baseball Cap",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/xGQOw3p.jpeg",
+    "title": "Classic Black Baseball Cap",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/oO5OUjb.jpeg",
+    "title": "Classic Black Baseball Cap",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/eGOUveI.jpeg",
+    "title": "Classic High-Waisted Athletic Shorts",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/UcsGO7E.jpeg",
+    "title": "Classic High-Waisted Athletic Shorts",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/NLn4e7S.jpeg",
+    "title": "Classic High-Waisted Athletic Shorts",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/Y54Bt8J.jpeg",
+    "title": "Classic White Tee - Timeless Style and Comfort",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/SZPDSgy.jpeg",
+    "title": "Classic White Tee - Timeless Style and Comfort",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/sJv4Xx0.jpeg",
+    "title": "Classic White Tee - Timeless Style and Comfort",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/9DqEOV5.jpeg",
+    "title": "Classic Black T-Shirt",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/ae0AEYn.jpeg",
+    "title": "Classic Black T-Shirt",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/mZ4rUjj.jpeg",
+    "title": "Classic Black T-Shirt",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/ZANVnHE.jpeg",
+    "title": "Sleek White & Orange Wireless Gaming Controller",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/Ro5z6Tn.jpeg",
+    "title": "Sleek White & Orange Wireless Gaming Controller",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/woA93Li.jpeg",
+    "title": "Sleek White & Orange Wireless Gaming Controller",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/yVeIeDa.jpeg",
+    "title": "Sleek Wireless Headphone & Inked Earbud Set",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/jByJ4ih.jpeg",
+    "title": "Sleek Wireless Headphone & Inked Earbud Set",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/KXj6Tpb.jpeg",
+    "title": "Sleek Wireless Headphone & Inked Earbud Set",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/w3Y8NwQ.jpeg",
+    "title": "Sleek Wireless Computer Mouse",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/WJFOGIC.jpeg",
+    "title": "Sleek Wireless Computer Mouse",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/dV4Nklf.jpeg",
+    "title": "Sleek Wireless Computer Mouse",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/OKn1KFI.jpeg",
+    "title": "Sleek Modern Laptop with Ambient Lighting",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/G4f21Ai.jpeg",
+    "title": "Sleek Modern Laptop with Ambient Lighting",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/Z9oKRVJ.jpeg",
+    "title": "Sleek Modern Laptop with Ambient Lighting",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/YaSqa06.jpeg",
+    "title": "Stylish Red & Silver Over-Ear Headphones",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/isQAliJ.jpeg",
+    "title": "Stylish Red & Silver Over-Ear Headphones",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/5B8UQfh.jpeg",
+    "title": "Stylish Red & Silver Over-Ear Headphones",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/yb9UQKL.jpeg",
+    "title": "Sleek Mirror Finish Phone Case",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/m2owtQG.jpeg",
+    "title": "Sleek Mirror Finish Phone Case",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/bNiORct.jpeg",
+    "title": "Sleek Mirror Finish Phone Case",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/LGk9Jn2.jpeg",
+    "title": "Sleek Smartwatch with Vibrant Display",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/1ttYWaI.jpeg",
+    "title": "Sleek Smartwatch with Vibrant Display",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/sPRWnJH.jpeg",
+    "title": "Sleek Smartwatch with Vibrant Display",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/Qphac99.jpeg",
+    "title": "Sleek Modern Leather Sofa",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/dJjpEgG.jpeg",
+    "title": "Sleek Modern Leather Sofa",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/MxJyADq.jpeg",
+    "title": "Sleek Modern Leather Sofa",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/DMQHGA0.jpeg",
+    "title": "Mid-Century Modern Wooden Dining Table",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/qrs9QBg.jpeg",
+    "title": "Mid-Century Modern Wooden Dining Table",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/XVp8T1I.jpeg",
+    "title": "Mid-Century Modern Wooden Dining Table",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/NWIJKUj.jpeg",
+    "title": "Elegant Golden-Base Stone Top Dining Table",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/Jn1YSLk.jpeg",
+    "title": "Elegant Golden-Base Stone Top Dining Table",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/VNZRvx5.jpeg",
+    "title": "Elegant Golden-Base Stone Top Dining Table",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/6wkyyIN.jpeg",
+    "title": "Modern Elegance Teal Armchair",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/Ald3Rec.jpeg",
+    "title": "Modern Elegance Teal Armchair",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/dIqo03c.jpeg",
+    "title": "Modern Elegance Teal Armchair",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/4lTaHfF.jpeg",
+    "title": "Elegant Solid Wood Dining Table",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/JktHE1C.jpeg",
+    "title": "Elegant Solid Wood Dining Table",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/cQeXQMi.jpeg",
+    "title": "Elegant Solid Wood Dining Table",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/3oXNBst.jpeg",
+    "title": "Modern Minimalist Workstation Setup",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/ErYYZnT.jpeg",
+    "title": "Modern Minimalist Workstation Setup",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/boBPwYW.jpeg",
+    "title": "Modern Minimalist Workstation Setup",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/3dU0m72.jpeg",
+    "title": "Modern Ergonomic Office Chair",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/zPU3EVa.jpeg",
+    "title": "Modern Ergonomic Office Chair",
+    "category": "Muebles",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/qNOjJje.jpeg",
+    "title": "Futuristic Holographic Soccer Cleats",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/NjfCFnu.jpeg",
+    "title": "Futuristic Holographic Soccer Cleats",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/eYtvXS1.jpeg",
+    "title": "Futuristic Holographic Soccer Cleats",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/62gGzeF.jpeg",
+    "title": "Rainbow Glitter High Heels",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/5MoPuFM.jpeg",
+    "title": "Rainbow Glitter High Heels",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/sUVj7pK.jpeg",
+    "title": "Rainbow Glitter High Heels",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/9qrmE1b.jpeg",
+    "title": "Chic Summer Denim Espadrille Sandals",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/wqKxBVH.jpeg",
+    "title": "Chic Summer Denim Espadrille Sandals",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/sWSV6DK.jpeg",
+    "title": "Chic Summer Denim Espadrille Sandals",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/hKcMNJs.jpeg",
+    "title": "Vibrant Runners: Bold Orange & Blue Sneakers",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/NYToymX.jpeg",
+    "title": "Vibrant Runners: Bold Orange & Blue Sneakers",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/HiiapCt.jpeg",
+    "title": "Vibrant Runners: Bold Orange & Blue Sneakers",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/mcW42Gi.jpeg",
+    "title": "Vibrant Pink Classic Sneakers",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/mhn7qsF.jpeg",
+    "title": "Vibrant Pink Classic Sneakers",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/F8vhnFJ.jpeg",
+    "title": "Vibrant Pink Classic Sneakers",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/npLfCGq.jpeg",
+    "title": "Futuristic Silver and Gold High-Top Sneaker",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/vYim3gj.jpeg",
+    "title": "Futuristic Silver and Gold High-Top Sneaker",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/HxuHwBO.jpeg",
+    "title": "Futuristic Silver and Gold High-Top Sneaker",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/HqYqLnW.jpeg",
+    "title": "Futuristic Chic High-Heel Boots",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/RlDGnZw.jpeg",
+    "title": "Futuristic Chic High-Heel Boots",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/qa0O6fg.jpeg",
+    "title": "Futuristic Chic High-Heel Boots",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/AzAY4Ed.jpeg",
+    "title": "Elegant Patent Leather Peep-Toe Pumps with Gold-Tone Heel",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/umfnS9P.jpeg",
+    "title": "Elegant Patent Leather Peep-Toe Pumps with Gold-Tone Heel",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/uFyuvLg.jpeg",
+    "title": "Elegant Patent Leather Peep-Toe Pumps with Gold-Tone Heel",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/Au8J9sX.jpeg",
+    "title": "Elegant Purple Leather Loafers",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/gdr8BW2.jpeg",
+    "title": "Elegant Purple Leather Loafers",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/KDCZxnJ.jpeg",
+    "title": "Elegant Purple Leather Loafers",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/sC0ztOB.jpeg",
+    "title": "Classic Blue Suede Casual Shoes",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/Jf9DL9R.jpeg",
+    "title": "Classic Blue Suede Casual Shoes",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/R1IN95T.jpeg",
+    "title": "Classic Blue Suede Casual Shoes",
+    "category": "Shoes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/BG8J0Fj.jpg",
+    "title": "Sleek Futuristic Electric Bicycle",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/ujHBpCX.jpg",
+    "title": "Sleek Futuristic Electric Bicycle",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/WHeVL9H.jpg",
+    "title": "Sleek Futuristic Electric Bicycle",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/Ex5x3IU.jpg",
+    "title": "Sleek All-Terrain Go-Kart",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/z7wAQwe.jpg",
+    "title": "Sleek All-Terrain Go-Kart",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/kc0Dj9S.jpg",
+    "title": "Sleek All-Terrain Go-Kart",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/xPDwUb3.jpg",
+    "title": "Radiant Citrus Eau de Parfum",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/3rfp691.jpg",
+    "title": "Radiant Citrus Eau de Parfum",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/kG05a29.jpg",
+    "title": "Radiant Citrus Eau de Parfum",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/jVfoZnP.jpg",
+    "title": "Sleek Olive Green Hardshell Carry-On Luggage",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/Tnl15XK.jpg",
+    "title": "Sleek Olive Green Hardshell Carry-On Luggage",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/7OqTPO6.jpg",
+    "title": "Sleek Olive Green Hardshell Carry-On Luggage",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/Lqaqz59.jpg",
+    "title": "Chic Transparent Fashion Handbag",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/uSqWK0m.jpg",
+    "title": "Chic Transparent Fashion Handbag",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/atWACf1.jpg",
+    "title": "Chic Transparent Fashion Handbag",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/0qQBkxX.jpg",
+    "title": "Trendy Pink-Tinted Sunglasses",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/I5g1DoE.jpg",
+    "title": "Trendy Pink-Tinted Sunglasses",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/myfFQBW.jpg",
+    "title": "Trendy Pink-Tinted Sunglasses",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/TF0pXdL.jpg",
+    "title": "Elegant Glass Tumbler Set",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/BLDByXP.jpg",
+    "title": "Elegant Glass Tumbler Set",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/b7trwCv.jpg",
+    "title": "Elegant Glass Tumbler Set",
+    "category": "Miscellaneous",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placeimg.com/640/480/any",
+    "title": "New Product",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/cSytoSD.jpeg",
+    "title": "daniela",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://i.imgur.com/yhW6Yw1.jpg",
+    "title": "no moe gutas",
+    "category": "Electrónico22",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Telefon_BW_2012-02-18_13-44-32.JPG",
+    "title": "Phone",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/81/AT%26T_push_button_telephone_western_electric_model_2500_dmg_black.jpg",
+    "title": "Phone",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Telefon_BW_2012-02-18_13-44-32.JPG",
+    "title": "Phoneqq",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/81/AT%26T_push_button_telephone_western_electric_model_2500_dmg_black.jpg",
+    "title": "Phoneqq",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Telefon_BW_2012-02-18_13-44-32.JPG",
+    "title": "Phoneq",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/81/AT%26T_push_button_telephone_western_electric_model_2500_dmg_black.jpg",
+    "title": "Phoneq",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://api.escuelajs.co/api/v1/files/91c1.jpeg",
+    "title": "Шапочка из фольги",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placehold.co/600x400",
+    "title": "A product",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=500&q=60",
+    "title": "puma",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Telefon_BW_2012-02-18_13-44-32.JPG",
+    "title": "Phone12412341234",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/81/AT%26T_push_button_telephone_western_electric_model_2500_dmg_black.jpg",
+    "title": "Phone12412341234",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Telefon_BW_2012-02-18_13-44-32.JPG",
+    "title": "Phone1",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/8/81/AT%26T_push_button_telephone_western_electric_model_2500_dmg_black.jpg",
+    "title": "Phone1",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placehold.co/600x400",
+    "title": "Test",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placeimg.com/640/480/any",
+    "title": "Claude Test Product",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placehold.co/600x400",
+    "title": "Table tennis racket",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placeimg.com/640/480/cotton",
+    "title": "New Cotton Shirt and pant",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placeimg.com/640/480/any",
+    "title": "Mobile Phones",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://images.unsplash.com/photo-1520256862855-398228c41684?auto=format&fit=crop&w=500&q=60",
+    "title": "bata",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://picsum.photos/200/300",
+    "title": "REST Assured Test Product — 6bdae4c6f1b24e7384e25321effa06e5",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://picsum.photos/200/300",
+    "title": "REST Assured Test Product — 645a4c4fe04f4aed907f36b545931f6a",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://unsplash.com/s/photos/shoes",
+    "title": "sports",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://picsum.photos/200/300",
+    "title": "REST Assured Test Product — ce4c442d04244a8698f04741432e595c",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placehold.co/600x400",
+    "title": "New shop",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placehold.co/600x400",
+    "title": " slop",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placehold.co/600x400",
+    "title": " 200 slop",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placehold.co/600x400",
+    "title": " 290 slop",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://unsplash.com/s/photos/shoes",
+    "title": "iii",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placehold.co/600x400",
+    "title": " 29 slop",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placehold.co/600x400",
+    "title": "slop-product-1750420905",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placehold.co/600x400",
+    "title": "slop-product-175042005",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placehold.co/600x400",
+    "title": "slop-product-17504005",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placehold.co/600x400",
+    "title": "Cosmic Demo 62936",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placehold.co/600x400",
+    "title": "Cosmic Demo 99231",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placehold.co/600x400",
+    "title": "New Product6",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placehold.co/600x400",
+    "title": "New Product353295",
+    "category": "Clothes",
+    "brand": "Platzi"
+  },
+  {
+    "url": "https://placehold.co/600x400",
+    "title": "New Product318083",
+    "category": "Clothes",
+    "brand": "Platzi"
+  }
+]
