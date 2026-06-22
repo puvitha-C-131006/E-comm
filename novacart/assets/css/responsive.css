@@ -70,6 +70,8 @@
     display: block;
     z-index: 1001;
     order: 2; /* Keep it on the top right */
+    margin-left: auto; /* Push to right */
+    padding: 0.5rem; /* Add tap target size */
   }
   
   .logo {
@@ -81,6 +83,7 @@
     width: 100%;
     max-width: 100%;
     margin-top: 10px;
+    flex: 0 0 100%;
   }
   
   .nav-menu {
