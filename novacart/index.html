@@ -9,8 +9,8 @@
     <meta property="og:description" content="Shop the latest trends in Electronics, Fashion, and Home Appliances with fast delivery and secure payments.">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/style.css?v=3">
-    <link rel="stylesheet" href="assets/css/responsive.css?v=3">
+    <link rel="stylesheet" href="assets/css/style.css?v=6">
+    <link rel="stylesheet" href="assets/css/responsive.css?v=6">
     
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,13 +19,13 @@
         /* Specific Home Page Styles */
         .hero {
             position: relative;
-            height: 85vh;
-            min-height: 600px;
+            height: 75vh;
+            min-height: 500px;
             background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
             display: flex;
             align-items: center;
             overflow: hidden;
-            margin-top: 80px; /* Offset for fixed navbar */
+            margin-top: 64px; /* Offset for fixed navbar */
         }
         .hero-content {
             flex: 1;
@@ -33,7 +33,7 @@
             z-index: 2;
         }
         .hero-title {
-            font-size: 4rem;
+            font-size: clamp(3rem, 5vw, 4.5rem);
             font-weight: 700;
             color: var(--color-secondary);
             margin-bottom: 1.5rem;
@@ -196,9 +196,6 @@
             .hero-content {
                 padding-right: 0;
                 margin-bottom: 3rem;
-            }
-            .hero-title {
-                font-size: 3rem;
             }
             .hero-subtitle {
                 margin: 0 auto 2.5rem;

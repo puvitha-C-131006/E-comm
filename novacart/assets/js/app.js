@@ -4,12 +4,51 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
+  initActiveNav(); // New generic nav logic
   initNotifications();
   initMobileMenu();
   updateCartCounters();
   initTheme();
   initBackToTop();
 });
+
+// Navigation Active State Logic
+function initActiveNav() {
+  const currentPath = window.location.pathname;
+  const currentSearch = window.location.search;
+  
+  const navLinks = document.querySelectorAll('.nav-links a');
+  navLinks.forEach(link => {
+    // Remove all hardcoded active classes
+    link.classList.remove('active');
+    
+    try {
+        const linkUrl = new URL(link.href, window.location.origin);
+        const linkPath = linkUrl.pathname;
+        const linkSearch = linkUrl.search;
+        
+        const isHomeLink = linkPath.endsWith('index.html') || linkPath.endsWith('/');
+        const isDealsLink = linkPath.endsWith('products.html') && linkSearch.includes('deals=true');
+        const isShopLink = linkPath.endsWith('products.html') && !linkSearch.includes('deals=true');
+        
+        const isCurrentHome = currentPath.endsWith('index.html') || currentPath.endsWith('/');
+        const isCurrentDeals = currentPath.endsWith('products.html') && currentSearch.includes('deals=true');
+        const isCurrentShop = currentPath.endsWith('products.html') && !currentSearch.includes('deals=true');
+        
+        if (isHomeLink && isCurrentHome) {
+          link.classList.add('active');
+        } else if (isDealsLink && isCurrentDeals) {
+          link.classList.add('active');
+        } else if (isShopLink && isCurrentShop) {
+          link.classList.add('active');
+        } else if (!isHomeLink && !isDealsLink && !isShopLink && linkPath === currentPath) {
+          link.classList.add('active');
+        }
+    } catch (e) {
+        console.error("Error parsing URL for nav link:", e);
+    }
+  });
+}
 
 // Theme Logic
 function initTheme() {

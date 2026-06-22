@@ -14,10 +14,10 @@
     
     <style>
         .cart-layout {
-            margin-top: 100px;
+            margin-top: 80px;
             display: grid;
             grid-template-columns: 2fr 1fr;
-            gap: 3rem;
+            gap: 2rem;
         }
 
         .cart-table-container {
@@ -34,7 +34,7 @@
         }
 
         .cart-table th {
-            padding: 1.5rem 1rem;
+            padding: 1rem;
             background-color: #f8fafc;
             color: var(--color-text-secondary);
             font-weight: 600;
@@ -44,7 +44,7 @@
         }
 
         .cart-table td {
-            padding: 1.5rem 1rem;
+            padding: 1rem;
             border-bottom: 1px solid var(--color-border);
             vertical-align: middle;
         }
@@ -127,35 +127,36 @@
         /* Order Summary */
         .summary-container {
             background-color: var(--color-card-bg);
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-md);
             border: 1px solid var(--color-border);
-            padding: 2rem;
+            padding: 1.5rem;
             height: fit-content;
             position: sticky;
-            top: 100px;
+            top: 80px;
         }
 
         .summary-title {
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
             border-bottom: 1px solid var(--color-border);
         }
 
         .summary-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             color: var(--color-text-secondary);
+            font-size: 0.95rem;
         }
 
         .summary-total {
             display: flex;
             justify-content: space-between;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
             border-top: 1px solid var(--color-border);
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--color-text-primary);
         }
@@ -172,18 +173,20 @@
 
         .coupon-input-group input {
             flex: 1;
-            padding: 0.75rem 1rem;
+            padding: 0.6rem 0.75rem;
             border: 1px solid var(--color-border);
             border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+            font-size: 0.9rem;
         }
 
         .coupon-input-group button {
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1.25rem;
             background-color: var(--color-secondary);
             color: white;
             font-weight: 600;
             border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
             transition: all var(--transition-fast);
+            font-size: 0.9rem;
         }
 
         .coupon-input-group button:hover {
@@ -508,8 +511,8 @@
                         </div>
                     </div>
 
-                    <a href="checkout.html" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">
-                        Proceed to Checkout <i class="fas fa-lock" style="margin-left: 0.5rem; font-size: 0.9rem;"></i>
+                    <a href="checkout.html" class="btn btn-primary" style="width: 100%; padding: 0.75rem; font-size: 1rem;">
+                        Proceed to Checkout <i class="fas fa-lock" style="margin-left: 0.5rem; font-size: 0.8rem;"></i>
                     </a>
                     
                     <div style="text-align: center; margin-top: 1rem; display: flex; justify-content: center; gap: 1rem; color: #cbd5e1; font-size: 1.5rem;">

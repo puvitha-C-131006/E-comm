@@ -14,29 +14,29 @@
     
     <style>
         .checkout-layout {
-            margin-top: 100px;
+            margin-top: 80px;
             display: grid;
             grid-template-columns: 2fr 1fr;
-            gap: 3rem;
+            gap: 2rem;
             align-items: start;
         }
 
         .checkout-section {
             background-color: var(--color-card-bg);
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-md);
             border: 1px solid var(--color-border);
-            padding: 2rem;
-            margin-bottom: 2rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .checkout-title {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
+            font-size: 1.25rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
             border-bottom: 1px solid var(--color-border);
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
         .checkout-title .step-num {
@@ -67,7 +67,7 @@
         .payment-method {
             border: 1px solid var(--color-border);
             border-radius: var(--radius-md);
-            padding: 1.5rem;
+            padding: 1rem;
             cursor: pointer;
             transition: all var(--transition-fast);
             position: relative;
@@ -101,8 +101,8 @@
 
         .pm-details {
             display: none;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
             border-top: 1px solid var(--color-border);
         }
 
@@ -114,17 +114,17 @@
         /* Order Summary matches Cart layout slightly modified */
         .summary-container {
             background-color: var(--color-card-bg);
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-md);
             border: 1px solid var(--color-border);
-            padding: 2rem;
+            padding: 1.5rem;
             position: sticky;
-            top: 100px;
+            top: 80px;
         }
 
         .summary-title {
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
             border-bottom: 1px solid var(--color-border);
         }
 
@@ -148,17 +148,18 @@
         .summary-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             color: var(--color-text-secondary);
+            font-size: 0.95rem;
         }
 
         .summary-total {
             display: flex;
             justify-content: space-between;
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
             border-top: 1px solid var(--color-border);
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--color-text-primary);
         }
@@ -356,7 +357,7 @@
                     <!-- Totals injected here -->
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.25rem; font-size: 1.1rem; margin-top: 2rem;">
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.75rem; font-size: 1rem; margin-top: 1.5rem;">
                     Place Order <i class="fas fa-check-circle" style="margin-left: 0.5rem;"></i>
                 </button>
                 

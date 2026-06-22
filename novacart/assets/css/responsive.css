@@ -2,7 +2,7 @@
    NovaCart - Responsive Media Queries
    ========================================================================== */
 
-/* Laptop Screens (1280px to 1440px) */
+/* Laptop Screens (1024px to 1440px) */
 @media screen and (max-width: 1440px) {
   .container {
     max-width: 1280px;
@@ -10,11 +10,11 @@
 }
 
 @media screen and (max-width: 1280px) {
-  html {
-    font-size: 15px; /* Slightly scale down typography */
-  }
   .container {
     max-width: 1140px;
+  }
+  .shop-layout {
+    grid-template-columns: 240px 1fr;
   }
   .footer-grid {
     grid-template-columns: 1.5fr 1fr 1fr 1fr;
@@ -37,10 +37,6 @@
   
   .nav-links {
     gap: 1.5rem;
-  }
-  
-  .product-grid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   }
 }
 
@@ -83,6 +79,7 @@
   .search-bar {
     order: 3;
     width: 100%;
+    max-width: 100%;
     margin-top: 10px;
   }
   
@@ -114,8 +111,10 @@
   
   .nav-actions {
     margin-top: 2rem;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
     width: 100%;
   }
   
@@ -124,8 +123,9 @@
     width: 100%;
   }
   
-  .product-grid {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  .btn {
+    width: 100%;
+    justify-content: center;
   }
   
   /* Hero Section fixes for mobile */
@@ -176,10 +176,6 @@
     gap: 2rem;
   }
   
-  .product-grid {
-    grid-template-columns: 1fr; /* Single column on very small screens */
-  }
-  
   .product-actions {
     right: 1rem; /* Always show actions on mobile */
   }
@@ -196,18 +192,12 @@
 
 /* Ultra Wide Screens (1920px, 2560px) */
 @media screen and (min-width: 1920px) {
-  html {
-    font-size: 18px; /* Scale up typography for huge screens */
-  }
   .container {
     max-width: 1600px;
   }
 }
 
 @media screen and (min-width: 2560px) {
-  html {
-    font-size: 20px;
-  }
   .container {
     max-width: 2000px;
   }
