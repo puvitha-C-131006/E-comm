@@ -63,13 +63,27 @@
   }
   
   .navbar .container {
-    height: 70px;
+    height: auto;
+    flex-wrap: wrap;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
   
   /* Mobile Navigation */
   .mobile-toggle {
     display: block;
     z-index: 1001;
+    order: 2; /* Keep it on the top right */
+  }
+  
+  .logo {
+      order: 1;
+  }
+  
+  .search-bar {
+    order: 3;
+    width: 100%;
+    margin-top: 10px;
   }
   
   .nav-menu {
@@ -105,10 +119,6 @@
     width: 100%;
   }
   
-  .search-bar {
-    width: 100%;
-  }
-  
   .search-bar input,
   .search-bar input:focus {
     width: 100%;
@@ -116,6 +126,14 @@
   
   .product-grid {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+  
+  /* Hero Section fixes for mobile */
+  .hero-section, .hero {
+      grid-template-columns: 1fr !important;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
   }
   
   .section {
