@@ -148,6 +148,20 @@
     margin-bottom: 2rem;
   }
   
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .product-card {
+    max-width: 100%;
+    margin: 0;
+  }
+  
+  .product-image-container {
+    height: 250px;
+  }
+  
   /* Utilities overlay for mobile menu */
   .overlay {
     position: fixed;
@@ -181,11 +195,6 @@
   
   .product-actions {
     right: 1rem; /* Always show actions on mobile */
-  }
-  
-  .product-card {
-    max-width: 320px;
-    margin: 0 auto;
   }
   
   .section-title {
