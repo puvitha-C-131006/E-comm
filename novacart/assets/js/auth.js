@@ -5,6 +5,9 @@
 // Listen for auth state changes globally
 firebase.auth().onAuthStateChanged((user) => {
     updateAuthUI(user);
+    if (typeof updateCartCounters === 'function') {
+        updateCartCounters();
+    }
     // Auto-redirect if on login/register pages and logged in
     const path = window.location.pathname;
     if (user && !window.isRegistering && (path.includes('login.html') || path.includes('register.html'))) {
@@ -13,7 +16,7 @@ firebase.auth().onAuthStateChanged((user) => {
 });
 
 // Update UI based on auth state
-function updateAuthUI(user) {
+async function updateAuthUI(user) {
   const authLinks = document.querySelectorAll('.auth-link');
   const profileLinks = document.querySelectorAll('.profile-link');
   
@@ -28,10 +31,43 @@ function updateAuthUI(user) {
           nameSpan.textContent = user.displayName ? user.displayName.split(' ')[0] : user.email.split('@')[0];
       }
     });
+
+    // Check admin role
+    try {
+        if (typeof db !== 'undefined') {
+            const doc = await db.collection('users').doc(user.uid).get();
+            if (doc.exists && doc.data().role === 'admin') {
+                if (!document.getElementById('nav-admin-link')) {
+                    const adminLink = document.createElement('a');
+                    adminLink.href = 'admin.html';
+                    adminLink.id = 'nav-admin-link';
+                    adminLink.className = 'btn btn-outline';
+                    adminLink.style.marginRight = '10px';
+                    adminLink.style.display = 'flex';
+                    adminLink.style.alignItems = 'center';
+                    adminLink.style.gap = '5px';
+                    adminLink.innerHTML = '<i class="fas fa-shield-alt"></i> Admin';
+                    
+                    const navActions = document.querySelector('.nav-actions');
+                    if (navActions) {
+                        const firstProfileLink = document.querySelector('.profile-link');
+                        if (firstProfileLink) {
+                            navActions.insertBefore(adminLink, firstProfileLink);
+                        }
+                    }
+                }
+            }
+        }
+    } catch(e) {
+        console.error("Error checking admin role:", e);
+    }
+
   } else {
     // Not logged in
     authLinks.forEach(el => el.style.display = 'flex');
     profileLinks.forEach(el => el.style.display = 'none');
+    const adminLink = document.getElementById('nav-admin-link');
+    if (adminLink) adminLink.remove();
   }
 }
 

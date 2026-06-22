@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | NovaCart</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        .admin-container {
+            margin-top: 100px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            min-height: 70vh;
+        }
+
+        .admin-sidebar {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            height: max-content;
+        }
+
+        .admin-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: var(--radius-md);
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .admin-nav-link:hover, .admin-nav-link.active {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .admin-content {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+        }
+
+        .admin-tab {
+            display: none;
+        }
+        
+        .admin-tab.active {
+            display: block;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .admin-table th, .admin-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .admin-table th {
+            font-weight: 600;
+            color: var(--color-text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .admin-container {
+                grid-template-columns: 1fr;
+            }
+            .admin-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-shopping-bag"></i> Nova<span>Cart</span>
+            </a>
+            
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button id="theme-toggle" class="action-icon" title="Toggle Dark Mode" onclick="toggleTheme()">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="profile.html" class="action-icon profile-link" title="Profile">
+                        <i class="far fa-user"></i>
+                        <span class="user-name" style="font-size: 0.9rem; margin-left: 0.5rem;">Admin</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container admin-container section" style="display: none;" id="adminLayout">
+        <div class="admin-sidebar">
+            <h3 style="margin-bottom: 2rem; color: var(--color-primary);">Admin Dashboard</h3>
+            <div class="admin-nav-link active" onclick="switchAdminTab('products', this)">
+                <i class="fas fa-box"></i> Products
+            </div>
+            <div class="admin-nav-link" onclick="switchAdminTab('orders', this)">
+                <i class="fas fa-shopping-cart"></i> Orders
+            </div>
+            <div class="admin-nav-link" onclick="window.location.href='index.html'">
+                <i class="fas fa-home"></i> Back to Store
+            </div>
+        </div>
+
+        <div class="admin-content">
+            <!-- Products Tab -->
+            <div id="tab-products" class="admin-tab active">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h2>Product Management</h2>
+                    <button class="btn btn-primary" onclick="showAddProductModal()">
+                        <i class="fas fa-plus"></i> Add Product
+                    </button>
+                </div>
+                
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminProductsList">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Orders Tab -->
+            <div id="tab-orders" class="admin-tab">
+                <div style="margin-bottom: 2rem;">
+                    <h2>Order Management</h2>
+                </div>
+                
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Date</th>
+                            <th>Customer ID</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminOrdersList">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div id="accessDenied" class="container section" style="margin-top: 100px; text-align: center; display: none;">
+        <i class="fas fa-lock" style="font-size: 4rem; color: var(--color-danger); margin-bottom: 1rem;"></i>
+        <h2>Access Denied</h2>
+        <p>You do not have permission to view this page.</p>
+        <a href="index.html" class="btn btn-primary" style="margin-top: 1rem;">Return Home</a>
+    </div>
+
+    <!-- Product Modal (Hidden by default) -->
+    <div id="productModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
+        <div style="background: var(--color-card-bg); padding: 2rem; border-radius: var(--radius-lg); width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto;">
+            <h3 id="modalTitle" style="margin-bottom: 1.5rem;">Add Product</h3>
+            <form id="productForm">
+                <input type="hidden" id="prodId">
+                <div style="margin-bottom: 1rem;">
+                    <label>Name</label>
+                    <input type="text" id="prodName" style="width: 100%; padding: 0.5rem; margin-top: 0.25rem;" required>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label>Price</label>
+                    <input type="number" id="prodPrice" style="width: 100%; padding: 0.5rem; margin-top: 0.25rem;" required>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label>Category</label>
+                    <input type="text" id="prodCategory" style="width: 100%; padding: 0.5rem; margin-top: 0.25rem;" required>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label>Image URL</label>
+                    <input type="text" id="prodImage" style="width: 100%; padding: 0.5rem; margin-top: 0.25rem;" required>
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label>Stock</label>
+                    <input type="number" id="prodStock" style="width: 100%; padding: 0.5rem; margin-top: 0.25rem;" required>
+                </div>
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button type="button" class="btn btn-outline" style="flex: 1;" onclick="closeProductModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/app.js"></script>
+    
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+    <script src="assets/js/firebase-config.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            firebase.auth().onAuthStateChanged(async (user) => {
+                if (!user) {
+                    document.getElementById('accessDenied').style.display = 'block';
+                    return;
+                }
+                
+                try {
+                    const doc = await db.collection('users').doc(user.uid).get();
+                    if (doc.exists && doc.data().role === 'admin') {
+                        // User is admin
+                        document.getElementById('adminLayout').style.display = 'grid';
+                        await fetchProducts(); // Load products from Firebase
+                        loadAdminProducts();
+                        loadAdminOrders();
+                    } else {
+                        document.getElementById('accessDenied').style.display = 'block';
+                    }
+                } catch(e) {
+                    console.error("Auth check failed", e);
+                    document.getElementById('accessDenied').style.display = 'block';
+                }
+            });
+            
+            document.getElementById('productForm').addEventListener('submit', handleProductSave);
+        });
+
+        function switchAdminTab(tabId, element) {
+            document.querySelectorAll('.admin-nav-link').forEach(link => link.classList.remove('active'));
+            element.classList.add('active');
+            
+            document.querySelectorAll('.admin-tab').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+        }
+
+        // PRODUCTS LOGIC
+        function loadAdminProducts() {
+            const list = document.getElementById('adminProductsList');
+            // 'products' is a global array fetched from Firebase in products.js
+            list.innerHTML = products.map(p => `
+                <tr>
+                    <td><img src="${p.image}" width="50" style="border-radius: 4px;"></td>
+                    <td style="font-weight: 500;">${p.name}</td>
+                    <td>₹${p.price.toLocaleString()}</td>
+                    <td>${p.stock}</td>
+                    <td>
+                        <button class="btn-icon" onclick='editProduct(${JSON.stringify(p).replace(/'/g, "&#39;")})'><i class="fas fa-edit" style="color: var(--color-primary);"></i></button>
+                        <button class="btn-icon" onclick="deleteProduct('${p.id}')"><i class="fas fa-trash" style="color: var(--color-danger);"></i></button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function showAddProductModal() {
+            document.getElementById('modalTitle').textContent = 'Add Product';
+            document.getElementById('productForm').reset();
+            // Generate random ID for new product
+            document.getElementById('prodId').value = Math.floor(Math.random() * 1000000);
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        function editProduct(product) {
+            document.getElementById('modalTitle').textContent = 'Edit Product';
+            document.getElementById('prodId').value = product.id;
+            document.getElementById('prodName').value = product.name;
+            document.getElementById('prodPrice').value = product.price;
+            document.getElementById('prodCategory').value = product.category || 'General';
+            document.getElementById('prodImage').value = product.image;
+            document.getElementById('prodStock').value = product.stock || 10;
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        async function handleProductSave(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            btn.disabled = true;
+            btn.innerText = 'Saving...';
+            
+            const id = document.getElementById('prodId').value;
+            const productData = {
+                id: parseInt(id),
+                name: document.getElementById('prodName').value,
+                price: parseInt(document.getElementById('prodPrice').value),
+                category: document.getElementById('prodCategory').value,
+                image: document.getElementById('prodImage').value,
+                stock: parseInt(document.getElementById('prodStock').value),
+                brand: 'NovaCart',
+                discount: 0,
+                rating: 4.5,
+                reviewCount: 0
+            };
+
+            try {
+                // Determine if adding or updating. If the document exists, update. Otherwise set.
+                await db.collection('products').doc(id.toString()).set(productData, { merge: true });
+                alert("Product saved successfully!");
+                closeProductModal();
+                await fetchProducts(); // refresh
+                loadAdminProducts();
+            } catch(error) {
+                console.error("Error saving product:", error);
+                alert("Error saving product: " + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerText = 'Save';
+            }
+        }
+
+        async function deleteProduct(id) {
+            if(confirm("Are you sure you want to delete this product?")) {
+                try {
+                    await db.collection('products').doc(id.toString()).delete();
+                    alert("Product deleted.");
+                    await fetchProducts(); // refresh
+                    loadAdminProducts();
+                } catch(e) {
+                    alert("Error: " + e.message);
+                }
+            }
+        }
+
+        // ORDERS LOGIC
+        async function loadAdminOrders() {
+            const list = document.getElementById('adminOrdersList');
+            list.innerHTML = '<tr><td colspan="5" style="text-align: center;">Loading...</td></tr>';
+            
+            try {
+                const snapshot = await db.collection('orders').orderBy('createdAt', 'desc').get();
+                if(snapshot.empty) {
+                    list.innerHTML = '<tr><td colspan="5" style="text-align: center;">No orders found.</td></tr>';
+                    return;
+                }
+                
+                let html = '';
+                snapshot.forEach(doc => {
+                    const order = doc.data();
+                    const date = order.date ? new Date(order.date).toLocaleDateString() : 'N/A';
+                    
+                    html += `
+                        <tr>
+                            <td style="font-weight: 500;">#${order.id}</td>
+                            <td>${date}</td>
+                            <td style="font-size: 0.85rem;">${order.userId.substring(0,8)}...</td>
+                            <td style="color: var(--color-primary); font-weight: 600;">₹${order.total.toLocaleString()}</td>
+                            <td>
+                                <select onchange="updateOrderStatus('${doc.id}', this.value)" style="padding: 0.3rem; border-radius: 4px; border: 1px solid var(--color-border);">
+                                    <option value="Processing" ${order.status === 'Processing' ? 'selected' : ''}>Processing</option>
+                                    <option value="Shipped" ${order.status === 'Shipped' ? 'selected' : ''}>Shipped</option>
+                                    <option value="Delivered" ${order.status === 'Delivered' ? 'selected' : ''}>Delivered</option>
+                                    <option value="Cancelled" ${order.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
+                                </select>
+                            </td>
+                        </tr>
+                    `;
+                });
+                list.innerHTML = html;
+            } catch(e) {
+                console.error("Error loading orders:", e);
+                list.innerHTML = '<tr><td colspan="5" style="text-align: center; color: red;">Error loading orders.</td></tr>';
+            }
+        }
+
+        async function updateOrderStatus(docId, newStatus) {
+            try {
+                await db.collection('orders').doc(docId).update({
+                    status: newStatus
+                });
+                alert("Order status updated!");
+            } catch(e) {
+                alert("Error updating order: " + e.message);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -244,6 +244,12 @@ function initNotifications() {
       if (trigger) {
           e.preventDefault();
           dropdown.classList.toggle('active');
+          
+          // Hide badge when notifications are viewed
+          if (dropdown.classList.contains('active')) {
+              const badge = document.querySelector('.notification-dropdown .badge');
+              if (badge) badge.style.display = 'none';
+          }
       } else if (!e.target.closest('.notification-panel')) {
           dropdown.classList.remove('active');
       }

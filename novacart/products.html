@@ -399,11 +399,13 @@
     <script src="assets/js/auth.js"></script>
     
     <script>
-        let filteredProducts = [...products];
+        let filteredProducts = [];
         let currentPage = 1;
         const itemsPerPage = 12;
 
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
+            await fetchProducts();
+            filteredProducts = [...products];
             initFilters();
             
             // Handle URL parameters for initial filtering

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Migrate Products</title>
+</head>
+<body>
+    <h1>Migrating Products to Firebase...</h1>
+    <p id="status">Please wait.</p>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+    <script src="assets/js/firebase-config.js"></script>
+    
+    <!-- Original Products File -->
+    <script src="assets/js/products.js"></script>
+
+    <script>
+        async function migrate() {
+            const statusEl = document.getElementById('status');
+            try {
+                // Wait for auth to be ready
+                const user = await new Promise((resolve) => {
+                    const unsubscribe = firebase.auth().onAuthStateChanged(u => {
+                        unsubscribe();
+                        resolve(u);
+                    });
+                });
+
+                if (user) {
+                    await db.collection('users').doc(user.uid).update({
+                        role: 'admin'
+                    });
+                    console.log("Made user an admin!");
+                } else {
+                    console.warn("No user logged in. Could not set admin role.");
+                }
+
+                const batch = db.batch();
+                let count = 0;
+                
+                // Assuming `products` array is defined in products.js
+                for (const prod of products) {
+                    const docRef = db.collection('products').doc(prod.id.toString());
+                    batch.set(docRef, prod);
+                    count++;
+                }
+
+                await batch.commit();
+                statusEl.innerHTML = `Success! Migrated ${count} products to Firestore.<br>Also set your role to <b>Admin</b>.`;
+                console.log("Migration complete!");
+            } catch (error) {
+                console.error("Migration failed:", error);
+                statusEl.innerText = "Error during migration: " + error.message;
+            }
+        }
+
+        // Wait a bit to ensure Firebase is initialized
+        setTimeout(() => {
+            migrate();
+        }, 1000);
+    </script>
+</body>
+</html>

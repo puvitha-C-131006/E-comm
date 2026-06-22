@@ -290,7 +290,7 @@
             <div id="tab-personal" class="profile-content-section">
                 <h2 class="section-header">Personal Information</h2>
                 
-                <form onsubmit="event.preventDefault(); showToast('Profile updated successfully!');">
+                <form id="personalInfoForm" onsubmit="savePersonalInfo(event)">
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">Full Name</label>
@@ -305,34 +305,30 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">Phone Number</label>
-                            <input type="tel" class="form-control" placeholder="+1 234 567 8900">
+                            <input type="tel" id="inputPhone" class="form-control" placeholder="+91 9876543210">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Date of Birth</label>
-                            <input type="date" class="form-control">
+                            <input type="date" id="inputDob" class="form-control">
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Save Changes</button>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 1rem;" id="savePersonalBtn">Save Changes</button>
                 </form>
 
                 <h3 style="margin-top: 3rem; margin-bottom: 1.5rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">Change Password</h3>
-                <form onsubmit="event.preventDefault(); showToast('Password changed successfully!'); this.reset();">
-                    <div class="form-group">
-                        <label class="form-label">Current Password</label>
-                        <input type="password" class="form-control" required>
-                    </div>
+                <form onsubmit="changePassword(event)">
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">New Password</label>
-                            <input type="password" class="form-control" required>
+                            <input type="password" id="newPassword" class="form-control" required minlength="6">
                         </div>
                         <div class="form-group">
                             <label class="form-label">Confirm New Password</label>
-                            <input type="password" class="form-control" required>
+                            <input type="password" id="confirmPassword" class="form-control" required minlength="6">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-outline" style="margin-top: 1rem;">Update Password</button>
+                    <button type="submit" class="btn btn-outline" style="margin-top: 1rem;" id="changePwdBtn">Update Password</button>
                 </form>
             </div>
 
@@ -340,25 +336,35 @@
             <div id="tab-address" class="profile-content-section">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-border);">
                     <h2 style="font-size: 1.5rem;">Address Book</h2>
-                    <button class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add New Address</button>
                 </div>
                 
-                <div style="border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.5rem; position: relative;">
-                    <span class="product-badge badge-discount" style="position: absolute; top: 1.5rem; right: 1.5rem; background-color: var(--color-primary);">Default</span>
-                    
-                    <h3 style="margin-bottom: 0.5rem;" id="addressName">John Doe</h3>
-                    <p style="color: var(--color-text-secondary); margin-bottom: 0.25rem;">+1 234 567 8900</p>
-                    <p style="color: var(--color-text-secondary); line-height: 1.6; max-width: 300px;">
-                        123 Main St, Apartment 4B<br>
-                        New York, NY 10001<br>
-                        United States
-                    </p>
-                    
-                    <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
-                        <button class="btn btn-outline">Edit</button>
-                        <button class="btn btn-outline" style="color: var(--color-danger); border-color: var(--color-danger);">Delete</button>
+                <form id="addressForm" onsubmit="saveAddress(event)">
+                    <div class="form-group">
+                        <label class="form-label">Street Address</label>
+                        <textarea id="inputAddress" class="form-control" rows="3" placeholder="123 Main St, Apartment 4B"></textarea>
                     </div>
-                </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">City</label>
+                            <input type="text" id="inputCity" class="form-control" placeholder="Chennai">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">State</label>
+                            <input type="text" id="inputState" class="form-control" placeholder="Tamil Nadu">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Pincode / Zip Code</label>
+                            <input type="text" id="inputZip" class="form-control" placeholder="600001">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Country</label>
+                            <input type="text" id="inputCountry" class="form-control" placeholder="India" value="India">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 1rem;" id="saveAddressBtn">Save Address</button>
+                </form>
             </div>
 
         </main>
@@ -422,9 +428,8 @@
             
             document.getElementById('inputName').value = user.displayName || '';
             document.getElementById('inputEmail').value = user.email || '';
-            document.getElementById('addressName').textContent = user.displayName || 'User';
 
-            // Populate Stats
+            // Populate Stats and Forms
             db.collection('users').doc(user.uid).get().then(doc => {
                 const data = doc.data() || {};
                 const wishlist = data.wishlist || [];
@@ -432,6 +437,17 @@
 
                 document.getElementById('statWishlist').textContent = wishlist.length;
                 document.getElementById('statCart').textContent = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+                // Populate Personal Form
+                if(data.phone) document.getElementById('inputPhone').value = data.phone;
+                if(data.dob) document.getElementById('inputDob').value = data.dob;
+
+                // Populate Address Form
+                if(data.address) document.getElementById('inputAddress').value = data.address;
+                if(data.city) document.getElementById('inputCity').value = data.city;
+                if(data.state) document.getElementById('inputState').value = data.state;
+                if(data.zip) document.getElementById('inputZip').value = data.zip;
+                if(data.country) document.getElementById('inputCountry').value = data.country;
             });
 
             // Fetch order count
@@ -442,6 +458,100 @@
                 document.getElementById('statOrders').textContent = '0';
             });
         });
+
+        async function savePersonalInfo(e) {
+            e.preventDefault();
+            const btn = document.getElementById('savePersonalBtn');
+            const originalText = btn.textContent;
+            btn.textContent = 'Saving...';
+            btn.disabled = true;
+
+            try {
+                const user = firebase.auth().currentUser;
+                const name = document.getElementById('inputName').value;
+                const phone = document.getElementById('inputPhone').value;
+                const dob = document.getElementById('inputDob').value;
+
+                if (name !== user.displayName) {
+                    await user.updateProfile({ displayName: name });
+                    document.getElementById('displayUserName').textContent = name;
+                    document.getElementById('userAvatar').textContent = name.charAt(0).toUpperCase();
+                }
+
+                await db.collection('users').doc(user.uid).set({
+                    phone: phone,
+                    dob: dob
+                }, { merge: true });
+
+                showToast('Personal Info updated successfully!');
+            } catch (error) {
+                console.error(error);
+                showToast('Failed to update profile.', 'error');
+            } finally {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        async function saveAddress(e) {
+            e.preventDefault();
+            const btn = document.getElementById('saveAddressBtn');
+            const originalText = btn.textContent;
+            btn.textContent = 'Saving...';
+            btn.disabled = true;
+
+            try {
+                const user = firebase.auth().currentUser;
+                await db.collection('users').doc(user.uid).set({
+                    address: document.getElementById('inputAddress').value,
+                    city: document.getElementById('inputCity').value,
+                    state: document.getElementById('inputState').value,
+                    zip: document.getElementById('inputZip').value,
+                    country: document.getElementById('inputCountry').value
+                }, { merge: true });
+
+                showToast('Address saved successfully!');
+            } catch (error) {
+                console.error(error);
+                showToast('Failed to save address.', 'error');
+            } finally {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        async function changePassword(e) {
+            e.preventDefault();
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (newPassword !== confirmPassword) {
+                showToast('Passwords do not match!', 'error');
+                return;
+            }
+
+            const btn = document.getElementById('changePwdBtn');
+            const originalText = btn.textContent;
+            btn.textContent = 'Updating...';
+            btn.disabled = true;
+
+            try {
+                const user = firebase.auth().currentUser;
+                await user.updatePassword(newPassword);
+                showToast('Password updated successfully!');
+                e.target.reset();
+            } catch (error) {
+                console.error(error);
+                if (error.code === 'auth/requires-recent-login') {
+                    showToast('Please logout and login again to change password.', 'error');
+                } else {
+                    showToast('Failed to update password.', 'error');
+                }
+            } finally {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        }
 
         function switchProfileTab(tabId, element) {
             // Update nav

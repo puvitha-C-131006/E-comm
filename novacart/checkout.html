@@ -405,6 +405,7 @@
                 return;
             }
 
+            await fetchProducts();
             renderOrderSummary(cartItems);
             
             // Auto-fill form if logged in

@@ -469,7 +469,18 @@
     <script src="assets/js/auth.js"></script>
     
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
+            await fetchProducts();
+            renderFeaturedProducts();
+            
+            // Wait for auth to load user name
+            firebase.auth().onAuthStateChanged((user) => {
+                const userNameSpans = document.querySelectorAll('.user-name');
+                if (user) {
+                    const name = user.displayName ? user.displayName.split(' ')[0] : 'User';
+                    userNameSpans.forEach(span => span.textContent = name);
+                }
+            });
             renderCategories();
             renderTrendingProducts();
         });
