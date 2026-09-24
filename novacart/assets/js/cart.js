@@ -333,12 +333,13 @@ async function renderCartDrawer() {
     const itemTotal = unitPrice * item.quantity;
     subtotal += itemTotal;
 
-    const imgUrl = product.image || (product.images && product.images[0]) || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80';
+    const rawImg = product.image || (product.images && product.images[0]) || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75&fm=webp';
+    const imgUrl = typeof getOptimizedImageUrl === 'function' ? getOptimizedImageUrl(rawImg, 100, 70) : rawImg;
 
     itemsHtml += `
       <div class="cart-drawer-item">
         <a href="product-details.html?id=${product.id}" onclick="closeCartDrawer()">
-          <img src="${imgUrl}" class="cart-drawer-item-img" alt="${product.name}" loading="lazy">
+          <img src="${imgUrl}" class="cart-drawer-item-img" alt="${product.name}" loading="lazy" decoding="async">
         </a>
         <div class="cart-drawer-item-info">
           <a href="product-details.html?id=${product.id}" class="cart-drawer-item-title" onclick="closeCartDrawer()" style="text-decoration:none; display:block;">

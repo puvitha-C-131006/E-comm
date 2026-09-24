@@ -35,7 +35,9 @@
         .pdp-main-img-wrap {
             width: 100%;
             height: 480px;
-            background: #FFFFFF;
+            background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+            background-size: 200% 100%;
+            animation: skeletonShimmer 1.5s infinite;
             border: 1px solid var(--color-border);
             border-radius: var(--radius-xl);
             display: flex;
@@ -50,7 +52,26 @@
         }
 
         [data-theme="dark"] .pdp-main-img-wrap {
+            background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+            background-size: 200% 100%;
+            animation: skeletonShimmer 1.5s infinite;
+        }
+
+        .pdp-main-img-wrap.img-loaded,
+        .pdp-main-img-wrap:has(.pdp-main-img.loaded) {
+            animation: none;
+            background: #FFFFFF;
+        }
+
+        [data-theme="dark"] .pdp-main-img-wrap.img-loaded,
+        [data-theme="dark"] .pdp-main-img-wrap:has(.pdp-main-img.loaded) {
+            animation: none;
             background: #111827;
+        }
+
+        @keyframes skeletonShimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
 
         .pdp-main-img {
@@ -60,7 +81,13 @@
             max-height: 100%;
             object-fit: contain;
             object-position: center;
-            transition: transform 0.2s ease-out;
+            opacity: 0;
+            transition: opacity 0.25s ease-in, transform 0.2s ease-out;
+        }
+
+        .pdp-main-img.loaded,
+        .pdp-main-img[complete] {
+            opacity: 1;
         }
 
         .pdp-thumbs-row {
@@ -344,12 +371,20 @@
                         <i class="fas fa-shopping-cart"></i>
                         <span class="badge cart-badge" style="display: none;">0</span>
                     </a>
-                </div>
-            </nav>
+        </div>
 
-            <button class="mobile-toggle" aria-label="Open Navigation Menu">
-                <i class="fas fa-bars"></i>
-            </button>
+        <!-- Mobile Sub-Bar: Greeting Pill & Location Dropdown (Strictly < 768px) -->
+        <div class="mobile-subbar">
+            <div class="mobile-greeting-pill" onclick="window.location.href='profile.html'">
+                <div class="mobile-greeting-avatar"><i class="far fa-user"></i></div>
+                <span>Hey, <b class="mobile-greeting-name">Puvitha</b></span>
+            </div>
+            <div class="mobile-location-dropdown" onclick="openLocationModal()" title="Change Delivery Location">
+                <i class="fas fa-map-marker-alt" style="color:var(--color-primary);"></i>
+                <span class="loc-city-name">Bengaluru</span>
+                <span class="loc-pincode">560001</span>
+                <i class="fas fa-chevron-down loc-arrow"></i>
+            </div>
         </div>
     </header>
 
@@ -610,24 +645,37 @@
             // Main Image & Thumbnails
             const allImages = (currentProduct.images && currentProduct.images.length > 0) 
                 ? currentProduct.images 
-                : [currentProduct.image || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80'];
+                : [currentProduct.image || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75&fm=webp'];
             
             const mainImg = document.getElementById('pdpMainImage');
             if (mainImg) {
-                mainImg.src = allImages[0];
+                const optMain = typeof getOptimizedImageUrl === 'function' ? getOptimizedImageUrl(allImages[0], 600, 80) : allImages[0];
+                mainImg.src = optMain;
                 mainImg.alt = currentProduct.name;
+                mainImg.decoding = 'async';
+                mainImg.onload = () => {
+                    mainImg.classList.add('loaded');
+                    document.querySelector('.pdp-main-img-wrap')?.classList.add('img-loaded');
+                };
             }
             const mobileBarImg = document.getElementById('mobileBarImg');
             if (mobileBarImg) {
-                mobileBarImg.src = allImages[0];
+                const optMini = typeof getOptimizedImageUrl === 'function' ? getOptimizedImageUrl(allImages[0], 100, 70) : allImages[0];
+                mobileBarImg.src = optMini;
                 mobileBarImg.alt = currentProduct.name;
+                mobileBarImg.loading = 'lazy';
+                mobileBarImg.decoding = 'async';
             }
 
             const thumbsRow = document.getElementById('pdpThumbsRow');
             if (thumbsRow) {
-                thumbsRow.innerHTML = allImages.map((img, idx) => `
-                    <img src="${img}" class="pdp-thumb ${idx === 0 ? 'active' : ''}" onclick="switchPdpImage('${img}', this)" alt="thumb ${idx+1}">
-                `).join('');
+                thumbsRow.innerHTML = allImages.map((img, idx) => {
+                    const optThumb = typeof getOptimizedImageUrl === 'function' ? getOptimizedImageUrl(img, 120, 70) : img;
+                    const optLarge = typeof getOptimizedImageUrl === 'function' ? getOptimizedImageUrl(img, 600, 80) : img;
+                    return `
+                        <img src="${optThumb}" class="pdp-thumb ${idx === 0 ? 'active' : ''}" onclick="switchPdpImage('${optLarge}', this)" alt="thumb ${idx+1}" loading="lazy" decoding="async">
+                    `;
+                }).join('');
             }
 
             // Variants: Colors

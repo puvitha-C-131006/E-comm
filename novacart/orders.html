@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -13,206 +13,1135 @@
     <!-- FontAwesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        .order-card {
-            background-color: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-xl);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-sm);
-            transition: all var(--transition-fast);
+        /* ==========================================================================
+           NovaCart Dark Mode Design System Tokens for Dashboard & Orders
+           ========================================================================== */
+        :root {
+            --nc-dark-bg: #0B0F19;
+            --nc-dark-surface: #111827;
+            --nc-dark-surface-subtle: #1E293B;
+            --nc-dark-surface-elevated: #1F293D;
+            --nc-dark-border: rgba(255, 255, 255, 0.08);
+            --nc-dark-border-subtle: rgba(255, 255, 255, 0.04);
+            --nc-dark-text-primary: #F8FAFC;
+            --nc-dark-text-secondary: #94A3B8;
+            --nc-dark-text-muted: #64748B;
+            --nc-accent-blue: #3B82F6;
+            --nc-accent-blue-glow: rgba(59, 130, 246, 0.25);
+            --nc-accent-green: #10B981;
+            --nc-accent-amber: #F59E0B;
+            --nc-accent-purple: #8B5CF6;
+            --nc-accent-red: #EF4444;
         }
 
-        .order-card:hover {
-            box-shadow: var(--shadow-md);
-            border-color: rgba(37, 99, 235, 0.3);
+        body {
+            background-color: var(--nc-dark-bg) !important;
+            color: var(--nc-dark-text-primary) !important;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .order-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .profile-page-wrapper {
+            margin-top: 86px;
+            padding-top: 1.5rem;
+            padding-bottom: 5rem;
+            min-height: 75vh;
+            background-color: var(--nc-dark-bg);
+        }
+
+        /* Desktop 2-Column Responsive Layout */
+        .profile-layout {
+            display: grid;
+            grid-template-columns: 290px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        /* ==========================================================================
+           1. Desktop Sidebar Styling (Dark Theme Cohesive)
+           ========================================================================== */
+        .desktop-profile-sidebar {
+            background: var(--nc-dark-surface);
+            border: 1px solid var(--nc-dark-border);
+            border-radius: 20px;
+            padding: 1.75rem 1.25rem;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.35);
+            position: sticky;
+            top: 96px;
+        }
+
+        .profile-user-card {
+            text-align: center;
             padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--color-border);
+            margin-bottom: 1.25rem;
+            border-bottom: 1px solid var(--nc-dark-border);
+        }
+
+        .profile-avatar-lg {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+            color: #FFFFFF;
+            font-size: 2.2rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.85rem;
+            box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.45);
+            border: 3px solid var(--nc-dark-surface);
+            outline: 2px solid #3B82F6;
+            font-family: 'Outfit', sans-serif;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-avatar-lg:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-display-name {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--nc-dark-text-primary);
+            margin-bottom: 0.2rem;
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -0.01em;
+        }
+
+        .profile-display-email {
+            font-size: 0.82rem;
+            color: var(--nc-dark-text-secondary);
+            margin-bottom: 0.75rem;
+            word-break: break-all;
+        }
+
+        .profile-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(16, 185, 129, 0.12);
+            color: #34D399;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid rgba(16, 185, 129, 0.28);
+            letter-spacing: 0.02em;
+        }
+
+        .profile-nav-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .profile-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            color: var(--nc-dark-text-secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .profile-nav-item i {
+            font-size: 1rem;
+            width: 20px;
+            text-align: center;
+            color: var(--nc-dark-text-muted);
+            transition: color 0.2s ease;
+        }
+
+        .profile-nav-item:hover {
+            background: var(--nc-dark-surface-subtle);
+            color: var(--nc-dark-text-primary);
+        }
+
+        .profile-nav-item:hover i {
+            color: var(--nc-accent-blue);
+        }
+
+        .profile-nav-item.active {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(59, 130, 246, 0.1) 100%);
+            color: #60A5FA;
+            font-weight: 700;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+        }
+
+        .profile-nav-item.active i {
+            color: #60A5FA;
+        }
+
+        .profile-nav-logout {
+            margin-top: 1rem;
+            padding-top: 0.85rem;
+            border-top: 1px solid var(--nc-dark-border);
+            color: #F87171 !important;
+            cursor: pointer;
+        }
+
+        .profile-nav-logout i {
+            color: #F87171 !important;
+        }
+
+        .profile-nav-logout:hover {
+            background: rgba(239, 68, 68, 0.1) !important;
+        }
+
+        /* ==========================================================================
+           2. Mobile Compact Profile Header & Quick-Tab Bar (< 768px)
+           ========================================================================== */
+        .mobile-dashboard-header {
+            display: none;
+            background: var(--nc-dark-surface);
+            border: 1px solid var(--nc-dark-border);
+            border-radius: 18px;
+            padding: 1rem;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mobile-dashboard-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #2563EB, #8B5CF6, #10B981);
+        }
+
+        .mobile-user-card-inner {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding-bottom: 0.85rem;
+            margin-bottom: 0.85rem;
+            border-bottom: 1px solid var(--nc-dark-border);
+        }
+
+        .mobile-avatar-circle {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+            color: #FFFFFF;
+            font-size: 1.35rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .mobile-user-info-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .mobile-user-name-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.15rem;
+        }
+
+        .mobile-user-name {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--nc-dark-text-primary);
+            font-family: 'Outfit', sans-serif;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.2;
+        }
+
+        .mobile-user-email {
+            font-size: 0.76rem;
+            color: var(--nc-dark-text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Sleek Horizontal Quick-Tab Bar */
+        .mobile-quick-tabs-scroll {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding: 0.15rem 0.1rem;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .mobile-quick-tabs-scroll::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
+        .quick-tab-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.48rem 0.9rem;
+            border-radius: 9999px;
+            background: var(--nc-dark-surface-subtle);
+            border: 1px solid var(--nc-dark-border);
+            color: var(--nc-dark-text-secondary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .quick-tab-pill i {
+            font-size: 0.82rem;
+        }
+
+        .quick-tab-pill.active {
+            background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
+            color: #FFFFFF;
+            font-weight: 700;
+            border-color: #3B82F6;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+        }
+
+        .quick-tab-pill.active i {
+            color: #FFFFFF;
+        }
+
+        .quick-tab-pill:active {
+            transform: scale(0.96);
+        }
+
+        .quick-tab-pill.logout-pill {
+            color: #F87171;
+            border-color: rgba(239, 68, 68, 0.25);
+            background: rgba(239, 68, 68, 0.08);
+        }
+
+        /* ==========================================================================
+           3. Orders Main Content & Header Bar
+           ========================================================================== */
+        .orders-main-wrapper {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .orders-header-card {
+            background: var(--nc-dark-surface);
+            border: 1px solid var(--nc-dark-border);
+            border-radius: 18px;
+            padding: 1.25rem 1.5rem;
             margin-bottom: 1.5rem;
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             flex-wrap: wrap;
             gap: 1rem;
         }
 
-        .order-id {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--color-text-primary);
-        }
-
-        .order-date {
-            color: var(--color-text-secondary);
-            font-size: 0.88rem;
-            margin-top: 0.25rem;
-        }
-
-        .order-total {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: var(--color-primary);
-        }
-
-        .order-status {
-            padding: 0.3rem 0.85rem;
-            border-radius: var(--radius-full);
-            font-size: 0.82rem;
-            font-weight: 700;
-        }
-
-        .status-processing { background-color: #FEF3C7; color: #D97706; }
-        .status-shipped { background-color: #E0E7FF; color: #4F46E5; }
-        .status-delivered { background-color: #DCFCE7; color: #16A34A; }
-        .status-cancelled { background-color: #FEE2E2; color: #DC2626; }
-
-        .order-items {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-            margin-bottom: 2rem;
-        }
-
-        .order-item {
+        .orders-header-title-box {
             display: flex;
             align-items: center;
-            gap: 1.25rem;
-            padding: 0.75rem;
-            background: var(--color-card-subtle);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--color-border);
+            gap: 0.75rem;
         }
 
-        .order-item-img {
-            width: 68px;
-            height: 68px;
-            object-fit: contain;
-            background-color: var(--color-card-bg);
-            border-radius: var(--radius-md);
-            padding: 4px;
+        .orders-header-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: rgba(37, 99, 235, 0.15);
+            color: #60A5FA;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            border: 1px solid rgba(59, 130, 246, 0.25);
         }
 
-        .order-item-details {
-            flex: 1;
+        .orders-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--nc-dark-text-primary);
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            line-height: 1.2;
         }
 
-        .order-item-name {
+        .orders-subtitle {
+            font-size: 0.8rem;
+            color: var(--nc-dark-text-secondary);
+            margin-top: 0.15rem;
+        }
+
+        .orders-filter-strip {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .orders-filter-btn {
+            background: var(--nc-dark-surface-subtle);
+            border: 1px solid var(--nc-dark-border);
+            color: var(--nc-dark-text-secondary);
+            padding: 0.35rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .orders-filter-btn:hover {
+            background: #232F48;
+            color: var(--nc-dark-text-primary);
+        }
+
+        .orders-filter-btn.active {
+            background: #2563EB;
+            color: #FFFFFF;
+            border-color: #3B82F6;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+        }
+
+        /* ==========================================================================
+           4. Order Cards Dark Theme Styling
+           ========================================================================== */
+        .order-card {
+            background: var(--nc-dark-surface) !important;
+            border: 1px solid var(--nc-dark-border) !important;
+            border-radius: 18px !important;
+            padding: 1.5rem !important;
+            margin-bottom: 1.5rem !important;
+            box-shadow: 0 6px 24px -4px rgba(0, 0, 0, 0.35) !important;
+            transition: all 0.25s ease !important;
+            position: relative;
+        }
+
+        .order-card:hover {
+            border-color: rgba(59, 130, 246, 0.35) !important;
+            box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.45) !important;
+        }
+
+        .order-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1.15rem;
+            border-bottom: 1px solid var(--nc-dark-border);
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+        }
+
+        .order-id-block {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .order-id-label {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--nc-dark-text-primary);
+            font-family: 'Outfit', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .order-date-text {
+            color: var(--nc-dark-text-secondary);
+            font-size: 0.82rem;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .order-status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.32rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.78rem;
             font-weight: 700;
-            color: var(--color-text-primary);
-            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+        }
+
+        .status-delivered {
+            background: rgba(16, 185, 129, 0.15) !important;
+            color: #34D399 !important;
+            border: 1px solid rgba(16, 185, 129, 0.3) !important;
+        }
+
+        .status-processing {
+            background: rgba(245, 158, 11, 0.15) !important;
+            color: #FBBF24 !important;
+            border: 1px solid rgba(245, 158, 11, 0.3) !important;
+        }
+
+        .status-shipped {
+            background: rgba(99, 102, 241, 0.15) !important;
+            color: #818CF8 !important;
+            border: 1px solid rgba(99, 102, 241, 0.3) !important;
+        }
+
+        .status-cancelled {
+            background: rgba(239, 68, 68, 0.15) !important;
+            color: #F87171 !important;
+            border: 1px solid rgba(239, 68, 68, 0.3) !important;
+        }
+
+        /* Order Items List */
+        .order-items-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .order-item-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.85rem 1rem;
+            background: var(--nc-dark-surface-subtle);
+            border-radius: 14px;
+            border: 1px solid var(--nc-dark-border);
+            transition: background 0.2s ease;
+        }
+
+        .order-item-row:hover {
+            background: #212D44;
+        }
+
+        .order-item-thumbnail {
+            width: 70px;
+            height: 70px;
+            min-width: 70px;
+            object-fit: contain;
+            background-color: #0F172A;
+            border-radius: 10px;
+            padding: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .order-item-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .order-item-title {
+            font-weight: 700;
+            color: var(--nc-dark-text-primary);
+            font-size: 0.92rem;
             display: -webkit-box;
-            -webkit-line-clamp: 1;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-decoration: none;
-            transition: color var(--transition-fast);
+            line-height: 1.35;
+            transition: color 0.2s ease;
         }
 
-        .order-item-name:hover {
-            color: var(--color-primary);
+        .order-item-title:hover {
+            color: #60A5FA;
         }
 
-        /* Progress Timeline */
-        .timeline {
+        .order-item-meta {
             display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 0.35rem;
+            font-size: 0.8rem;
+            color: var(--nc-dark-text-secondary);
+        }
+
+        .order-item-qty-tag {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 0.15rem 0.55rem;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .order-item-price-tag {
+            font-weight: 700;
+            color: var(--nc-dark-text-primary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        /* Order Summary & Actions Bar */
+        .order-footer-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 1.15rem;
+            border-top: 1px solid var(--nc-dark-border);
+            margin-top: 1.15rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .order-total-block {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .order-total-lbl {
+            font-size: 0.85rem;
+            color: var(--nc-dark-text-secondary);
+            font-weight: 600;
+        }
+
+        .order-total-val {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #60A5FA;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .order-action-buttons {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-secondary-dark {
+            background: var(--nc-dark-surface-subtle);
+            border: 1px solid var(--nc-dark-border);
+            color: var(--nc-dark-text-primary);
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-secondary-dark:hover {
+            background: #25334E;
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #FFFFFF;
+        }
+
+        .btn-primary-dark {
+            background: linear-gradient(135deg, #2563EB 0%, #3B82F6 100%);
+            border: 1px solid #3B82F6;
+            color: #FFFFFF;
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 0.5rem 1.15rem;
+            border-radius: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary-dark:hover {
+            background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%);
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.5);
+            transform: translateY(-1px);
+        }
+
+        /* ==========================================================================
+           5. Progress Step Tracker
+           ========================================================================== */
+        .order-tracker-rail {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid var(--nc-dark-border);
+            border-radius: 14px;
+            padding: 1.25rem 1.5rem;
+            margin-top: 1.15rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .order-tracker-rail:hover {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .tracker-steps-flex {
+            display: flex;
+            align-items: center;
             justify-content: space-between;
             position: relative;
-            margin: 2rem 0 0.5rem 0;
-            padding: 0 1rem;
         }
 
-        .timeline::before {
-            content: '';
+        .tracker-connecting-line {
             position: absolute;
-            top: 17px;
+            top: 18px;
             left: 2rem;
             right: 2rem;
-            height: 4px;
-            background-color: var(--color-border);
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
             z-index: 1;
         }
 
-        .timeline-progress {
+        .tracker-fill-line {
             position: absolute;
-            top: 17px;
+            top: 18px;
             left: 2rem;
-            height: 4px;
-            background-color: var(--color-success);
+            height: 3px;
+            background: linear-gradient(90deg, #10B981, #3B82F6);
             z-index: 1;
-            transition: width 0.5s ease;
+            transition: width 0.4s ease;
         }
 
-        .timeline-step {
+        .tracker-step-node {
             position: relative;
             z-index: 2;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.45rem;
+            flex: 1;
+            text-align: center;
         }
 
-        .step-icon {
-            width: 38px;
-            height: 38px;
+        .tracker-node-circle {
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background-color: var(--color-card-bg);
-            border: 3px solid var(--color-border);
+            background: #0F172A;
+            border: 2px solid rgba(255, 255, 255, 0.18);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
-            color: var(--color-text-secondary);
+            font-size: 0.82rem;
+            color: var(--nc-dark-text-muted);
             transition: all 0.3s ease;
         }
 
-        .timeline-step.completed .step-icon,
-        .timeline-step.active .step-icon {
-            border-color: var(--color-success);
-            background-color: var(--color-success);
-            color: white;
-            box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.2);
+        .tracker-step-node.completed .tracker-node-circle,
+        .tracker-step-node.active .tracker-node-circle {
+            background: #10B981;
+            border-color: #34D399;
+            color: #FFFFFF;
+            box-shadow: 0 0 14px rgba(16, 185, 129, 0.45);
         }
 
-        .step-label {
-            font-size: 0.85rem;
+        .tracker-step-node.active:not(.completed) .tracker-node-circle {
+            background: #2563EB;
+            border-color: #60A5FA;
+            color: #FFFFFF;
+            box-shadow: 0 0 14px rgba(37, 99, 235, 0.45);
+        }
+
+        .tracker-node-label {
+            font-size: 0.78rem;
             font-weight: 600;
-            color: var(--color-text-secondary);
+            color: var(--nc-dark-text-secondary);
         }
 
-        .timeline-step.completed .step-label,
-        .timeline-step.active .step-label {
-            color: var(--color-text-primary);
+        .tracker-step-node.completed .tracker-node-label,
+        .tracker-step-node.active .tracker-node-label {
+            color: var(--nc-dark-text-primary);
             font-weight: 700;
         }
 
-        @media (max-width: 768px) {
-            .timeline {
-                flex-direction: column;
-                gap: 2rem;
-                padding-left: 2rem;
+        /* ==========================================================================
+           6. Clean Empty State Card
+           ========================================================================== */
+        .empty-orders-dark-card {
+            text-align: center;
+            padding: 4.5rem 1.5rem;
+            background: var(--nc-dark-surface);
+            border-radius: 20px;
+            border: 1px solid var(--nc-dark-border);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .empty-orders-icon-wrap {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem auto;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: #60A5FA;
+            box-shadow: 0 0 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .empty-orders-title {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--nc-dark-text-primary);
+            font-family: 'Outfit', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-orders-desc {
+            color: var(--nc-dark-text-secondary);
+            font-size: 0.92rem;
+            max-width: 440px;
+            margin: 0 auto 2rem auto;
+            line-height: 1.55;
+        }
+
+        /* ==========================================================================
+           7. Modals: Tracking & Order Details
+           ========================================================================== */
+        .nc-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+
+        .nc-modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .nc-modal-card {
+            background: #111827;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 620px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 1.75rem;
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.25s ease;
+        }
+
+        .nc-modal-overlay.show .nc-modal-card {
+            transform: translateY(0);
+        }
+
+        .nc-modal-close {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #1E293B;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94A3B8;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nc-modal-close:hover {
+            background: #EF4444;
+            color: #FFFFFF;
+            border-color: #EF4444;
+        }
+
+        /* Tracking Checkpoints Trail */
+        .tracking-courier-box {
+            background: #1E293B;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .tracking-timeline-trail {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tracking-timeline-trail::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            bottom: 8px;
+            left: 8px;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .tracking-node {
+            position: relative;
+            padding-bottom: 1.35rem;
+        }
+
+        .tracking-node:last-child {
+            padding-bottom: 0;
+        }
+
+        .tracking-node-dot {
+            position: absolute;
+            left: -2rem;
+            top: 3px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #0F172A;
+            border: 3px solid #64748B;
+            transition: all 0.3s ease;
+        }
+
+        .tracking-node.completed .tracking-node-dot {
+            background: #10B981;
+            border-color: #34D399;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+
+        .tracking-node.current .tracking-node-dot {
+            background: #38BDF8;
+            border-color: #FFFFFF;
+            box-shadow: 0 0 14px rgba(56, 189, 248, 0.7);
+            animation: pulse-node 1.8s infinite;
+        }
+
+        @keyframes pulse-node {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
+            70% { transform: scale(1.15); box-shadow: 0 0 0 8px rgba(56, 189, 248, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+        }
+
+        .tracking-node-title {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: #F8FAFC;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tracking-node-sub {
+            font-size: 0.8rem;
+            color: #94A3B8;
+            margin-top: 0.15rem;
+            line-height: 1.4;
+        }
+
+        .tracking-node-time {
+            font-size: 0.75rem;
+            color: #64748B;
+            margin-top: 0.2rem;
+            font-weight: 500;
+        }
+
+        /* Order Details Modal Elements */
+        .order-details-breakdown {
+            background: #1E293B;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1.15rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .details-item-row {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.65rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .details-item-row:last-child {
+            border-bottom: none;
+        }
+
+        .details-pricing-grid {
+            display: grid;
+            gap: 0.45rem;
+            font-size: 0.85rem;
+            padding-top: 0.75rem;
+        }
+
+        .details-price-line {
+            display: flex;
+            justify-content: space-between;
+            color: #94A3B8;
+        }
+
+        .details-price-line.total {
+            color: #F8FAFC;
+            font-size: 1.05rem;
+            font-weight: 800;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 0.25rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* ==========================================================================
+           8. Mobile Responsive Breakpoints (< 768px)
+           ========================================================================== */
+        @media screen and (max-width: 768px) {
+            .profile-page-wrapper {
+                margin-top: 0 !important;
+                padding-top: 0.5rem !important;
+                padding-bottom: 3rem !important;
             }
-            .timeline::before {
-                top: 0;
-                left: 17px;
-                width: 4px;
-                height: 100%;
+
+            .profile-layout {
+                display: block !important;
+                grid-template-columns: 1fr !important;
+                gap: 0 !important;
             }
-            .timeline-progress {
-                top: 0;
-                left: 17px;
-                width: 4px;
+
+            /* Hide Desktop Sidebar on Mobile */
+            .desktop-profile-sidebar {
+                display: none !important;
             }
-            .timeline-step {
-                flex-direction: row;
-                width: 100%;
-                text-align: left;
+
+            /* Show Unified Compact Header on Mobile */
+            .mobile-dashboard-header {
+                display: block !important;
             }
-            .step-icon {
-                margin-left: -2px;
+
+            .orders-header-card {
+                padding: 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .orders-title {
+                font-size: 1.1rem !important;
+            }
+
+            .orders-filter-strip {
+                width: 100% !important;
+                overflow-x: auto !important;
+                padding-bottom: 2px !important;
+            }
+
+            .order-card {
+                padding: 1.15rem 1rem !important;
+                border-radius: 16px !important;
+                margin-bottom: 1.15rem !important;
+            }
+
+            .order-header-row {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 0.65rem !important;
+            }
+
+            .order-item-row {
+                padding: 0.65rem 0.75rem !important;
+                gap: 0.75rem !important;
+            }
+
+            .order-item-thumbnail {
+                width: 60px !important;
+                height: 60px !important;
+                min-width: 60px !important;
+            }
+
+            .order-item-title {
+                font-size: 0.85rem !important;
+            }
+
+            .order-footer-bar {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 0.85rem !important;
+            }
+
+            .order-action-buttons {
+                width: 100% !important;
+            }
+
+            .order-action-buttons .btn-secondary-dark,
+            .order-action-buttons .btn-primary-dark {
+                flex: 1 !important;
+                justify-content: center !important;
+                padding: 0.45rem 0.75rem !important;
+                font-size: 0.78rem !important;
+            }
+
+            .order-tracker-rail {
+                padding: 1rem 0.75rem !important;
+            }
+
+            .tracker-node-circle {
+                width: 30px !important;
+                height: 30px !important;
+                font-size: 0.72rem !important;
+            }
+
+            .tracker-node-label {
+                font-size: 0.7rem !important;
+            }
+
+            .tracker-connecting-line,
+            .tracker-fill-line {
+                top: 15px !important;
+                left: 1.25rem !important;
+                right: 1.25rem !important;
+            }
+
+            .nc-modal-card {
+                padding: 1.25rem !important;
+                margin: 0.5rem !important;
             }
         }
     </style>
@@ -294,10 +1223,20 @@
                     </a>
                 </div>
             </nav>
+        </div>
 
-            <button class="mobile-toggle" aria-label="Open Navigation Menu">
-                <i class="fas fa-bars"></i>
-            </button>
+        <!-- Mobile Sub-Bar: Greeting Pill & Location Dropdown (Strictly < 768px) -->
+        <div class="mobile-subbar">
+            <div class="mobile-greeting-pill" onclick="window.location.href='profile.html'">
+                <div class="mobile-greeting-avatar"><i class="far fa-user"></i></div>
+                <span>Hey, <b class="mobile-greeting-name">Puvitha</b></span>
+            </div>
+            <div class="mobile-location-dropdown" onclick="openLocationModal()" title="Change Delivery Location">
+                <i class="fas fa-map-marker-alt" style="color:var(--color-primary);"></i>
+                <span class="loc-city-name">Bengaluru</span>
+                <span class="loc-pincode">560001</span>
+                <i class="fas fa-chevron-down loc-arrow"></i>
+            </div>
         </div>
     </header>
 
@@ -305,11 +1244,50 @@
     <main class="profile-page-wrapper">
         <div class="container">
             
+            <!-- 1. Mobile-Only Compact Profile Dashboard Header (< 768px) -->
+            <div class="mobile-dashboard-header" id="mobileDashboardHeader">
+                <!-- User Identity Card -->
+                <div class="mobile-user-card-inner">
+                    <div class="mobile-avatar-circle" id="mobileProfileAvatar">P</div>
+                    <div class="mobile-user-info-text">
+                        <div class="mobile-user-name-row">
+                            <span class="mobile-user-name" id="mobileProfileDisplayName">Puvitha C</span>
+                            <span class="profile-badge-pill"><i class="fas fa-check-circle"></i> Verified Buyer</span>
+                        </div>
+                        <div class="mobile-user-email" id="mobileProfileDisplayEmail">puvitha.c@example.com</div>
+                    </div>
+                </div>
+
+                <!-- Sleek Horizontal Quick-Tab Bar / Pills -->
+                <div class="mobile-quick-tabs-scroll">
+                    <a href="profile.html" class="quick-tab-pill">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="orders.html" class="quick-tab-pill active">
+                        <i class="fas fa-box-open"></i>
+                        <span>My Orders</span>
+                    </a>
+                    <a href="wishlist.html" class="quick-tab-pill">
+                        <i class="far fa-heart"></i>
+                        <span>Wishlist</span>
+                    </a>
+                    <a href="profile.html#address" class="quick-tab-pill">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span>Addresses</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="handleLogout()" class="quick-tab-pill logout-pill">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Sign Out</span>
+                    </a>
+                </div>
+            </div>
+
             <!-- Profile 2-Column Responsive Layout -->
             <div class="profile-layout">
                 
-                <!-- Left Sidebar Navigation -->
-                <aside class="profile-sidebar">
+                <!-- Desktop Sidebar Navigation (Hidden on mobile) -->
+                <aside class="desktop-profile-sidebar">
                     <div class="profile-user-card">
                         <div class="profile-avatar-lg" id="profileAvatarLg">P</div>
                         <div class="profile-display-name" id="profileDisplayName">Puvitha C</div>
@@ -339,29 +1317,140 @@
                     </nav>
                 </aside>
 
-                <!-- Right Main Content Area: Orders -->
-                <div>
-                    <!-- Orders Header Card -->
-                    <div class="profile-card" style="margin-bottom: 2rem;">
-                        <div class="profile-card-header" style="border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
-                            <div class="profile-card-title">
-                                <i class="fas fa-box-open" style="color: var(--color-primary);"></i> My Orders & Shipments
+                <!-- Embedded "My Orders" Section Below Dashboard Header -->
+                <div class="orders-main-wrapper">
+                    
+                    <!-- Orders Header & Filter Toolbar Card -->
+                    <div class="orders-header-card">
+                        <div class="orders-header-title-box">
+                            <div class="orders-header-icon">
+                                <i class="fas fa-box-open"></i>
                             </div>
-                            <span id="ordersCountBadge" style="background: var(--color-card-subtle); padding: 0.35rem 0.85rem; border-radius: var(--radius-full); font-size: 0.82rem; font-weight: 700; border: 1px solid var(--color-border); color: var(--color-text-secondary);">
-                                Tracking active orders
-                            </span>
+                            <div>
+                                <h1 class="orders-title">My Orders</h1>
+                                <div class="orders-subtitle" id="ordersCountBadge">Tracking active shipments</div>
+                            </div>
+                        </div>
+
+                        <!-- Status Filter Pills -->
+                        <div class="orders-filter-strip" id="ordersFilterStrip">
+                            <button class="orders-filter-btn active" onclick="filterOrders('all')">All</button>
+                            <button class="orders-filter-btn" onclick="filterOrders('Processing')">Processing</button>
+                            <button class="orders-filter-btn" onclick="filterOrders('Shipped')">Shipped</button>
+                            <button class="orders-filter-btn" onclick="filterOrders('Delivered')">Delivered</button>
                         </div>
                     </div>
 
-                    <!-- Populated via JS -->
+                    <!-- Orders List (Populated via JS) -->
                     <div id="ordersList">
+                        <!-- Loaded dynamically -->
                     </div>
+
                 </div>
 
             </div>
 
         </div>
     </main>
+
+    <!-- Order Tracking Modal -->
+    <div id="orderTrackingModal" class="nc-modal-overlay" onclick="handleTrackingBackdropClick(event)">
+        <div class="nc-modal-card">
+            <button class="nc-modal-close" onclick="closeOrderTrackingModal()">&times;</button>
+            
+            <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.25rem;">
+                <div style="width:44px; height:44px; border-radius:12px; background:rgba(37,99,235,0.18); color:#60a5fa; display:flex; align-items:center; justify-content:center; font-size:1.35rem; border:1px solid rgba(59,130,246,0.3);">
+                    <i class="fas fa-truck-fast"></i>
+                </div>
+                <div>
+                    <h3 style="font-size:1.25rem; font-weight:800; color:#f8fafc; margin:0; font-family:'Outfit',sans-serif;" id="trackModalOrderId">Order Tracking</h3>
+                    <span style="font-size:0.8rem; color:#94a3b8;" id="trackModalPlacedDate">Placed on ...</span>
+                </div>
+            </div>
+
+            <!-- Courier details banner -->
+            <div class="tracking-courier-box">
+                <div>
+                    <div style="font-size:0.72rem; font-weight:700; color:#94a3b8; text-transform:uppercase; letter-spacing:0.04em;">Courier Partner</div>
+                    <div style="font-weight:700; font-size:0.95rem; color:#38bdf8;" id="trackCourierName">BlueDart Express Air</div>
+                    <div style="font-size:0.78rem; color:#cbd5e1; margin-top:2px;">AWB Tracking: <b id="trackAwbNumber">BD-84920194</b></div>
+                </div>
+                <div style="text-align:right;">
+                    <div style="font-size:0.72rem; font-weight:700; color:#94a3b8; text-transform:uppercase; letter-spacing:0.04em;">Current Status</div>
+                    <span class="order-status-badge status-processing" id="trackStatusBadge" style="margin-top:4px; display:inline-block;">In Transit</span>
+                </div>
+            </div>
+
+            <!-- Checkpoints Timeline -->
+            <div class="tracking-timeline-trail" id="trackCheckpointsList">
+                <!-- Rendered dynamically -->
+            </div>
+
+            <!-- Delivery destination preview -->
+            <div style="background:#1e293b; padding:0.85rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,0.06); margin-bottom:1.5rem; font-size:0.82rem;">
+                <div style="font-weight:700; color:#94a3b8; text-transform:uppercase; font-size:0.72rem; margin-bottom:3px; letter-spacing:0.04em;">Delivery Destination</div>
+                <div id="trackShippingAddr" style="color:#f8fafc; font-weight:600;">Rahul Sharma • Flat 402, Green Acres Apt, Indiranagar, Bengaluru - 560001</div>
+            </div>
+
+            <div style="display:flex; gap:0.75rem; justify-content:flex-end;">
+                <button class="btn-secondary-dark" onclick="downloadInvoice()">
+                    <i class="fas fa-file-invoice"></i> Download Invoice
+                </button>
+                <button class="btn-primary-dark" onclick="closeOrderTrackingModal()">
+                    Done
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Details Breakdown Modal -->
+    <div id="orderDetailsModal" class="nc-modal-overlay" onclick="handleDetailsBackdropClick(event)">
+        <div class="nc-modal-card">
+            <button class="nc-modal-close" onclick="closeOrderDetailsModal()">&times;</button>
+            
+            <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.25rem;">
+                <div style="width:44px; height:44px; border-radius:12px; background:rgba(16,185,129,0.18); color:#34D399; display:flex; align-items:center; justify-content:center; font-size:1.35rem; border:1px solid rgba(16,185,129,0.3);">
+                    <i class="fas fa-receipt"></i>
+                </div>
+                <div>
+                    <h3 style="font-size:1.25rem; font-weight:800; color:#f8fafc; margin:0; font-family:'Outfit',sans-serif;" id="detailsModalOrderId">Order Details</h3>
+                    <span style="font-size:0.8rem; color:#94a3b8;" id="detailsModalDate">Placed on ...</span>
+                </div>
+            </div>
+
+            <!-- Items Breakdown -->
+            <div style="font-size:0.85rem; font-weight:700; color:#94a3b8; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:0.5rem;">Purchased Items</div>
+            <div class="order-details-breakdown" id="detailsItemsList">
+                <!-- Dynamically populated -->
+            </div>
+
+            <!-- Payment & Address info -->
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.75rem; margin-bottom:1.25rem;" class="details-meta-grid">
+                <div style="background:#1e293b; padding:0.85rem; border-radius:10px; border:1px solid rgba(255,255,255,0.06);">
+                    <div style="font-size:0.72rem; font-weight:700; color:#94a3b8; text-transform:uppercase;">Payment Method</div>
+                    <div style="font-weight:700; color:#f8fafc; font-size:0.85rem; margin-top:2px;" id="detailsPaymentMethod"><i class="fas fa-credit-card" style="color:#60a5fa;"></i> Pre-paid Online (Card/UPI)</div>
+                </div>
+                <div style="background:#1e293b; padding:0.85rem; border-radius:10px; border:1px solid rgba(255,255,255,0.06);">
+                    <div style="font-size:0.72rem; font-weight:700; color:#94a3b8; text-transform:uppercase;">Delivery Status</div>
+                    <div style="font-weight:700; color:#34d399; font-size:0.85rem; margin-top:2px;" id="detailsStatusText">Delivered Successfully</div>
+                </div>
+            </div>
+
+            <div style="background:#1e293b; padding:0.85rem; border-radius:10px; border:1px solid rgba(255,255,255,0.06); margin-bottom:1.5rem;">
+                <div style="font-size:0.72rem; font-weight:700; color:#94a3b8; text-transform:uppercase; margin-bottom:2px;">Delivery Address</div>
+                <div style="color:#cbd5e1; font-size:0.82rem;" id="detailsDeliveryAddr">Rahul Sharma • Flat 402, Green Acres Apt, Indiranagar, Bengaluru - 560001</div>
+            </div>
+
+            <div style="display:flex; gap:0.75rem; justify-content:flex-end;">
+                <button class="btn-secondary-dark" onclick="downloadInvoice()">
+                    <i class="fas fa-file-invoice"></i> Download Tax Invoice
+                </button>
+                <button class="btn-primary-dark" onclick="closeOrderDetailsModal()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="assets/js/products.js"></script>
@@ -376,42 +1465,83 @@
     <script src="assets/js/auth.js"></script>
     
     <script>
+        let allUserOrders = [];
+        let currentStatusFilter = 'all';
+
         document.addEventListener('DOMContentLoaded', async () => {
-            let user = getCurrentUser();
-            if (!user && typeof firebase !== 'undefined' && firebase.auth) {
-                user = firebase.auth().currentUser;
-            }
-            if (!user) {
-                user = createMockUserSession('puvitha.c@example.com', 'Puvitha C');
-            }
-            hydrateProfileSidebar(user);
+            const user = getCurrentUser();
+            hydrateUserProfile(user);
             await fetchProducts();
-            renderOrders(user);
+            await loadAndRenderOrders(user);
         });
 
-        function hydrateProfileSidebar(user) {
-            if (!user) return;
-            const name = user.displayName || 'Puvitha C';
-            const email = user.email || 'puvitha.c@example.com';
-            const initial = name.charAt(0).toUpperCase() || 'P';
+        // Hydrate both Desktop Sidebar & Mobile Compact Profile Header
+        function hydrateUserProfile(user) {
+            const desktopAvatar = document.getElementById('profileAvatarLg');
+            const desktopName = document.getElementById('profileDisplayName');
+            const desktopEmail = document.getElementById('profileDisplayEmail');
 
-            const avatarEl = document.getElementById('profileAvatarLg');
-            const nameEl = document.getElementById('profileDisplayName');
-            const emailEl = document.getElementById('profileDisplayEmail');
+            const mobileAvatar = document.getElementById('mobileProfileAvatar');
+            const mobileName = document.getElementById('mobileProfileDisplayName');
+            const mobileEmail = document.getElementById('mobileProfileDisplayEmail');
 
-            if (avatarEl) avatarEl.textContent = initial;
-            if (nameEl) nameEl.textContent = name;
-            if (emailEl) emailEl.textContent = email;
+            if (user) {
+                const name = user.displayName || formatUserDisplayName(user);
+                const email = user.email || 'user@example.com';
+                const initial = (name.charAt(0) || 'U').toUpperCase();
+
+                if (desktopAvatar) desktopAvatar.textContent = initial;
+                if (desktopName) desktopName.textContent = name;
+                if (desktopEmail) desktopEmail.textContent = email;
+
+                if (mobileAvatar) mobileAvatar.textContent = initial;
+                if (mobileName) mobileName.textContent = name;
+                if (mobileEmail) mobileEmail.textContent = email;
+            } else {
+                if (desktopAvatar) desktopAvatar.textContent = 'G';
+                if (desktopName) desktopName.textContent = 'Guest User';
+                if (desktopEmail) desktopEmail.innerHTML = '<a href="login.html" style="color:#60a5fa; font-weight:700;">Sign In</a>';
+
+                if (mobileAvatar) mobileAvatar.textContent = 'G';
+                if (mobileName) mobileName.textContent = 'Guest User';
+                if (mobileEmail) mobileEmail.innerHTML = '<a href="login.html" style="color:#60a5fa; font-weight:700;">Sign In</a>';
+            }
         }
 
-        async function renderOrders(user) {
+        async function loadAndRenderOrders(user) {
             const ordersList = document.getElementById('ordersList');
             const ordersCountBadge = document.getElementById('ordersCountBadge');
-            ordersList.innerHTML = '<div style="text-align: center; padding: 3rem;"><i class="fas fa-spinner fa-spin fa-2x" style="color:var(--color-primary)"></i><p style="margin-top:1rem; color:var(--color-text-secondary);">Loading your orders...</p></div>';
+
+            if (!user) {
+                if (ordersCountBadge) ordersCountBadge.textContent = '0 Orders Tracked';
+                if (ordersList) {
+                    ordersList.innerHTML = `
+                        <div class="empty-orders-dark-card">
+                            <div class="empty-orders-icon-wrap">
+                                <i class="fas fa-box-open"></i>
+                            </div>
+                            <h2 class="empty-orders-title">Sign In to View Your Orders</h2>
+                            <p class="empty-orders-desc">Sign in to track your active shipments, manage past deliveries, download tax invoices, and get live courier updates.</p>
+                            <div style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
+                                <a href="login.html" class="btn-primary-dark"><i class="fas fa-sign-in-alt"></i> Sign In / Register</a>
+                                <a href="products.html" class="btn-secondary-dark"><i class="fas fa-shopping-bag"></i> Start Shopping</a>
+                            </div>
+                        </div>
+                    `;
+                }
+                return;
+            }
+
+            ordersList.innerHTML = `
+                <div style="text-align: center; padding: 4rem 1rem;">
+                    <i class="fas fa-circle-notch fa-spin fa-2x" style="color:#3B82F6;"></i>
+                    <p style="margin-top:1rem; color:#94A3B8; font-weight:600;">Retrieving your orders & tracking status...</p>
+                </div>
+            `;
 
             let orders = [];
 
-            // 1. Try Firestore if available
+            // 1. Try Firestore lookup
             if (typeof db !== 'undefined' && user && user.uid) {
                 try {
                     const snapshot = await db.collection('orders')
@@ -443,7 +1573,16 @@
                             total: 219912,
                             items: [
                                 { id: 1, quantity: 1 }
-                            ]
+                            ],
+                            courier: 'BlueDart Air Express',
+                            trackingAwb: 'BD-84920194',
+                            paymentMethod: 'Prepaid Online (Credit Card / UPI)',
+                            shippingAddress: {
+                                name: 'Puvitha C',
+                                street: 'Flat 402, Green Acres Apartment, 12th Main Indiranagar',
+                                city: 'Bengaluru',
+                                pincode: '560001'
+                            }
                         },
                         {
                             id: 'NC-97103',
@@ -452,118 +1591,186 @@
                             total: 40491,
                             items: [
                                 { id: 4, quantity: 1 }
-                            ]
+                            ],
+                            courier: 'BlueDart Air Express',
+                            trackingAwb: 'BD-71039821',
+                            paymentMethod: 'UPI Verified',
+                            shippingAddress: {
+                                name: 'Puvitha C',
+                                street: 'Flat 402, Green Acres Apartment, 12th Main Indiranagar',
+                                city: 'Bengaluru',
+                                pincode: '560001'
+                            }
                         }
                     ];
                     localStorage.setItem('novacart_mock_orders', JSON.stringify(orders));
                 }
             }
 
-            if (ordersCountBadge) {
-                ordersCountBadge.textContent = `${orders.length} Order${orders.length !== 1 ? 's' : ''} Placed`;
+            // Sort newest first
+            orders.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+            allUserOrders = orders;
+
+            renderFilteredOrders();
+        }
+
+        function filterOrders(status) {
+            currentStatusFilter = status;
+            
+            // Update filter buttons active state
+            document.querySelectorAll('.orders-filter-btn').forEach(btn => {
+                if (btn.textContent.trim().toLowerCase() === status.toLowerCase()) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            renderFilteredOrders();
+        }
+
+        function renderFilteredOrders() {
+            const ordersList = document.getElementById('ordersList');
+            const ordersCountBadge = document.getElementById('ordersCountBadge');
+
+            let filtered = allUserOrders;
+            if (currentStatusFilter !== 'all') {
+                filtered = allUserOrders.filter(o => (o.status || '').toLowerCase() === currentStatusFilter.toLowerCase());
             }
 
-            if (orders.length === 0) {
+            if (ordersCountBadge) {
+                ordersCountBadge.textContent = `${filtered.length} Order${filtered.length !== 1 ? 's' : ''} ${currentStatusFilter === 'all' ? 'Placed' : currentStatusFilter}`;
+            }
+
+            if (filtered.length === 0) {
                 ordersList.innerHTML = `
-                    <div style="text-align: center; padding: 5rem 1rem; background-color: var(--color-card-bg); border-radius: var(--radius-xl); border: 1px solid var(--color-border);">
-                        <i class="fas fa-box-open" style="font-size: 4rem; color: var(--color-border); margin-bottom: 1.5rem;"></i>
-                        <h2 style="font-size: 1.5rem; color: var(--color-text-primary); margin-bottom: 0.5rem;">No Orders Yet</h2>
-                        <p style="color: var(--color-text-secondary); margin-bottom: 2rem;">Looks like you haven't placed any orders yet.</p>
-                        <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-                            <a href="profile.html" class="btn btn-outline"><i class="fas fa-user"></i> Go to Profile</a>
-                            <a href="products.html" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Start Shopping</a>
+                    <div class="empty-orders-dark-card">
+                        <div class="empty-orders-icon-wrap">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <h2 class="empty-orders-title">No Orders Found</h2>
+                        <p class="empty-orders-desc">${currentStatusFilter === 'all' ? "Looks like you haven't placed any orders yet. Discover our flagship collections and exclusive discounts." : `No orders currently matching "${currentStatusFilter}".`}</p>
+                        <div style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
+                            <a href="profile.html" class="btn-secondary-dark"><i class="fas fa-user"></i> Go to Dashboard</a>
+                            <a href="products.html" class="btn-primary-dark"><i class="fas fa-shopping-bag"></i> Start Shopping</a>
                         </div>
                     </div>
                 `;
                 return;
             }
 
-            // Sort newest first
-            orders.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
-
-            ordersList.innerHTML = orders.map(order => {
+            ordersList.innerHTML = filtered.map(order => {
                 const dateObj = order.date ? new Date(order.date) : new Date();
-                const formattedDate = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                const formattedDate = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                const formattedTime = dateObj.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
                 
-                const statusClass = `status-${(order.status || 'Processing').toLowerCase()}`;
+                const status = order.status || 'Processing';
+                const statusClass = `status-${status.toLowerCase()}`;
                 
-                let progressWidth = '0%';
-                if (order.status === 'Processing') progressWidth = '25%';
-                if (order.status === 'Shipped') progressWidth = '60%';
-                if (order.status === 'Delivered') progressWidth = '100%';
-                if (order.status === 'Cancelled') progressWidth = '0%';
+                let progressWidth = '25%';
+                if (status === 'Processing') progressWidth = '50%';
+                if (status === 'Shipped') progressWidth = '75%';
+                if (status === 'Delivered') progressWidth = '100%';
+                if (status === 'Cancelled') progressWidth = '0%';
 
                 const itemsHtml = (order.items || []).map(item => {
                     const product = (typeof products !== 'undefined') ? products.find(p => p.id === item.id) : null;
-                    const imgUrl = product ? (product.image || product.images?.[0]) : 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80';
-                    const name = product ? product.name : 'NovaCart Flagship Item';
+                    const rawImg = product ? (product.image || product.images?.[0]) : 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=75&fm=webp';
+                    const imgUrl = typeof getOptimizedImageUrl === 'function' ? getOptimizedImageUrl(rawImg, 100, 70) : rawImg;
+                    const name = product ? product.name : (item.name || 'NovaCart Flagship Item');
+                    const itemPrice = product ? (product.price * (item.quantity || 1)) : (order.total || 0);
                     
                     return `
-                        <div class="order-item">
-                            <img src="${imgUrl}" alt="${name}" class="order-item-img" loading="lazy">
-                            <div class="order-item-details">
-                                <a href="product-details.html?id=${item.id}" class="order-item-name">${name}</a>
-                                <div style="color: var(--color-text-secondary); font-size: 0.85rem; margin-top: 0.25rem;">Quantity: <b>${item.quantity || 1}</b></div>
+                        <div class="order-item-row">
+                            <img src="${imgUrl}" alt="${name}" class="order-item-thumbnail" loading="lazy" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75&fm=webp';">
+                            <div class="order-item-content">
+                                <a href="product-details.html?id=${item.id || 1}" class="order-item-title">${name}</a>
+                                <div class="order-item-meta">
+                                    <span class="order-item-qty-tag">Qty: ${item.quantity || 1}</span>
+                                    <span class="order-item-price-tag">${typeof formatPrice === 'function' ? formatPrice(itemPrice) : ('₹' + itemPrice.toLocaleString())}</span>
+                                </div>
                             </div>
                         </div>
                     `;
                 }).join('');
 
-                const timelineHtml = order.status === 'Cancelled' ? `
-                    <div style="color: var(--color-danger); text-align: center; margin-top: 2rem; font-weight: 600;">
+                const timelineHtml = status === 'Cancelled' ? `
+                    <div style="color: #F87171; text-align: center; margin-top: 1.25rem; font-weight: 600; font-size:0.88rem;">
                         <i class="fas fa-times-circle"></i> This order was cancelled.
                     </div>
                 ` : `
-                    <div class="timeline" onclick="openOrderTrackingModal('${order.id}')" style="cursor:pointer;" title="Click to view full tracking checkpoint details">
-                        <div class="timeline-progress" style="${window.innerWidth <= 768 ? 'height' : 'width'}: ${progressWidth};"></div>
-                        
-                        <div class="timeline-step completed">
-                            <div class="step-icon"><i class="fas fa-clipboard-check"></i></div>
-                            <div class="step-label">Placed</div>
-                        </div>
-                        
-                        <div class="timeline-step ${['Processing', 'Shipped', 'Delivered'].includes(order.status) ? 'completed' : ''}">
-                            <div class="step-icon"><i class="fas fa-box-open"></i></div>
-                            <div class="step-label">Processing</div>
-                        </div>
-                        
-                        <div class="timeline-step ${['Shipped', 'Delivered'].includes(order.status) ? 'completed' : ''}">
-                            <div class="step-icon"><i class="fas fa-shipping-fast"></i></div>
-                            <div class="step-label">Shipped</div>
-                        </div>
-                        
-                        <div class="timeline-step ${order.status === 'Delivered' ? 'completed' : ''}">
-                            <div class="step-icon"><i class="fas fa-home"></i></div>
-                            <div class="step-label">Delivered</div>
+                    <div class="order-tracker-rail" onclick="openOrderTrackingModal('${order.id}')" title="Click to open live tracking checkpoints">
+                        <div class="tracker-steps-flex">
+                            <div class="tracker-connecting-line"></div>
+                            <div class="tracker-fill-line" style="width: ${progressWidth};"></div>
+                            
+                            <div class="tracker-step-node completed">
+                                <div class="tracker-node-circle"><i class="fas fa-clipboard-check"></i></div>
+                                <div class="tracker-node-label">Placed</div>
+                            </div>
+                            
+                            <div class="tracker-step-node ${['Processing', 'Shipped', 'Delivered'].includes(status) ? 'completed' : ''}">
+                                <div class="tracker-node-circle"><i class="fas fa-box-open"></i></div>
+                                <div class="tracker-node-label">Processing</div>
+                            </div>
+                            
+                            <div class="tracker-step-node ${['Shipped', 'Delivered'].includes(status) ? 'completed' : ''}">
+                                <div class="tracker-node-circle"><i class="fas fa-shipping-fast"></i></div>
+                                <div class="tracker-node-label">Shipped</div>
+                            </div>
+                            
+                            <div class="tracker-step-node ${status === 'Delivered' ? 'completed' : ''}">
+                                <div class="tracker-node-circle"><i class="fas fa-home"></i></div>
+                                <div class="tracker-node-label">Delivered</div>
+                            </div>
                         </div>
                     </div>
                 `;
 
                 return `
                 <div class="order-card">
-                    <div class="order-header">
-                        <div>
-                            <div class="order-id">Order #${order.id}</div>
-                            <div class="order-date">Placed on ${formattedDate}</div>
+                    <!-- Order Header -->
+                    <div class="order-header-row">
+                        <div class="order-id-block">
+                            <div class="order-id-label">
+                                <i class="fas fa-hashtag" style="color:#60A5FA; font-size:0.9rem;"></i>
+                                Order #${order.id}
+                            </div>
+                            <div class="order-date-text">
+                                <i class="far fa-calendar-alt"></i> Placed on ${formattedDate} • ${formattedTime}
+                            </div>
                         </div>
-                        <div style="text-align: right; display:flex; flex-direction:column; align-items:flex-end; gap:0.4rem;">
-                            <div class="order-total">${typeof formatPrice === 'function' ? formatPrice(order.total) : ('₹' + order.total.toLocaleString())}</div>
-                            <div style="display:flex; align-items:center; gap:0.6rem;">
-                                <div class="order-status ${statusClass}">
-                                    <i class="fas ${order.status === 'Delivered' ? 'fa-check' : 'fa-clock'}"></i> ${order.status}
-                                </div>
-                                <button class="btn btn-outline btn-sm" onclick="openOrderTrackingModal('${order.id}')" style="padding:2px 10px; font-size:0.75rem;">
-                                    <i class="fas fa-truck-fast"></i> Track
-                                </button>
+                        <div style="display:flex; align-items:center; gap:0.75rem;">
+                            <div class="order-status-badge ${statusClass}">
+                                <i class="fas ${status === 'Delivered' ? 'fa-check-circle' : (status === 'Shipped' ? 'fa-truck-fast' : 'fa-clock')}"></i>
+                                ${status}
                             </div>
                         </div>
                     </div>
 
-                    <div class="order-items">
+                    <!-- Items List -->
+                    <div class="order-items-container">
                         ${itemsHtml}
                     </div>
 
+                    <!-- Progress Step Rail -->
                     ${timelineHtml}
+
+                    <!-- Footer / Actions Bar -->
+                    <div class="order-footer-bar">
+                        <div class="order-total-block">
+                            <span class="order-total-lbl">Order Total:</span>
+                            <span class="order-total-val">${typeof formatPrice === 'function' ? formatPrice(order.total) : ('₹' + order.total.toLocaleString())}</span>
+                        </div>
+                        <div class="order-action-buttons">
+                            <button class="btn-secondary-dark" onclick="openOrderDetailsModal('${order.id}')">
+                                <i class="fas fa-file-lines"></i> View Details
+                            </button>
+                            <button class="btn-primary-dark" onclick="openOrderTrackingModal('${order.id}')">
+                                <i class="fas fa-truck-fast"></i> Track Order
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 `;
             }).join('');
@@ -571,18 +1778,18 @@
 
         /* Order Tracking Modal Logic */
         function openOrderTrackingModal(orderId) {
-            let orders = [];
-            try {
-                const raw = localStorage.getItem('novacart_mock_orders');
-                if (raw) orders = JSON.parse(raw);
-            } catch (e) {}
-
-            const order = orders.find(o => String(o.id) === String(orderId)) || {
+            const order = allUserOrders.find(o => String(o.id) === String(orderId)) || {
                 id: orderId,
-                courier: "BlueDart Express",
+                courier: "BlueDart Air Express",
                 trackingAwb: "BD-" + Math.floor(10000000 + Math.random() * 90000000),
                 status: "Processing",
-                date: new Date().toISOString()
+                date: new Date().toISOString(),
+                shippingAddress: {
+                    name: 'Puvitha C',
+                    street: 'Flat 402, Green Acres Apartment, Indiranagar',
+                    city: 'Bengaluru',
+                    pincode: '560001'
+                }
             };
 
             const modal = document.getElementById('orderTrackingModal');
@@ -597,22 +1804,21 @@
             const dateObj = new Date(order.date || Date.now());
             const dateStr = dateObj.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
 
-            if (titleEl) titleEl.textContent = `Order #${order.id}`;
+            if (titleEl) titleEl.textContent = `Order Tracking #${order.id}`;
             if (dateEl) dateEl.textContent = `Placed on ${dateStr}`;
             if (courierEl) courierEl.textContent = order.courier || 'BlueDart Air Express';
             if (awbEl) awbEl.textContent = order.trackingAwb || `BD-84920194`;
 
+            const status = order.status || 'Processing';
             if (statusBadge) {
-                statusBadge.className = `order-status status-${(order.status || 'Processing').toLowerCase()}`;
-                statusBadge.textContent = order.status;
+                statusBadge.className = `order-status-badge status-${status.toLowerCase()}`;
+                statusBadge.innerHTML = `<i class="fas ${status === 'Delivered' ? 'fa-check-circle' : 'fa-truck-fast'}"></i> ${status}`;
             }
 
             if (addrEl && order.shippingAddress) {
-                addrEl.textContent = `${order.shippingAddress.name || 'Rahul Sharma'} • ${order.shippingAddress.street || ''}, ${order.shippingAddress.city || 'Bengaluru'} - ${order.shippingAddress.pincode || '560001'}`;
+                addrEl.textContent = `${order.shippingAddress.name || 'Puvitha C'} • ${order.shippingAddress.street || ''}, ${order.shippingAddress.city || 'Bengaluru'} - ${order.shippingAddress.pincode || '560001'}`;
             }
 
-            // Generate Checkpoints based on status
-            const status = order.status || 'Processing';
             const checkpoints = [
                 {
                     title: "Order Placed & Confirmed",
@@ -633,21 +1839,21 @@
                     state: ['Shipped', 'Delivered'].includes(status) ? (status === 'Shipped' ? 'current' : 'completed') : 'pending'
                 },
                 {
-                    title: "Arrived at Local Delivery Hub",
+                    title: "Arrived at Local Indiranagar Hub",
                     sub: "Package reached Indiranagar Last-Mile Delivery Hub",
-                    time: status === 'Delivered' ? `${dateStr}, 08:30 AM` : 'Expected Soon',
+                    time: status === 'Delivered' ? `${dateStr}, 08:30 AM` : 'In Transit to Hub',
                     state: status === 'Delivered' ? 'completed' : 'pending'
                 },
                 {
-                    title: "Out for Delivery",
-                    sub: "Delivery Executive Rajesh Kumar (+91 98765 43210) is on the way",
-                    time: status === 'Delivered' ? `${dateStr}, 11:15 AM` : 'Pending Hub Departure',
+                    title: "Out for Doorstep Delivery",
+                    sub: "Delivery Executive Rajesh Kumar (+91 98765 43210) dispatched with secure OTP",
+                    time: status === 'Delivered' ? `${dateStr}, 11:15 AM` : 'Scheduled upon arrival',
                     state: status === 'Delivered' ? 'completed' : 'pending'
                 },
                 {
                     title: "Delivered to Customer",
                     sub: "Package safely handed over at doorstep with verified OTP",
-                    time: status === 'Delivered' ? `${dateStr}, 01:20 PM` : 'Scheduled for Tomorrow',
+                    time: status === 'Delivered' ? `${dateStr}, 01:20 PM` : 'Estimated Tomorrow',
                     state: status === 'Delivered' ? 'completed' : 'pending'
                 }
             ];
@@ -658,10 +1864,10 @@
                         <div class="tracking-node-dot"></div>
                         <div class="tracking-node-title">
                             ${cp.title}
-                            ${cp.state === 'current' ? '<span style="font-size:0.7rem; background:#38bdf8; color:#0f172a; padding:1px 6px; border-radius:4px; font-weight:800;">LIVE</span>' : ''}
+                            ${cp.state === 'current' ? '<span style="font-size:0.68rem; background:#38bdf8; color:#0f172a; padding:1px 6px; border-radius:4px; font-weight:800; margin-left:4px;">LIVE</span>' : ''}
                         </div>
                         <div class="tracking-node-sub">${cp.sub}</div>
-                        <div class="tracking-node-time">${cp.time}</div>
+                        <div class="tracking-node-time"><i class="far fa-clock" style="font-size:0.7rem; margin-right:3px;"></i>${cp.time}</div>
                     </div>
                 `).join('');
             }
@@ -686,6 +1892,109 @@
             }
         }
 
+        /* Order Details Modal Logic */
+        function openOrderDetailsModal(orderId) {
+            const order = allUserOrders.find(o => String(o.id) === String(orderId)) || allUserOrders[0];
+            if (!order) return;
+
+            const modal = document.getElementById('orderDetailsModal');
+            const titleEl = document.getElementById('detailsModalOrderId');
+            const dateEl = document.getElementById('detailsModalDate');
+            const itemsList = document.getElementById('detailsItemsList');
+            const paymentEl = document.getElementById('detailsPaymentMethod');
+            const statusEl = document.getElementById('detailsStatusText');
+            const addrEl = document.getElementById('detailsDeliveryAddr');
+
+            const dateObj = new Date(order.date || Date.now());
+            const dateStr = dateObj.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+
+            if (titleEl) titleEl.textContent = `Order Breakdown #${order.id}`;
+            if (dateEl) dateEl.textContent = `Placed on ${dateStr}`;
+            if (paymentEl) paymentEl.innerHTML = `<i class="fas fa-credit-card" style="color:#60a5fa;"></i> ${order.paymentMethod || 'Pre-paid Online'}`;
+            if (statusEl) statusEl.textContent = `${order.status || 'Processing'} (${order.courier || 'BlueDart Air Express'})`;
+            
+            if (addrEl && order.shippingAddress) {
+                addrEl.textContent = `${order.shippingAddress.name || 'Puvitha C'} • ${order.shippingAddress.street || ''}, ${order.shippingAddress.city || 'Bengaluru'} - ${order.shippingAddress.pincode || '560001'}`;
+            }
+
+            let subtotal = 0;
+            const itemsMarkup = (order.items || []).map(item => {
+                const product = (typeof products !== 'undefined') ? products.find(p => p.id === item.id) : null;
+                const rawImg = product ? (product.image || product.images?.[0]) : 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=75&fm=webp';
+                const imgUrl = typeof getOptimizedImageUrl === 'function' ? getOptimizedImageUrl(rawImg, 100, 70) : rawImg;
+                const name = product ? product.name : (item.name || 'NovaCart Flagship Item');
+                const price = product ? product.price : (order.total || 0);
+                const itemTotal = price * (item.quantity || 1);
+                subtotal += itemTotal;
+
+                return `
+                    <div class="details-item-row">
+                        <img src="${imgUrl}" alt="${name}" style="width:52px; height:52px; border-radius:8px; background:#0f172a; object-fit:contain; padding:3px; border:1px solid rgba(255,255,255,0.06);">
+                        <div style="flex:1; min-width:0;">
+                            <div style="font-weight:700; color:#f8fafc; font-size:0.88rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${name}</div>
+                            <div style="font-size:0.78rem; color:#94a3b8; margin-top:2px;">Qty: <b>${item.quantity || 1}</b> × ${typeof formatPrice === 'function' ? formatPrice(price) : ('₹' + price.toLocaleString())}</div>
+                        </div>
+                        <div style="font-weight:800; color:#f8fafc; font-family:'Outfit',sans-serif; font-size:0.92rem;">
+                            ${typeof formatPrice === 'function' ? formatPrice(itemTotal) : ('₹' + itemTotal.toLocaleString())}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            const finalTotal = order.total || subtotal;
+
+            if (itemsList) {
+                itemsList.innerHTML = `
+                    ${itemsMarkup}
+                    <div class="details-pricing-grid">
+                        <div class="details-price-line">
+                            <span>Item Subtotal</span>
+                            <span>${typeof formatPrice === 'function' ? formatPrice(finalTotal) : ('₹' + finalTotal.toLocaleString())}</span>
+                        </div>
+                        <div class="details-price-line">
+                            <span>Standard Express Shipping</span>
+                            <span style="color:#34D399; font-weight:700;">FREE</span>
+                        </div>
+                        <div class="details-price-line">
+                            <span>GST & Taxes (18% Included)</span>
+                            <span>₹0.00</span>
+                        </div>
+                        <div class="details-price-line total">
+                            <span>Total Amount Paid</span>
+                            <span style="color:#60A5FA;">${typeof formatPrice === 'function' ? formatPrice(finalTotal) : ('₹' + finalTotal.toLocaleString())}</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeOrderDetailsModal() {
+            const modal = document.getElementById('orderDetailsModal');
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function handleDetailsBackdropClick(e) {
+            if (e.target && e.target.id === 'orderDetailsModal') {
+                closeOrderDetailsModal();
+            }
+        }
+
+        function downloadInvoice() {
+            if (typeof showToast === 'function') {
+                showToast('Tax Invoice PDF downloaded successfully!', 'success');
+            } else {
+                alert('Tax Invoice PDF downloaded successfully!');
+            }
+        }
+
         function handleLogout() {
             if (typeof logout === 'function') {
                 logout();
@@ -695,59 +2004,5 @@
             }
         }
     </script>
-
-    <!-- Order Tracking Modal Markup -->
-    <div id="orderTrackingModal" class="tracking-modal-overlay" onclick="handleTrackingBackdropClick(event)">
-        <div class="tracking-modal-card">
-            <button class="modal-close-btn" onclick="closeOrderTrackingModal()">&times;</button>
-            
-            <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:1.25rem;">
-                <div style="width:44px; height:44px; border-radius:12px; background:rgba(37,99,235,0.18); color:#60a5fa; display:flex; align-items:center; justify-content:center; font-size:1.35rem;">
-                    <i class="fas fa-truck-fast"></i>
-                </div>
-                <div>
-                    <h3 style="font-size:1.25rem; font-weight:800; color:#f8fafc; margin:0;" id="trackModalOrderId">Order Tracking</h3>
-                    <span style="font-size:0.8rem; color:#94a3b8;" id="trackModalPlacedDate">Placed on ...</span>
-                </div>
-            </div>
-
-            <!-- Courier details banner -->
-            <div class="tracking-courier-box">
-                <div>
-                    <div style="font-size:0.72rem; font-weight:700; color:#94a3b8; text-transform:uppercase;">Courier Partner</div>
-                    <div style="font-weight:700; font-size:0.95rem; color:#38bdf8;" id="trackCourierName">BlueDart Express Air</div>
-                    <div style="font-size:0.78rem; color:#cbd5e1;">AWB No: <b id="trackAwbNumber">BD-84920194</b></div>
-                </div>
-                <div style="text-align:right;">
-                    <div style="font-size:0.72rem; font-weight:700; color:#94a3b8; text-transform:uppercase;">Status</div>
-                    <span class="order-status status-processing" id="trackStatusBadge" style="margin-top:2px; display:inline-block;">Out for Delivery</span>
-                </div>
-            </div>
-
-            <!-- Checkpoints Timeline -->
-            <div class="tracking-timeline-trail" id="trackCheckpointsList">
-                <!-- Rendered dynamically -->
-            </div>
-
-            <!-- Delivery destination preview -->
-            <div style="background:#1e293b; padding:0.85rem 1rem; border-radius:var(--radius-md); border:1px solid rgba(255,255,255,0.06); margin-bottom:1.5rem; font-size:0.82rem;">
-                <div style="font-weight:700; color:#94a3b8; text-transform:uppercase; font-size:0.72rem; margin-bottom:2px;">Shipping Address</div>
-                <div id="trackShippingAddr" style="color:#f8fafc; font-weight:600;">Rahul Sharma • Flat 402, Green Acres Apt, Indiranagar, Bengaluru - 560001</div>
-            </div>
-
-            <div style="display:flex; gap:0.75rem; justify-content:flex-end;">
-                <button class="btn btn-outline btn-sm" onclick="showToast('Tax Invoice downloaded to your device!', 'success')">
-                    <i class="fas fa-file-invoice"></i> Download Invoice
-                </button>
-                <button class="btn btn-primary btn-sm" onclick="closeOrderTrackingModal()">
-                    Done
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <button id="backToTop" class="btn-icon" title="Back to Top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="position: fixed; bottom: 2rem; right: 2rem; z-index: 99; display: none; background: var(--color-primary); color: white; box-shadow: var(--shadow-lg);">
-        <i class="fas fa-arrow-up"></i>
-    </button>
 </body>
 </html>

@@ -75,6 +75,11 @@ async function updateAuthUI(user) {
       }
     });
 
+    // Update Mobile Greeting Pill
+    document.querySelectorAll('.mobile-greeting-name').forEach(el => {
+      el.textContent = displayName;
+    });
+
     // Check if user is an Admin
     let isAdmin = user.role === 'admin' || (user.email && user.email.toLowerCase() === 'admin@novacart.com');
 
@@ -120,6 +125,11 @@ async function updateAuthUI(user) {
     
     profileLinks.forEach(el => {
       el.style.setProperty('display', 'none', 'important');
+    });
+
+    // Reset Mobile Greeting Pill to Guest
+    document.querySelectorAll('.mobile-greeting-name').forEach(el => {
+      el.textContent = 'Guest';
     });
 
     if (existingAdminLink) {
@@ -174,8 +184,15 @@ function getCurrentUser() {
   if (authInstance && authInstance.currentUser) {
     return authInstance.currentUser;
   }
-  const mockUser = localStorage.getItem('novacart_mock_user');
-  return mockUser ? JSON.parse(mockUser) : null;
+  const mockUser = localStorage.getItem('novacart_mock_user') || localStorage.getItem('currentUser') || sessionStorage.getItem('novacart_mock_user') || sessionStorage.getItem('currentUser');
+  if (mockUser) {
+    try {
+      return JSON.parse(mockUser);
+    } catch (e) {
+      return null;
+    }
+  }
+  return null;
 }
 
 // Create and persist a mock user session dynamically for any email address
@@ -375,21 +392,31 @@ async function logout() {
     if (authInstance && authInstance.signOut) {
       await authInstance.signOut();
     }
-    localStorage.removeItem('novacart_mock_user');
-    updateAuthUI(null);
-    showToast('Logged out successfully');
-    setTimeout(() => {
-      window.location.href = 'index.html';
-    }, 800);
   } catch (error) {
-    console.error(error);
+    console.warn("SignOut notice:", error);
+  } finally {
+    // Clear all user session and auth keys
     localStorage.removeItem('novacart_mock_user');
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('user');
+    sessionStorage.removeItem('novacart_mock_user');
+    sessionStorage.removeItem('currentUser');
+    sessionStorage.removeItem('user');
+
+    // Update UI across all open tabs/views immediately
     updateAuthUI(null);
     showToast('Logged out successfully');
+
     setTimeout(() => {
       window.location.href = 'index.html';
-    }, 800);
+    }, 600);
   }
+}
+
+// Global alias for templates
+if (typeof window !== 'undefined') {
+  window.logout = logout;
+  window.handleLogout = logout;
 }
 
 // Google Login with real OAuth popup and styled Account Chooser fallback

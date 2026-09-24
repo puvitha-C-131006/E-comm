@@ -543,7 +543,7 @@ function initBackToTop() {
     btn.className = 'btn-icon';
     btn.title = 'Back to Top';
     btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-    btn.style.cssText = 'position: fixed; bottom: 5.5rem; right: 1.5rem; z-index: 99; display: none; background: var(--color-primary); color: white; box-shadow: var(--shadow-lg); border: none;';
+    btn.style.cssText = 'position: fixed; display: none; background: var(--color-primary); color: white; box-shadow: var(--shadow-lg); border: none; border-radius: 50%;';
     btn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
     document.body.appendChild(btn);
   }

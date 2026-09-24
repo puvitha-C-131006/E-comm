@@ -378,7 +378,7 @@
                 <tr>
                     <td data-label="Product">
                         <div class="cart-item-info">
-                            <img src="${product.image}" alt="${product.name}" class="cart-item-img" loading="lazy" onerror="this.onerror=null; this.src='assets/images/product-default.png';">
+                            <img src="${typeof getOptimizedImageUrl === 'function' ? getOptimizedImageUrl(product.image, 120, 70) : product.image}" alt="${product.name}" class="cart-item-img" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=120&q=75&fm=webp';">
                             <div>
                                 <a href="product-details.html?id=${product.id}" class="cart-item-title">${product.name}</a>
                                 <span class="cart-item-brand">${product.brand}</span>

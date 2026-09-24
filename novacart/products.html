@@ -316,7 +316,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #FFFFFF;
+            background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+            background-size: 200% 100%;
+            animation: skeletonShimmer 1.5s infinite;
             border-radius: var(--radius-md);
             overflow: hidden;
             margin-bottom: 0.5rem;
@@ -325,8 +327,75 @@
             box-sizing: border-box;
         }
 
-        [data-theme="dark"] .catalog-img-box {
+        .catalog-img-box.img-loaded,
+        .catalog-img-box:has(.catalog-img.loaded) {
+            animation: none;
             background: #111827;
+        }
+
+        /* Skeleton Shimmer Loaders */
+        .skeleton-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            min-width: 0;
+            box-shadow: var(--shadow-xs);
+        }
+
+        .skeleton-img-placeholder {
+            width: 100%;
+            height: 185px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+            background-size: 200% 100%;
+            animation: skeletonShimmer 1.5s infinite;
+        }
+
+        .skeleton-line {
+            height: 12px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+            background-size: 200% 100%;
+            animation: skeletonShimmer 1.5s infinite;
+        }
+
+        .skeleton-line.short { width: 35%; height: 10px; }
+        .skeleton-line.long { width: 90%; height: 14px; }
+        .skeleton-line.medium { width: 60%; height: 12px; }
+
+        .skeleton-btn-box {
+            height: 34px;
+            border-radius: var(--radius-sm);
+            background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+            background-size: 200% 100%;
+            animation: skeletonShimmer 1.5s infinite;
+            margin-top: auto;
+        }
+
+        .load-more-container {
+            text-align: center;
+            margin: 2rem 0 1rem 0;
+            width: 100%;
+        }
+
+        .load-more-btn {
+            padding: 0.65rem 2rem !important;
+            font-weight: 700 !important;
+            font-size: 0.9rem !important;
+            border-radius: var(--radius-full) !important;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+        }
+
+        @keyframes skeletonShimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
 
         .catalog-img-link {
@@ -347,7 +416,13 @@
             object-fit: contain;
             object-position: center;
             display: block;
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transition: opacity 0.25s ease-in, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .catalog-img.loaded,
+        .catalog-img[complete] {
+            opacity: 1;
         }
 
         .catalog-product-card:hover .catalog-img {
@@ -1280,12 +1355,20 @@
                         <i class="fas fa-shopping-cart"></i>
                         <span class="badge cart-badge" style="display: none;">0</span>
                     </a>
-                </div>
-            </nav>
+        </div>
 
-            <button class="mobile-toggle" aria-label="Open Navigation Menu">
-                <i class="fas fa-bars"></i>
-            </button>
+        <!-- Mobile Sub-Bar: Greeting Pill & Location Dropdown (Strictly < 768px) -->
+        <div class="mobile-subbar">
+            <div class="mobile-greeting-pill" onclick="window.location.href='profile.html'">
+                <div class="mobile-greeting-avatar"><i class="far fa-user"></i></div>
+                <span>Hey, <b class="mobile-greeting-name">Puvitha</b></span>
+            </div>
+            <div class="mobile-location-dropdown" onclick="openLocationModal()" title="Change Delivery Location">
+                <i class="fas fa-map-marker-alt" style="color:var(--color-primary);"></i>
+                <span class="loc-city-name">Bengaluru</span>
+                <span class="loc-pincode">560001</span>
+                <i class="fas fa-chevron-down loc-arrow"></i>
+            </div>
         </div>
     </header>
 
@@ -1412,8 +1495,17 @@
 
                     <!-- Responsive 4-Column Product Grid -->
                     <div class="catalog-grid" id="catalogGrid">
-                        <!-- Rendered dynamically -->
+                        <!-- Initial skeleton loaders rendered immediately -->
                     </div>
+
+                    <!-- Load More Button & Infinite Scroll Sentinel -->
+                    <div class="load-more-container" id="catalogLoadMoreContainer" style="display:none;">
+                        <button id="catalogLoadMoreBtn" class="btn btn-primary load-more-btn" onclick="loadMoreProducts()">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Load More Products</span>
+                        </button>
+                    </div>
+                    <div id="infiniteScrollSentinel" style="height: 20px; width: 100%; pointer-events: none;"></div>
 
                 </div>
 
@@ -1536,8 +1628,16 @@
         let selectedBrands = new Set();
         let searchDebounceTimer = null;
 
+        // Chunked Pagination & Infinite Scroll State
+        const PAGE_SIZE = 16;
+        let displayedProductsCount = 0;
+        let currentFilteredProducts = [];
+        let infiniteScrollObserver = null;
+
         document.addEventListener('DOMContentLoaded', async () => {
+            renderSkeletons(16); // Immediate First Paint: 16 dark shimmer skeleton cards!
             checkWishlistNavigation();
+            initInfiniteScrollObserver();
             await fetchProducts();
             parseQueryParams();
             populateFilterOptions();
@@ -1546,6 +1646,39 @@
             initQuickViewZoom();
             applyFilters();
         });
+
+        function renderSkeletons(count = 16) {
+            const grid = document.getElementById('catalogGrid');
+            if (!grid) return;
+            grid.innerHTML = Array.from({ length: count }, () => `
+                <div class="skeleton-card">
+                    <div class="skeleton-img-placeholder"></div>
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line long"></div>
+                    <div class="skeleton-line medium"></div>
+                    <div class="skeleton-btn-box"></div>
+                </div>
+            `).join('');
+        }
+
+        function initInfiniteScrollObserver() {
+            const sentinel = document.getElementById('infiniteScrollSentinel');
+            if (!sentinel) return;
+
+            if ('IntersectionObserver' in window) {
+                infiniteScrollObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && displayedProductsCount < currentFilteredProducts.length) {
+                            loadMoreProducts();
+                        }
+                    });
+                }, {
+                    rootMargin: '300px 0px',
+                    threshold: 0.1
+                });
+                infiniteScrollObserver.observe(sentinel);
+            }
+        }
 
         function checkWishlistNavigation() {
             const params = new URLSearchParams(window.location.search);
@@ -1701,11 +1834,12 @@
             dropdown.innerHTML = topMatches.map(prod => {
                 const discounted = calculateDiscount(prod.price, prod.discount);
                 const hasDiscount = prod.discount > 0;
-                const imgUrl = prod.image || (prod.images && prod.images[0]) || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=100&q=80';
+                const rawImg = prod.image || (prod.images && prod.images[0]) || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75&fm=webp';
+                const imgUrl = typeof getOptimizedImageUrl === 'function' ? getOptimizedImageUrl(rawImg, 100, 70) : rawImg;
 
                 return `
                     <div class="search-suggest-item" onclick="window.location.href='product-details.html?id=${prod.id}'">
-                        <img src="${imgUrl}" alt="${escapeHtml(prod.name)}" class="search-suggest-img" loading="lazy">
+                        <img src="${imgUrl}" alt="${escapeHtml(prod.name)}" class="search-suggest-img" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=100&q=75&fm=webp';">
                         <div class="search-suggest-info">
                             <div class="search-suggest-name">${highlightMatch(prod.name, query)}</div>
                             <div class="search-suggest-meta">
@@ -1924,107 +2058,26 @@
                 filtered.sort((a, b) => a.id - b.id);
             }
 
-            renderCatalogCards(filtered);
+            currentFilteredProducts = filtered;
+            displayedProductsCount = 0;
+
+            const grid = document.getElementById('catalogGrid');
+            if (grid) grid.innerHTML = '';
+
+            renderNextProductBatch();
             renderActiveChips();
         }
 
-        function renderActiveChips() {
-            const chipsRow = document.getElementById('activeChipsRow');
-            if (!chipsRow) return;
-
-            const chips = [];
-            
-            // Category Chips
-            selectedCategories.forEach(cat => {
-                chips.push(`
-                    <span class="filter-chip">
-                        <i class="fas fa-tag" style="font-size:0.7rem; opacity:0.7;"></i> ${escapeHtml(cat)} 
-                        <button onclick="toggleCategoryFilter('${cat}')" title="Remove">&times;</button>
-                    </span>
-                `);
-            });
-
-            // Brand Chips
-            selectedBrands.forEach(brand => {
-                chips.push(`
-                    <span class="filter-chip">
-                        <i class="fas fa-copyright" style="font-size:0.7rem; opacity:0.7;"></i> ${escapeHtml(brand)} 
-                        <button onclick="toggleBrandFilter('${brand}')" title="Remove">&times;</button>
-                    </span>
-                `);
-            });
-
-            // Price Chip
-            if (currentMaxPrice < 250000) {
-                chips.push(`
-                    <span class="filter-chip">
-                        <i class="fas fa-rupee-sign" style="font-size:0.7rem; opacity:0.7;"></i> Under ${formatPrice(currentMaxPrice)} 
-                        <button onclick="handlePriceSlider(250000); document.getElementById('priceRangeSlider').value=250000;" title="Reset Price">&times;</button>
-                    </span>
-                `);
-            }
-
-            // Rating Chip
-            const minRating = Number(document.querySelector('input[name="ratingFilter"]:checked')?.value || 0);
-            if (minRating > 0) {
-                chips.push(`
-                    <span class="filter-chip">
-                        <i class="fas fa-star" style="font-size:0.7rem; color:#F59E0B;"></i> ${minRating}★ & Above 
-                        <button onclick="document.querySelector('input[name=\\'ratingFilter\\'][value=\\'0\\']').checked = true; applyFilters();" title="Reset Rating">&times;</button>
-                    </span>
-                `);
-            }
-
-            // Search Query Chip
-            const searchInput = document.getElementById('globalSearchInput');
-            const searchVal = searchInput ? searchInput.value.trim() : '';
-            if (searchVal) {
-                chips.push(`
-                    <span class="filter-chip">
-                        <i class="fas fa-search" style="font-size:0.7rem; opacity:0.7;"></i> "${escapeHtml(searchVal)}" 
-                        <button onclick="document.getElementById('globalSearchInput').value=''; applyFilters();" title="Clear Search">&times;</button>
-                    </span>
-                `);
-            }
-
-            // Deals Chip
-            const dealsCheck = document.getElementById('dealsOnlyCheckbox');
-            if (dealsCheck && dealsCheck.checked) {
-                chips.push(`
-                    <span class="filter-chip">
-                        <i class="fas fa-bolt" style="font-size:0.7rem; color:#F59E0B;"></i> Deals Only 
-                        <button onclick="document.getElementById('dealsOnlyCheckbox').checked = false; applyFilters();" title="Remove">&times;</button>
-                    </span>
-                `);
-            }
-
-            if (chips.length > 0) {
-                chipsRow.innerHTML = chips.join('') + `<button class="clear-filters-btn" style="margin-left:0.5rem;" onclick="resetAllFilters()">Reset All Filters</button>`;
-                chipsRow.style.display = 'flex';
-            } else {
-                chipsRow.innerHTML = '';
-                chipsRow.style.display = 'none';
-            }
-
-            // Sync Mobile Filter Badge Count
-            const mobileBadge = document.getElementById('mobileActiveFiltersCount');
-            if (mobileBadge) {
-                const count = chips.length;
-                mobileBadge.textContent = count;
-                mobileBadge.style.display = count > 0 ? 'inline-flex' : 'none';
-            }
-        }
-
-        function renderCatalogCards(prods) {
+        function renderNextProductBatch() {
             const grid = document.getElementById('catalogGrid');
             const countEl = document.getElementById('resultsCount');
+            const loadMoreContainer = document.getElementById('catalogLoadMoreContainer');
+            const loadMoreBtn = document.getElementById('catalogLoadMoreBtn');
             if (!grid) return;
 
-            if (countEl) {
-                countEl.textContent = `Showing ${prods.length} of ${products.length} Products`;
-            }
-
-            if (prods.length === 0) {
+            if (currentFilteredProducts.length === 0) {
+                if (countEl) countEl.textContent = 'Showing 0 Products';
+                if (loadMoreContainer) loadMoreContainer.style.display = 'none';
                 grid.innerHTML = `
                     <div style="grid-column: 1 / -1; text-align:center; padding: 4rem 1rem; background:var(--color-card-bg); border-radius:var(--radius-xl); border:1px solid var(--color-border); box-shadow:var(--shadow-sm);">
                         <i class="fas fa-search" style="font-size:3rem; color:var(--color-border); margin-bottom:1rem;"></i>
@@ -2036,11 +2089,14 @@
                 return;
             }
 
-            grid.innerHTML = prods.map(prod => {
+            const batch = currentFilteredProducts.slice(displayedProductsCount, displayedProductsCount + PAGE_SIZE);
+            
+            const batchHtml = batch.map(prod => {
                 const discounted = calculateDiscount(prod.price, prod.discount);
                 const hasDiscount = prod.discount > 0;
                 const inWishlist = isInWishlist(prod.id);
-                const imgUrl = prod.image || (prod.images && prod.images[0]) || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80';
+                const rawImg = prod.image || (prod.images && prod.images[0]) || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75&fm=webp';
+                const imgUrl = typeof getOptimizedImageUrl === 'function' ? getOptimizedImageUrl(rawImg, 400, 75) : rawImg;
                 const badgeText = prod.isBestSeller ? 'BEST SELLER' : (hasDiscount ? `${prod.discount}% OFF` : '');
 
                 return `
@@ -2049,7 +2105,7 @@
                         
                         <div class="catalog-img-box">
                             <a href="product-details.html?id=${prod.id}" class="catalog-img-link">
-                                <img src="${imgUrl}" alt="${escapeHtml(prod.name)}" class="catalog-img" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80';">
+                                <img src="${imgUrl}" alt="${escapeHtml(prod.name)}" class="catalog-img" loading="lazy" decoding="async" onload="this.classList.add('loaded'); const b=this.closest('.catalog-img-box'); if(b) b.classList.add('img-loaded');" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75&fm=webp'; this.classList.add('loaded');">
                             </a>
                             <button class="catalog-quickview-trigger-btn" onclick="event.stopPropagation(); openQuickViewModal(event, ${prod.id});" title="Quick View">
                                 <i class="fas fa-eye"></i> Quick View
@@ -2082,6 +2138,29 @@
                     </div>
                 `;
             }).join('');
+
+            grid.insertAdjacentHTML('beforeend', batchHtml);
+            displayedProductsCount += batch.length;
+
+            if (countEl) {
+                countEl.textContent = `Showing ${displayedProductsCount} of ${currentFilteredProducts.length} Products`;
+            }
+
+            if (loadMoreContainer) {
+                if (displayedProductsCount < currentFilteredProducts.length) {
+                    loadMoreContainer.style.display = 'block';
+                    if (loadMoreBtn) {
+                        loadMoreBtn.innerHTML = `<i class="fas fa-plus-circle"></i> <span>Load More Products (${currentFilteredProducts.length - displayedProductsCount} remaining)</span>`;
+                    }
+                } else {
+                    loadMoreContainer.style.display = 'none';
+                }
+            }
+        }
+
+        function loadMoreProducts() {
+            if (displayedProductsCount >= currentFilteredProducts.length) return;
+            renderNextProductBatch();
         }
 
         /* ==========================================================================
@@ -2183,7 +2262,7 @@
             } else if (prod.image) {
                 imagesList = [prod.image];
             } else {
-                imagesList = ['https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80'];
+                imagesList = ['https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75&fm=webp'];
             }
 
             if (imagesList.length === 1) {
@@ -2191,14 +2270,19 @@
             }
 
             if (mainImg) {
-                mainImg.src = imagesList[0];
+                const optMain = typeof getOptimizedImageUrl === 'function' ? getOptimizedImageUrl(imagesList[0], 600, 80) : imagesList[0];
+                mainImg.src = optMain;
+                mainImg.decoding = 'async';
                 mainImg.style.transform = 'scale(1)';
             }
 
             if (thumbsRow) {
-                thumbsRow.innerHTML = imagesList.map((img, idx) => `
-                    <img src="${img}" class="qv-thumb ${idx === 0 ? 'active' : ''}" onclick="selectQuickViewThumb('${img}', this)" alt="Thumbnail ${idx + 1}" loading="lazy">
-                `).join('');
+                thumbsRow.innerHTML = imagesList.map((img, idx) => {
+                    const optThumb = typeof getOptimizedImageUrl === 'function' ? getOptimizedImageUrl(img, 120, 70) : img;
+                    return `
+                        <img src="${optThumb}" class="qv-thumb ${idx === 0 ? 'active' : ''}" onclick="selectQuickViewThumb('${optThumb}', this)" alt="Thumbnail ${idx + 1}" loading="lazy" decoding="async">
+                    `;
+                }).join('');
             }
 
             // Color Swatches
@@ -2444,6 +2528,8 @@
                     }
                 });
             }
+        }
+    </script>
 
     <!-- Mobile Filter Bottom Sheet Modal -->
     <div id="mobileFilterSheetOverlay" class="mobile-sheet-overlay" onclick="if(event.target===this) closeMobileFilterSheet();" aria-modal="true" role="dialog">

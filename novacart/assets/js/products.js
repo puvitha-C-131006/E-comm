@@ -1,4 +1,19 @@
 /* ==========================================================================
+   High-Speed CDN & WebP Image Optimizer Utility
+   ========================================================================== */
+function getOptimizedImageUrl(url, width = 400, quality = 75) {
+    if (!url) return 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75&fm=webp';
+    if (typeof url === 'string' && url.includes('images.unsplash.com')) {
+        const cleanUrl = url.split('?')[0];
+        return cleanUrl + '?auto=format&fit=crop&w=' + width + '&q=' + quality + '&fm=webp';
+    }
+    return url;
+}
+if (typeof window !== 'undefined') {
+    window.getOptimizedImageUrl = getOptimizedImageUrl;
+}
+
+/* ==========================================================================
    NovaCart - Expanded Production Catalog Database (Flipkart/Amazon Spec)
    ========================================================================== */
 
@@ -16,10 +31,10 @@ let products = [
     "isDeal": true,
     "isTrending": true,
     "badge": "Amazon's Choice",
-    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=75&fm=webp",
     "images": [
-      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=75&fm=webp",
+      "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?auto=format&fit=crop&w=400&q=75&fm=webp"
     ],
     "variants": {
       "colors": [
@@ -67,10 +82,10 @@ let products = [
     "isDeal": true,
     "isTrending": true,
     "badge": "Best Seller",
-    "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=75&fm=webp",
     "images": [
-      "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=75&fm=webp",
+      "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=400&q=75&fm=webp"
     ],
     "variants": {
       "colors": [
@@ -122,7 +137,7 @@ let products = [
     "isDeal": true,
     "isTrending": false,
     "badge": "Top Rated",
-    "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -148,8 +163,8 @@ let products = [
     "description": "Unmatched performance with Apple Silicon M2, mini-LED display, and Apple Pencil hover.",
     "id": 3,
     "images": [
-      "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=400&q=75&fm=webp",
+      "https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -164,7 +179,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -193,8 +208,8 @@ let products = [
     "id": 4,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=400&q=75&fm=webp",
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -209,7 +224,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": false,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -232,7 +247,7 @@ let products = [
     "id": 5,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -247,7 +262,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": false,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -269,7 +284,7 @@ let products = [
     "id": 6,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -284,7 +299,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -306,7 +321,7 @@ let products = [
     "id": 7,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -321,7 +336,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -342,7 +357,7 @@ let products = [
     "id": 8,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -358,7 +373,7 @@ let products = [
     "isDeal": true,
     "isTrending": true,
     "badge": "Amazon's Choice",
-    "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -389,7 +404,7 @@ let products = [
     "description": "Galaxy AI revolutionizes communication, productivity, and nighttime photography in titanium perfection.",
     "id": 9,
     "images": [
-      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -404,7 +419,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -430,7 +445,7 @@ let products = [
     "id": 10,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -445,7 +460,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -471,7 +486,7 @@ let products = [
     "id": 11,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1561154464-82e9adf32764?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -486,7 +501,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -509,7 +524,7 @@ let products = [
     "id": 12,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -524,7 +539,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -553,7 +568,7 @@ let products = [
     "id": 13,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -568,7 +583,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -589,7 +604,7 @@ let products = [
     "id": 14,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -604,7 +619,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -625,7 +640,7 @@ let products = [
     "id": 15,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -641,7 +656,7 @@ let products = [
     "isDeal": true,
     "isTrending": true,
     "badge": "Best Seller",
-    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -665,7 +680,7 @@ let products = [
     "description": "Unrivaled active noise cancellation with high-resolution wireless LDAC audio certification.",
     "id": 16,
     "images": [
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -680,7 +695,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -705,7 +720,7 @@ let products = [
     "id": 17,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -720,7 +735,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": false,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -742,7 +757,7 @@ let products = [
     "id": 18,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -757,7 +772,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1577979749830-f1d742b96791?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1577979749830-f1d742b96791?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -780,7 +795,7 @@ let products = [
     "id": 19,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1577979749830-f1d742b96791?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1577979749830-f1d742b96791?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -795,7 +810,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -817,7 +832,7 @@ let products = [
     "id": 20,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -832,7 +847,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": false,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1543512214-318c7553f230?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1543512214-318c7553f230?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -853,7 +868,7 @@ let products = [
     "id": 21,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1543512214-318c7553f230?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1543512214-318c7553f230?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -869,7 +884,7 @@ let products = [
     "isDeal": true,
     "isTrending": true,
     "badge": "Amazon's Choice",
-    "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -893,7 +908,7 @@ let products = [
     "description": "Ergonomic masterwork mouse with electromagnetic scrolling wheel and customizable gesture button.",
     "id": 22,
     "images": [
-      "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -908,7 +923,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -929,7 +944,7 @@ let products = [
     "id": 23,
     "badge": "30% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -944,7 +959,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -977,7 +992,7 @@ let products = [
     "id": 24,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -992,7 +1007,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": false,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1024,7 +1039,7 @@ let products = [
     "id": 25,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1039,7 +1054,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1066,7 +1081,7 @@ let products = [
     "id": 26,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1081,7 +1096,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1113,7 +1128,7 @@ let products = [
     "id": 27,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1128,7 +1143,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1161,7 +1176,7 @@ let products = [
     "id": 28,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1176,7 +1191,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1204,7 +1219,7 @@ let products = [
     "id": 29,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1548883354-7622d03aca27?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1219,7 +1234,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1251,7 +1266,7 @@ let products = [
     "id": 30,
     "badge": "30% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1266,7 +1281,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1298,7 +1313,7 @@ let products = [
     "id": 31,
     "badge": "28% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1313,7 +1328,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1340,7 +1355,7 @@ let products = [
     "id": 32,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1355,7 +1370,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1584865288642-42078afe6942?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1584865288642-42078afe6942?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1383,7 +1398,7 @@ let products = [
     "id": 33,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1584865288642-42078afe6942?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1584865288642-42078afe6942?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1398,7 +1413,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1430,7 +1445,7 @@ let products = [
     "id": 34,
     "badge": "30% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1445,7 +1460,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1477,7 +1492,7 @@ let products = [
     "id": 35,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1492,7 +1507,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1520,7 +1535,7 @@ let products = [
     "id": 36,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1521223890158-f9f7c3d5d504?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1535,7 +1550,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": false,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1563,7 +1578,7 @@ let products = [
     "id": 37,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1578,7 +1593,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1610,7 +1625,7 @@ let products = [
     "id": 38,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1625,7 +1640,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": false,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1657,7 +1672,7 @@ let products = [
     "id": 39,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1672,7 +1687,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1700,7 +1715,7 @@ let products = [
     "id": 40,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1715,7 +1730,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1747,7 +1762,7 @@ let products = [
     "id": 41,
     "badge": "28% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1762,7 +1777,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": false,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1790,7 +1805,7 @@ let products = [
     "id": 42,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1805,7 +1820,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1833,7 +1848,7 @@ let products = [
     "id": 43,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1848,7 +1863,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1875,7 +1890,7 @@ let products = [
     "id": 44,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1576871337622-98d48d1cf531?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1891,7 +1906,7 @@ let products = [
     "isDeal": true,
     "isTrending": true,
     "badge": "Trending",
-    "image": "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1923,7 +1938,7 @@ let products = [
     "description": "Nike's first lifestyle Air unit meets the softest, smoothest, and most resilient Nike React foam.",
     "id": 45,
     "images": [
-      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1939,7 +1954,7 @@ let products = [
     "isDeal": false,
     "isTrending": true,
     "badge": "Best Seller",
-    "image": "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -1969,7 +1984,7 @@ let products = [
     "description": "The radiance lives on in the Nike Air Force 1 '07, the b-ball icon that puts a fresh spin on classic stitched leather.",
     "id": 46,
     "images": [
-      "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -1985,7 +2000,7 @@ let products = [
     "isDeal": true,
     "isTrending": true,
     "badge": "Iconic Grail",
-    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2009,7 +2024,7 @@ let products = [
     "description": "The sneaker that started it all. Premium high-top silhouette in the immortal Chicago colorway.",
     "id": 47,
     "images": [
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2024,7 +2039,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2053,7 +2068,7 @@ let products = [
     "id": 48,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2068,7 +2083,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2094,7 +2109,7 @@ let products = [
     "id": 49,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2110,7 +2125,7 @@ let products = [
     "isDeal": false,
     "isTrending": true,
     "badge": "Elite Marathon",
-    "image": "https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2137,7 +2152,7 @@ let products = [
     "description": "Catch 'em if you can. The Nike Vaporfly 3 is built for the chasers, the racers, and the elevated pacers.",
     "id": 50,
     "images": [
-      "https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1587563871167-1ee9c731aefb?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2152,7 +2167,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2180,7 +2195,7 @@ let products = [
     "id": 51,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2195,7 +2210,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2223,7 +2238,7 @@ let products = [
     "id": 52,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2239,7 +2254,7 @@ let products = [
     "isDeal": true,
     "isTrending": true,
     "badge": "50% OFF Deal",
-    "image": "https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2270,7 +2285,7 @@ let products = [
     "description": "Experience epic energy return with the lightest Ultraboost ever made, engineered with responsive BOOST pellets.",
     "id": 53,
     "images": [
-      "https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2286,7 +2301,7 @@ let products = [
     "isDeal": true,
     "isTrending": true,
     "badge": "Global Trend",
-    "image": "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2315,7 +2330,7 @@ let products = [
     "description": "Born on the pitch, the Samba is a timeless icon of street style with signature suede T-toe and gum sole.",
     "id": 54,
     "images": [
-      "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2330,7 +2345,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1595341888016-a392ef81b7de?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1595341888016-a392ef81b7de?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2360,7 +2375,7 @@ let products = [
     "id": 55,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1595341888016-a392ef81b7de?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1595341888016-a392ef81b7de?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2375,7 +2390,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2407,7 +2422,7 @@ let products = [
     "id": 56,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2423,7 +2438,7 @@ let products = [
     "isDeal": false,
     "isTrending": true,
     "badge": "World Record Gear",
-    "image": "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2450,7 +2465,7 @@ let products = [
     "description": "Engineered with athletes to achieve world record marathon performance and explosive transition speed.",
     "id": 57,
     "images": [
-      "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2465,7 +2480,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1514989940723-e8e51635b782?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1514989940723-e8e51635b782?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2493,7 +2508,7 @@ let products = [
     "id": 58,
     "badge": "30% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1514989940723-e8e51635b782?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1514989940723-e8e51635b782?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2508,7 +2523,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2536,7 +2551,7 @@ let products = [
     "id": 59,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2551,7 +2566,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2579,7 +2594,7 @@ let products = [
     "id": 60,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2594,7 +2609,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2623,7 +2638,7 @@ let products = [
     "id": 61,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2638,7 +2653,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2666,7 +2681,7 @@ let products = [
     "id": 62,
     "badge": "30% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1575537302964-96cd47c06b1b?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2681,7 +2696,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": false,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1595341888016-a392ef81b7de?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1595341888016-a392ef81b7de?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2715,7 +2730,7 @@ let products = [
     "id": 63,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1595341888016-a392ef81b7de?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1595341888016-a392ef81b7de?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2730,7 +2745,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2758,7 +2773,7 @@ let products = [
     "id": 64,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2773,7 +2788,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2801,7 +2816,7 @@ let products = [
     "id": 65,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2816,7 +2831,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": false,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2843,7 +2858,7 @@ let products = [
     "id": 66,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2859,7 +2874,7 @@ let products = [
     "isDeal": false,
     "isTrending": true,
     "badge": "Hot Deal",
-    "image": "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2880,7 +2895,7 @@ let products = [
     "description": "Next-generation gaming console with ray tracing, 3D Tempest Audio, and lightning fast load times.",
     "id": 67,
     "images": [
-      "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2895,7 +2910,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": false,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2915,7 +2930,7 @@ let products = [
     "id": 68,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2930,7 +2945,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2951,7 +2966,7 @@ let products = [
     "id": 69,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -2966,7 +2981,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -2987,7 +3002,7 @@ let products = [
     "id": 70,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3002,7 +3017,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": false,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3023,7 +3038,7 @@ let products = [
     "id": 71,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3038,7 +3053,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3059,7 +3074,7 @@ let products = [
     "id": 72,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3075,7 +3090,7 @@ let products = [
     "isDeal": true,
     "isTrending": true,
     "badge": "Esports Standard",
-    "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3104,7 +3119,7 @@ let products = [
     "description": "The icon of esports championships remastered with hybrid optical switches and pro-grade tracking.",
     "id": 73,
     "images": [
-      "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3119,7 +3134,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3142,7 +3157,7 @@ let products = [
     "id": 74,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3157,7 +3172,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1599669454699-248893623440?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1599669454699-248893623440?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3190,7 +3205,7 @@ let products = [
     "id": 75,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1599669454699-248893623440?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1599669454699-248893623440?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3205,7 +3220,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3226,7 +3241,7 @@ let products = [
     "id": 76,
     "badge": "28% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3241,7 +3256,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3270,7 +3285,7 @@ let products = [
     "id": 77,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3285,7 +3300,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3310,7 +3325,7 @@ let products = [
     "id": 78,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3325,7 +3340,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3347,7 +3362,7 @@ let products = [
     "id": 79,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1595225476474-87563907a212?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3363,7 +3378,7 @@ let products = [
     "isDeal": false,
     "isTrending": true,
     "badge": "Multi-System Flagship",
-    "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3387,7 +3402,7 @@ let products = [
     "description": "The peak of console gaming audio with instant PLAYSYNC one-click switching between Xbox, PS5, and PC.",
     "id": 80,
     "images": [
-      "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3402,7 +3417,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3427,7 +3442,7 @@ let products = [
     "id": 81,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3442,7 +3457,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3463,7 +3478,7 @@ let products = [
     "id": 82,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3478,7 +3493,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3513,7 +3528,7 @@ let products = [
     "id": 83,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3528,7 +3543,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3550,7 +3565,7 @@ let products = [
     "id": 84,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3565,7 +3580,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3590,7 +3605,7 @@ let products = [
     "id": 85,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3605,7 +3620,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3626,7 +3641,7 @@ let products = [
     "id": 86,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3642,7 +3657,7 @@ let products = [
     "isDeal": false,
     "isTrending": true,
     "badge": "Dyson Flagship",
-    "image": "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3662,7 +3677,7 @@ let products = [
     "description": "Dyson's most powerful, intelligent cordless vacuum with laser illumination that reveals invisible microscopic dust.",
     "id": 87,
     "images": [
-      "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3677,7 +3692,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3698,7 +3713,7 @@ let products = [
     "id": 88,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3714,7 +3729,7 @@ let products = [
     "isDeal": false,
     "isTrending": true,
     "badge": "Luxury Beauty",
-    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3741,7 +3756,7 @@ let products = [
     "description": "Style with air, not extreme heat. Curls, waves, smooths, and dries with re-engineered Coanda airflow barrels.",
     "id": 89,
     "images": [
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3756,7 +3771,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3781,7 +3796,7 @@ let products = [
     "id": 90,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3796,7 +3811,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3816,7 +3831,7 @@ let products = [
     "id": 91,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3831,7 +3846,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": false,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3852,7 +3867,7 @@ let products = [
     "id": 92,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3867,7 +3882,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3888,7 +3903,7 @@ let products = [
     "id": 93,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3903,7 +3918,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3928,7 +3943,7 @@ let products = [
     "id": 94,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3943,7 +3958,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": false,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -3964,7 +3979,7 @@ let products = [
     "id": 95,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -3979,7 +3994,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4000,7 +4015,7 @@ let products = [
     "id": 96,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4015,7 +4030,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4036,7 +4051,7 @@ let products = [
     "id": 97,
     "badge": "28% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4051,7 +4066,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4075,7 +4090,7 @@ let products = [
     "id": 98,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4090,7 +4105,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4110,7 +4125,7 @@ let products = [
     "id": 99,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4125,7 +4140,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4145,7 +4160,7 @@ let products = [
     "id": 100,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4160,7 +4175,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4181,7 +4196,7 @@ let products = [
     "id": 101,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1517668808822-9ebb02f2a0e6?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4196,7 +4211,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4217,7 +4232,7 @@ let products = [
     "id": 102,
     "badge": "30% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4232,7 +4247,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4253,7 +4268,7 @@ let products = [
     "id": 103,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4269,7 +4284,7 @@ let products = [
     "isDeal": true,
     "isTrending": true,
     "badge": "Bespoke Luxury",
-    "image": "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4289,7 +4304,7 @@ let products = [
     "description": "Customizable customizable glass door panels, dual auto ice makers, and integrated filtered beverage center.",
     "id": 104,
     "images": [
-      "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4304,7 +4319,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4324,7 +4339,7 @@ let products = [
     "id": 105,
     "badge": "28% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4339,7 +4354,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4360,7 +4375,7 @@ let products = [
     "id": 106,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4376,7 +4391,7 @@ let products = [
     "isDeal": true,
     "isTrending": false,
     "badge": "Top Rated",
-    "image": "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4405,7 +4420,7 @@ let products = [
     "description": "Handcrafted Scandinavian design combining solid natural oak with ultra-plush stain-resistant woven upholstery.",
     "id": 107,
     "images": [
-      "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4420,7 +4435,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4446,7 +4461,7 @@ let products = [
     "id": 108,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4461,7 +4476,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": false,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4490,7 +4505,7 @@ let products = [
     "id": 109,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4505,7 +4520,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4531,7 +4546,7 @@ let products = [
     "id": 110,
     "badge": "30% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4546,7 +4561,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4570,7 +4585,7 @@ let products = [
     "id": 111,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4585,7 +4600,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4610,7 +4625,7 @@ let products = [
     "id": 112,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4625,7 +4640,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4650,7 +4665,7 @@ let products = [
     "id": 113,
     "badge": "28% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4665,7 +4680,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4687,7 +4702,7 @@ let products = [
     "id": 114,
     "badge": "30% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4702,7 +4717,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4723,7 +4738,7 @@ let products = [
     "id": 115,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4738,7 +4753,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": false,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4763,7 +4778,7 @@ let products = [
     "id": 116,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4778,7 +4793,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4803,7 +4818,7 @@ let products = [
     "id": 117,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4818,7 +4833,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": false,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4847,7 +4862,7 @@ let products = [
     "id": 118,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4862,7 +4877,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4891,7 +4906,7 @@ let products = [
     "id": 119,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4906,7 +4921,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4931,7 +4946,7 @@ let products = [
     "id": 120,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4946,7 +4961,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": false,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -4974,7 +4989,7 @@ let products = [
     "id": 121,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -4989,7 +5004,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": false,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5013,7 +5028,7 @@ let products = [
     "id": 122,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5029,7 +5044,7 @@ let products = [
     "isDeal": true,
     "isTrending": true,
     "badge": "Office Hero",
-    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5052,7 +5067,7 @@ let products = [
     "description": "Comfortable high-back office chair with built-in lumbar support and breathable mesh for long work sessions.",
     "id": 123,
     "images": [
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5067,7 +5082,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5091,7 +5106,7 @@ let products = [
     "id": 124,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5106,7 +5121,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5134,7 +5149,7 @@ let products = [
     "id": 125,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5149,7 +5164,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": false,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5177,7 +5192,7 @@ let products = [
     "id": 126,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5193,7 +5208,7 @@ let products = [
     "isDeal": true,
     "isTrending": true,
     "badge": "50% OFF Deal",
-    "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5222,7 +5237,7 @@ let products = [
     "description": "Originally designed for U.S. aviators in 1937, Ray-Ban Aviators combine iconic styling with exceptional optical clarity.",
     "id": 127,
     "images": [
-      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5238,7 +5253,7 @@ let products = [
     "isDeal": true,
     "isTrending": true,
     "badge": "Iconic Legend",
-    "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5263,7 +5278,7 @@ let products = [
     "description": "The most recognizable style in the history of sunglasses, worn by artists, musicians, and trendsetters worldwide.",
     "id": 128,
     "images": [
-      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5278,7 +5293,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5303,7 +5318,7 @@ let products = [
     "id": 129,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5318,7 +5333,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5348,7 +5363,7 @@ let products = [
     "id": 130,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5363,7 +5378,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5388,7 +5403,7 @@ let products = [
     "id": 131,
     "badge": "30% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5403,7 +5418,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5427,7 +5442,7 @@ let products = [
     "id": 132,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5442,7 +5457,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5467,7 +5482,7 @@ let products = [
     "id": 133,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1577803645773-f96470509666?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5482,7 +5497,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5506,7 +5521,7 @@ let products = [
     "id": 134,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5521,7 +5536,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": false,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5545,7 +5560,7 @@ let products = [
     "id": 135,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5560,7 +5575,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5584,7 +5599,7 @@ let products = [
     "id": 136,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5600,7 +5615,7 @@ let products = [
     "isDeal": true,
     "isTrending": true,
     "badge": "Premium Titanium",
-    "image": "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5626,7 +5641,7 @@ let products = [
     "description": "The most rugged and capable Apple Watch ever designed for endurance athletes and outdoor adventurers.",
     "id": 137,
     "images": [
-      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5641,7 +5656,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5675,7 +5690,7 @@ let products = [
     "id": 138,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5690,7 +5705,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": false,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5718,7 +5733,7 @@ let products = [
     "id": 139,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5733,7 +5748,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5759,7 +5774,7 @@ let products = [
     "id": 140,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5774,7 +5789,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5798,7 +5813,7 @@ let products = [
     "id": 141,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5813,7 +5828,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5837,7 +5852,7 @@ let products = [
     "id": 142,
     "badge": "25% OFF",
     "images": [
-      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5852,7 +5867,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1550985543-f47f38aeee65?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1550985543-f47f38aeee65?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5872,7 +5887,7 @@ let products = [
     "id": 143,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1550985543-f47f38aeee65?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1550985543-f47f38aeee65?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5887,7 +5902,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5907,7 +5922,7 @@ let products = [
     "id": 144,
     "badge": "",
     "images": [
-      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5922,7 +5937,7 @@ let products = [
     "isBestSeller": false,
     "isDeal": true,
     "isTrending": true,
-    "image": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5946,7 +5961,7 @@ let products = [
     "id": 145,
     "badge": "Trending",
     "images": [
-      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   },
   {
@@ -5961,7 +5976,7 @@ let products = [
     "isBestSeller": true,
     "isDeal": false,
     "isTrending": false,
-    "image": "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80",
+    "image": "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=400&q=75&fm=webp",
     "variants": {
       "colors": [
         {
@@ -5984,7 +5999,7 @@ let products = [
     "id": 146,
     "badge": "Best Seller",
     "images": [
-      "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=400&q=75&fm=webp"
     ]
   }
 ];
@@ -6107,6 +6122,7 @@ function shareProduct(productId) {
 // Expose globally
 if (typeof window !== 'undefined') {
     window.products = products;
+    window.getOptimizedImageUrl = getOptimizedImageUrl;
     window.calculateDiscount = calculateDiscount;
     window.formatPrice = formatPrice;
     window.renderStars = renderStars;
@@ -6118,6 +6134,7 @@ if (typeof window !== 'undefined') {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         products,
+        getOptimizedImageUrl,
         calculateDiscount,
         formatPrice,
         renderStars,
