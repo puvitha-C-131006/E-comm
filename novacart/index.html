@@ -357,8 +357,62 @@
 
     <!-- Main Page Content -->
     <main>
-        <div class="container" style="padding-top: 1rem;">
+        <div class="container" style="padding-top: 0.5rem;">
             
+            <!-- Quick Category Circles Strip (Stories / Snap Scroll) -->
+            <section class="category-stories-section">
+                <div class="category-stories-track">
+                    <a href="products.html?category=Electronics" class="category-story-item">
+                        <div class="category-story-circle circle-electronics">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <span class="category-story-label">Electronics</span>
+                    </a>
+                    <a href="products.html?category=Fashion" class="category-story-item">
+                        <div class="category-story-circle circle-fashion">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <span class="category-story-label">Fashion</span>
+                    </a>
+                    <a href="products.html?category=Footwear" class="category-story-item">
+                        <div class="category-story-circle circle-footwear">
+                            <i class="fas fa-shoe-prints"></i>
+                        </div>
+                        <span class="category-story-label">Footwear</span>
+                    </a>
+                    <a href="products.html?category=Gaming" class="category-story-item">
+                        <div class="category-story-circle circle-gaming">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <span class="category-story-label">Gaming</span>
+                    </a>
+                    <a href="products.html?category=Home%20Appliances" class="category-story-item">
+                        <div class="category-story-circle circle-appliances">
+                            <i class="fas fa-blender"></i>
+                        </div>
+                        <span class="category-story-label">Appliances</span>
+                    </a>
+                    <a href="products.html?deals=true" class="category-story-item">
+                        <div class="category-story-circle circle-deals pulse-deal">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <span class="category-story-label" style="color: #EF4444;">Deals</span>
+                    </a>
+                    <a href="products.html?category=Furniture" class="category-story-item">
+                        <div class="category-story-circle circle-furniture">
+                            <i class="fas fa-couch"></i>
+                        </div>
+                        <span class="category-story-label">Furniture</span>
+                    </a>
+                    <a href="products.html?category=Accessories" class="category-story-item">
+                        <div class="category-story-circle circle-accessories">
+                            <i class="fas fa-glasses"></i>
+                        </div>
+                        <span class="category-story-label">Accessories</span>
+                    </a>
+                </div>
+            </section>
+
             <!-- Hero Banner Promotional Carousel (Amazon/Flipkart Slider) -->
             <section class="hero-carousel-container">
                 <div class="hero-slides-wrapper" id="heroSlidesWrapper">
@@ -632,8 +686,24 @@
                 </div>
             </section>
 
+            <!-- Personalized For You Section (Native 2-Column Mobile Card Grid) -->
+            <section class="personalized-section">
+                <div class="personalized-header">
+                    <div class="personalized-title-box">
+                        <h2 class="personalized-title">
+                            <i class="fas fa-sparkles" style="color:var(--color-primary)"></i> Personalized For You
+                        </h2>
+                    </div>
+                    <a href="products.html" class="btn btn-outline btn-sm">Explore More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="personalized-grid" id="personalizedGrid">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </section>
+
             <!-- Trust and Service Guarantee Grid -->
-            <section style="margin: 4rem 0 2rem;">
+            <section style="margin: 3.5rem 0 2rem;">
                 <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:1.5rem;" class="trust-grid">
                     <div style="background:var(--color-card-bg); border:1px solid var(--color-border); border-radius:var(--radius-lg); padding:1.5rem; display:flex; align-items:center; gap:1rem;">
                         <div style="width:48px; height:48px; border-radius:50%; background:var(--color-primary-light); color:var(--color-primary); display:flex; align-items:center; justify-content:center; font-size:1.3rem;"><i class="fas fa-truck-fast"></i></div>
@@ -785,6 +855,105 @@
             const dealsTrack = document.getElementById('dealsTrack');
             const bestsellersTrack = document.getElementById('bestsellersTrack');
             const trendingTrack = document.getElementById('trendingTrack');
+            const personalizedGrid = document.getElementById('personalizedGrid');
+
+            const createCardHtml = (prod, badgeText, badgeClass = 'badge-deal') => {
+                const discounted = calculateDiscount(prod.price, prod.discount);
+                const hasDiscount = prod.discount > 0;
+                const inWishlist = isInWishlist(prod.id);
+                const imgUrl = prod.image || (prod.images && prod.images[0]) || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80';
+
+                return `
+                    <div class="carousel-product-card">
+                        ${badgeText ? `<span class="${badgeClass}">${badgeText}</span>` : ''}
+                        
+                        <div style="width:100%; height:185px; display:flex; align-items:center; justify-content:center; background:#FFFFFF; border-radius:var(--radius-md); overflow:hidden; margin-bottom:0.55rem; position:relative; padding:6px; box-sizing:border-box;">
+                            <a href="product-details.html?id=${prod.id}" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                                <img src="${imgUrl}" alt="${escapeHtml(prod.name)}" style="width:100%; height:100%; max-height:100%; max-width:100%; object-fit:contain; object-position:center; display:block; transition:transform 0.35s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80';">
+                            </a>
+                            <button class="btn-icon" onclick="toggleWishlist(${prod.id})" style="position:absolute; top:6px; right:6px; width:30px; height:30px; font-size:0.8rem; background:rgba(255,255,255,0.9); box-shadow:var(--shadow-sm);" title="Add to Wishlist">
+                                <i class="${inWishlist ? 'fas' : 'far'} fa-heart" style="${inWishlist ? 'color:var(--color-danger);' : ''}"></i>
+                            </button>
+                        </div>
+
+                        <div style="font-size:0.75rem; font-weight:700; color:var(--color-primary); text-transform:uppercase; margin-bottom:0.25rem;">
+                            ${escapeHtml(prod.brand || prod.category)}
+                        </div>
+
+                        <a href="product-details.html?id=${prod.id}" style="font-size:0.9rem; font-weight:700; color:var(--color-text-primary); line-height:1.3; min-height:2.6em; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; margin-bottom:0.4rem;">
+                            ${escapeHtml(prod.name)}
+                        </a>
+
+                        <div style="margin-bottom:0.5rem;">
+                            ${renderStars(prod.rating, true, prod.reviewCount)}
+                        </div>
+
+                        <div style="display:flex; align-items:baseline; gap:6px; margin-bottom:0.75rem; margin-top:auto;">
+                            <span style="font-size:1.15rem; font-weight:800; color:var(--color-text-primary); font-family:'Outfit',sans-serif;">${formatPrice(discounted)}</span>
+                            ${hasDiscount ? `<span style="font-size:0.82rem; text-decoration:line-through; color:var(--color-text-muted);">${formatPrice(prod.price)}</span>` : ''}
+                            ${hasDiscount ? `<span style="font-size:0.75rem; font-weight:800; color:#EF4444;">(${prod.discount}% off)</span>` : ''}
+                        </div>
+
+                        <button class="btn btn-primary btn-sm" onclick="addToCart(${prod.id}, 1)" style="width:100%; border-radius:var(--radius-sm);">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                `;
+            };
+
+            // Deals: products with discount >= 15
+            const dealProds = products.filter(p => p.discount >= 15);
+            if (dealsTrack) {
+                dealsTrack.innerHTML = dealProds.map(p => createCardHtml(p, `${p.discount}% OFF`, 'badge-deal')).join('');
+            }
+
+            // Best Sellers: rating >= 4.8 or isBestSeller
+            const bestSellerProds = products.filter(p => p.isBestSeller || p.rating >= 4.8);
+            if (bestsellersTrack) {
+                bestsellersTrack.innerHTML = bestSellerProds.map(p => createCardHtml(p, 'BEST SELLER', 'badge-bestseller')).join('');
+            }
+
+            // Trending / New Drops
+            const trendingProds = products.filter(p => p.isTrending || p.category === 'Footwear' || p.category === 'Fashion');
+            if (trendingTrack) {
+                trendingTrack.innerHTML = trendingProds.map(p => createCardHtml(p, 'TRENDING', 'badge-deal')).join('');
+            }
+
+            // Personalized For You (8 curated products in 2-column mobile / 4-column desktop grid)
+            if (personalizedGrid) {
+                const curated = products.slice(0, 8);
+                personalizedGrid.innerHTML = curated.map(prod => {
+                    const discounted = calculateDiscount(prod.price, prod.discount);
+                    const hasDiscount = prod.discount > 0;
+                    const inWishlist = isInWishlist(prod.id);
+                    const imgUrl = prod.image || (prod.images && prod.images[0]) || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80';
+
+                    return `
+                        <div class="personalized-card">
+                            <div class="personalized-img-box">
+                                <a href="product-details.html?id=${prod.id}" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; text-decoration:none;">
+                                    <img src="${imgUrl}" alt="${escapeHtml(prod.name)}" class="personalized-img" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80';">
+                                </a>
+                                <button class="personalized-wish-btn" onclick="toggleWishlist(${prod.id})" title="Add to Wishlist">
+                                    <i class="${inWishlist ? 'fas' : 'far'} fa-heart" style="${inWishlist ? 'color:var(--color-danger);' : ''}"></i>
+                                </button>
+                            </div>
+                            <div class="personalized-brand">${escapeHtml(prod.brand || prod.category)}</div>
+                            <a href="product-details.html?id=${prod.id}" class="personalized-name">${escapeHtml(prod.name)}</a>
+                            <div class="personalized-rating">${renderStars(prod.rating, true, prod.reviewCount)}</div>
+                            <div class="personalized-price-row">
+                                <span class="personalized-price">${formatPrice(discounted)}</span>
+                                ${hasDiscount ? `<span class="personalized-old-price">${formatPrice(prod.price)}</span>` : ''}
+                                ${hasDiscount ? `<span class="personalized-discount">${prod.discount}% off</span>` : ''}
+                            </div>
+                            <button class="personalized-add-btn" onclick="addToCart(${prod.id}, 1)">
+                                <i class="fas fa-plus"></i> Add
+                            </button>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
 
             const createCardHtml = (prod, badgeText, badgeClass = 'badge-deal') => {
                 const discounted = calculateDiscount(prod.price, prod.discount);

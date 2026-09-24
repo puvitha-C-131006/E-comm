@@ -1378,6 +1378,18 @@
                 <!-- Right Catalog Main Area -->
                 <div class="catalog-main">
                     
+                    <!-- Mobile Filter & Sort Sticky Action Bar -->
+                    <div class="mobile-catalog-action-bar" id="mobileCatalogActionBar">
+                        <div class="mobile-action-bar-inner">
+                            <button class="mobile-action-btn" onclick="openMobileSortSheet()">
+                                <i class="fas fa-sort-amount-down" style="color:var(--color-primary)"></i> <span id="mobileCurrentSortLabel">Sort: Featured</span>
+                            </button>
+                            <button class="mobile-action-btn" onclick="openMobileFilterSheet()">
+                                <i class="fas fa-sliders-h" style="color:var(--color-primary)"></i> Filters <span class="mobile-filter-badge" id="mobileActiveFiltersCount" style="display:none;">0</span>
+                            </button>
+                        </div>
+                    </div>
+
                     <!-- Top Toolbar & Sorter -->
                     <div class="catalog-toolbar">
                         <div>
@@ -1993,6 +2005,14 @@
                 chipsRow.innerHTML = '';
                 chipsRow.style.display = 'none';
             }
+
+            // Sync Mobile Filter Badge Count
+            const mobileBadge = document.getElementById('mobileActiveFiltersCount');
+            if (mobileBadge) {
+                const count = chips.length;
+                mobileBadge.textContent = count;
+                mobileBadge.style.display = count > 0 ? 'inline-flex' : 'none';
+            }
         }
 
         function renderCatalogCards(prods) {
@@ -2425,12 +2445,214 @@
                 });
             }
 
-            // Keyboard ESC listener
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeQuickViewModal();
+    <!-- Mobile Filter Bottom Sheet Modal -->
+    <div id="mobileFilterSheetOverlay" class="mobile-sheet-overlay" onclick="if(event.target===this) closeMobileFilterSheet();" aria-modal="true" role="dialog">
+        <div class="mobile-sheet-content">
+            <div class="mobile-sheet-drag-handle"></div>
+            <div class="mobile-sheet-header">
+                <h3 class="mobile-sheet-title"><i class="fas fa-sliders-h" style="color:var(--color-primary)"></i> Filters</h3>
+                <div style="display:flex; align-items:center; gap:0.75rem;">
+                    <button class="clear-filters-btn" onclick="resetAllFilters(); closeMobileFilterSheet();">Clear All</button>
+                    <button class="btn-icon" onclick="closeMobileFilterSheet()" style="width:32px; height:32px;"><i class="fas fa-times"></i></button>
+                </div>
+            </div>
+            
+            <div class="mobile-sheet-body" id="mobileFilterSheetBody">
+                <!-- Filter sections will be rendered dynamically -->
+                <div class="filter-section">
+                    <div class="filter-title">Category</div>
+                    <div class="filter-list" id="mobileCategoryFiltersList"></div>
+                </div>
+
+                <div class="filter-section">
+                    <div class="filter-title">Brand</div>
+                    <div class="filter-list" id="mobileBrandFiltersList"></div>
+                </div>
+
+                <div class="filter-section">
+                    <div class="filter-title">Price Range</div>
+                    <input type="range" id="mobilePriceRangeSlider" min="1000" max="250000" step="1000" value="250000" style="width:100%; accent-color:var(--color-primary);" oninput="handlePriceSlider(this.value); const el=document.getElementById('mobilePriceMaxInput'); if(el) el.value=formatPrice(this.value);">
+                    <div class="price-inputs-row">
+                        <span style="font-size:0.8rem; color:var(--color-text-secondary);">Up to:</span>
+                        <input type="text" id="mobilePriceMaxInput" class="price-input-box" value="₹2,50,000" readonly>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <div class="filter-title">Customer Ratings</div>
+                    <div class="filter-list">
+                        <label class="filter-item">
+                            <div style="display:flex; align-items:center;">
+                                <input type="radio" name="mobileRatingFilter" value="4" onchange="syncMobileRating(4)">
+                                <span style="color:#F59E0B;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+                                <span style="margin-left:6px; font-weight:600;">4★ & Above</span>
+                            </div>
+                        </label>
+                        <label class="filter-item">
+                            <div style="display:flex; align-items:center;">
+                                <input type="radio" name="mobileRatingFilter" value="3" onchange="syncMobileRating(3)">
+                                <span style="color:#F59E0B;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></span>
+                                <span style="margin-left:6px; font-weight:600;">3★ & Above</span>
+                            </div>
+                        </label>
+                        <label class="filter-item">
+                            <div style="display:flex; align-items:center;">
+                                <input type="radio" name="mobileRatingFilter" value="0" checked onchange="syncMobileRating(0)">
+                                <span style="font-weight:600;">All Ratings</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <div class="filter-title">Availability</div>
+                    <label class="filter-item">
+                        <span><input type="checkbox" id="mobileInStockOnlyCheckbox" onchange="const d=document.getElementById('inStockOnlyCheckbox'); if(d) d.checked=this.checked; applyFilters();"> In Stock Only</span>
+                    </label>
+                    <label class="filter-item">
+                        <span><input type="checkbox" id="mobileDealsOnlyCheckbox" onchange="const d=document.getElementById('dealsOnlyCheckbox'); if(d) d.checked=this.checked; applyFilters();"> Discounted Deals Only</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="mobile-sheet-footer">
+                <button class="btn btn-primary" style="width:100%; border-radius:var(--radius-md); font-weight:700;" onclick="closeMobileFilterSheet();">
+                    Show Products
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Sort Bottom Sheet Modal -->
+    <div id="mobileSortSheetOverlay" class="mobile-sheet-overlay" onclick="if(event.target===this) closeMobileSortSheet();" aria-modal="true" role="dialog">
+        <div class="mobile-sheet-content">
+            <div class="mobile-sheet-drag-handle"></div>
+            <div class="mobile-sheet-header">
+                <h3 class="mobile-sheet-title"><i class="fas fa-sort-amount-down" style="color:var(--color-primary)"></i> Sort By</h3>
+                <button class="btn-icon" onclick="closeMobileSortSheet()" style="width:32px; height:32px;"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="mobile-sheet-body">
+                <div class="mobile-sort-options">
+                    <div class="sort-option-item selected" data-sort="featured" onclick="selectMobileSort('featured', 'Featured')">
+                        <span>Featured</span>
+                        <i class="fas fa-check check-icon"></i>
+                    </div>
+                    <div class="sort-option-item" data-sort="price_asc" onclick="selectMobileSort('price_asc', 'Price: Low to High')">
+                        <span>Price: Low to High</span>
+                        <i class="fas fa-check check-icon"></i>
+                    </div>
+                    <div class="sort-option-item" data-sort="price_desc" onclick="selectMobileSort('price_desc', 'Price: High to Low')">
+                        <span>Price: High to Low</span>
+                        <i class="fas fa-check check-icon"></i>
+                    </div>
+                    <div class="sort-option-item" data-sort="rating_desc" onclick="selectMobileSort('rating_desc', 'Customer Rating')">
+                        <span>Customer Rating</span>
+                        <i class="fas fa-check check-icon"></i>
+                    </div>
+                    <div class="sort-option-item" data-sort="discount_desc" onclick="selectMobileSort('discount_desc', 'Highest Discount')">
+                        <span>Highest Discount</span>
+                        <i class="fas fa-check check-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* Mobile Bottom Sheet Handlers */
+        function openMobileFilterSheet() {
+            populateMobileFilterOptions();
+            const overlay = document.getElementById('mobileFilterSheetOverlay');
+            if (overlay) {
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMobileFilterSheet() {
+            const overlay = document.getElementById('mobileFilterSheetOverlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function openMobileSortSheet() {
+            const overlay = document.getElementById('mobileSortSheetOverlay');
+            if (overlay) {
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMobileSortSheet() {
+            const overlay = document.getElementById('mobileSortSheetOverlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function selectMobileSort(mode, label) {
+            const sortSelector = document.getElementById('sortSelector');
+            if (sortSelector) sortSelector.value = mode;
+
+            const sortLabel = document.getElementById('mobileCurrentSortLabel');
+            if (sortLabel) sortLabel.textContent = `Sort: ${label}`;
+
+            document.querySelectorAll('.sort-option-item').forEach(el => {
+                if (el.getAttribute('data-sort') === mode) {
+                    el.classList.add('selected');
+                } else {
+                    el.classList.remove('selected');
                 }
             });
+
+            closeMobileSortSheet();
+            applyFilters();
+        }
+
+        function syncMobileRating(val) {
+            const desktopRadio = document.querySelector(`input[name="ratingFilter"][value="${val}"]`);
+            if (desktopRadio) desktopRadio.checked = true;
+            applyFilters();
+        }
+
+        function populateMobileFilterOptions() {
+            if (typeof products === 'undefined' || !products.length) return;
+
+            const catCounts = {};
+            const brandCounts = {};
+            products.forEach(p => {
+                if (p.category) catCounts[p.category] = (catCounts[p.category] || 0) + 1;
+                if (p.brand) brandCounts[p.brand] = (brandCounts[p.brand] || 0) + 1;
+            });
+
+            const mobileCatEl = document.getElementById('mobileCategoryFiltersList');
+            if (mobileCatEl) {
+                mobileCatEl.innerHTML = Object.entries(catCounts).map(([cat, count]) => `
+                    <label class="filter-item">
+                        <span>
+                            <input type="checkbox" value="${cat}" ${selectedCategories.has(cat) ? 'checked' : ''} onchange="toggleCategoryFilter('${cat}')">
+                            ${cat}
+                        </span>
+                        <span class="filter-count-badge">${count}</span>
+                    </label>
+                `).join('');
+            }
+
+            const mobileBrandEl = document.getElementById('mobileBrandFiltersList');
+            if (mobileBrandEl) {
+                mobileBrandEl.innerHTML = Object.entries(brandCounts).map(([brand, count]) => `
+                    <label class="filter-item">
+                        <span>
+                            <input type="checkbox" value="${brand}" ${selectedBrands.has(brand) ? 'checked' : ''} onchange="toggleBrandFilter('${brand}')">
+                            ${brand}
+                        </span>
+                        <span class="filter-count-badge">${count}</span>
+                    </label>
+                `).join('');
+            }
         }
     </script>
 </body>

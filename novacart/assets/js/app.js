@@ -30,7 +30,7 @@ function initActiveNav() {
     link.classList.remove('active');
     try {
       const linkUrl = new URL(link.href, window.location.origin);
-      const isHomeLink = linkUrl.pathname.endsWith('index.html') || linkUrl.pathname.endsWith('/');
+      const isHomeLink = linkUrl.pathname.endsWith('index.html') || linkUrl.pathname.endsWith('/') || linkUrl.pathname === '';
       const isDealsLink = linkUrl.pathname.endsWith('products.html') && linkUrl.search.includes('deals=true');
       const isShopLink = linkUrl.pathname.endsWith('products.html') && !linkUrl.search.includes('deals=true');
       
@@ -38,7 +38,7 @@ function initActiveNav() {
       const isCurrentDeals = currentPath.endsWith('products.html') && currentSearch.includes('deals=true');
       const isCurrentShop = currentPath.endsWith('products.html') && !currentSearch.includes('deals=true');
       
-      if (isHomeLink && isCurrentHome) {
+      if (isHomeLink && isCurrentHome && !currentSearch.includes('deals=true')) {
         link.classList.add('active');
       } else if (isDealsLink && isCurrentDeals) {
         link.classList.add('active');
@@ -52,22 +52,25 @@ function initActiveNav() {
     }
   });
 
-  // Mobile Bottom Nav Items
+  // Mobile Bottom Nav Items (Home, Categories, Deals, My Orders, Profile)
   const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
   bottomNavItems.forEach(item => {
     item.classList.remove('active');
-    const href = item.getAttribute('href');
-    if (!href) return;
-    
-    if ((href.includes('index.html') || href === '/') && (currentPath.endsWith('index.html') || currentPath.endsWith('/') || currentPath === '')) {
+    const isHome = (currentPath.endsWith('index.html') || currentPath.endsWith('/') || currentPath === '') && !currentSearch.includes('deals=true');
+    const isDeals = currentPath.endsWith('products.html') && currentSearch.includes('deals=true');
+    const isCategories = currentPath.endsWith('products.html') && !currentSearch.includes('deals=true');
+    const isOrders = currentPath.endsWith('orders.html');
+    const isProfile = currentPath.endsWith('profile.html') || currentPath.endsWith('login.html') || currentPath.endsWith('register.html');
+
+    if (item.id === 'bnav-home' && isHome) {
       item.classList.add('active');
-    } else if (href.includes('products.html') && currentPath.endsWith('products.html')) {
+    } else if (item.id === 'bnav-categories' && isCategories) {
       item.classList.add('active');
-    } else if (href.includes('wishlist.html') && currentPath.endsWith('wishlist.html')) {
+    } else if (item.id === 'bnav-deals' && isDeals) {
       item.classList.add('active');
-    } else if (href.includes('cart.html') && currentPath.endsWith('cart.html')) {
+    } else if (item.id === 'bnav-orders' && isOrders) {
       item.classList.add('active');
-    } else if (href.includes('profile.html') && (currentPath.endsWith('profile.html') || currentPath.endsWith('login.html'))) {
+    } else if (item.id === 'bnav-profile' && isProfile) {
       item.classList.add('active');
     }
   });
@@ -343,6 +346,25 @@ function initHeroCarousel() {
       heroSlideTimer = setInterval(() => nextHeroSlide(), 5500);
     });
   }
+
+  // Touch-Swipe Support for Mobile Devices
+  let touchStartX = 0;
+  let touchEndX = 0;
+  slidesWrapper.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    clearInterval(heroSlideTimer);
+  }, { passive: true });
+
+  slidesWrapper.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) nextHeroSlide();
+      else prevHeroSlide();
+    }
+    clearInterval(heroSlideTimer);
+    heroSlideTimer = setInterval(() => nextHeroSlide(), 5500);
+  }, { passive: true });
 }
 
 // Horizontal Scrollable Carousel Helper ("Today's Deals", "Best Sellers")
@@ -449,7 +471,7 @@ function initMobileDrawer() {
   overlay.addEventListener('click', closeDrawer);
 }
 
-// Mobile Bottom Navigation Injection & Sync
+// Mobile Bottom Navigation Injection & Sync (Home, Categories, Deals, My Orders, Profile)
 function initBottomNav() {
   let bottomNav = document.querySelector('.bottom-nav');
   if (!bottomNav) {
@@ -461,19 +483,17 @@ function initBottomNav() {
           <i class="fas fa-home"></i>
           <span>Home</span>
         </a>
-        <a href="products.html" class="bottom-nav-item" id="bnav-shop">
+        <a href="products.html" class="bottom-nav-item" id="bnav-categories">
           <i class="fas fa-th-large"></i>
-          <span>Shop</span>
+          <span>Categories</span>
         </a>
-        <a href="wishlist.html" class="bottom-nav-item" id="bnav-wishlist">
-          <i class="far fa-heart"></i>
-          <span>Wishlist</span>
-          <span class="badge wishlist-badge" style="display:none;">0</span>
+        <a href="products.html?deals=true" class="bottom-nav-item" id="bnav-deals">
+          <i class="fas fa-bolt"></i>
+          <span>Deals</span>
         </a>
-        <a href="javascript:void(0)" onclick="openCartDrawer()" class="bottom-nav-item" id="bnav-cart">
-          <i class="fas fa-shopping-cart"></i>
-          <span>Cart</span>
-          <span class="badge cart-badge" style="display:none;">0</span>
+        <a href="orders.html" class="bottom-nav-item" id="bnav-orders">
+          <i class="fas fa-box-open"></i>
+          <span>My Orders</span>
         </a>
         <a href="profile.html" class="bottom-nav-item" id="bnav-profile">
           <i class="far fa-user"></i>
@@ -482,6 +502,7 @@ function initBottomNav() {
       </div>
     `;
     document.body.appendChild(bottomNav);
+    initActiveNav();
   }
 }
 
