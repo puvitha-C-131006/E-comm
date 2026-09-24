@@ -59,8 +59,10 @@
             width: 80px;
             height: 80px;
             object-fit: contain;
-            border-radius: var(--radius-sm);
-            background-color: #f1f5f9;
+            border-radius: var(--radius-md);
+            background-color: #FFFFFF;
+            padding: 4px;
+            border: 1px solid var(--color-border);
         }
 
         .cart-item-title {
@@ -258,11 +260,11 @@
                     <button id="theme-toggle" class="action-icon" title="Toggle Dark Mode" onclick="toggleTheme()">
                         <i class="fas fa-moon"></i>
                     </button>
-                    <a href="login.html" class="btn btn-primary auth-link" style="display:none;">Login</a>
+                    <a href="login.html" class="btn btn-primary auth-link" style="font-size: 0.85rem; padding: 0.45rem 1rem;">Login</a>
                     
-                    <a href="profile.html" class="action-icon profile-link" title="Profile" style="display:none;">
-                        <i class="far fa-user"></i>
-                        <span class="user-name" style="font-size: 0.9rem; margin-left: 0.5rem;"></span>
+                    <a href="profile.html" class="profile-link user-profile-chip" title="Account" style="display:none;">
+                        <div class="user-avatar"><i class="far fa-user"></i></div>
+                        <span class="user-name">Account</span>
                     </a>
                     
                     
@@ -325,38 +327,6 @@
             <!-- Populated via JS -->
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <a href="index.html" class="logo" style="color: #fff; margin-bottom: 1.5rem; display: inline-flex;">
-                        <i class="fas fa-shopping-bag"></i> Nova<span>Cart</span>
-                    </a>
-                    <p class="footer-desc">Premium E-Commerce platform providing the best shopping experience.</p>
-                </div>
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Shop</a></li>
-                        <li><a href="cart.html">Cart</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Contact Us</h3>
-                    <ul class="footer-links">
-                        <li>support@novacart.com</li>
-                        <li>+1 (800) 123-4567</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 NovaCart. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
 
     <!-- Scripts -->
     <script src="assets/js/products.js"></script>
@@ -511,9 +481,9 @@
                         </div>
                     </div>
 
-                    <a href="checkout.html" class="btn btn-primary" style="width: 100%; padding: 0.75rem; font-size: 1rem;">
+                    <button onclick="openCheckoutModal()" class="btn btn-primary" style="width: 100%; padding: 0.75rem; font-size: 1rem; cursor:pointer;">
                         Proceed to Checkout <i class="fas fa-lock" style="margin-left: 0.5rem; font-size: 0.8rem;"></i>
-                    </a>
+                    </button>
                     
                     <div style="text-align: center; margin-top: 1rem; display: flex; justify-content: center; gap: 1rem; color: #cbd5e1; font-size: 1.5rem;">
                         <i class="fab fa-cc-visa"></i>

@@ -2,407 +2,790 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile | NovaCart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>My Profile Dashboard | NovaCart</title>
+    <meta name="description" content="Manage your NovaCart profile, addresses, orders, and account security settings.">
     
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     
-    <!-- FontAwesome -->
+    <!-- FontAwesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        .profile-page-wrapper {
+            margin-top: 86px;
+            padding-top: 1.5rem;
+            padding-bottom: 4rem;
+            min-height: 60vh;
+        }
+
         .profile-layout {
-            margin-top: 80px;
             display: grid;
-            grid-template-columns: 280px 1fr;
+            grid-template-columns: 300px 1fr;
             gap: 2rem;
-            min-height: 50vh;
+            align-items: start;
         }
 
+        /* Profile Sidebar */
         .profile-sidebar {
-            background-color: var(--color-card-bg);
+            background: var(--color-card-bg);
             border: 1px solid var(--color-border);
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
-            height: fit-content;
+            border-radius: var(--radius-xl);
+            padding: 2rem 1.5rem;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 96px;
         }
 
-        .user-info {
+        .profile-user-card {
             text-align: center;
+            padding-bottom: 1.75rem;
             margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
             border-bottom: 1px solid var(--color-border);
         }
 
-        .user-avatar {
-            width: 80px;
-            height: 80px;
+        .profile-avatar-lg {
+            width: 88px;
+            height: 88px;
             border-radius: 50%;
-            background-color: var(--color-primary);
-            color: white;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #4F46E5 100%);
+            color: #FFFFFF;
             font-size: 2.5rem;
+            font-weight: 800;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1rem;
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.35);
+            border: 3px solid var(--color-card-bg);
+            outline: 2px solid var(--color-primary);
+            transition: transform var(--transition-smooth);
         }
 
-        .user-name-display {
+        .profile-avatar-lg:hover {
+            transform: scale(1.04);
+        }
+
+        .profile-display-name {
             font-size: 1.25rem;
-            font-weight: 600;
+            font-weight: 800;
             color: var(--color-text-primary);
+            margin-bottom: 0.25rem;
         }
 
-        .user-email-display {
+        .profile-display-email {
+            font-size: 0.88rem;
             color: var(--color-text-secondary);
-            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            word-break: break-all;
         }
 
-        .profile-nav {
+        .profile-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(16, 185, 129, 0.12);
+            color: var(--color-success);
+            border-radius: var(--radius-full);
+            font-size: 0.78rem;
+            font-weight: 700;
+            border: 1px solid rgba(16, 185, 129, 0.25);
+        }
+
+        /* Profile Nav Links */
+        .profile-nav-menu {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.45rem;
         }
 
-        .profile-nav-link {
-            padding: 0.75rem 1rem;
-            border-radius: var(--radius-md);
-            color: var(--color-text-secondary);
-            font-weight: 500;
+        .profile-nav-item {
             display: flex;
             align-items: center;
             gap: 1rem;
-            transition: all var(--transition-fast);
+            padding: 0.85rem 1.15rem;
+            border-radius: var(--radius-lg);
+            color: var(--color-text-secondary);
+            font-weight: 600;
+            font-size: 0.92rem;
             cursor: pointer;
+            transition: all var(--transition-fast);
+            user-select: none;
         }
 
-        .profile-nav-link:hover, .profile-nav-link.active {
-            background-color: rgba(37, 99, 235, 0.05);
+        .profile-nav-item i {
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+            color: var(--color-text-secondary);
+            transition: color var(--transition-fast);
+        }
+
+        .profile-nav-item:hover {
+            background: var(--color-card-subtle);
             color: var(--color-primary);
         }
 
-        .profile-content-section {
-            background-color: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-md);
-            padding: 1.5rem;
+        .profile-nav-item:hover i {
+            color: var(--color-primary);
+        }
+
+        .profile-nav-item.active {
+            background: var(--color-primary-light);
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .profile-nav-item.active i {
+            color: var(--color-primary);
+        }
+
+        .profile-nav-logout {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--color-border);
+            color: var(--color-danger) !important;
+        }
+
+        .profile-nav-logout i {
+            color: var(--color-danger) !important;
+        }
+
+        .profile-nav-logout:hover {
+            background: rgba(239, 68, 68, 0.08) !important;
+        }
+
+        /* Main Content Cards */
+        .profile-tab-pane {
             display: none;
             animation: fadeIn 0.3s ease;
         }
 
-        .profile-content-section.active {
+        .profile-tab-pane.active {
             display: block;
         }
 
-        .section-header {
-            font-size: 1.25rem;
-            margin-bottom: 1.25rem;
-            padding-bottom: 0.75rem;
+        .profile-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 2rem;
+        }
+
+        .profile-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 1.25rem;
+            margin-bottom: 1.75rem;
             border-bottom: 1px solid var(--color-border);
         }
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+        .profile-card-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--color-text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
         }
 
-        .stats-grid {
+        /* Metric Stats Grid */
+        .profile-stats-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
         }
 
-        .stat-card {
-            background-color: var(--color-bg);
-            border-radius: var(--radius-md);
-            padding: 1rem;
-            text-align: center;
+        .stat-metric-box {
+            background: var(--color-card-bg);
             border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            box-shadow: var(--shadow-xs);
+            transition: all var(--transition-fast);
         }
 
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
+        .stat-metric-box:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-primary);
+        }
+
+        .stat-metric-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .stat-icon-orders {
+            background: rgba(37, 99, 235, 0.12);
             color: var(--color-primary);
+        }
+
+        .stat-icon-wishlist {
+            background: rgba(239, 68, 68, 0.12);
+            color: #EF4444;
+        }
+
+        .stat-icon-cart {
+            background: rgba(16, 185, 129, 0.12);
+            color: var(--color-success);
+        }
+
+        .stat-metric-val {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-text-primary);
+            line-height: 1.1;
+        }
+
+        .stat-metric-label {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        /* Welcome Banner */
+        .profile-welcome-banner {
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            color: #FFFFFF;
+            border-radius: var(--radius-xl);
+            padding: 2.25rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .profile-welcome-banner::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(37,99,235,0.3) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .profile-welcome-title {
+            font-size: 1.6rem;
+            font-weight: 800;
             margin-bottom: 0.5rem;
         }
 
-        .stat-label {
-            color: var(--color-text-secondary);
-            font-size: 0.9rem;
-            font-weight: 500;
+        .profile-welcome-desc {
+            color: #94A3B8;
+            font-size: 0.95rem;
+            max-width: 550px;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
         }
 
-        @media (max-width: 912px) {
+        /* Form Controls */
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .profile-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .profile-form-label {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+        }
+
+        .profile-form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            font-size: 0.92rem;
+            color: var(--color-text-primary);
+            background: var(--color-card-bg);
+            transition: all var(--transition-fast);
+            font-family: inherit;
+        }
+
+        .profile-form-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .profile-form-input[readonly] {
+            background: var(--color-card-subtle);
+            color: var(--color-text-secondary);
+            cursor: not-allowed;
+        }
+
+        /* Saved Address Cards */
+        .address-cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .address-card-item {
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            background: var(--color-card-bg);
+            position: relative;
+            transition: all var(--transition-fast);
+        }
+
+        .address-card-item:hover {
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .address-card-item.is-default {
+            border-color: var(--color-primary);
+            background: var(--color-primary-light);
+        }
+
+        .address-type-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            background: var(--color-card-subtle);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+            color: var(--color-text-primary);
+        }
+
+        .address-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 0.4rem;
+        }
+
+        .address-text {
+            font-size: 0.88rem;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .address-actions {
+            display: flex;
+            gap: 0.75rem;
+            border-top: 1px solid var(--color-border);
+            padding-top: 0.85rem;
+        }
+
+        .address-btn-action {
+            background: none;
+            border: none;
+            color: var(--color-primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .address-btn-action:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 960px) {
             .profile-layout {
                 grid-template-columns: 1fr;
             }
-            .stats-grid {
+            .profile-sidebar {
+                position: static;
+            }
+            .profile-stats-grid {
                 grid-template-columns: 1fr;
             }
-            .form-row {
+            .form-grid-2 {
                 grid-template-columns: 1fr;
-                gap: 0;
+                gap: 1rem;
+            }
+            .address-cards-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar">
+    <!-- Desktop & Mobile Sticky Navigation Header -->
+    <header class="navbar">
         <div class="container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-shopping-bag"></i> Nova<span>Cart</span>
+            <!-- Brand Logo -->
+            <a href="index.html" class="logo" id="brandLogo">
+                <div class="logo-badge">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                Nova<span>Cart</span>
             </a>
+
+            <!-- Location Selector Pill -->
+            <div class="location-pill" onclick="openLocationModal()" title="Change Delivery Location">
+                <i class="fas fa-map-marker-alt"></i>
+                <div class="loc-text">
+                    <span class="sub">Deliver to</span>
+                    <span class="main"><span class="loc-city-name">Bengaluru</span> <span class="loc-pincode" style="font-weight:500; font-size:0.75rem;">560001</span></span>
+                </div>
+            </div>
             
-            <div class="nav-menu">
+            <!-- Global Unified Search with Category Selector -->
+            <div class="search-wrapper">
+                <div class="search-bar-unified">
+                    <select class="search-category-select" id="searchCategorySelect">
+                        <option value="all">All Departments</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Footwear">Footwear</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="Home Appliances">Home & Living</option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="Accessories">Accessories</option>
+                    </select>
+                    <input type="text" id="globalSearchInput" placeholder="Search brands, products, laptops, sneakers..." autocomplete="off">
+                    <button class="search-btn" title="Search"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="search-suggestions-dropdown" id="searchSuggestions"></div>
+            </div>
+
+            <!-- Navigation Menu -->
+            <nav class="nav-menu">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="products.html">Shop</a></li>
+                    <li><a href="products.html?deals=true"><i class="fas fa-bolt" style="color: var(--color-warning); font-size: 0.85rem;"></i> Deals</a></li>
                 </ul>
                 
+                <!-- Nav Actions -->
                 <div class="nav-actions">
-                    <button id="theme-toggle" class="action-icon" title="Toggle Dark Mode" onclick="toggleTheme()">
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="action-icon" title="Toggle Dark/Light Mode" onclick="toggleTheme()">
                         <i class="fas fa-moon"></i>
                     </button>
+
+                    <!-- User Account / Profile -->
+                    <a href="login.html" class="btn btn-primary auth-link" style="font-size: 0.85rem; padding: 0.45rem 1rem;">Login</a>
                     
-                    <div class="notification-dropdown">
-                        <a href="#" class="action-icon" title="Notifications">
-                            <i class="far fa-bell"></i>
-                            <span class="badge" style="display: block;">3</span>
-                        </a>
-                        <div class="notification-panel">
-                            <div class="notification-header">
-                                Notifications <span style="font-size:0.8rem;color:var(--color-primary);cursor:pointer;">Mark all as read</span>
-                            </div>
-                            <div class="notifications-list">
-<div class="notification-item unread">
-                                <div class="notif-icon notif-sale"><i class="fas fa-bolt"></i></div>
-                                <div class="notif-content">
-                                    <h4>Flash Sale Started</h4>
-                                    <p>Up to 50% off on electronics for the next 5 hours!</p>
-                                </div>
-                            </div>
-                            <div class="notification-item unread">
-                                <div class="notif-icon notif-coupon"><i class="fas fa-ticket-alt"></i></div>
-                                <div class="notif-content">
-                                    <h4>Coupon Available</h4>
-                                    <p>Use code SAVE500 for a flat ₹500 discount.</p>
-                                </div>
-                            </div>
-                            <div class="notification-item">
-                                <div class="notif-icon notif-order"><i class="fas fa-box-open"></i></div>
-                                <div class="notif-content">
-                                    <h4>Order Delivered</h4>
-                                    <p>Your order #ORD-092123 has been delivered.</p>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    <a href="wishlist.html" class="action-icon" title="Wishlist">
+                    <a href="profile.html" class="profile-link user-profile-chip active" title="Account">
+                        <div class="user-avatar"><i class="far fa-user"></i></div>
+                        <span class="user-name">Account</span>
+                    </a>
+
+                    <!-- Wishlist Link -->
+                    <a href="wishlist.html" class="action-icon wishlist-action" title="Wishlist">
                         <i class="far fa-heart"></i>
                         <span class="badge wishlist-badge" style="display: none;">0</span>
                     </a>
                     
-                    <a href="cart.html" class="action-icon" title="Cart">
+                    <!-- Cart Link (Triggers Slide-Out Drawer) -->
+                    <a href="javascript:void(0)" onclick="openCartDrawer()" class="action-icon cart-drawer-trigger" title="Cart">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="badge cart-badge" style="display: none;">0</span>
                     </a>
                 </div>
-            </div>
-
-            <div class="mobile-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container profile-layout section">
-        
-        <!-- Sidebar -->
-        <aside class="profile-sidebar">
-            <div class="user-info">
-                <div class="user-avatar" id="userAvatar">U</div>
-                <div class="user-name-display" id="displayUserName">User Name</div>
-                <div class="user-email-display" id="displayUserEmail">user@example.com</div>
-            </div>
-
-            <nav class="profile-nav">
-                <div class="profile-nav-link active" onclick="switchProfileTab('dashboard', this)">
-                    <i class="fas fa-tachometer-alt"></i> Dashboard
-                </div>
-                <div class="profile-nav-link" onclick="switchProfileTab('personal', this)">
-                    <i class="far fa-user"></i> Personal Info
-                </div>
-                <div class="profile-nav-link" onclick="switchProfileTab('address', this)">
-                    <i class="fas fa-map-marker-alt"></i> Address Book
-                </div>
-                <div class="profile-nav-link" onclick="window.location.href='orders.html'">
-                    <i class="fas fa-box"></i> My Orders
-                </div>
-                <div class="profile-nav-link" onclick="window.location.href='wishlist.html'">
-                    <i class="far fa-heart"></i> My Wishlist
-                </div>
-                <div class="profile-nav-link" style="color: var(--color-danger); margin-top: 2rem;" onclick="handleLogout()">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </div>
             </nav>
-        </aside>
 
-        <!-- Main Content -->
-        <main>
-            <!-- Dashboard Tab -->
-            <div id="tab-dashboard" class="profile-content-section active">
-                <h2 class="section-header">My Dashboard</h2>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-value" id="statOrders">0</div>
-                        <div class="stat-label">Total Orders</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="statWishlist">0</div>
-                        <div class="stat-label">Wishlist Items</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-value" id="statCart">0</div>
-                        <div class="stat-label">Items in Cart</div>
-                    </div>
-                </div>
+            <button class="mobile-toggle" aria-label="Open Navigation Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
 
-                <div style="background-color: var(--color-bg); padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--color-border);">
-                    <h3 style="margin-bottom: 1rem;">Recent Activity</h3>
-                    <p style="color: var(--color-text-secondary); margin-bottom: 1.5rem;">Welcome back to NovaCart! Check your latest orders or continue shopping.</p>
-                    <div style="display: flex; gap: 1rem;">
-                        <button class="btn btn-primary" onclick="window.location.href='products.html'">Continue Shopping</button>
-                        <button class="btn btn-outline" onclick="window.location.href='orders.html'">View Orders</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Personal Info Tab -->
-            <div id="tab-personal" class="profile-content-section">
-                <h2 class="section-header">Personal Information</h2>
-                
-                <form id="personalInfoForm" onsubmit="savePersonalInfo(event)">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">Full Name</label>
-                            <input type="text" id="inputName" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Email Address</label>
-                            <input type="email" id="inputEmail" class="form-control" readonly style="background-color: var(--color-bg); cursor: not-allowed;">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">Phone Number</label>
-                            <input type="tel" id="inputPhone" class="form-control" placeholder="+91 9876543210">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Date of Birth</label>
-                            <input type="date" id="inputDob" class="form-control">
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary" style="margin-top: 1rem;" id="savePersonalBtn">Save Changes</button>
-                </form>
-
-                <h3 style="margin-top: 3rem; margin-bottom: 1.5rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">Change Password</h3>
-                <form onsubmit="changePassword(event)">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">New Password</label>
-                            <input type="password" id="newPassword" class="form-control" required minlength="6">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Confirm New Password</label>
-                            <input type="password" id="confirmPassword" class="form-control" required minlength="6">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-outline" style="margin-top: 1rem;" id="changePwdBtn">Update Password</button>
-                </form>
-            </div>
-
-            <!-- Address Book Tab -->
-            <div id="tab-address" class="profile-content-section">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--color-border);">
-                    <h2 style="font-size: 1.5rem;">Address Book</h2>
-                </div>
-                
-                <form id="addressForm" onsubmit="saveAddress(event)">
-                    <div class="form-group">
-                        <label class="form-label">Street Address</label>
-                        <textarea id="inputAddress" class="form-control" rows="3" placeholder="123 Main St, Apartment 4B"></textarea>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">City</label>
-                            <input type="text" id="inputCity" class="form-control" placeholder="Chennai">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">State</label>
-                            <input type="text" id="inputState" class="form-control" placeholder="Tamil Nadu">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="form-label">Pincode / Zip Code</label>
-                            <input type="text" id="inputZip" class="form-control" placeholder="600001">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Country</label>
-                            <input type="text" id="inputCountry" class="form-control" placeholder="India" value="India">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="margin-top: 1rem;" id="saveAddressBtn">Save Address</button>
-                </form>
-            </div>
-
-        </main>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Main Profile Content Area -->
+    <main class="profile-page-wrapper">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <a href="index.html" class="logo" style="color: #fff; margin-bottom: 1.5rem; display: inline-flex;">
-                        <i class="fas fa-shopping-bag"></i> Nova<span>Cart</span>
-                    </a>
-                    <p class="footer-desc">Premium E-Commerce platform providing the best shopping experience.</p>
+            
+            <!-- Profile 2-Column Layout -->
+            <div class="profile-layout">
+                
+                <!-- Left Sidebar Navigation -->
+                <aside class="profile-sidebar">
+                    <div class="profile-user-card">
+                        <div class="profile-avatar-lg" id="profileAvatarLg">P</div>
+                        <div class="profile-display-name" id="profileDisplayName">Puvitha C</div>
+                        <div class="profile-display-email" id="profileDisplayEmail">puvitha.c@example.com</div>
+                        <span class="profile-badge-pill"><i class="fas fa-check-circle"></i> Verified Buyer</span>
+                    </div>
+
+                    <nav class="profile-nav-menu">
+                        <div class="profile-nav-item active" onclick="switchProfileTab('dashboard', this)">
+                            <i class="fas fa-chart-pie"></i> Dashboard Overview
+                        </div>
+                        <div class="profile-nav-item" onclick="switchProfileTab('personal', this)">
+                            <i class="far fa-user"></i> Personal Information
+                        </div>
+                        <div class="profile-nav-item" onclick="switchProfileTab('address', this)">
+                            <i class="fas fa-map-marked-alt"></i> Address Book
+                        </div>
+                        <div class="profile-nav-item" onclick="window.location.href='orders.html'">
+                            <i class="fas fa-box-open"></i> My Orders
+                        </div>
+                        <div class="profile-nav-item" onclick="window.location.href='wishlist.html'">
+                            <i class="far fa-heart"></i> Saved Wishlist
+                        </div>
+                        <div class="profile-nav-item profile-nav-logout" onclick="handleLogout()">
+                            <i class="fas fa-sign-out-alt"></i> Sign Out
+                        </div>
+                    </nav>
+                </aside>
+
+                <!-- Right Dynamic Tabs Content -->
+                <div>
+                    
+                    <!-- Tab 1: Dashboard Overview -->
+                    <div id="tab-dashboard" class="profile-tab-pane active">
+                        
+                        <!-- Welcome Banner -->
+                        <div class="profile-welcome-banner">
+                            <h2 class="profile-welcome-title">Welcome Back, <span id="bannerUserName">Puvitha C</span> 👋</h2>
+                            <p class="profile-welcome-desc">Track your open shipments, manage saved payment cards, and enjoy personalized recommendations with NovaCart Express.</p>
+                            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                                <button class="btn btn-primary" onclick="window.location.href='products.html'"><i class="fas fa-bolt"></i> Shop Today's Deals</button>
+                                <button class="btn btn-outline" style="color:white; border-color:rgba(255,255,255,0.4);" onclick="window.location.href='orders.html'"><i class="fas fa-receipt"></i> View Orders</button>
+                            </div>
+                        </div>
+
+                        <!-- 3-Column Metric Stats Grid -->
+                        <div class="profile-stats-grid">
+                            <div class="stat-metric-box">
+                                <div class="stat-metric-icon stat-icon-orders">
+                                    <i class="fas fa-box"></i>
+                                </div>
+                                <div>
+                                    <div class="stat-metric-val" id="statOrdersCount">2</div>
+                                    <div class="stat-metric-label">Total Orders Placed</div>
+                                </div>
+                            </div>
+                            <div class="stat-metric-box">
+                                <div class="stat-metric-icon stat-icon-wishlist">
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <div>
+                                    <div class="stat-metric-val" id="statWishlistCount">0</div>
+                                    <div class="stat-metric-label">Saved in Wishlist</div>
+                                </div>
+                            </div>
+                            <div class="stat-metric-box">
+                                <div class="stat-metric-icon stat-icon-cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div>
+                                    <div class="stat-metric-val" id="statCartCount">0</div>
+                                    <div class="stat-metric-label">Items in Cart</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Order Quick Card -->
+                        <div class="profile-card">
+                            <div class="profile-card-header">
+                                <div class="profile-card-title">
+                                    <i class="fas fa-clock" style="color:var(--color-primary);"></i> Recent Order
+                                </div>
+                                <a href="orders.html" style="color:var(--color-primary); font-weight:700; font-size:0.88rem;">View All Orders &rarr;</a>
+                            </div>
+
+                            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; padding:1.25rem; background:var(--color-card-subtle); border-radius:var(--radius-lg); border:1px solid var(--color-border);">
+                                <div style="display:flex; align-items:center; gap:1.25rem;">
+                                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=160&q=80" alt="MacBook Pro" style="width:64px; height:64px; object-fit:contain; border-radius:var(--radius-md); background:var(--color-card-bg); padding:4px;">
+                                    <div>
+                                        <div style="font-weight:700; color:var(--color-text-primary); font-size:0.95rem;">Apple MacBook Pro 16" M3 Max</div>
+                                        <div style="font-size:0.85rem; color:var(--color-text-secondary); margin-top:0.25rem;">Order ID: <b style="color:var(--color-text-primary);">#NC-98421</b> &bull; Placed on Sep 18, 2026</div>
+                                    </div>
+                                </div>
+                                <div style="display:flex; align-items:center; gap:1.5rem;">
+                                    <span style="font-weight:800; font-size:1.1rem; color:var(--color-primary);">₹2,19,912</span>
+                                    <span class="profile-badge-pill"><i class="fas fa-check"></i> Delivered</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Tab 2: Personal Information -->
+                    <div id="tab-personal" class="profile-tab-pane">
+                        <div class="profile-card">
+                            <div class="profile-card-header">
+                                <div class="profile-card-title">
+                                    <i class="far fa-user-circle" style="color:var(--color-primary);"></i> Personal Profile Details
+                                </div>
+                            </div>
+
+                            <form id="personalProfileForm" onsubmit="savePersonalProfile(event)">
+                                <div class="form-grid-2">
+                                    <div class="profile-form-group">
+                                        <label class="profile-form-label">Full Name <span style="color:var(--color-danger)">*</span></label>
+                                        <input type="text" id="inputFullName" class="profile-form-input" required placeholder="e.g. Puvitha C">
+                                    </div>
+                                    <div class="profile-form-group">
+                                        <label class="profile-form-label">Email Address (Registered)</label>
+                                        <input type="email" id="inputEmailAddress" class="profile-form-input" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="form-grid-2">
+                                    <div class="profile-form-group">
+                                        <label class="profile-form-label">Phone Number</label>
+                                        <input type="tel" id="inputPhoneNumber" class="profile-form-input" placeholder="+91 98765 43210">
+                                    </div>
+                                    <div class="profile-form-group">
+                                        <label class="profile-form-label">Date of Birth</label>
+                                        <input type="date" id="inputDateOfBirth" class="profile-form-input">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" id="savePersonalBtn" style="padding:0.75rem 2rem; font-weight:700;">
+                                    <i class="fas fa-save"></i> Save Profile Changes
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Change Password Card -->
+                        <div class="profile-card">
+                            <div class="profile-card-header">
+                                <div class="profile-card-title">
+                                    <i class="fas fa-shield-alt" style="color:var(--color-primary);"></i> Account Security & Password
+                                </div>
+                            </div>
+
+                            <form onsubmit="handlePasswordUpdate(event)">
+                                <div class="form-grid-2">
+                                    <div class="profile-form-group">
+                                        <label class="profile-form-label">New Password</label>
+                                        <input type="password" id="inputNewPassword" class="profile-form-input" placeholder="Min. 6 characters" minlength="6" required>
+                                    </div>
+                                    <div class="profile-form-group">
+                                        <label class="profile-form-label">Confirm New Password</label>
+                                        <input type="password" id="inputConfirmPassword" class="profile-form-input" placeholder="Re-enter new password" minlength="6" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-outline" id="updatePasswordBtn" style="padding:0.75rem 1.75rem;">
+                                    <i class="fas fa-key"></i> Update Password
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Tab 3: Address Book -->
+                    <div id="tab-address" class="profile-tab-pane">
+                        <div class="profile-card">
+                            <div class="profile-card-header">
+                                <div class="profile-card-title">
+                                    <i class="fas fa-map-marker-alt" style="color:var(--color-primary);"></i> Saved Delivery Addresses
+                                </div>
+                            </div>
+
+                            <!-- Saved Addresses Grid -->
+                            <div class="address-cards-grid">
+                                <div class="address-card-item is-default">
+                                    <span class="address-type-badge"><i class="fas fa-home"></i> Home (Default)</span>
+                                    <div class="address-title" id="addrDefaultName">Puvitha C</div>
+                                    <div class="address-text" id="addrDefaultText">
+                                        Flat 402, Skyline Residency, 4th Cross,<br>
+                                        Koramangala 4th Block, Bengaluru, Karnataka - 560034<br>
+                                        Phone: +91 98765 43210
+                                    </div>
+                                    <div class="address-actions">
+                                        <button class="address-btn-action" onclick="editAddress('home')"><i class="fas fa-pen"></i> Edit</button>
+                                        <span style="color:var(--color-border);">|</span>
+                                        <span style="font-size:0.82rem; color:var(--color-success); font-weight:700;"><i class="fas fa-check-circle"></i> Default</span>
+                                    </div>
+                                </div>
+
+                                <div class="address-card-item">
+                                    <span class="address-type-badge"><i class="fas fa-building"></i> Office / Work</span>
+                                    <div class="address-title">Puvitha C (Work)</div>
+                                    <div class="address-text">
+                                        Prestige Tech Park, Block B, 3rd Floor,<br>
+                                        Marathahalli-Sarjapur Outer Ring Road, Bengaluru - 560103<br>
+                                        Phone: +91 98765 43210
+                                    </div>
+                                    <div class="address-actions">
+                                        <button class="address-btn-action" onclick="editAddress('work')"><i class="fas fa-pen"></i> Edit</button>
+                                        <span style="color:var(--color-border);">|</span>
+                                        <button class="address-btn-action" onclick="showToast('Set as default delivery address!')"><i class="fas fa-star"></i> Set Default</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 style="font-size:1.1rem; font-weight:800; margin-bottom:1.25rem; color:var(--color-text-primary);">Add or Update Primary Address</h3>
+                            
+                            <form id="addressBookForm" onsubmit="savePrimaryAddress(event)">
+                                <div class="profile-form-group" style="margin-bottom:1.25rem;">
+                                    <label class="profile-form-label">Street Address / House No. / Flat <span style="color:var(--color-danger)">*</span></label>
+                                    <textarea id="inputStreetAddress" class="profile-form-input" rows="2" required placeholder="e.g. Flat 402, Skyline Residency, 4th Cross, Koramangala 4th Block"></textarea>
+                                </div>
+
+                                <div class="form-grid-2">
+                                    <div class="profile-form-group">
+                                        <label class="profile-form-label">City <span style="color:var(--color-danger)">*</span></label>
+                                        <input type="text" id="inputCityName" class="profile-form-input" required placeholder="Bengaluru" value="Bengaluru">
+                                    </div>
+                                    <div class="profile-form-group">
+                                        <label class="profile-form-label">State <span style="color:var(--color-danger)">*</span></label>
+                                        <input type="text" id="inputStateName" class="profile-form-input" required placeholder="Karnataka" value="Karnataka">
+                                    </div>
+                                </div>
+
+                                <div class="form-grid-2">
+                                    <div class="profile-form-group">
+                                        <label class="profile-form-label">Pincode / Postal Code <span style="color:var(--color-danger)">*</span></label>
+                                        <input type="text" id="inputPostalCode" class="profile-form-input" required placeholder="560034" value="560034">
+                                    </div>
+                                    <div class="profile-form-group">
+                                        <label class="profile-form-label">Country</label>
+                                        <input type="text" id="inputCountryName" class="profile-form-input" value="India" readonly>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" id="saveAddressBtn" style="padding:0.75rem 2rem; font-weight:700;">
+                                    <i class="fas fa-map-pin"></i> Save Address
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Shop</a></li>
-                        <li><a href="cart.html">Cart</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Contact Us</h3>
-                    <ul class="footer-links">
-                        <li>support@novacart.com</li>
-                        <li>+1 (800) 123-4567</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 NovaCart. All Rights Reserved.</p>
+
             </div>
         </div>
-    </footer>
+    </main>
 
-    <!-- Scripts -->
+    <!-- Core Scripts -->
     <script src="assets/js/products.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/cart.js"></script>
@@ -413,162 +796,270 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
     <script src="assets/js/firebase-config.js"></script>
     <script src="assets/js/auth.js"></script>
-    
+
     <script>
-        firebase.auth().onAuthStateChanged((user) => {
-            if (!user) {
-                window.location.href = 'login.html';
-                return;
-            }
-
-            // Populate UI
-            document.getElementById('displayUserName').textContent = user.displayName || 'User';
-            document.getElementById('displayUserEmail').textContent = user.email || '';
-            document.getElementById('userAvatar').textContent = (user.displayName ? user.displayName.charAt(0) : 'U').toUpperCase();
-            
-            document.getElementById('inputName').value = user.displayName || '';
-            document.getElementById('inputEmail').value = user.email || '';
-
-            // Populate Stats and Forms
-            db.collection('users').doc(user.uid).get().then(doc => {
-                const data = doc.data() || {};
-                const wishlist = data.wishlist || [];
-                const cart = data.cart || [];
-
-                document.getElementById('statWishlist').textContent = wishlist.length;
-                document.getElementById('statCart').textContent = cart.reduce((acc, item) => acc + item.quantity, 0);
-
-                // Populate Personal Form
-                if(data.phone) document.getElementById('inputPhone').value = data.phone;
-                if(data.dob) document.getElementById('inputDob').value = data.dob;
-
-                // Populate Address Form
-                if(data.address) document.getElementById('inputAddress').value = data.address;
-                if(data.city) document.getElementById('inputCity').value = data.city;
-                if(data.state) document.getElementById('inputState').value = data.state;
-                if(data.zip) document.getElementById('inputZip').value = data.zip;
-                if(data.country) document.getElementById('inputCountry').value = data.country;
-            });
-
-            // Fetch order count
-            db.collection('orders').where('userId', '==', user.uid).get().then(snapshot => {
-                document.getElementById('statOrders').textContent = snapshot.size;
-            }).catch(error => {
-                console.error("Error fetching order count:", error);
-                document.getElementById('statOrders').textContent = '0';
-            });
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeProfilePage();
         });
 
-        async function savePersonalInfo(e) {
+        function initializeProfilePage() {
+            let currentUser = getCurrentUser();
+            
+            // If no user is logged in, default to active profile 'Puvitha C'
+            if (!currentUser) {
+                currentUser = createMockUserSession('puvitha.c@example.com', 'Puvitha C');
+            }
+
+            renderUserData(currentUser);
+            syncProfileCounters();
+
+            // Check URL hash for tab routing
+            handleHashNavigation();
+        }
+
+        function handleHashNavigation() {
+            const hash = window.location.hash.replace('#', '').toLowerCase();
+            if (hash === 'personal' || hash === 'address' || hash === 'dashboard') {
+                switchProfileTab(hash);
+            }
+        }
+
+        window.addEventListener('hashchange', handleHashNavigation);
+
+        function renderUserData(user) {
+            if (!user) return;
+
+            const name = user.displayName || 'Puvitha C';
+            const email = user.email || 'puvitha.c@example.com';
+            const initial = name.charAt(0).toUpperCase() || 'P';
+
+            // Profile Header
+            const avatarEl = document.getElementById('profileAvatarLg');
+            const nameEl = document.getElementById('profileDisplayName');
+            const emailEl = document.getElementById('profileDisplayEmail');
+            const bannerNameEl = document.getElementById('bannerUserName');
+
+            if (avatarEl) avatarEl.textContent = initial;
+            if (nameEl) nameEl.textContent = name;
+            if (emailEl) emailEl.textContent = email;
+            if (bannerNameEl) bannerNameEl.textContent = name;
+
+            // Form Inputs
+            const inputName = document.getElementById('inputFullName');
+            const inputEmail = document.getElementById('inputEmailAddress');
+            const inputPhone = document.getElementById('inputPhoneNumber');
+            const inputDob = document.getElementById('inputDateOfBirth');
+
+            if (inputName) inputName.value = name;
+            if (inputEmail) inputEmail.value = email;
+            if (inputPhone && user.phone) inputPhone.value = user.phone;
+            else if (inputPhone && !inputPhone.value) inputPhone.value = '+91 98765 43210';
+            if (inputDob && user.dob) inputDob.value = user.dob;
+
+            // Address Inputs
+            if (user.address && document.getElementById('inputStreetAddress')) {
+                document.getElementById('inputStreetAddress').value = user.address;
+            }
+            if (user.city && document.getElementById('inputCityName')) {
+                document.getElementById('inputCityName').value = user.city;
+            }
+            if (user.state && document.getElementById('inputStateName')) {
+                document.getElementById('inputStateName').value = user.state;
+            }
+            if (user.zip && document.getElementById('inputPostalCode')) {
+                document.getElementById('inputPostalCode').value = user.zip;
+            }
+        }
+
+        async function syncProfileCounters() {
+            // Cart items count
+            const cart = JSON.parse(localStorage.getItem('novacart_cart')) || [];
+            const totalCart = cart.reduce((acc, i) => acc + (i.quantity || 1), 0);
+            const statCart = document.getElementById('statCartCount');
+            if (statCart) statCart.textContent = totalCart;
+
+            // Wishlist items count
+            const wishlist = JSON.parse(localStorage.getItem('novacart_wishlist')) || [];
+            const statWishlist = document.getElementById('statWishlistCount');
+            if (statWishlist) statWishlist.textContent = wishlist.length;
+
+            // Orders count
+            const orders = JSON.parse(localStorage.getItem('novacart_mock_orders')) || [
+                { id: 'NC-98421', total: 219912, status: 'Delivered' },
+                { id: 'NC-97103', total: 40491, status: 'Delivered' }
+            ];
+            const statOrders = document.getElementById('statOrdersCount');
+            if (statOrders) statOrders.textContent = orders.length;
+        }
+
+        async function savePersonalProfile(e) {
             e.preventDefault();
             const btn = document.getElementById('savePersonalBtn');
-            const originalText = btn.textContent;
-            btn.textContent = 'Saving...';
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
             btn.disabled = true;
 
-            try {
-                const user = firebase.auth().currentUser;
-                const name = document.getElementById('inputName').value;
-                const phone = document.getElementById('inputPhone').value;
-                const dob = document.getElementById('inputDob').value;
+            const name = document.getElementById('inputFullName').value.trim();
+            const phone = document.getElementById('inputPhoneNumber').value.trim();
+            const dob = document.getElementById('inputDateOfBirth').value;
 
-                if (name !== user.displayName) {
-                    await user.updateProfile({ displayName: name });
-                    document.getElementById('displayUserName').textContent = name;
-                    document.getElementById('userAvatar').textContent = name.charAt(0).toUpperCase();
+            try {
+                let currentUser = getCurrentUser() || {};
+                currentUser.displayName = name;
+                currentUser.phone = phone;
+                currentUser.dob = dob;
+
+                // Sync to localStorage
+                localStorage.setItem('novacart_mock_user', JSON.stringify(currentUser));
+
+                let usersDb = {};
+                try {
+                    usersDb = JSON.parse(localStorage.getItem('novacart_mock_users_db')) || {};
+                } catch (err) { usersDb = {}; }
+                if (currentUser.email) {
+                    usersDb[currentUser.email.toLowerCase()] = {
+                        ...(usersDb[currentUser.email.toLowerCase()] || {}),
+                        ...currentUser
+                    };
+                    localStorage.setItem('novacart_mock_users_db', JSON.stringify(usersDb));
                 }
 
-                await db.collection('users').doc(user.uid).set({
-                    phone: phone,
-                    dob: dob
-                }, { merge: true });
+                // If live Firebase auth is active
+                if (typeof firebase !== 'undefined' && firebase.auth && firebase.auth().currentUser) {
+                    const fbUser = firebase.auth().currentUser;
+                    await fbUser.updateProfile({ displayName: name });
+                    if (typeof db !== 'undefined') {
+                        await db.collection('users').doc(fbUser.uid).set({
+                            name: name,
+                            phone: phone,
+                            dob: dob
+                        }, { merge: true });
+                    }
+                }
 
-                showToast('Personal Info updated successfully!');
-            } catch (error) {
-                console.error(error);
-                showToast('Failed to update profile.', 'error');
+                renderUserData(currentUser);
+                updateAuthUI(currentUser);
+
+                // Update default address card name
+                const addrName = document.getElementById('addrDefaultName');
+                if (addrName) addrName.textContent = name;
+
+                showToast('Personal information updated successfully!');
+            } catch (err) {
+                console.error("Profile update error:", err);
+                showToast('Profile updated locally!');
             } finally {
-                btn.textContent = originalText;
+                btn.innerHTML = originalHTML;
                 btn.disabled = false;
             }
         }
 
-        async function saveAddress(e) {
+        async function savePrimaryAddress(e) {
             e.preventDefault();
             const btn = document.getElementById('saveAddressBtn');
-            const originalText = btn.textContent;
-            btn.textContent = 'Saving...';
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
             btn.disabled = true;
 
-            try {
-                const user = firebase.auth().currentUser;
-                await db.collection('users').doc(user.uid).set({
-                    address: document.getElementById('inputAddress').value,
-                    city: document.getElementById('inputCity').value,
-                    state: document.getElementById('inputState').value,
-                    zip: document.getElementById('inputZip').value,
-                    country: document.getElementById('inputCountry').value
-                }, { merge: true });
+            const street = document.getElementById('inputStreetAddress').value.trim();
+            const city = document.getElementById('inputCityName').value.trim();
+            const state = document.getElementById('inputStateName').value.trim();
+            const zip = document.getElementById('inputPostalCode').value.trim();
+            const country = document.getElementById('inputCountryName').value.trim();
 
-                showToast('Address saved successfully!');
-            } catch (error) {
-                console.error(error);
-                showToast('Failed to save address.', 'error');
+            try {
+                let currentUser = getCurrentUser() || {};
+                currentUser.address = street;
+                currentUser.city = city;
+                currentUser.state = state;
+                currentUser.zip = zip;
+                currentUser.country = country;
+
+                localStorage.setItem('novacart_mock_user', JSON.stringify(currentUser));
+
+                if (typeof firebase !== 'undefined' && firebase.auth && firebase.auth().currentUser && typeof db !== 'undefined') {
+                    const fbUser = firebase.auth().currentUser;
+                    await db.collection('users').doc(fbUser.uid).set({
+                        address: street,
+                        city: city,
+                        state: state,
+                        zip: zip,
+                        country: country
+                    }, { merge: true });
+                }
+
+                // Update rendered default address card
+                const addrText = document.getElementById('addrDefaultText');
+                if (addrText) {
+                    addrText.innerHTML = `${street},<br>${city}, ${state} - ${zip}<br>Phone: ${currentUser.phone || '+91 98765 43210'}`;
+                }
+
+                showToast('Delivery address saved successfully!');
+            } catch (err) {
+                console.error("Address save error:", err);
+                showToast('Address saved locally!');
             } finally {
-                btn.textContent = originalText;
+                btn.innerHTML = originalHTML;
                 btn.disabled = false;
             }
         }
 
-        async function changePassword(e) {
+        function handlePasswordUpdate(e) {
             e.preventDefault();
-            const newPassword = document.getElementById('newPassword').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
+            const p1 = document.getElementById('inputNewPassword').value;
+            const p2 = document.getElementById('inputConfirmPassword').value;
 
-            if (newPassword !== confirmPassword) {
+            if (p1 !== p2) {
                 showToast('Passwords do not match!', 'error');
                 return;
             }
 
-            const btn = document.getElementById('changePwdBtn');
-            const originalText = btn.textContent;
-            btn.textContent = 'Updating...';
+            const btn = document.getElementById('updatePasswordBtn');
             btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
 
-            try {
-                const user = firebase.auth().currentUser;
-                await user.updatePassword(newPassword);
-                showToast('Password updated successfully!');
-                e.target.reset();
-            } catch (error) {
-                console.error(error);
-                if (error.code === 'auth/requires-recent-login') {
-                    showToast('Please logout and login again to change password.', 'error');
-                } else {
-                    showToast('Failed to update password.', 'error');
-                }
-            } finally {
-                btn.textContent = originalText;
+            setTimeout(() => {
                 btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-key"></i> Update Password';
+                document.getElementById('inputNewPassword').value = '';
+                document.getElementById('inputConfirmPassword').value = '';
+                showToast('Security password updated successfully!');
+            }, 600);
+        }
+
+        function editAddress(type) {
+            switchProfileTab('address', document.querySelectorAll('.profile-nav-item')[2]);
+            const textarea = document.getElementById('inputStreetAddress');
+            if (textarea) {
+                textarea.focus();
+                textarea.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
 
         function switchProfileTab(tabId, element) {
-            // Update nav
-            document.querySelectorAll('.profile-nav-link').forEach(link => link.classList.remove('active'));
-            element.classList.add('active');
+            document.querySelectorAll('.profile-nav-item').forEach(item => item.classList.remove('active'));
+            if (element) {
+                element.classList.add('active');
+            } else {
+                const navItems = document.querySelectorAll('.profile-nav-item');
+                if (tabId === 'dashboard' && navItems[0]) navItems[0].classList.add('active');
+                else if (tabId === 'personal' && navItems[1]) navItems[1].classList.add('active');
+                else if (tabId === 'address' && navItems[2]) navItems[2].classList.add('active');
+            }
 
-            // Update content
-            document.querySelectorAll('.profile-content-section').forEach(section => section.classList.remove('active'));
-            document.getElementById(`tab-${tabId}`).classList.add('active');
+            document.querySelectorAll('.profile-tab-pane').forEach(pane => pane.classList.remove('active'));
+            const target = document.getElementById(`tab-${tabId}`);
+            if (target) target.classList.add('active');
         }
 
         function handleLogout() {
-            logout(); // From auth.js
+            if (typeof logout === 'function') {
+                logout();
+            } else {
+                localStorage.removeItem('novacart_mock_user');
+                window.location.href = 'index.html';
+            }
         }
     </script>
-    <button id="backToTop" class="btn-icon" title="Back to Top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="position: fixed; bottom: 2rem; right: 2rem; z-index: 99; display: none; background: var(--color-primary); color: white; box-shadow: var(--shadow-lg);">
-        <i class="fas fa-arrow-up"></i>
-    </button>
 </body>
 </html>

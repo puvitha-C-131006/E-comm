@@ -2,453 +2,760 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>NovaCart | Smart Shopping. Better Experience.</title>
-    <meta name="description" content="NovaCart - Premium E-Commerce platform for Electronics, Fashion, Footwear, and more.">
+    <meta name="description" content="NovaCart - India's premium e-commerce destination for flagship Electronics, Fashion, Footwear, and Living essentials with express delivery.">
     <meta property="og:title" content="NovaCart | Smart Shopping. Better Experience.">
-    <meta property="og:description" content="Shop the latest trends in Electronics, Fashion, and Home Appliances with fast delivery and secure payments.">
+    <meta property="og:description" content="Shop top-tier brands with instant checkout, live tracking, and bank-grade security.">
     
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/style.css?v=8">
-    <link rel="stylesheet" href="assets/css/responsive.css?v=8">
+    <!-- CSS Stylesheets -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
     
-    <!-- FontAwesome -->
+    <!-- FontAwesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* Specific Home Page Styles */
-        .hero {
-            position: relative;
-            height: 75vh;
-            min-height: 500px;
-            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+        /* Quick Category Tag Chips Ribbon (Amazon/Flipkart Style) */
+        .category-ribbon-bar {
             display: flex;
             align-items: center;
-            overflow: hidden;
-            margin-top: 64px; /* Offset for fixed navbar */
+            gap: 0.85rem;
+            overflow-x: auto;
+            padding: 1.25rem 0.5rem 0.5rem 0.5rem;
+            margin: 1.5rem 0 1rem 0;
+            scrollbar-width: thin;
+            -webkit-overflow-scrolling: touch;
         }
-        .hero-content {
-            flex: 1;
-            padding-right: 2rem;
-            z-index: 2;
+
+        .category-ribbon-bar::-webkit-scrollbar {
+            height: 4px;
         }
-        .hero-title {
-            font-size: clamp(3rem, 5vw, 4.5rem);
-            font-weight: 700;
-            color: var(--color-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
+
+        .category-ribbon-bar::-webkit-scrollbar-thumb {
+            background: var(--color-border);
+            border-radius: 4px;
         }
-        .hero-title span {
-            color: var(--color-primary);
-        }
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 2.5rem;
-            max-width: 500px;
-        }
-        .hero-image-container {
-            flex: 1;
-            position: relative;
-            height: 100%;
-            display: flex;
+
+        .category-ribbon-chip {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            z-index: 1;
-        }
-        .hero-image {
-            max-width: 120%;
-            transform: translateX(10%);
-        }
-        .hero-shape {
-            position: absolute;
-            width: 800px;
-            height: 800px;
-            background-color: var(--color-primary);
-            border-radius: 50%;
-            right: -200px;
-            top: -100px;
-            opacity: 0.05;
-            z-index: 0;
-        }
-        
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-        .category-card {
-            background-color: var(--color-card-bg);
-            border-radius: var(--radius-md);
-            padding: 2rem 1rem;
-            text-align: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1.15rem;
+            background: var(--color-card-bg);
             border: 1px solid var(--color-border);
-            transition: all var(--transition-normal);
-            cursor: pointer;
+            border-radius: var(--radius-full);
+            color: var(--color-text-primary);
+            font-size: 0.88rem;
+            font-weight: 600;
+            white-space: nowrap;
+            text-decoration: none;
+            box-shadow: var(--shadow-xs);
+            transition: all var(--transition-fast);
+            flex-shrink: 0;
         }
-        .category-card:hover {
-            transform: translateY(-5px);
+
+        .category-ribbon-chip:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            background: var(--color-primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .category-ribbon-chip i {
+            color: var(--color-primary);
+            font-size: 0.95rem;
+        }
+
+        /* Feature Discovery Quadrant Grid */
+        .feature-quadrant-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0 3.5rem;
+            width: 100%;
+        }
+
+        .quadrant-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-xl);
+            padding: 1.6rem 1.5rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all var(--transition-smooth);
+        }
+
+        .quadrant-card:hover {
+            transform: translateY(-4px);
             border-color: var(--color-primary);
             box-shadow: var(--shadow-md);
         }
-        .category-icon {
-            font-size: 2.5rem;
-            color: var(--color-primary);
-            margin-bottom: 1rem;
-        }
-        .category-name {
-            font-weight: 600;
+
+        .quadrant-title {
+            font-size: 1.15rem;
+            font-weight: 800;
             color: var(--color-text-primary);
+            margin-bottom: 1.1rem;
+            line-height: 1.3;
         }
 
-        .features-grid {
+        .quadrant-images-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        .feature-card {
-            text-align: center;
-            padding: 2.5rem;
-            background-color: var(--color-card-bg);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            transition: all var(--transition-normal);
-        }
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background-color: rgba(37, 99, 235, 0.1);
-            color: var(--color-primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin: 0 auto 1.5rem;
-        }
-        .feature-title {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.85rem;
+            margin-bottom: 1.25rem;
         }
 
-        .newsletter {
-            background-color: var(--color-primary);
-            border-radius: var(--radius-lg);
-            padding: 4rem 2rem;
-            text-align: center;
-            color: var(--color-white);
-            margin: 5rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .newsletter h2 {
-            color: var(--color-white);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 2;
-        }
-        .newsletter p {
-            margin-bottom: 2rem;
-            position: relative;
-            z-index: 2;
-            opacity: 0.9;
-        }
-        .newsletter-form {
+        .quadrant-tile {
             display: flex;
-            max-width: 500px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
+            flex-direction: column;
+            gap: 0.4rem;
+            text-decoration: none;
+            color: inherit;
         }
-        .newsletter-input {
-            flex: 1;
-            padding: 1rem 1.5rem;
-            border-radius: var(--radius-full) 0 0 var(--radius-full);
-            border: none;
-            outline: none;
+
+        .quadrant-img {
+            width: 100%;
+            height: 105px;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            background: var(--color-card-subtle);
+            transition: transform var(--transition-fast);
         }
-        .newsletter-btn {
-            padding: 1rem 2rem;
-            border-radius: 0 var(--radius-full) var(--radius-full) 0;
-            background-color: var(--color-secondary);
-            color: var(--color-white);
+
+        .quadrant-tile:hover .quadrant-img {
+            transform: scale(1.05);
+        }
+
+        .quadrant-lbl {
+            font-size: 0.78rem;
             font-weight: 600;
-        }
-        .newsletter-btn:hover {
-            background-color: #1e293b;
+            color: var(--color-text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
-        @media (max-width: 912px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 4rem 0;
-                height: auto;
+        .quadrant-link {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 0.5rem;
+        }
+
+        .quadrant-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1200px) {
+            .feature-quadrant-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-            .hero-content {
-                padding-right: 0;
-                margin-bottom: 3rem;
-            }
-            .hero-subtitle {
-                margin: 0 auto 2.5rem;
+        }
+
+        @media (max-width: 640px) {
+            .feature-quadrant-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar">
+    <!-- Desktop & Mobile Sticky Navigation Header -->
+    <header class="navbar">
         <div class="container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-shopping-bag"></i> Nova<span>Cart</span>
+            <!-- Brand Logo -->
+            <a href="index.html" class="logo" id="brandLogo">
+                <div class="logo-badge">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                Nova<span>Cart</span>
             </a>
+
+            <!-- Location Selector Pill (Amazon/Flipkart Style) -->
+            <div class="location-pill" onclick="openLocationModal()" title="Change Delivery Location">
+                <i class="fas fa-map-marker-alt"></i>
+                <div class="loc-text">
+                    <span class="sub">Deliver to</span>
+                    <span class="main"><span class="loc-city-name">Bengaluru</span> <span class="loc-pincode" style="font-weight:500; font-size:0.75rem;">560001</span></span>
+                </div>
+            </div>
             
-            <div class="search-bar">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Search for products, brands...">
+            <!-- Global Unified Search with Category Selector -->
+            <div class="search-wrapper">
+                <div class="search-bar-unified">
+                    <select class="search-category-select" id="searchCategorySelect">
+                        <option value="all">All Departments</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Footwear">Footwear</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="Home Appliances">Home & Living</option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="Accessories">Accessories</option>
+                    </select>
+                    <input type="text" id="globalSearchInput" placeholder="Search brands, products, laptops, sneakers..." autocomplete="off">
+                    <button class="search-btn" title="Search"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="search-suggestions-dropdown" id="searchSuggestions"></div>
             </div>
 
-            <div class="nav-menu">
+            <!-- Navigation Menu with Mega Menu -->
+            <nav class="nav-menu">
                 <ul class="nav-links">
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="products.html">Shop</a></li>
-                    <li><a href="products.html?category=electronics">Categories</a></li>
-                    <li><a href="products.html?deals=true">Deals</a></li>
+                    
+                    <!-- Mega Menu for Categories -->
+                    <li class="mega-menu-trigger">
+                        <a href="products.html?category=all" id="categoriesMegaTrigger">
+                            Categories <i class="fas fa-chevron-down nav-arrow"></i>
+                        </a>
+                        <div class="mega-menu">
+                            <div class="container">
+                                <div class="mega-menu-inner">
+                                    <!-- Column 1: Electronics -->
+                                    <div>
+                                        <div class="mega-col-title">
+                                            <i class="fas fa-laptop"></i> Electronics & Tech
+                                        </div>
+                                        <div class="mega-list">
+                                            <a href="products.html?category=Electronics"><i class="fas fa-mobile-alt"></i> Smartphones & Audio</a>
+                                            <a href="products.html?category=Electronics"><i class="fas fa-laptop"></i> Premium Laptops</a>
+                                            <a href="products.html?category=Electronics"><i class="fas fa-headphones"></i> Noise-Cancelling Audio</a>
+                                            <a href="products.html?category=Gaming"><i class="fas fa-gamepad"></i> Gaming Consoles & Gear</a>
+                                            <a href="products.html?category=Electronics"><i class="fas fa-clock"></i> Smartwatches & Wearables</a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Column 2: Fashion -->
+                                    <div>
+                                        <div class="mega-col-title">
+                                            <i class="fas fa-tshirt"></i> Fashion & Apparel
+                                        </div>
+                                        <div class="mega-list">
+                                            <a href="products.html?category=Fashion"><i class="fas fa-male"></i> Men's Trend Collection</a>
+                                            <a href="products.html?category=Fashion"><i class="fas fa-female"></i> Women's Designer Wear</a>
+                                            <a href="products.html?category=Footwear"><i class="fas fa-shoe-prints"></i> Sneakers & Footwear</a>
+                                            <a href="products.html?category=Accessories"><i class="fas fa-glasses"></i> Sunglasses & Watches</a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Column 3: Home & Living -->
+                                    <div>
+                                        <div class="mega-col-title">
+                                            <i class="fas fa-couch"></i> Living & Home
+                                        </div>
+                                        <div class="mega-list">
+                                            <a href="products.html?category=Home%20Appliances"><i class="fas fa-blender"></i> Smart Kitchen Appliances</a>
+                                            <a href="products.html?category=Furniture"><i class="fas fa-chair"></i> Modern Furniture & Decor</a>
+                                            <a href="products.html?deals=true"><i class="fas fa-percent"></i> Clearance & Warehouse</a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Column 4: Promo Card -->
+                                    <div>
+                                        <div class="mega-featured-card">
+                                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Special Deal" class="mega-featured-bg">
+                                            <div class="mega-featured-content">
+                                                <span class="mega-featured-tag">SPECIAL OFFER</span>
+                                                <h4 class="mega-featured-title">Up to 40% Off Flagships</h4>
+                                                <a href="products.html?deals=true" class="mega-featured-link">
+                                                    Shop Flash Deals <i class="fas fa-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li><a href="products.html?deals=true"><i class="fas fa-bolt" style="color: var(--color-warning); font-size: 0.85rem;"></i> Deals</a></li>
                 </ul>
                 
+                <!-- Nav Actions -->
                 <div class="nav-actions">
-                    <button id="theme-toggle" class="action-icon" title="Toggle Dark Mode" onclick="toggleTheme()">
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="action-icon" title="Toggle Dark/Light Mode" onclick="toggleTheme()">
                         <i class="fas fa-moon"></i>
                     </button>
-                    <a href="login.html" class="btn btn-primary auth-link" style="display:none;">Login</a>
+
+                    <!-- User Account / Profile -->
+                    <a href="login.html" class="btn btn-primary auth-link" style="font-size: 0.85rem; padding: 0.45rem 1rem;">Login</a>
                     
-                    <a href="profile.html" class="action-icon profile-link" title="Profile" style="display:none;">
-                        <i class="far fa-user"></i>
-                        <span class="user-name" style="font-size: 0.9rem; margin-left: 0.5rem; font-family: 'Poppins', sans-serif;"></span>
+                    <a href="profile.html" class="profile-link user-profile-chip" title="Account" style="display:none;">
+                        <div class="user-avatar"><i class="far fa-user"></i></div>
+                        <span class="user-name">Account</span>
                     </a>
                     
-                    
+                    <!-- Notification Dropdown -->
                     <div class="notification-dropdown">
-                        <a href="#" class="action-icon" title="Notifications">
+                        <button class="action-icon" title="Notifications">
                             <i class="far fa-bell"></i>
-                            <span class="badge" style="display: block;">3</span>
-                        </a>
+                            <span class="badge">3</span>
+                        </button>
                         <div class="notification-panel">
                             <div class="notification-header">
-                                Notifications <span style="font-size:0.8rem;color:var(--color-primary);cursor:pointer;">Mark all as read</span>
+                                <span>Notifications</span>
+                                <button style="font-size:0.8rem; color:var(--color-primary); font-weight:600;">Mark all as read</button>
                             </div>
                             <div class="notifications-list">
-<div class="notification-item unread">
-                                <div class="notif-icon notif-sale"><i class="fas fa-bolt"></i></div>
-                                <div class="notif-content">
-                                    <h4>Flash Sale Started</h4>
-                                    <p>Up to 50% off on electronics for the next 5 hours!</p>
+                                <div class="notification-item unread">
+                                    <div class="notif-icon notif-sale"><i class="fas fa-bolt"></i></div>
+                                    <div class="notif-content">
+                                        <h4>Mega Flash Sale Live!</h4>
+                                        <p>Up to 50% discount on flagship electronics today.</p>
+                                    </div>
+                                </div>
+                                <div class="notification-item unread">
+                                    <div class="notif-icon notif-coupon"><i class="fas fa-ticket-alt"></i></div>
+                                    <div class="notif-content">
+                                        <h4>Special Promo Code</h4>
+                                        <p>Use code <b>NOVA10</b> for an instant 10% discount.</p>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notif-icon notif-order"><i class="fas fa-truck"></i></div>
+                                    <div class="notif-content">
+                                        <h4>Free Express Delivery</h4>
+                                        <p>Enjoy free shipping on all orders over ₹999.</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="notification-item unread">
-                                <div class="notif-icon notif-coupon"><i class="fas fa-ticket-alt"></i></div>
-                                <div class="notif-content">
-                                    <h4>Coupon Available</h4>
-                                    <p>Use code SAVE500 for a flat ₹500 discount.</p>
-                                </div>
-                            </div>
-                            <div class="notification-item">
-                                <div class="notif-icon notif-order"><i class="fas fa-box-open"></i></div>
-                                <div class="notif-content">
-                                    <h4>Order Delivered</h4>
-                                    <p>Your order #ORD-092123 has been delivered.</p>
-                                </div>
-                            </div>
-                        </div>
                         </div>
                     </div>
-                    <a href="wishlist.html" class="action-icon" title="Wishlist">
+
+                    <!-- Wishlist Link -->
+                    <a href="wishlist.html" class="action-icon wishlist-action" title="Wishlist">
                         <i class="far fa-heart"></i>
                         <span class="badge wishlist-badge" style="display: none;">0</span>
                     </a>
                     
-                    <a href="cart.html" class="action-icon" title="Cart">
+                    <!-- Cart Link (Triggers Slide-Out Drawer) -->
+                    <a href="javascript:void(0)" onclick="openCartDrawer()" class="action-icon cart-drawer-trigger" title="Cart">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="badge cart-badge" style="display: none;">0</span>
                     </a>
                 </div>
-            </div>
+            </nav>
 
-            <div class="mobile-toggle">
+            <!-- Mobile Hamburger Toggle -->
+            <button class="mobile-toggle" aria-label="Open Navigation Menu">
                 <i class="fas fa-bars"></i>
-            </div>
+            </button>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-shape"></div>
-        <div class="container" style="display: flex; align-items: center; height: 100%; position: relative; z-index: 1;">
-            <div class="hero-content animate-slide-up">
-                <h1 class="hero-title">Smart Shopping.<br><span>Better Experience.</span></h1>
-                <p class="hero-subtitle">Discover premium quality products across electronics, fashion, and home decor. Fast delivery and secure payments guaranteed.</p>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-start;">
-                    <a href="products.html" class="btn btn-primary btn-lg">Shop Now <i class="fas fa-arrow-right"></i></a>
-                    <a href="#categories" class="btn btn-outline btn-lg">Explore Categories</a>
-                </div>
-            </div>
-            <div class="hero-image-container animate-fade-in" style="animation-delay: 0.3s;">
-                <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1000&q=80" alt="Premium Shopping" class="hero-image" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
-            </div>
-        </div>
-    </section>
+    <!-- Main Page Content -->
+    <main>
+        <div class="container" style="padding-top: 1rem;">
+            
+            <!-- Hero Banner Promotional Carousel (Amazon/Flipkart Slider) -->
+            <section class="hero-carousel-container">
+                <div class="hero-slides-wrapper" id="heroSlidesWrapper">
+                    
+                    <!-- Slide 1: Electronics Mega Drop -->
+                    <div class="hero-slide-item hero-slide-1">
+                        <div class="hero-slide-content">
+                            <span class="hero-slide-badge"><i class="fas fa-bolt"></i> 2026 FLAGSHIP DROP</span>
+                            <h1 class="hero-slide-title">Apple MacBook Pro 16"<br><span>M3 Max Performance.</span></h1>
+                            <p class="hero-slide-desc">Experience groundbreaking speed, Liquid Retina XDR display, and up to 22 hours of pro battery life.</p>
+                            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                                <a href="product-details.html?id=1" class="btn btn-primary btn-lg">Shop Now &bull; ₹2,19,912</a>
+                                <a href="products.html?category=Electronics" class="btn btn-outline btn-lg" style="color:white; border-color:rgba(255,255,255,0.4);">Explore Tech</a>
+                            </div>
+                        </div>
+                        <div class="hero-slide-image-box">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="MacBook Pro" class="hero-slide-img">
+                        </div>
+                    </div>
 
-    <!-- Flash Sale -->
-    <section class="section" style="background: linear-gradient(135deg, var(--color-danger) 0%, #dc2626 100%); color: white; padding: 3rem 0; margin-top: 2rem;">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
-            <div>
-                <h2 style="font-size: 2.5rem; margin-bottom: 0.5rem;"><i class="fas fa-bolt" style="color: #fbbf24;"></i> Flash Sale</h2>
-                <p style="font-size: 1.1rem; opacity: 0.9;">Up to 50% off on premium electronics. Limited time offer!</p>
-            </div>
-            <div style="display: flex; gap: 1rem; text-align: center;">
-                <div style="background: rgba(255,255,255,0.2); border-radius: var(--radius-md); padding: 1rem; min-width: 80px;">
-                    <div id="fs-hours" style="font-size: 2rem; font-weight: 700;">00</div>
-                    <div style="font-size: 0.85rem; text-transform: uppercase;">Hours</div>
-                </div>
-                <div style="font-size: 2rem; font-weight: 700; align-self: center;">:</div>
-                <div style="background: rgba(255,255,255,0.2); border-radius: var(--radius-md); padding: 1rem; min-width: 80px;">
-                    <div id="fs-minutes" style="font-size: 2rem; font-weight: 700;">00</div>
-                    <div style="font-size: 0.85rem; text-transform: uppercase;">Mins</div>
-                </div>
-                <div style="font-size: 2rem; font-weight: 700; align-self: center;">:</div>
-                <div style="background: rgba(255,255,255,0.2); border-radius: var(--radius-md); padding: 1rem; min-width: 80px;">
-                    <div id="fs-seconds" style="font-size: 2rem; font-weight: 700;">00</div>
-                    <div style="font-size: 0.85rem; text-transform: uppercase;">Secs</div>
-                </div>
-            </div>
-            <div>
-                <a href="products.html?deals=true" class="btn btn-primary" style="background: white; color: var(--color-danger); border: none;">Shop Now</a>
-            </div>
-        </div>
-    </section>
+                    <!-- Slide 2: Gaming & Spatial Audio -->
+                    <div class="hero-slide-item hero-slide-2">
+                        <div class="hero-slide-content">
+                            <span class="hero-slide-badge" style="color:#FCA5A5; background:rgba(239,68,68,0.2);"><i class="fas fa-gamepad"></i> NEXT-GEN GAMING</span>
+                            <h1 class="hero-slide-title">PlayStation 5 Slim<br><span style="color:#F87171;">Immersive 4K Worlds.</span></h1>
+                            <p class="hero-slide-desc">Ultra high-speed 1TB SSD, DualSense haptic feedback, and breathtaking 3D Spatial Audio.</p>
+                            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                                <a href="product-details.html?id=4" class="btn btn-primary btn-lg" style="background:#EF4444;">Buy Now &bull; ₹40,491</a>
+                                <a href="products.html?category=Gaming" class="btn btn-outline btn-lg" style="color:white; border-color:rgba(255,255,255,0.4);">View Gaming Gear</a>
+                            </div>
+                        </div>
+                        <div class="hero-slide-image-box">
+                            <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=800&q=80" alt="PlayStation 5" class="hero-slide-img">
+                        </div>
+                    </div>
 
-    <!-- Featured Categories -->
-    <section id="categories" class="section">
-        <div class="container">
-            <h2 class="section-title">Shop by Category</h2>
-            <div class="category-grid" id="categoryGrid">
-                <!-- Categories will be injected here via JS -->
-            </div>
-        </div>
-    </section>
+                    <!-- Slide 3: Footwear & Lifestyle -->
+                    <div class="hero-slide-item hero-slide-3">
+                        <div class="hero-slide-content">
+                            <span class="hero-slide-badge" style="color:#6EE7B7; background:rgba(16,185,129,0.2);"><i class="fas fa-shoe-prints"></i> LIFESTYLE ESSENTIALS</span>
+                            <h1 class="hero-slide-title">Nike & Adidas Drops<br><span style="color:#34D399;">Up to 30% Off Footwear.</span></h1>
+                            <p class="hero-slide-desc">Step into maximum responsive cushioning with the Air Max 270 React & Ultraboost Light editions.</p>
+                            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                                <a href="products.html?category=Footwear" class="btn btn-primary btn-lg" style="background:#10B981;">Explore Footwear</a>
+                                <a href="products.html?deals=true" class="btn btn-outline btn-lg" style="color:white; border-color:rgba(255,255,255,0.4);">All Deals</a>
+                            </div>
+                        </div>
+                        <div class="hero-slide-image-box">
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80" alt="Nike Sneakers" class="hero-slide-img">
+                        </div>
+                    </div>
 
-    <!-- Trending Products -->
-    <section class="section" style="background-color: #fff;">
-        <div class="container">
-            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem;">
-                <h2 class="section-title" style="margin-bottom: 0;">Trending Now</h2>
-                <a href="products.html" style="color: var(--color-primary); font-weight: 500;">View All <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="product-grid" id="trendingProducts">
-                <!-- Products injected via JS -->
-            </div>
-        </div>
-    </section>
+                </div>
 
-    <!-- Why Choose Us -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Why Choose NovaCart</h2>
-            <div class="features-grid">
-                <div class="feature-card animate-slide-up" style="animation-delay: 0.1s;">
-                    <div class="feature-icon"><i class="fas fa-shipping-fast"></i></div>
-                    <h3 class="feature-title">Fast Delivery</h3>
-                    <p class="color-text-secondary">Free and fast shipping on all orders over $50 across the country.</p>
-                </div>
-                <div class="feature-card animate-slide-up" style="animation-delay: 0.2s;">
-                    <div class="feature-icon"><i class="fas fa-undo-alt"></i></div>
-                    <h3 class="feature-title">Easy Returns</h3>
-                    <p class="color-text-secondary">30-day easy return policy for all your purchases with no questions asked.</p>
-                </div>
-                <div class="feature-card animate-slide-up" style="animation-delay: 0.3s;">
-                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h3 class="feature-title">Secure Payments</h3>
-                    <p class="color-text-secondary">We use 256-bit encryption to ensure your payment details are always secure.</p>
-                </div>
-                <div class="feature-card animate-slide-up" style="animation-delay: 0.4s;">
-                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
-                    <h3 class="feature-title">24/7 Support</h3>
-                    <p class="color-text-secondary">Our dedicated customer support team is available round the clock to help you.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                <!-- Carousel Controls -->
+                <button class="hero-carousel-nav hero-carousel-prev" onclick="prevHeroSlide()" title="Previous Slide"><i class="fas fa-chevron-left"></i></button>
+                <button class="hero-carousel-nav hero-carousel-next" onclick="nextHeroSlide()" title="Next Slide"><i class="fas fa-chevron-right"></i></button>
 
-    <!-- Newsletter -->
-    <section class="section" style="padding-top: 0;">
-        <div class="container">
-            <div class="newsletter">
-                <h2>Join Our Newsletter</h2>
-                <p>Subscribe to get updates on new arrivals, special offers, and exclusive discounts.</p>
-                <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Subscribed successfully!'); this.reset();">
-                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
-                    <button type="submit" class="newsletter-btn">Subscribe</button>
-                </form>
-            </div>
-        </div>
-    </section>
+                <!-- Indicator Dots -->
+                <div class="hero-carousel-dots">
+                    <div class="hero-dot active" onclick="goToHeroSlide(0)"></div>
+                    <div class="hero-dot" onclick="goToHeroSlide(1)"></div>
+                    <div class="hero-dot" onclick="goToHeroSlide(2)"></div>
+                </div>
+            </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <a href="index.html" class="logo" style="color: #fff; margin-bottom: 1.5rem; display: inline-flex;">
-                        <i class="fas fa-shopping-bag"></i> Nova<span>Cart</span>
-                    </a>
-                    <p class="footer-desc">Premium E-Commerce platform providing the best shopping experience with high-quality products and customer service.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <!-- Quick Category Tag Chips Ribbon (Amazon/Flipkart Style) -->
+            <div class="category-ribbon-bar">
+                <a href="products.html?category=all" class="category-ribbon-chip" style="background: var(--color-primary); color: white; border-color: var(--color-primary);">
+                    <i class="fas fa-th-large" style="color: white;"></i> All Departments
+                </a>
+                <a href="products.html?category=Electronics" class="category-ribbon-chip">
+                    <i class="fas fa-laptop"></i> Top Gadgets & Tech
+                </a>
+                <a href="products.html?category=Footwear" class="category-ribbon-chip">
+                    <i class="fas fa-shoe-prints"></i> Trending Footwear
+                </a>
+                <a href="products.html?category=Gaming" class="category-ribbon-chip">
+                    <i class="fas fa-gamepad"></i> Next-Gen Gaming
+                </a>
+                <a href="products.html?category=Fashion" class="category-ribbon-chip">
+                    <i class="fas fa-tshirt"></i> Premium Apparel
+                </a>
+                <a href="products.html?category=Home%20Appliances" class="category-ribbon-chip">
+                    <i class="fas fa-couch"></i> Home & Living
+                </a>
+                <a href="products.html?deals=true" class="category-ribbon-chip" style="border-color: rgba(239,68,68,0.3); color: #EF4444;">
+                    <i class="fas fa-bolt" style="color: #EF4444;"></i> Flash Deals & Discounts
+                </a>
+            </div>
+
+            <!-- 4-Quadrant Feature Discovery Grid (Amazon/Flipkart Style) -->
+            <section class="feature-quadrant-grid">
+                
+                <!-- Tile 1: Electronics -->
+                <div class="quadrant-card">
+                    <div>
+                        <h3 class="quadrant-title">Top Gadgets & Tech</h3>
+                        <div class="quadrant-images-grid">
+                            <a href="product-details.html?id=1" class="quadrant-tile">
+                                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=300&q=80" class="quadrant-img" alt="MacBook">
+                                <span class="quadrant-lbl">Pro Laptops</span>
+                            </a>
+                            <a href="product-details.html?id=2" class="quadrant-tile">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=300&q=80" class="quadrant-img" alt="Headphones">
+                                <span class="quadrant-lbl">Audio Gear</span>
+                            </a>
+                            <a href="product-details.html?id=5" class="quadrant-tile">
+                                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=300&q=80" class="quadrant-img" alt="Smartwatches">
+                                <span class="quadrant-lbl">Smartwatches</span>
+                            </a>
+                            <a href="product-details.html?id=9" class="quadrant-tile">
+                                <img src="https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=300&q=80" class="quadrant-img" alt="Galaxy S24">
+                                <span class="quadrant-lbl">Smartphones</span>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="products.html?category=Electronics" class="quadrant-link">See all in Electronics <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Tile 2: Lifestyle & Footwear -->
+                <div class="quadrant-card">
+                    <div>
+                        <h3 class="quadrant-title">Trending Footwear & Apparel</h3>
+                        <div class="quadrant-images-grid">
+                            <a href="product-details.html?id=3" class="quadrant-tile">
+                                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300&q=80" class="quadrant-img" alt="Nike Sneakers">
+                                <span class="quadrant-lbl">Nike React</span>
+                            </a>
+                            <a href="product-details.html?id=12" class="quadrant-tile">
+                                <img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=300&q=80" class="quadrant-img" alt="Adidas Ultraboost">
+                                <span class="quadrant-lbl">Ultraboost</span>
+                            </a>
+                            <a href="product-details.html?id=10" class="quadrant-tile">
+                                <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=300&q=80" class="quadrant-img" alt="Tech Fleece">
+                                <span class="quadrant-lbl">Tracksuits</span>
+                            </a>
+                            <a href="product-details.html?id=6" class="quadrant-tile">
+                                <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=300&q=80" class="quadrant-img" alt="Ray-Ban">
+                                <span class="quadrant-lbl">Aviators</span>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="products.html?category=Fashion" class="quadrant-link">Explore Fashion <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Tile 3: Living & Home Upgrades -->
+                <div class="quadrant-card">
+                    <div>
+                        <h3 class="quadrant-title">Home & Living Upgrades</h3>
+                        <div class="quadrant-images-grid">
+                            <a href="product-details.html?id=7" class="quadrant-tile">
+                                <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=300&q=80" class="quadrant-img" alt="Armchair">
+                                <span class="quadrant-lbl">Lounge Chairs</span>
+                            </a>
+                            <a href="product-details.html?id=8" class="quadrant-tile">
+                                <img src="https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=300&q=80" class="quadrant-img" alt="Dyson Vacuum">
+                                <span class="quadrant-lbl">Dyson Vacuum</span>
+                            </a>
+                            <a href="products.html?category=Home%20Appliances" class="quadrant-tile">
+                                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=300&q=80" class="quadrant-img" alt="Decor">
+                                <span class="quadrant-lbl">Living Decor</span>
+                            </a>
+                            <a href="products.html?category=Furniture" class="quadrant-tile">
+                                <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=300&q=80" class="quadrant-img" alt="Modern Desk">
+                                <span class="quadrant-lbl">Modern Office</span>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="products.html?category=Home%20Appliances" class="quadrant-link">Discover Home Decor <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Tile 4: Flash Deals -->
+                <div class="quadrant-card" style="background:linear-gradient(135deg, var(--color-card-bg) 0%, rgba(239,68,68,0.04) 100%);">
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                            <h3 class="quadrant-title" style="margin:0;">Up to 50% Off Deals</h3>
+                            <span class="badge-discount" style="background:#EF4444; color:white; padding:0.2rem 0.5rem; font-size:0.75rem; border-radius:4px; font-weight:800;">LIMITED</span>
+                        </div>
+                        <div class="quadrant-images-grid">
+                            <a href="product-details.html?id=6" class="quadrant-tile">
+                                <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=300&q=80" class="quadrant-img" alt="Ray-Ban Deal">
+                                <span class="quadrant-lbl">Ray-Ban (30% Off)</span>
+                            </a>
+                            <a href="product-details.html?id=12" class="quadrant-tile">
+                                <img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=300&q=80" class="quadrant-img" alt="Adidas Deal">
+                                <span class="quadrant-lbl">Adidas (28% Off)</span>
+                            </a>
+                            <a href="product-details.html?id=3" class="quadrant-tile">
+                                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=300&q=80" class="quadrant-img" alt="Nike Deal">
+                                <span class="quadrant-lbl">Nike (25% Off)</span>
+                            </a>
+                            <a href="product-details.html?id=7" class="quadrant-tile">
+                                <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=300&q=80" class="quadrant-img" alt="Nordic Deal">
+                                <span class="quadrant-lbl">Nordic (35% Off)</span>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="products.html?deals=true" class="quadrant-link" style="color:#EF4444;">Shop all Flash Deals <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+            </section>
+
+            <!-- Horizontal Scroll Carousel 1: "Today's Deals" with Countdown Timer -->
+            <section class="product-carousel-section">
+                <div class="product-carousel-header">
+                    <div class="product-carousel-title-box">
+                        <h2 class="product-carousel-title">
+                            <i class="fas fa-bolt" style="color:#EF4444;"></i> Today's Lightning Deals
+                        </h2>
+                        <!-- Flash Countdown Timer -->
+                        <div style="display:inline-flex; align-items:center; gap:6px; background:rgba(239,68,68,0.1); color:#EF4444; padding:0.25rem 0.65rem; border-radius:var(--radius-full); font-size:0.82rem; font-weight:700;">
+                            <i class="far fa-clock"></i> Ends in <span id="dealTimer">08:42:15</span>
+                        </div>
+                    </div>
+                    <a href="products.html?deals=true" class="btn btn-outline btn-sm">See All Deals <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="product-carousel-track-wrapper">
+                    <button class="carousel-scroll-btn carousel-scroll-left" onclick="scrollCarousel('dealsTrack', 'left')" title="Scroll Left"><i class="fas fa-chevron-left"></i></button>
+                    
+                    <div class="product-carousel-track" id="dealsTrack">
+                        <!-- Populated via JS -->
+                    </div>
+
+                    <button class="carousel-scroll-btn carousel-scroll-right" onclick="scrollCarousel('dealsTrack', 'right')" title="Scroll Right"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <!-- Horizontal Scroll Carousel 2: "Best Sellers" -->
+            <section class="product-carousel-section">
+                <div class="product-carousel-header">
+                    <div class="product-carousel-title-box">
+                        <h2 class="product-carousel-title">
+                            <i class="fas fa-crown" style="color:#F59E0B;"></i> Best Sellers in Electronics & Gadgets
+                        </h2>
+                    </div>
+                    <a href="products.html?category=Electronics" class="btn btn-outline btn-sm">View Top 100 <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="product-carousel-track-wrapper">
+                    <button class="carousel-scroll-btn carousel-scroll-left" onclick="scrollCarousel('bestsellersTrack', 'left')" title="Scroll Left"><i class="fas fa-chevron-left"></i></button>
+                    
+                    <div class="product-carousel-track" id="bestsellersTrack">
+                        <!-- Populated via JS -->
+                    </div>
+
+                    <button class="carousel-scroll-btn carousel-scroll-right" onclick="scrollCarousel('bestsellersTrack', 'right')" title="Scroll Right"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <!-- Horizontal Scroll Carousel 3: "Trending Footwear & Fashion" -->
+            <section class="product-carousel-section">
+                <div class="product-carousel-header">
+                    <div class="product-carousel-title-box">
+                        <h2 class="product-carousel-title">
+                            <i class="fas fa-fire" style="color:#3B82F6;"></i> Trending Now & New Drops
+                        </h2>
+                    </div>
+                    <a href="products.html" class="btn btn-outline btn-sm">Explore All <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="product-carousel-track-wrapper">
+                    <button class="carousel-scroll-btn carousel-scroll-left" onclick="scrollCarousel('trendingTrack', 'left')" title="Scroll Left"><i class="fas fa-chevron-left"></i></button>
+                    
+                    <div class="product-carousel-track" id="trendingTrack">
+                        <!-- Populated via JS -->
+                    </div>
+
+                    <button class="carousel-scroll-btn carousel-scroll-right" onclick="scrollCarousel('trendingTrack', 'right')" title="Scroll Right"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <!-- Trust and Service Guarantee Grid -->
+            <section style="margin: 4rem 0 2rem;">
+                <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:1.5rem;" class="trust-grid">
+                    <div style="background:var(--color-card-bg); border:1px solid var(--color-border); border-radius:var(--radius-lg); padding:1.5rem; display:flex; align-items:center; gap:1rem;">
+                        <div style="width:48px; height:48px; border-radius:50%; background:var(--color-primary-light); color:var(--color-primary); display:flex; align-items:center; justify-content:center; font-size:1.3rem;"><i class="fas fa-truck-fast"></i></div>
+                        <div>
+                            <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:2px;">Free Express Shipping</h4>
+                            <p style="font-size:0.8rem; color:var(--color-text-secondary); margin:0;">On all orders over ₹999</p>
+                        </div>
+                    </div>
+                    <div style="background:var(--color-card-bg); border:1px solid var(--color-border); border-radius:var(--radius-lg); padding:1.5rem; display:flex; align-items:center; gap:1rem;">
+                        <div style="width:48px; height:48px; border-radius:50%; background:rgba(16,185,129,0.12); color:var(--color-success); display:flex; align-items:center; justify-content:center; font-size:1.3rem;"><i class="fas fa-rotate-left"></i></div>
+                        <div>
+                            <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:2px;">7-Day Easy Returns</h4>
+                            <p style="font-size:0.8rem; color:var(--color-text-secondary); margin:0;">Instant hassle-free refunds</p>
+                        </div>
+                    </div>
+                    <div style="background:var(--color-card-bg); border:1px solid var(--color-border); border-radius:var(--radius-lg); padding:1.5rem; display:flex; align-items:center; gap:1rem;">
+                        <div style="width:48px; height:48px; border-radius:50%; background:rgba(245,158,11,0.12); color:var(--color-warning); display:flex; align-items:center; justify-content:center; font-size:1.3rem;"><i class="fas fa-shield-check"></i></div>
+                        <div>
+                            <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:2px;">100% Certified Genuine</h4>
+                            <p style="font-size:0.8rem; color:var(--color-text-secondary); margin:0;">Direct brand warranty</p>
+                        </div>
+                    </div>
+                    <div style="background:var(--color-card-bg); border:1px solid var(--color-border); border-radius:var(--radius-lg); padding:1.5rem; display:flex; align-items:center; gap:1rem;">
+                        <div style="width:48px; height:48px; border-radius:50%; background:rgba(139,92,246,0.12); color:#8B5CF6; display:flex; align-items:center; justify-content:center; font-size:1.3rem;"><i class="fas fa-headset"></i></div>
+                        <div>
+                            <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:2px;">24/7 Dedicated Support</h4>
+                            <p style="font-size:0.8rem; color:var(--color-text-secondary); margin:0;">Live chat & call support</p>
+                        </div>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Shop</a></li>
-                        <li><a href="cart.html">Cart</a></li>
-                        <li><a href="wishlist.html">Wishlist</a></li>
-                        <li><a href="login.html">Login</a></li>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Multi-Column Production Footer with Payment Badges -->
+    <footer class="production-footer">
+        <div class="container">
+            <div class="production-footer-grid">
+                
+                <!-- Col 1: Brand & Bio -->
+                <div>
+                    <div class="footer-brand-title">
+                        <i class="fas fa-shopping-bag" style="color:var(--color-primary)"></i> Nova<span>Cart</span>
+                    </div>
+                    <p style="font-size:0.9rem; line-height:1.6; margin-bottom:1.5rem;">
+                        India's premier e-commerce platform delivering high-performance tech, curated luxury lifestyle products, and certified home appliances.
+                    </p>
+                    <div style="display:flex; gap:0.75rem;">
+                        <a href="#" class="btn-icon" style="background:#1E293B; border-color:#334155; color:white;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="btn-icon" style="background:#1E293B; border-color:#334155; color:white;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="btn-icon" style="background:#1E293B; border-color:#334155; color:white;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="btn-icon" style="background:#1E293B; border-color:#334155; color:white;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Shop by Department -->
+                <div class="footer-links-col">
+                    <h4>Shop Departments</h4>
+                    <ul>
+                        <li><a href="products.html?category=Electronics">Electronics & Laptops</a></li>
+                        <li><a href="products.html?category=Fashion">Men's & Women's Fashion</a></li>
+                        <li><a href="products.html?category=Footwear">Sneakers & Performance Shoes</a></li>
+                        <li><a href="products.html?category=Gaming">Gaming Consoles & Gear</a></li>
+                        <li><a href="products.html?category=Home%20Appliances">Smart Home Appliances</a></li>
+                        <li><a href="products.html?deals=true">Flash Clearance Deals</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h3>Categories</h3>
-                    <ul class="footer-links">
-                        <li><a href="products.html?category=Electronics">Electronics</a></li>
-                        <li><a href="products.html?category=Fashion">Fashion</a></li>
-                        <li><a href="products.html?category=Footwear">Footwear</a></li>
-                        <li><a href="products.html?category=Gaming">Gaming</a></li>
-                        <li><a href="products.html?category=Home Appliances">Home Appliances</a></li>
+
+                <!-- Col 3: Customer Care -->
+                <div class="footer-links-col">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="orders.html">Track Order Status</a></li>
+                        <li><a href="cart.html">Shopping Cart & Invoices</a></li>
+                        <li><a href="wishlist.html">Your Saved Wishlist</a></li>
+                        <li><a href="profile.html">Account Settings</a></li>
+                        <li><a href="login.html">Sign In / Register</a></li>
+                        <li><a href="admin.html">Seller & Admin Dashboard</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h3>Contact Us</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 123 Commerce St, NY 10001</li>
-                        <li><i class="fas fa-phone-alt" style="margin-right: 10px;"></i> +1 (800) 123-4567</li>
-                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> support@novacart.com</li>
+
+                <!-- Col 4: Help & Policies -->
+                <div class="footer-links-col">
+                    <h4>Help & Security</h4>
+                    <ul>
+                        <li><a href="#">Return & Refund Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy & Data Security</a></li>
+                        <li><a href="#">Shipping Rates & Speeds</a></li>
+                        <li><a href="#">100% Purchase Protection</a></li>
+                        <li><a href="#">Contact 24/7 Helpline</a></li>
                     </ul>
+                </div>
+
+            </div>
+
+            <!-- Payment Methods & Trust Row -->
+            <div class="footer-payment-row">
+                <div class="payment-badges-list">
+                    <span style="font-size:0.8rem; font-weight:700; color:#FFFFFF; margin-right:0.5rem;">Accepted Payments:</span>
+                    <span class="payment-badge-chip"><i class="fab fa-cc-visa"></i> VISA</span>
+                    <span class="payment-badge-chip"><i class="fab fa-cc-mastercard"></i> Mastercard</span>
+                    <span class="payment-badge-chip"><i class="fas fa-credit-card"></i> RuPay</span>
+                    <span class="payment-badge-chip"><i class="fas fa-mobile-alt"></i> UPI / GPay / PhonePe</span>
+                    <span class="payment-badge-chip"><i class="fab fa-cc-apple-pay"></i> Apple Pay</span>
+                    <span class="payment-badge-chip"><i class="fab fa-cc-paypal"></i> PayPal</span>
+                    <span class="payment-badge-chip"><i class="fas fa-money-bill-wave"></i> Cash on Delivery</span>
+                </div>
+                <div class="trust-badges-row">
+                    <span><i class="fas fa-lock" style="color:var(--color-success)"></i> 256-Bit SSL Encrypted Checkout</span>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 NovaCart. All Rights Reserved. Designed for Excellence.</p>
+
+            <!-- Copyright Notice -->
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; font-size:0.82rem; color:#64748B;">
+                <p style="margin:0;">&copy; 2026 NovaCart Inc. All Rights Reserved. Production E-Commerce Platform.</p>
+                <div style="display:flex; gap:1.5rem;">
+                    <a href="#" style="color:#64748B;">Privacy Policy</a>
+                    <a href="#" style="color:#64748B;">Terms of Use</a>
+                    <a href="#" style="color:#64748B;">Security</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -468,244 +775,94 @@
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             await fetchProducts();
-            renderFeaturedProducts();
-            
-            // Wait for auth to load user name
-            firebase.auth().onAuthStateChanged((user) => {
-                const userNameSpans = document.querySelectorAll('.user-name');
-                if (user) {
-                    const name = user.displayName ? user.displayName.split(' ')[0] : 'User';
-                    userNameSpans.forEach(span => span.textContent = name);
-                }
-            });
-            renderCategories();
-            renderTrendingProducts();
+            renderHomepageCarousels();
+            startDealCountdown();
         });
 
-        function renderCategories() {
-            const categories = [
-                { name: 'Electronics', icon: 'fa-laptop' },
-                { name: 'Fashion', icon: 'fa-tshirt' },
-                { name: 'Footwear', icon: 'fa-shoe-prints' },
-                { name: 'Accessories', icon: 'fa-glasses' },
-                { name: 'Gaming', icon: 'fa-gamepad' },
-                { name: 'Beauty', icon: 'fa-spa' },
-                { name: 'Furniture', icon: 'fa-chair' },
-                { name: 'Home Appliances', icon: 'fa-blender' }
-            ];
+        function renderHomepageCarousels() {
+            if (typeof products === 'undefined' || !products.length) return;
 
-            const grid = document.getElementById('categoryGrid');
-            grid.innerHTML = categories.map(cat => `
-                <div class="category-card" onclick="window.location.href='products.html?category=${encodeURIComponent(cat.name)}'">
-                    <i class="fas ${cat.icon} category-icon"></i>
-                    <div class="category-name">${cat.name}</div>
-                </div>
-            `).join('');
-        }
+            const dealsTrack = document.getElementById('dealsTrack');
+            const bestsellersTrack = document.getElementById('bestsellersTrack');
+            const trendingTrack = document.getElementById('trendingTrack');
 
-        function renderTrendingProducts() {
-            const grid = document.getElementById('trendingProducts');
-            
-            // Show skeleton loaders first
-            grid.innerHTML = `
-                <div class="skeleton-card">
-                    <div class="skeleton skeleton-img"></div>
-                    <div class="skeleton skeleton-text short" style="margin-top:auto;"></div>
-                    <div class="skeleton skeleton-text"></div>
-                    <div class="skeleton skeleton-text price"></div>
-                </div>
+            const createCardHtml = (prod, badgeText, badgeClass = 'badge-deal') => {
+                const discounted = calculateDiscount(prod.price, prod.discount);
+                const hasDiscount = prod.discount > 0;
+                const inWishlist = isInWishlist(prod.id);
+                const imgUrl = prod.image || (prod.images && prod.images[0]) || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80';
 
-                <div class="skeleton-card">
-                    <div class="skeleton skeleton-img"></div>
-                    <div class="skeleton skeleton-text short" style="margin-top:auto;"></div>
-                    <div class="skeleton skeleton-text"></div>
-                    <div class="skeleton skeleton-text price"></div>
-                </div>
-
-                <div class="skeleton-card">
-                    <div class="skeleton skeleton-img"></div>
-                    <div class="skeleton skeleton-text short" style="margin-top:auto;"></div>
-                    <div class="skeleton skeleton-text"></div>
-                    <div class="skeleton skeleton-text price"></div>
-                </div>
-
-                <div class="skeleton-card">
-                    <div class="skeleton skeleton-img"></div>
-                    <div class="skeleton skeleton-text short" style="margin-top:auto;"></div>
-                    <div class="skeleton skeleton-text"></div>
-                    <div class="skeleton skeleton-text price"></div>
-                </div>
-
-                <div class="skeleton-card">
-                    <div class="skeleton skeleton-img"></div>
-                    <div class="skeleton skeleton-text short" style="margin-top:auto;"></div>
-                    <div class="skeleton skeleton-text"></div>
-                    <div class="skeleton skeleton-text price"></div>
-                </div>
-
-                <div class="skeleton-card">
-                    <div class="skeleton skeleton-img"></div>
-                    <div class="skeleton skeleton-text short" style="margin-top:auto;"></div>
-                    <div class="skeleton skeleton-text"></div>
-                    <div class="skeleton skeleton-text price"></div>
-                </div>
-
-                <div class="skeleton-card">
-                    <div class="skeleton skeleton-img"></div>
-                    <div class="skeleton skeleton-text short" style="margin-top:auto;"></div>
-                    <div class="skeleton skeleton-text"></div>
-                    <div class="skeleton skeleton-text price"></div>
-                </div>
-
-                <div class="skeleton-card">
-                    <div class="skeleton skeleton-img"></div>
-                    <div class="skeleton skeleton-text short" style="margin-top:auto;"></div>
-                    <div class="skeleton skeleton-text"></div>
-                    <div class="skeleton skeleton-text price"></div>
-                </div>
-`;
-            
-            setTimeout(() => {
-                // Pick 8 random products
-                const shuffled = [...products].sort(() => 0.5 - Math.random());
-                const selected = shuffled.slice(0, 8);
-            
-            grid.innerHTML = selected.map(product => {
-                const discountedPrice = calculateDiscount(product.price, product.discount);
-                const hasDiscount = product.discount > 0;
-                const inWishlist = isInWishlist(product.id);
-                
                 return `
-                <div class="product-card">
-                    <div class="product-badges">
-                        ${hasDiscount ? `<span class="product-badge badge-discount">SALE ${product.discount}%</span>` : ''}
-         ${product.rating >= 4.8 ? `<span class="product-badge badge-new">BEST SELLER</span>` : (Math.random() > 0.7 ? `<span class="product-badge badge-new">${['NEW ARRIVAL', 'FEATURED'][Math.floor(Math.random()*2)]}</span>` : '')}
-         ${product.stock < 15 ? `<span class="product-badge badge-discount">LIMITED STOCK</span>` : ''}
-                    </div>
-                    
-                    <div class="product-actions">
-                        <button class="btn-icon btn-wishlist" data-id="${product.id}" onclick="toggleWishlist(${product.id})" title="Wishlist">
-                            <i class="${inWishlist ? 'fas' : 'far'} fa-heart" style="${inWishlist ? 'color: var(--color-danger);' : ''}"></i>
-                        </button>
-                        <button class="btn-icon" onclick="openQuickView(${product.id})" title="Quick View">
-                            <i class="far fa-eye"></i>
-                        </button>
-                        <button class="btn-icon" onclick="shareProduct(${product.id})" title="Share">
-                            <i class="fas fa-share-alt"></i>
-                        </button>
-                    </div>
-
-                    <div class="product-image-container" style="cursor:pointer;" onclick="window.location.href='product-details.html?id=${product.id}'">
-                        <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy" onerror="this.onerror=null; this.src='assets/images/product-default.png';">
-                    </div>
-
-                    <div class="product-info">
-                        <div class="product-category">${product.category} &bull; ${product.brand}</div>
-                        <h3 class="product-title" style="cursor:pointer;" onclick="window.location.href='product-details.html?id=${product.id}'">${product.name}</h3>
+                    <div class="carousel-product-card">
+                        ${badgeText ? `<span class="${badgeClass}">${badgeText}</span>` : ''}
                         
-                        <div class="product-rating">
-                            <div class="stars">
-                                ${Array(5).fill('').map((_, i) => `<i class="fas fa-star" style="opacity: ${i < Math.floor(product.rating) ? 1 : 0.3}"></i>`).join('')}
-                            </div>
-                            <span>(${product.reviewCount})</span>
+                        <div style="width:100%; height:185px; display:flex; align-items:center; justify-content:center; background:#FFFFFF; border-radius:var(--radius-md); overflow:hidden; margin-bottom:0.55rem; position:relative; padding:6px; box-sizing:border-box;">
+                            <a href="product-details.html?id=${prod.id}" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                                <img src="${imgUrl}" alt="${escapeHtml(prod.name)}" style="width:100%; height:100%; max-height:100%; max-width:100%; object-fit:contain; object-position:center; display:block; transition:transform 0.35s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80';">
+                            </a>
+                            <button class="btn-icon" onclick="toggleWishlist(${prod.id})" style="position:absolute; top:6px; right:6px; width:30px; height:30px; font-size:0.8rem; background:rgba(255,255,255,0.9); box-shadow:var(--shadow-sm);" title="Add to Wishlist">
+                                <i class="${inWishlist ? 'fas' : 'far'} fa-heart" style="${inWishlist ? 'color:var(--color-danger);' : ''}"></i>
+                            </button>
                         </div>
 
-                        <div class="product-price">
-                            <span class="current-price">${formatPrice(discountedPrice)}</span>
-                            ${hasDiscount ? `<span class="old-price">${formatPrice(product.price)}</span>` : ''}
+                        <div style="font-size:0.75rem; font-weight:700; color:var(--color-primary); text-transform:uppercase; margin-bottom:0.25rem;">
+                            ${escapeHtml(prod.brand || prod.category)}
                         </div>
 
-                        <button class="btn btn-primary" style="width: 100%;" onclick="addToCart(${product.id})">
+                        <a href="product-details.html?id=${prod.id}" style="font-size:0.9rem; font-weight:700; color:var(--color-text-primary); line-height:1.3; min-height:2.6em; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; margin-bottom:0.4rem;">
+                            ${escapeHtml(prod.name)}
+                        </a>
+
+                        <div style="margin-bottom:0.5rem;">
+                            ${renderStars(prod.rating, true, prod.reviewCount)}
+                        </div>
+
+                        <div style="display:flex; align-items:baseline; gap:6px; margin-bottom:0.75rem; margin-top:auto;">
+                            <span style="font-size:1.15rem; font-weight:800; color:var(--color-text-primary); font-family:'Outfit',sans-serif;">${formatPrice(discounted)}</span>
+                            ${hasDiscount ? `<span style="font-size:0.82rem; text-decoration:line-through; color:var(--color-text-muted);">${formatPrice(prod.price)}</span>` : ''}
+                            ${hasDiscount ? `<span style="font-size:0.75rem; font-weight:800; color:#EF4444;">(${prod.discount}% off)</span>` : ''}
+                        </div>
+
+                        <button class="btn btn-primary btn-sm" onclick="addToCart(${prod.id}, 1)" style="width:100%; border-radius:var(--radius-sm);">
                             <i class="fas fa-cart-plus"></i> Add to Cart
                         </button>
                     </div>
-                </div>
                 `;
-            }).join('');
-            }, 600);
-            
-            // Render Recently Viewed if exists
-            renderRecentlyViewedIndex();
-        }
-
-        function renderRecentlyViewedIndex() {
-            const recentlyViewed = JSON.parse(localStorage.getItem('novacart_recently_viewed')) || [];
-            if (recentlyViewed.length === 0) return;
-
-            let sectionHtml = `
-            <section class="section" style="background-color: var(--color-card-bg);">
-                <div class="container">
-                    <h2 class="section-title">Recently Viewed</h2>
-                    <div class="product-grid">`;
-            
-            recentlyViewed.slice(0, 4).forEach(id => {
-                const product = products.find(p => p.id === id);
-                if(product) {
-                    const discountedPrice = calculateDiscount(product.price, product.discount);
-                    const hasDiscount = product.discount > 0;
-                    
-                    sectionHtml += `
-                    <div class="product-card">
-                        <div class="product-image-container" style="cursor:pointer; height: 200px;" onclick="window.location.href='product-details.html?id=${product.id}'">
-                            <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy" onerror="this.onerror=null; this.src='assets/images/product-default.png';">
-                        </div>
-                        <div class="product-info" style="padding: 1rem;">
-                            <h3 class="product-title" style="font-size: 1rem; cursor:pointer;" onclick="window.location.href='product-details.html?id=${product.id}'">${product.name}</h3>
-                            <div class="product-price" style="font-size: 1.1rem; margin-bottom: 0;">
-                                <span class="current-price">${formatPrice(discountedPrice)}</span>
-                            </div>
-                        </div>
-                    </div>`;
-                }
-            });
-
-            sectionHtml += `</div></div></section>`;
-            document.getElementById('trendingProducts').parentElement.parentElement.insertAdjacentHTML('beforebegin', sectionHtml);
-        }
-
-        // Flash Sale Timer
-        function initFlashSaleTimer() {
-            // Set timer to 5 hours from now initially, or keep counting down based on localStorage
-            let targetTime = localStorage.getItem('novacart_flash_sale_end');
-            if (!targetTime || new Date().getTime() > parseInt(targetTime)) {
-                targetTime = new Date().getTime() + (5 * 60 * 60 * 1000) + (14 * 60 * 1000) + (30 * 1000); // 5h 14m 30s
-                localStorage.setItem('novacart_flash_sale_end', targetTime);
-            } else {
-                targetTime = parseInt(targetTime);
-            }
-
-            const updateTimer = () => {
-                const now = new Date().getTime();
-                const distance = targetTime - now;
-
-                if (distance < 0) {
-                    const el = document.getElementById('fs-hours');
-                    if(el) {
-                        el.innerText = '00';
-                        document.getElementById('fs-minutes').innerText = '00';
-                        document.getElementById('fs-seconds').innerText = '00';
-                    }
-                    return;
-                }
-
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                const elHours = document.getElementById('fs-hours');
-                if(elHours) {
-                    elHours.innerText = hours.toString().padStart(2, '0');
-                    document.getElementById('fs-minutes').innerText = minutes.toString().padStart(2, '0');
-                    document.getElementById('fs-seconds').innerText = seconds.toString().padStart(2, '0');
-                }
             };
 
-            updateTimer();
-            setInterval(updateTimer, 1000);
+            // Deals: products with discount >= 15
+            const dealProds = products.filter(p => p.discount >= 15);
+            if (dealsTrack) {
+                dealsTrack.innerHTML = dealProds.map(p => createCardHtml(p, `${p.discount}% OFF`, 'badge-deal')).join('');
+            }
+
+            // Best Sellers: rating >= 4.8 or isBestSeller
+            const bestSellerProds = products.filter(p => p.isBestSeller || p.rating >= 4.8);
+            if (bestsellersTrack) {
+                bestsellersTrack.innerHTML = bestSellerProds.map(p => createCardHtml(p, 'BEST SELLER', 'badge-bestseller')).join('');
+            }
+
+            // Trending / New Drops
+            const trendingProds = products.filter(p => p.isTrending || p.category === 'Footwear' || p.category === 'Fashion');
+            if (trendingTrack) {
+                trendingTrack.innerHTML = trendingProds.map(p => createCardHtml(p, 'TRENDING', 'badge-deal')).join('');
+            }
+        }
+
+        function startDealCountdown() {
+            let totalSeconds = 8 * 3600 + 42 * 60 + 15;
+            const timerEl = document.getElementById('dealTimer');
+            if (!timerEl) return;
+
+            setInterval(() => {
+                totalSeconds--;
+                if (totalSeconds < 0) totalSeconds = 24 * 3600;
+                const hrs = Math.floor(totalSeconds / 3600);
+                const mins = Math.floor((totalSeconds % 3600) / 60);
+                const secs = totalSeconds % 60;
+                timerEl.textContent = `${String(hrs).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            }, 1000);
         }
     </script>
-    <button id="backToTop" class="btn-icon" title="Back to Top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="position: fixed; bottom: 2rem; right: 2rem; z-index: 99; display: none; background: var(--color-primary); color: white; box-shadow: var(--shadow-lg);">
-        <i class="fas fa-arrow-up"></i>
-    </button>
 </body>
 </html>

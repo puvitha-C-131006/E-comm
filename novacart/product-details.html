@@ -2,406 +2,529 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Product Details | NovaCart</title>
+    <meta name="description" content="View detailed product specifications, multi-image preview, verified reviews, and express delivery options on NovaCart.">
     
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     
-    <!-- FontAwesome -->
+    <!-- FontAwesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        .product-details-container {
-            margin-top: 80px;
+        .pdp-layout {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 3.5rem;
+            align-items: start;
+            margin-top: 86px;
+            padding-bottom: 5rem;
         }
 
-        /* Gallery Styles */
-        .product-gallery {
+        /* Sticky Gallery Box */
+        .pdp-gallery-box {
+            position: sticky;
+            top: 96px;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.25rem;
         }
 
-        .main-image-container {
+        .pdp-main-img-wrap {
             width: 100%;
-            height: 400px; /* Reduced from 500px */
-            background-color: var(--color-card-bg);
+            height: 480px;
+            background: #FFFFFF;
             border: 1px solid var(--color-border);
-            border-radius: var(--radius-md); /* Changed from lg to md */
-            overflow: hidden;
+            border-radius: var(--radius-xl);
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: crosshair;
             position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            cursor: crosshair;
+            padding: 8px;
+            box-sizing: border-box;
         }
 
-        .main-image {
+        [data-theme="dark"] .pdp-main-img-wrap {
+            background: #111827;
+        }
+
+        .pdp-main-img {
+            width: 100%;
+            height: 100%;
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            transition: transform 0.3s ease;
+            object-position: center;
+            transition: transform 0.2s ease-out;
         }
 
-        .thumbnail-gallery {
+        .pdp-thumbs-row {
             display: flex;
-            gap: 1rem;
+            gap: 0.85rem;
             overflow-x: auto;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.4rem;
         }
 
-        .thumbnail {
-            width: 80px;
-            height: 80px;
-            border: 2px solid transparent;
+        .pdp-thumb {
+            width: 76px;
+            height: 76px;
             border-radius: var(--radius-md);
+            border: 2px solid var(--color-border);
+            background: var(--color-card-bg);
+            padding: 0.35rem;
             cursor: pointer;
-            object-fit: cover;
+            object-fit: contain;
             transition: all var(--transition-fast);
+            flex-shrink: 0;
         }
 
-        .thumbnail.active {
+        .pdp-thumb:hover, .pdp-thumb.active {
             border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px var(--color-primary-glow);
         }
 
-        /* Info Styles */
-        .product-info-section {
+        /* PDP Information Column */
+        .pdp-info-col {
             display: flex;
             flex-direction: column;
         }
 
-        .breadcrumb {
-            color: var(--color-text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        
-        .breadcrumb a:hover {
-            color: var(--color-primary);
-        }
-
-        .pd-title {
-            font-size: 1.8rem; /* Reduced from 2.5rem */
-            margin-bottom: 0.5rem;
-        }
-
-        .pd-brand {
-            color: var(--color-primary);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        .pd-rating {
-            display: flex;
+        .pdp-brand-badge {
+            display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem; /* Reduced from 1.5rem */
+            gap: 0.4rem;
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: var(--color-primary);
+            background: var(--color-primary-light);
+            padding: 0.3rem 0.85rem;
+            border-radius: var(--radius-full);
+            margin-bottom: 0.85rem;
+            width: fit-content;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
         }
 
-        .pd-price-container {
+        .pdp-title {
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            line-height: 1.25;
+            color: var(--color-text-primary);
+        }
+
+        .pdp-rating-row {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
             border-bottom: 1px solid var(--color-border);
         }
 
-        .pd-current-price {
-            font-size: 1.75rem; /* Reduced from 2rem */
-            font-weight: 700;
+        .pdp-price-box {
+            background: var(--color-card-subtle);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pdp-price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .pdp-current-price {
+            font-size: 2.3rem;
+            font-weight: 800;
             color: var(--color-primary);
+            font-family: 'Outfit', sans-serif;
         }
 
-        .pd-old-price {
-            font-size: 1.25rem;
-            color: var(--color-text-secondary);
+        .pdp-old-price {
+            font-size: 1.2rem;
             text-decoration: line-through;
+            color: var(--color-text-muted);
         }
 
-        .pd-discount-badge {
-            background-color: var(--color-danger);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: var(--radius-full);
-            font-weight: 600;
+        /* Delivery & Trust Badges */
+        .pdp-delivery-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1.25rem;
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            margin-bottom: 1.5rem;
             font-size: 0.9rem;
         }
 
-        .pd-description {
-            color: var(--color-text-secondary);
+        .pdp-actions-row {
+            display: flex;
+            gap: 1rem;
             margin-bottom: 2rem;
-            line-height: 1.8;
         }
 
-        .stock-status {
-            display: inline-flex;
+        .qty-picker {
+            display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background-color: rgba(34, 197, 94, 0.1);
-            color: var(--color-success);
+            border: 1.5px solid var(--color-border);
             border-radius: var(--radius-md);
-            font-weight: 500;
-            margin-bottom: 2rem;
+            background: var(--color-card-bg);
+            height: 48px;
+            overflow: hidden;
         }
 
-        .quantity-selector {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .qty-btn {
+        .qty-picker button {
             width: 40px;
-            height: 40px;
-            border: 1px solid var(--color-border);
-            background-color: var(--color-card-bg);
-            border-radius: var(--radius-sm);
-            font-size: 1.25rem;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
-
-        .qty-btn:hover {
-            border-color: var(--color-primary);
-            color: var(--color-primary);
-        }
-
-        .qty-input {
-            width: 60px;
-            height: 40px;
-            text-align: center;
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .action-buttons .btn {
-            flex: 1;
-        }
-
-        .social-share {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: var(--color-text-secondary);
-        }
-
-        .social-share a {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background-color: var(--color-card-bg);
-            border: 1px solid var(--color-border);
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all var(--transition-fast);
-        }
-
-        .social-share a:hover {
-            background-color: var(--color-primary);
-            color: white;
-            border-color: var(--color-primary);
-        }
-
-        /* Tabs Styles */
-        .tabs-container {
-            margin-top: 5rem;
-        }
-
-        .tabs-nav {
-            display: flex;
-            gap: 2rem;
-            border-bottom: 1px solid var(--color-border);
-            margin-bottom: 2rem;
-        }
-
-        .tab-btn {
-            padding: 1rem 0;
-            font-weight: 600;
-            color: var(--color-text-secondary);
-            border-bottom: 3px solid transparent;
             cursor: pointer;
-            transition: all var(--transition-fast);
+            color: var(--color-text-primary);
+            transition: background var(--transition-fast);
         }
 
-        .tab-btn.active {
-            color: var(--color-primary);
-            border-bottom-color: var(--color-primary);
+        .qty-picker button:hover {
+            background: var(--color-card-subtle);
         }
 
-        .tab-content {
-            display: none;
-            line-height: 1.8;
+        .qty-picker input {
+            width: 45px;
+            text-align: center;
+            font-weight: 700;
+            background: transparent;
+            font-size: 1rem;
+            color: var(--color-text-primary);
+        }
+
+        /* Specs Table */
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .specs-table tr {
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .specs-table td {
+            padding: 0.75rem 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .specs-table td.spec-lbl {
+            font-weight: 700;
             color: var(--color-text-secondary);
+            width: 35%;
         }
 
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
+        .specs-table td.spec-val {
+            color: var(--color-text-primary);
         }
 
-        @media (max-width: 912px) {
-            .product-details-container {
+        /* Sticky Mobile Bottom Buy Bar */
+        .mobile-sticky-buy-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--color-card-bg);
+            border-top: 1px solid var(--color-border);
+            box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.1);
+            padding: 0.75rem 1.25rem;
+            z-index: 1050;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
+        }
+
+        @media (max-width: 900px) {
+            .pdp-layout {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
-            .main-image-container {
-                height: 300px;
+            .pdp-gallery-box {
+                position: static;
             }
-            .pd-title {
-                font-size: 1.5rem;
+            .pdp-main-img-wrap {
+                height: 340px;
             }
-            .action-buttons {
-                flex-direction: column;
+            .mobile-sticky-buy-bar {
+                display: flex;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar">
+    <!-- Desktop & Mobile Sticky Navigation Header -->
+    <header class="navbar">
         <div class="container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-shopping-bag"></i> Nova<span>Cart</span>
+            <!-- Brand Logo -->
+            <a href="index.html" class="logo" id="brandLogo">
+                <div class="logo-badge">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                Nova<span>Cart</span>
             </a>
+
+            <!-- Location Selector Pill -->
+            <div class="location-pill" onclick="openLocationModal()" title="Change Delivery Location">
+                <i class="fas fa-map-marker-alt"></i>
+                <div class="loc-text">
+                    <span class="sub">Deliver to</span>
+                    <span class="main"><span class="loc-city-name">Bengaluru</span> <span class="loc-pincode" style="font-weight:500; font-size:0.75rem;">560001</span></span>
+                </div>
+            </div>
             
-            <div class="search-bar">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Search for products, brands..." onkeypress="if(event.key==='Enter') window.location.href='products.html?search='+this.value">
+            <!-- Global Unified Search with Category Selector -->
+            <div class="search-wrapper">
+                <div class="search-bar-unified">
+                    <select class="search-category-select" id="searchCategorySelect">
+                        <option value="all">All Departments</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Footwear">Footwear</option>
+                        <option value="Gaming">Gaming</option>
+                        <option value="Home Appliances">Home & Living</option>
+                        <option value="Furniture">Furniture</option>
+                        <option value="Accessories">Accessories</option>
+                    </select>
+                    <input type="text" id="globalSearchInput" placeholder="Search brands, products, laptops, sneakers..." autocomplete="off">
+                    <button class="search-btn" title="Search"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="search-suggestions-dropdown" id="searchSuggestions"></div>
             </div>
 
-            <div class="nav-menu">
+            <!-- Navigation Menu -->
+            <nav class="nav-menu">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="products.html" class="active">Shop</a></li>
-                    <li><a href="products.html?deals=true">Deals</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="products.html?deals=true"><i class="fas fa-bolt" style="color: var(--color-warning); font-size: 0.85rem;"></i> Deals</a></li>
                 </ul>
                 
+                <!-- Nav Actions -->
                 <div class="nav-actions">
-                    <button id="theme-toggle" class="action-icon" title="Toggle Dark Mode" onclick="toggleTheme()">
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="action-icon" title="Toggle Dark/Light Mode" onclick="toggleTheme()">
                         <i class="fas fa-moon"></i>
                     </button>
-                    <a href="login.html" class="btn btn-primary auth-link" style="display:none;">Login</a>
+
+                    <!-- User Account / Profile -->
+                    <a href="login.html" class="btn btn-primary auth-link" style="font-size: 0.85rem; padding: 0.45rem 1rem;">Login</a>
                     
-                    <a href="profile.html" class="action-icon profile-link" title="Profile" style="display:none;">
-                        <i class="far fa-user"></i>
-                        <span class="user-name" style="font-size: 0.9rem; margin-left: 0.5rem;"></span>
+                    <a href="profile.html" class="profile-link user-profile-chip" title="Account" style="display:none;">
+                        <div class="user-avatar"><i class="far fa-user"></i></div>
+                        <span class="user-name">Account</span>
                     </a>
-                    
-                    
-                    <div class="notification-dropdown">
-                        <a href="#" class="action-icon" title="Notifications">
-                            <i class="far fa-bell"></i>
-                            <span class="badge" style="display: block;">3</span>
-                        </a>
-                        <div class="notification-panel">
-                            <div class="notification-header">
-                                Notifications <span style="font-size:0.8rem;color:var(--color-primary);cursor:pointer;">Mark all as read</span>
-                            </div>
-                            <div class="notifications-list">
-<div class="notification-item unread">
-                                <div class="notif-icon notif-sale"><i class="fas fa-bolt"></i></div>
-                                <div class="notif-content">
-                                    <h4>Flash Sale Started</h4>
-                                    <p>Up to 50% off on electronics for the next 5 hours!</p>
-                                </div>
-                            </div>
-                            <div class="notification-item unread">
-                                <div class="notif-icon notif-coupon"><i class="fas fa-ticket-alt"></i></div>
-                                <div class="notif-content">
-                                    <h4>Coupon Available</h4>
-                                    <p>Use code SAVE500 for a flat ₹500 discount.</p>
-                                </div>
-                            </div>
-                            <div class="notification-item">
-                                <div class="notif-icon notif-order"><i class="fas fa-box-open"></i></div>
-                                <div class="notif-content">
-                                    <h4>Order Delivered</h4>
-                                    <p>Your order #ORD-092123 has been delivered.</p>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    <a href="wishlist.html" class="action-icon" title="Wishlist">
+
+                    <!-- Wishlist Link -->
+                    <a href="wishlist.html" class="action-icon wishlist-action" title="Wishlist">
                         <i class="far fa-heart"></i>
                         <span class="badge wishlist-badge" style="display: none;">0</span>
                     </a>
                     
-                    <a href="cart.html" class="action-icon" title="Cart">
+                    <!-- Cart Link (Triggers Slide-Out Drawer) -->
+                    <a href="javascript:void(0)" onclick="openCartDrawer()" class="action-icon cart-drawer-trigger" title="Cart">
                         <i class="fas fa-shopping-cart"></i>
                         <span class="badge cart-badge" style="display: none;">0</span>
                     </a>
                 </div>
-            </div>
+            </nav>
 
-            <div class="mobile-toggle">
+            <button class="mobile-toggle" aria-label="Open Navigation Menu">
                 <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main PDP Container -->
+    <main>
+        <div class="container">
+            
+            <!-- Breadcrumbs -->
+            <div style="display:flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:var(--color-text-secondary); margin-top:86px; margin-bottom:1.5rem; font-weight:500;">
+                <a href="index.html" style="color:var(--color-text-secondary);">Home</a>
+                <i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                <a href="products.html" style="color:var(--color-text-secondary);">Products</a>
+                <i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                <span id="pdpBreadcrumbCategory" style="color:var(--color-text-secondary);">Category</span>
+                <i class="fas fa-chevron-right" style="font-size:0.7rem;"></i>
+                <span id="pdpBreadcrumbName" style="color:var(--color-text-primary); font-weight:700;">Product Name</span>
+            </div>
+
+            <!-- PDP Grid Layout -->
+            <div class="pdp-layout" id="pdpContainer">
+                
+                <!-- Left Sticky Gallery Column -->
+                <div class="pdp-gallery-box">
+                    <div class="pdp-main-img-wrap" id="mainImgWrap">
+                        <img src="" alt="Product Main" class="pdp-main-img" id="pdpMainImage">
+                        <!-- Interactive Zoom Magnifier Lens -->
+                        <div class="zoom-magnifier-lens" id="zoomLens"></div>
+                    </div>
+                    
+                    <!-- Thumbnails Row -->
+                    <div class="pdp-thumbs-row" id="pdpThumbsRow">
+                        <!-- Injected via JS -->
+                    </div>
+
+                    <!-- Share & Wishlist Row -->
+                    <div style="display:flex; gap:0.75rem; margin-top:0.5rem;">
+                        <button class="btn btn-outline btn-sm" style="flex:1;" id="pdpWishlistBtn" onclick="handlePdpWishlist()">
+                            <i class="far fa-heart"></i> Add to Wishlist
+                        </button>
+                        <button class="btn btn-outline btn-sm" onclick="shareCurrentProduct()" title="Share Product">
+                            <i class="fas fa-share-alt"></i> Share
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right PDP Info Column -->
+                <div class="pdp-info-col">
+                    <span class="pdp-brand-badge" id="pdpBrandBadge">Brand</span>
+                    <h1 class="pdp-title" id="pdpTitle">Product Name</h1>
+
+                    <!-- Rating Row -->
+                    <div class="pdp-rating-row">
+                        <div id="pdpStarsBox"></div>
+                        <a href="#ratingBreakdown" style="font-size:0.85rem; color:var(--color-primary); font-weight:600;">Verified Reviews</a>
+                        <span style="color:var(--color-border);">&bull;</span>
+                        <span style="font-size:0.85rem; color:var(--color-success); font-weight:700;"><i class="fas fa-check-circle"></i> In Stock</span>
+                    </div>
+
+                    <!-- Pricing Box -->
+                    <div class="pdp-price-box">
+                        <div class="pdp-price-row">
+                            <span class="pdp-current-price" id="pdpCurrentPrice">₹0</span>
+                            <span class="pdp-old-price" id="pdpOldPrice">₹0</span>
+                            <span class="badge-discount" id="pdpDiscountBadge" style="background:#EF4444; color:#fff; font-size:0.8rem; font-weight:800; padding:0.25rem 0.6rem; border-radius:4px;">0% OFF</span>
+                        </div>
+                        <div style="font-size:0.82rem; color:var(--color-text-secondary);">Inclusive of all taxes &bull; Free Shipping for members</div>
+                    </div>
+
+                    <!-- Variant Selector: Color -->
+                    <div class="variant-selector-group" id="colorVariantGroup" style="display:none;">
+                        <div class="variant-label">Color: <span class="selected-val" id="selectedColorVal">Default</span></div>
+                        <div class="color-swatch-row" id="colorSwatchesRow"></div>
+                    </div>
+
+                    <!-- Variant Selector: Size / Configuration -->
+                    <div class="variant-selector-group" id="sizeVariantGroup" style="display:none;">
+                        <div class="variant-label">Configuration / Size: <span class="selected-val" id="selectedSizeVal">Standard</span></div>
+                        <div class="variant-pills-row" id="sizePillsRow"></div>
+                    </div>
+
+                    <!-- Delivery Information Box -->
+                    <div class="pdp-delivery-badge">
+                        <i class="fas fa-truck-fast" style="font-size:1.4rem; color:var(--color-primary);"></i>
+                        <div>
+                            <div style="font-weight:700; color:var(--color-text-primary);">Express Delivery Available</div>
+                            <div style="font-size:0.82rem; color:var(--color-text-secondary);">Deliver to <b class="loc-city-name">Bengaluru</b> <span class="loc-pincode">560001</span> by <b>Tomorrow, 11:00 AM</b></div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="pdp-actions-row">
+                        <div class="qty-picker">
+                            <button onclick="decrementPdpQty()"><i class="fas fa-minus"></i></button>
+                            <input type="number" id="pdpQtyInput" value="1" min="1" max="50" readonly>
+                            <button onclick="incrementPdpQty()"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <button class="btn btn-primary" style="flex:1; height:48px; font-size:1rem;" id="pdpAddToCartBtn" onclick="handlePdpAddToCart()">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                        <button class="btn btn-secondary" style="height:48px; font-size:1rem; background:#F59E0B; color:#0F172A; font-weight:800; border:none;" onclick="handlePdpBuyNow()">
+                            <i class="fas fa-bolt"></i> Buy Now
+                        </button>
+                    </div>
+
+                    <!-- Trust Icons Row -->
+                    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.75rem; margin-bottom:2rem; text-align:center;">
+                        <div style="background:var(--color-card-subtle); padding:0.75rem; border-radius:var(--radius-md); font-size:0.8rem; font-weight:600;">
+                            <i class="fas fa-rotate-left" style="color:var(--color-success); font-size:1.1rem; display:block; margin-bottom:4px;"></i>
+                            7-Day Replacement
+                        </div>
+                        <div style="background:var(--color-card-subtle); padding:0.75rem; border-radius:var(--radius-md); font-size:0.8rem; font-weight:600;">
+                            <i class="fas fa-shield-alt" style="color:var(--color-primary); font-size:1.1rem; display:block; margin-bottom:4px;"></i>
+                            1 Year Warranty
+                        </div>
+                        <div style="background:var(--color-card-subtle); padding:0.75rem; border-radius:var(--radius-md); font-size:0.8rem; font-weight:600;">
+                            <i class="fas fa-truck" style="color:var(--color-warning); font-size:1.1rem; display:block; margin-bottom:4px;"></i>
+                            NovaCart Delivered
+                        </div>
+                    </div>
+
+                    <!-- Product Description -->
+                    <div style="margin-bottom:2rem;">
+                        <h3 style="font-size:1.15rem; margin-bottom:0.75rem;">About this item</h3>
+                        <p style="color:var(--color-text-secondary); line-height:1.7; font-size:0.95rem;" id="pdpDescription">
+                            Product description details.
+                        </p>
+                    </div>
+
+                    <!-- Specifications Table -->
+                    <div style="margin-bottom:2.5rem;">
+                        <h3 style="font-size:1.15rem; margin-bottom:0.75rem;">Technical Details</h3>
+                        <table class="specs-table" id="pdpSpecsTable"></table>
+                    </div>
+
+                    <!-- Amazon-Grade 5-Bar Rating Breakdown & Reviews -->
+                    <div class="rating-breakdown-box" id="ratingBreakdown">
+                        <h3 style="font-size:1.15rem; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+                            <i class="fas fa-star" style="color:#F59E0B"></i> Customer Reviews Breakdown
+                        </h3>
+                        <div id="ratingBarsContainer">
+                            <!-- Injected dynamically -->
+                        </div>
+
+                        <div style="border-top:1px solid var(--color-border); margin-top:1.5rem; padding-top:1.25rem;">
+                            <h4 style="font-size:1.05rem; margin-bottom:1rem; color:var(--color-text-primary); display:flex; align-items:center; justify-content:space-between;">
+                                <span>Verified Customer Reviews</span>
+                                <span style="font-size:0.8rem; color:var(--color-text-secondary); font-weight:normal;" id="pdpReviewCountBadge">Top Reviews</span>
+                            </h4>
+                            <div id="pdpCustomerReviewsList" style="display:flex; flex-direction:column; gap:0.85rem;">
+                                <!-- Dynamically injected reviews -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Mobile Sticky Bottom Buy Bar -->
+    <div class="mobile-sticky-buy-bar" id="mobileStickyBar">
+        <div style="display:flex; align-items:center; gap:8px;">
+            <img src="" id="mobileBarImg" style="width:40px; height:40px; object-fit:contain; border-radius:4px;" alt="mini">
+            <div>
+                <div style="font-size:0.75rem; color:var(--color-text-secondary);">Total Price:</div>
+                <div style="font-size:1.1rem; font-weight:800; color:var(--color-primary); font-family:'Outfit',sans-serif;" id="mobileBarPrice">₹0</div>
             </div>
         </div>
-    </nav>
-
-    <div class="container section" id="mainContent">
-        <!-- Injected via JS -->
+        <div style="display:flex; gap:6px;">
+            <button class="btn btn-primary btn-sm" onclick="handlePdpAddToCart()"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+            <button class="btn btn-secondary btn-sm" style="background:#F59E0B; color:#0F172A; font-weight:800; border:none;" onclick="handlePdpBuyNow()">Buy Now</button>
+        </div>
     </div>
-
-    <!-- Related Products -->
-    <section class="section" style="background-color: var(--color-card-bg);">
-        <div class="container">
-            <h2 class="section-title">Related Products</h2>
-            <div class="product-grid" id="relatedProductsGrid">
-                <!-- Injected via JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <a href="index.html" class="logo" style="color: #fff; margin-bottom: 1.5rem; display: inline-flex;">
-                        <i class="fas fa-shopping-bag"></i> Nova<span>Cart</span>
-                    </a>
-                    <p class="footer-desc">Premium E-Commerce platform providing the best shopping experience.</p>
-                </div>
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Shop</a></li>
-                        <li><a href="cart.html">Cart</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Contact Us</h3>
-                    <ul class="footer-links">
-                        <li>support@novacart.com</li>
-                        <li>+1 (800) 123-4567</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 NovaCart. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
 
     <!-- Scripts -->
     <script src="assets/js/products.js"></script>
@@ -414,420 +537,304 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
     <script src="assets/js/firebase-config.js"></script>
     <script src="assets/js/auth.js"></script>
-    
+
     <script>
         let currentProduct = null;
+        let currentPdpQty = 1;
 
         document.addEventListener('DOMContentLoaded', async () => {
             await fetchProducts();
-            
-            const urlParams = new URLSearchParams(window.location.search);
-            const productId = parseInt(urlParams.get('id'));
-            
-            if (!productId || isNaN(productId)) {
-                window.location.href = 'products.html';
-                return;
-            }
-
-            currentProduct = products.find(p => p.id === productId);
-
-            if (!currentProduct) {
-                document.getElementById('mainContent').innerHTML = `
-                    <div style="text-align:center; padding: 5rem 0;">
-                        <h2>Product not found</h2>
-                        <a href="products.html" class="btn btn-primary" style="margin-top: 2rem;">Back to Shop</a>
-                    </div>
-                `;
-                return;
-            }
-
-            document.title = `${currentProduct.name} | NovaCart`;
-            
-            // Recently Viewed Tracking
-            let recentlyViewed = JSON.parse(localStorage.getItem('novacart_recently_viewed')) || [];
-            recentlyViewed = recentlyViewed.filter(id => id !== currentProduct.id);
-            recentlyViewed.unshift(currentProduct.id);
-            if (recentlyViewed.length > 8) recentlyViewed.pop();
-            localStorage.setItem('novacart_recently_viewed', JSON.stringify(recentlyViewed));
-
-            renderProductDetails();
-            renderRelatedProducts();
-            renderRecentlyViewed();
-            initZoomEffect();
+            loadProductDetails();
+            initImageMagnifier();
         });
 
-        function renderProductDetails() {
-            const discountedPrice = calculateDiscount(currentProduct.price, currentProduct.discount);
-            const hasDiscount = currentProduct.discount > 0;
-            const inWishlist = isInWishlist(currentProduct.id);
-            
-            // Generate some mock thumbnails based on the main image
-            const thumbnails = [
-                currentProduct.image,
-                currentProduct.image.replace('w=800', 'w=801'),
-                currentProduct.image.replace('w=800', 'w=802'),
-                currentProduct.image.replace('w=800', 'w=803')
-            ];
+        function loadProductDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const idParam = params.get('id');
+            let productId = parseInt(idParam, 10);
 
-            const html = `
-                <div class="breadcrumb">
-                    <a href="index.html">Home</a> &gt; 
-                    <a href="products.html">Shop</a> &gt; 
-                    <a href="products.html?category=${currentProduct.category}">${currentProduct.category}</a> &gt; 
-                    <span>${currentProduct.name}</span>
-                </div>
-
-                <div class="product-details-container animate-slide-up">
-                    
-                    <div class="product-gallery">
-                        <div class="main-image-container" id="imageContainer">
-                            <img src="${currentProduct.image}" alt="${currentProduct.name}" class="main-image" id="mainImage" loading="lazy" onerror="this.onerror=null; this.src='assets/images/product-default.png';">
-                        </div>
-                        <div class="thumbnail-gallery">
-                            ${thumbnails.map((src, idx) => `
-                                <img src="${src}" class="thumbnail ${idx === 0 ? 'active' : ''}" onclick="changeMainImage(this.src, this)" loading="lazy" onerror="this.onerror=null; this.src='assets/images/product-default.png';">
-                            `).join('')}
-                        </div>
-                    </div>
-
-                    <div class="product-info-section">
-                        <div class="pd-brand">${currentProduct.brand}</div>
-                        <h1 class="pd-title">${currentProduct.name}</h1>
-                        
-                        <div class="pd-rating">
-                            <div class="stars" style="color: #fbbf24;">
-                                ${Array(5).fill('').map((_, i) => `<i class="fas fa-star" style="opacity: ${i < Math.floor(currentProduct.rating) ? 1 : 0.3}"></i>`).join('')}
-                            </div>
-                            <span style="color: var(--color-text-secondary);">(${currentProduct.rating} / 5 based on ${currentProduct.reviewCount} reviews)</span>
-                        </div>
-
-                        <div class="pd-price-container">
-                            <span class="pd-current-price">${formatPrice(discountedPrice)}</span>
-                            ${hasDiscount ? `
-                                <span class="pd-old-price">${formatPrice(currentProduct.price)}</span>
-                                <span class="pd-discount-badge">${currentProduct.discount}% OFF</span>
-                            ` : ''}
-                        </div>
-
-                        <p class="pd-description">${currentProduct.description}</p>
-
-                        <div class="stock-status">
-                            <i class="fas fa-check-circle"></i> In Stock (${currentProduct.stock} items available)
-                        </div>
-
-                        <div class="quantity-selector">
-                            <span style="font-weight: 500;">Quantity:</span>
-                            <button class="qty-btn" onclick="updateQty(-1)">-</button>
-                            <input type="number" id="qtyInput" class="qty-input" value="1" min="1" max="${currentProduct.stock}" readonly>
-                            <button class="qty-btn" onclick="updateQty(1)">+</button>
-                        </div>
-
-                        <div class="action-buttons">
-                            <button class="btn btn-primary" onclick="handleAddCart()">
-                                <i class="fas fa-cart-plus"></i> Add to Cart
-                            </button>
-                            <button class="btn btn-secondary" onclick="handleBuyNow()">
-                                <i class="fas fa-bolt"></i> Buy Now
-                            </button>
-                            <button class="btn btn-outline" onclick="toggleWishlist(${currentProduct.id}); setTimeout(() => window.location.reload(), 500)">
-                                <i class="${inWishlist ? 'fas' : 'far'} fa-heart" style="${inWishlist ? 'color: var(--color-danger)' : ''}"></i>
-                            </button>
-                        </div>
-
-                        <!-- Delivery Estimator -->
-                        <div class="delivery-estimator" style="margin-bottom: 2rem; padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg);">
-                            <h4 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-truck" style="color: var(--color-primary);"></i> Delivery Estimator</h4>
-                            <div style="display: flex; gap: 0.5rem;">
-                                <input type="text" id="pincodeInput" placeholder="Enter Pincode (e.g., 600001)" style="flex: 1; padding: 0.75rem; border: 1px solid var(--color-border); border-radius: var(--radius-sm);">
-                                <button class="btn btn-primary" onclick="checkDelivery()" style="white-space: nowrap;">Check</button>
-                            </div>
-                            <div id="deliveryOutput" style="margin-top: 1rem; font-weight: 500; font-size: 0.95rem; color: var(--color-success); display: none;"></div>
-                        </div>
-
-                        <div class="social-share">
-                            <span style="font-weight: 500;">Share:</span>
-                            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="#" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
-                            <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="tabs-container">
-                    <div class="tabs-nav">
-                        <button class="tab-btn active" onclick="switchTab('desc', this)">Description</button>
-                        <button class="tab-btn" onclick="switchTab('spec', this)">Specifications</button>
-                        <button class="tab-btn" onclick="switchTab('rev', this)">Reviews (${currentProduct.reviewCount})</button>
-                    </div>
-                    
-                    <div id="tab-desc" class="tab-content active">
-                        <h3>Product Description</h3>
-                        <p style="margin-top: 1rem;">Experience the best with ${currentProduct.name} by ${currentProduct.brand}. ${currentProduct.description}</p>
-                        <p style="margin-top: 1rem;">Designed with precision and built using premium materials, this product ensures durability and high performance. Perfect for your daily needs.</p>
-                        <ul style="margin-top: 1rem; padding-left: 1.5rem; list-style-type: disc;">
-                            <li>Premium quality materials</li>
-                            <li>Durable and long-lasting</li>
-                            <li>100% authentic ${currentProduct.brand} product</li>
-                            <li>Covered by manufacturer warranty</li>
-                        </ul>
-                    </div>
-                    
-                    <div id="tab-spec" class="tab-content">
-                        <h3>Technical Specifications</h3>
-                        <table style="width: 100%; max-width: 600px; margin-top: 1rem; border-collapse: collapse;">
-                            <tr style="border-bottom: 1px solid var(--color-border);">
-                                <td style="padding: 1rem 0; font-weight: 600; width: 30%;">Brand</td>
-                                <td style="padding: 1rem 0;">${currentProduct.brand}</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--color-border);">
-                                <td style="padding: 1rem 0; font-weight: 600;">Category</td>
-                                <td style="padding: 1rem 0;">${currentProduct.category}</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--color-border);">
-                                <td style="padding: 1rem 0; font-weight: 600;">RAM</td>
-                                <td style="padding: 1rem 0;">${currentProduct.category === 'smartphones' ? '8GB LPDDR5' : (currentProduct.category === 'laptops' ? '16GB DDR5' : 'N/A')}</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--color-border);">
-                                <td style="padding: 1rem 0; font-weight: 600;">Storage</td>
-                                <td style="padding: 1rem 0;">${currentProduct.category === 'smartphones' ? '256GB UFS 4.0' : (currentProduct.category === 'laptops' ? '512GB NVMe SSD' : 'N/A')}</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--color-border);">
-                                <td style="padding: 1rem 0; font-weight: 600;">Display</td>
-                                <td style="padding: 1rem 0;">${currentProduct.category === 'smartphones' ? '6.5-inch AMOLED, 120Hz' : (currentProduct.category === 'laptops' ? '14-inch OLED, 2.8K' : 'Standard Display')}</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--color-border);">
-                                <td style="padding: 1rem 0; font-weight: 600;">Battery</td>
-                                <td style="padding: 1rem 0;">${currentProduct.category === 'smartphones' ? '5000mAh, 65W Fast Charge' : (currentProduct.category === 'laptops' ? '70Wh, up to 15 hours' : 'Built-in rechargeable')}</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--color-border);">
-                                <td style="padding: 1rem 0; font-weight: 600;">Camera</td>
-                                <td style="padding: 1rem 0;">${currentProduct.category === 'smartphones' ? '50MP Main + 12MP Ultra-wide' : '1080p FHD Webcam'}</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--color-border);">
-                                <td style="padding: 1rem 0; font-weight: 600;">Material</td>
-                                <td style="padding: 1rem 0;">Premium Aluminum & Glass construction</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--color-border);">
-                                <td style="padding: 1rem 0; font-weight: 600;">Dimensions</td>
-                                <td style="padding: 1rem 0;">Standard retail packaging dimensions</td>
-                            </tr>
-                        </table>
-                    </div>
-                    
-                    <div id="tab-rev" class="tab-content">
-                        <h3>Customer Reviews</h3>
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1rem; margin-bottom: 2rem; padding: 1.5rem; background-color: var(--color-card-bg); border: 1px solid var(--color-border); border-radius: var(--radius-md);">
-                            <div style="font-size: 3rem; font-weight: 700; color: var(--color-primary);">${currentProduct.rating}</div>
-                            <div>
-                                <div class="stars" style="color: #fbbf24; font-size: 1.25rem;">
-                                    ${Array(5).fill('').map((_, i) => `<i class="fas fa-star" style="opacity: ${i < Math.floor(currentProduct.rating) ? 1 : 0.3}"></i>`).join('')}
-                                </div>
-                                <div>Based on ${currentProduct.reviewCount} reviews</div>
-                            </div>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                            <div style="padding: 1.5rem; background: var(--color-bg); border-radius: var(--radius-md);">
-                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                                    <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">AK</div>
-                                    <div>
-                                        <div style="font-weight: 600; color: var(--color-text-primary);">Aarav Kumar</div>
-                                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">2 days ago</div>
-                                    </div>
-                                    <div class="stars" style="margin-left: auto; color: #fbbf24;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                </div>
-                                <p style="color: var(--color-text-secondary); line-height: 1.6;">Absolutely fantastic product. The quality is top-notch and delivery was incredibly fast. Highly recommended to everyone looking for premium quality.</p>
-                            </div>
-
-                            <div style="padding: 1.5rem; background: var(--color-bg); border-radius: var(--radius-md);">
-                                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                                    <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-accent); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold;">PS</div>
-                                    <div>
-                                        <div style="font-weight: 600; color: var(--color-text-primary);">Priya Sharma</div>
-                                        <div style="font-size: 0.85rem; color: var(--color-text-secondary);">1 week ago</div>
-                                    </div>
-                                    <div class="stars" style="margin-left: auto; color: #fbbf24;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                                </div>
-                                <p style="color: var(--color-text-secondary); line-height: 1.6;">Good product, exactly as described. The packaging was secure. Will definitely buy from NovaCart again.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            document.getElementById('mainContent').innerHTML = html;
-        }
-
-        function changeMainImage(src, element) {
-            document.getElementById('mainImage').src = src;
-            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-            element.classList.add('active');
-        }
-
-        function updateQty(change) {
-            const input = document.getElementById('qtyInput');
-            let val = parseInt(input.value) + change;
-            if (val < 1) val = 1;
-            if (val > currentProduct.stock) {
-                showToast(`Only ${currentProduct.stock} items left in stock`, 'error');
-                val = currentProduct.stock;
-            }
-            input.value = val;
-        }
-
-        function handleAddCart() {
-            const qty = parseInt(document.getElementById('qtyInput').value);
-            addToCart(currentProduct.id, qty);
-        }
-
-        function handleBuyNow() {
-            handleAddCart();
-            setTimeout(() => {
-                window.location.href = 'checkout.html';
-            }, 500);
-        }
-
-        function switchTab(tabId, element) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-            
-            document.getElementById('tab-' + tabId).classList.add('active');
-            element.classList.add('active');
-        }
-
-        function checkDelivery() {
-            const pincode = document.getElementById('pincodeInput').value.trim();
-            const output = document.getElementById('deliveryOutput');
-            
-            if (pincode.length < 5) {
-                output.style.display = 'block';
-                output.style.color = 'var(--color-danger)';
-                output.innerHTML = '<i class="fas fa-exclamation-circle"></i> Please enter a valid pincode.';
-                return;
+            if (isNaN(productId) && idParam) {
+                currentProduct = (typeof products !== 'undefined' && products) ? products.find(p => String(p.id) === String(idParam)) : null;
+            } else if (!isNaN(productId)) {
+                currentProduct = (typeof products !== 'undefined' && products) ? products.find(p => p.id === productId) : null;
             }
 
-            output.style.display = 'block';
-            output.style.color = 'var(--color-text-secondary)';
-            output.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Estimating delivery...';
+            if (!currentProduct && typeof products !== 'undefined' && products && products.length > 0) {
+                currentProduct = products[0];
+            }
 
-            setTimeout(() => {
-                const date = new Date();
-                date.setDate(date.getDate() + 3 + Math.floor(Math.random() * 3)); // 3-5 days delivery
-                const options = { weekday: 'long', day: 'numeric', month: 'long' };
-                const formattedDate = date.toLocaleDateString('en-US', options);
+            if (!currentProduct) return;
 
-                output.style.color = 'var(--color-success)';
-                output.innerHTML = `<i class="fas fa-check-circle"></i> Delivery by <strong>${formattedDate}</strong>`;
-            }, 800);
+            // Page title & Breadcrumbs
+            document.title = `${currentProduct.name} | NovaCart`;
+            const breadcrumbCat = document.getElementById('pdpBreadcrumbCategory');
+            if (breadcrumbCat) breadcrumbCat.textContent = currentProduct.category || 'Shop';
+            const breadcrumbName = document.getElementById('pdpBreadcrumbName');
+            if (breadcrumbName) breadcrumbName.textContent = currentProduct.name;
+
+            // Brand & Title
+            const brandBadge = document.getElementById('pdpBrandBadge');
+            if (brandBadge) brandBadge.textContent = currentProduct.brand || currentProduct.category || 'NovaCart';
+            const titleEl = document.getElementById('pdpTitle');
+            if (titleEl) titleEl.textContent = currentProduct.name;
+            const descEl = document.getElementById('pdpDescription');
+            if (descEl) descEl.textContent = currentProduct.description || 'Engineered with premium materials for unmatched durability and performance.';
+
+            // Stars
+            const starsBox = document.getElementById('pdpStarsBox');
+            if (starsBox) starsBox.innerHTML = renderStars(currentProduct.rating || 4.8, true, currentProduct.reviewCount || 120);
+
+            // Pricing
+            const discounted = calculateDiscount(currentProduct.price, currentProduct.discount);
+            const curPriceEl = document.getElementById('pdpCurrentPrice');
+            if (curPriceEl) curPriceEl.textContent = formatPrice(discounted);
+            const mobileBarPriceEl = document.getElementById('mobileBarPrice');
+            if (mobileBarPriceEl) mobileBarPriceEl.textContent = formatPrice(discounted);
+            
+            const oldPriceEl = document.getElementById('pdpOldPrice');
+            const discountBadgeEl = document.getElementById('pdpDiscountBadge');
+            if (currentProduct.discount > 0) {
+                if (oldPriceEl) {
+                    oldPriceEl.textContent = formatPrice(currentProduct.price);
+                    oldPriceEl.style.display = 'inline';
+                }
+                if (discountBadgeEl) {
+                    discountBadgeEl.textContent = `${currentProduct.discount}% OFF`;
+                    discountBadgeEl.style.display = 'inline-block';
+                }
+            } else {
+                if (oldPriceEl) oldPriceEl.style.display = 'none';
+                if (discountBadgeEl) discountBadgeEl.style.display = 'none';
+            }
+
+            // Main Image & Thumbnails
+            const allImages = (currentProduct.images && currentProduct.images.length > 0) 
+                ? currentProduct.images 
+                : [currentProduct.image || 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80'];
+            
+            const mainImg = document.getElementById('pdpMainImage');
+            if (mainImg) {
+                mainImg.src = allImages[0];
+                mainImg.alt = currentProduct.name;
+            }
+            const mobileBarImg = document.getElementById('mobileBarImg');
+            if (mobileBarImg) {
+                mobileBarImg.src = allImages[0];
+                mobileBarImg.alt = currentProduct.name;
+            }
+
+            const thumbsRow = document.getElementById('pdpThumbsRow');
+            if (thumbsRow) {
+                thumbsRow.innerHTML = allImages.map((img, idx) => `
+                    <img src="${img}" class="pdp-thumb ${idx === 0 ? 'active' : ''}" onclick="switchPdpImage('${img}', this)" alt="thumb ${idx+1}">
+                `).join('');
+            }
+
+            // Variants: Colors
+            const colorGroup = document.getElementById('colorVariantGroup');
+            const swatchesRow = document.getElementById('colorSwatchesRow');
+            if (currentProduct.variants && currentProduct.variants.colors && currentProduct.variants.colors.length > 0) {
+                if (colorGroup) colorGroup.style.display = 'block';
+                const selCol = document.getElementById('selectedColorVal');
+                if (selCol) selCol.textContent = currentProduct.variants.colors[0].name;
+
+                if (swatchesRow) {
+                    swatchesRow.innerHTML = currentProduct.variants.colors.map((c, i) => `
+                        <div class="color-swatch-btn ${i === 0 ? 'active' : ''}" title="${c.name}" onclick="selectColorVariant('${c.name}', this)">
+                            <div class="color-swatch-inner" style="background:${c.hex};"></div>
+                        </div>
+                    `).join('');
+                }
+            } else if (colorGroup) {
+                colorGroup.style.display = 'none';
+            }
+
+            // Variants: Sizes / Configurations
+            const sizeGroup = document.getElementById('sizeVariantGroup');
+            const pillsRow = document.getElementById('sizePillsRow');
+            if (currentProduct.variants && currentProduct.variants.sizes && currentProduct.variants.sizes.length > 0) {
+                if (sizeGroup) sizeGroup.style.display = 'block';
+                const selSz = document.getElementById('selectedSizeVal');
+                if (selSz) selSz.textContent = currentProduct.variants.sizes[0];
+
+                if (pillsRow) {
+                    pillsRow.innerHTML = currentProduct.variants.sizes.map((s, i) => `
+                        <div class="variant-pill ${i === 0 ? 'active' : ''}" onclick="selectSizeVariant('${s}', this)">
+                            ${s}
+                        </div>
+                    `).join('');
+                }
+            } else if (sizeGroup) {
+                sizeGroup.style.display = 'none';
+            }
+
+            // Specs Table
+            const specsTable = document.getElementById('pdpSpecsTable');
+            if (specsTable) {
+                const defaultSpecs = currentProduct.specs || {
+                    "Brand": currentProduct.brand || "NovaCart",
+                    "Category": currentProduct.category || "General",
+                    "Model Year": "2026",
+                    "Warranty": "1 Year Manufacturer Warranty"
+                };
+                specsTable.innerHTML = Object.entries(defaultSpecs).map(([k, v]) => `
+                    <tr>
+                        <td class="spec-lbl">${k}</td>
+                        <td class="spec-val">${v}</td>
+                    </tr>
+                `).join('');
+            }
+
+            // Rating Breakdown Bars
+            const breakdown = currentProduct.ratingBreakdown || { 5: 80, 4: 12, 3: 5, 2: 2, 1: 1 };
+            const breakdownContainer = document.getElementById('ratingBarsContainer');
+            if (breakdownContainer) {
+                breakdownContainer.innerHTML = [5, 4, 3, 2, 1].map(star => {
+                    const pct = breakdown[star] || 0;
+                    return `
+                        <div class="rating-bar-row">
+                            <span class="rating-bar-lbl">${star} Star</span>
+                            <div class="rating-bar-track">
+                                <div class="rating-bar-progress" style="width: ${pct}%;"></div>
+                            </div>
+                            <span class="rating-bar-pct">${pct}%</span>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            // Customer Reviews List
+            const reviewsContainer = document.getElementById('pdpCustomerReviewsList');
+            if (reviewsContainer) {
+                const sampleReviewers = [
+                    { name: "Aarav Sharma", loc: "Mumbai", rating: 5, date: "3 days ago", title: "Exceptional quality and fast delivery!", text: `Absolutely thrilled with this ${currentProduct.name}. The build quality is top tier and performance exceeded expectations.` },
+                    { name: "Priya Nair", loc: "Bengaluru", rating: 5, date: "1 week ago", title: "100% Genuine and authentic product", text: `Ordered from NovaCart with fast express delivery. Came securely packaged. Highly recommend this to anyone looking for premium ${currentProduct.category ? currentProduct.category.toLowerCase() : 'products'}.` },
+                    { name: "Vikram Mehta", loc: "Delhi NCR", rating: 4, date: "2 weeks ago", title: "Great value for money", text: `Very pleased with the purchase. Matches all stated specifications perfectly. 5/5 stars for customer support and quick delivery.` }
+                ];
+
+                reviewsContainer.innerHTML = sampleReviewers.map(rev => `
+                    <div style="background:var(--color-card-subtle); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--color-border);">
+                        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:0.4rem;">
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <div style="width:30px; height:30px; border-radius:50%; background:var(--color-primary); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8rem;">
+                                    ${rev.name.charAt(0)}
+                                </div>
+                                <div>
+                                    <div style="font-weight:700; font-size:0.88rem; color:var(--color-text-primary);">${rev.name}</div>
+                                    <div style="font-size:0.75rem; color:var(--color-text-muted);">${rev.loc} &bull; <span style="color:var(--color-success); font-weight:600;"><i class="fas fa-check-circle"></i> Verified Purchase</span></div>
+                                </div>
+                            </div>
+                            <span style="font-size:0.75rem; color:var(--color-text-muted);">${rev.date}</span>
+                        </div>
+                        <div style="margin-bottom:0.4rem; display:flex; align-items:center; gap:6px;">
+                            ${renderStars(rev.rating, false)}
+                            <span style="font-weight:700; font-size:0.85rem; color:var(--color-text-primary);">${rev.title}</span>
+                        </div>
+                        <p style="font-size:0.84rem; color:var(--color-text-secondary); line-height:1.5; margin:0;">${rev.text}</p>
+                    </div>
+                `).join('');
+            }
+
+            updatePdpWishlistButton();
         }
 
-        function initZoomEffect() {
-            const container = document.getElementById('imageContainer');
-            const img = document.getElementById('mainImage');
-            
-            if(!container || !img) return;
+        function switchPdpImage(src, thumbEl) {
+            document.getElementById('pdpMainImage').src = src;
+            document.querySelectorAll('.pdp-thumb').forEach(t => t.classList.remove('active'));
+            thumbEl.classList.add('active');
+        }
 
-            container.addEventListener('mousemove', (e) => {
-                const rect = container.getBoundingClientRect();
+        function selectColorVariant(colorName, el) {
+            document.getElementById('selectedColorVal').textContent = colorName;
+            document.querySelectorAll('.color-swatch-btn').forEach(b => b.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        function selectSizeVariant(sizeName, el) {
+            document.getElementById('selectedSizeVal').textContent = sizeName;
+            document.querySelectorAll('.variant-pill').forEach(p => p.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        function incrementPdpQty() {
+            if (currentPdpQty < (currentProduct?.stock || 50)) {
+                currentPdpQty++;
+                document.getElementById('pdpQtyInput').value = currentPdpQty;
+            }
+        }
+
+        function decrementPdpQty() {
+            if (currentPdpQty > 1) {
+                currentPdpQty--;
+                document.getElementById('pdpQtyInput').value = currentPdpQty;
+            }
+        }
+
+        function handlePdpAddToCart() {
+            if (!currentProduct) return;
+            addToCart(currentProduct.id, currentPdpQty);
+        }
+
+        function handlePdpBuyNow() {
+            if (!currentProduct) return;
+            addToCart(currentProduct.id, currentPdpQty, false);
+            window.location.href = 'checkout.html';
+        }
+
+        function handlePdpWishlist() {
+            if (!currentProduct) return;
+            toggleWishlist(currentProduct.id);
+            updatePdpWishlistButton();
+        }
+
+        function updatePdpWishlistButton() {
+            if (!currentProduct) return;
+            const btn = document.getElementById('pdpWishlistBtn');
+            const inWish = isInWishlist(currentProduct.id);
+            if (btn) {
+                btn.innerHTML = `<i class="${inWish ? 'fas' : 'far'} fa-heart" style="${inWish ? 'color:var(--color-danger)' : ''}"></i> ${inWish ? 'Saved in Wishlist' : 'Add to Wishlist'}`;
+            }
+        }
+
+        function shareCurrentProduct() {
+            if (!currentProduct) return;
+            shareProduct(currentProduct.id);
+        }
+
+        // Image Magnifier / Hover Zoom Lens
+        function initImageMagnifier() {
+            const wrap = document.getElementById('mainImgWrap');
+            const img = document.getElementById('pdpMainImage');
+            const lens = document.getElementById('zoomLens');
+
+            if (!wrap || !img || !lens) return;
+
+            wrap.addEventListener('mousemove', (e) => {
+                if (window.innerWidth <= 900) return; // Desktop only
+
+                const rect = wrap.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
-                
-                const xPercent = x / rect.width * 100;
-                const yPercent = y / rect.height * 100;
-                
-                img.style.transformOrigin = `${xPercent}% ${yPercent}%`;
-                img.style.transform = 'scale(2)';
+
+                const lensSize = 140;
+                let lensX = x - (lensSize / 2);
+                let lensY = y - (lensSize / 2);
+
+                lensX = Math.max(0, Math.min(lensX, rect.width - lensSize));
+                lensY = Math.max(0, Math.min(lensY, rect.height - lensSize));
+
+                lens.style.display = 'block';
+                lens.style.left = `${lensX}px`;
+                lens.style.top = `${lensY}px`;
+                lens.style.backgroundImage = `url('${img.src}')`;
+                lens.style.backgroundSize = `${rect.width * 2}px ${rect.height * 2}px`;
+                lens.style.backgroundPosition = `-${(x * 2) - (lensSize / 2)}px -${(y * 2) - (lensSize / 2)}px`;
             });
 
-            container.addEventListener('mouseleave', () => {
-                img.style.transformOrigin = 'center';
-                img.style.transform = 'scale(1)';
+            wrap.addEventListener('mouseleave', () => {
+                lens.style.display = 'none';
             });
-        }
-
-        function renderRelatedProducts() {
-            const grid = document.getElementById('relatedProductsGrid');
-            const related = products
-                .filter(p => p.category === currentProduct.category && p.id !== currentProduct.id)
-                .slice(0, 4);
-
-            if (related.length === 0) {
-                document.getElementById('relatedProductsGrid').parentElement.style.display = 'none';
-                return;
-            }
-
-            grid.innerHTML = related.map(product => {
-                const discountedPrice = calculateDiscount(product.price, product.discount);
-                const hasDiscount = product.discount > 0;
-                const inWishlist = isInWishlist(product.id);
-                
-                return `
-                <div class="product-card">
-                    <div class="product-badges">
-                        ${hasDiscount ? `<span class="product-badge badge-discount">-${product.discount}%</span>` : ''}
-                    </div>
-                    
-                    <div class="product-actions">
-                        <button class="btn-icon btn-wishlist" onclick="toggleWishlist(${product.id})" title="Wishlist">
-                            <i class="${inWishlist ? 'fas' : 'far'} fa-heart" style="${inWishlist ? 'color: var(--color-danger);' : ''}"></i>
-                        </button>
-                    </div>
-
-                    <div class="product-image-container" style="cursor:pointer;" onclick="window.location.href='product-details.html?id=${product.id}'">
-                        <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy" onerror="this.onerror=null; this.src='assets/images/product-default.png';">
-                    </div>
-
-                    <div class="product-info">
-                        <div class="product-category">${product.brand}</div>
-                        <h3 class="product-title" style="cursor:pointer;" onclick="window.location.href='product-details.html?id=${product.id}'">${product.name}</h3>
-                        <div class="product-price">
-                            <span class="current-price">${formatPrice(discountedPrice)}</span>
-                            ${hasDiscount ? `<span class="old-price">${formatPrice(product.price)}</span>` : ''}
-                        </div>
-                    </div>
-                </div>
-                `;
-            }).join('');
-        }
-
-        function renderRecentlyViewed() {
-            const recentlyViewed = JSON.parse(localStorage.getItem('novacart_recently_viewed')) || [];
-            const ids = recentlyViewed.filter(id => id !== currentProduct.id).slice(0, 4);
-            if (ids.length === 0) return;
-
-            let sectionHtml = `
-            <section class="section">
-                <div class="container">
-                    <h2 class="section-title">Recently Viewed</h2>
-                    <div class="product-grid">`;
-            
-            ids.forEach(id => {
-                const product = products.find(p => p.id === id);
-                if(product) {
-                    const discountedPrice = calculateDiscount(product.price, product.discount);
-                    const hasDiscount = product.discount > 0;
-                    
-                    sectionHtml += `
-                    <div class="product-card" style="transform: scale(0.95);">
-                        <div class="product-image-container" style="cursor:pointer; height: 200px;" onclick="window.location.href='product-details.html?id=${product.id}'">
-                            <img src="${product.image}" alt="${product.name}" class="product-image" loading="lazy" onerror="this.onerror=null; this.src='assets/images/product-default.png';">
-                        </div>
-                        <div class="product-info" style="padding: 1rem;">
-                            <h3 class="product-title" style="font-size: 1rem; cursor:pointer;" onclick="window.location.href='product-details.html?id=${product.id}'">${product.name}</h3>
-                            <div class="product-price" style="font-size: 1.1rem; margin-bottom: 0;">
-                                <span class="current-price">${formatPrice(discountedPrice)}</span>
-                            </div>
-                        </div>
-                    </div>`;
-                }
-            });
-
-            sectionHtml += `</div></div></section>`;
-            document.getElementById('relatedProductsGrid').parentElement.parentElement.insertAdjacentHTML('afterend', sectionHtml);
         }
     </script>
-    <button id="backToTop" class="btn-icon" title="Back to Top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="position: fixed; bottom: 2rem; right: 2rem; z-index: 99; display: none; background: var(--color-primary); color: white; box-shadow: var(--shadow-lg);">
-        <i class="fas fa-arrow-up"></i>
-    </button>
 </body>
 </html>
